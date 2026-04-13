@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-   <link rel="icon" href="Bilder/logo.png">
+  <link rel="icon" href="Bilder/logo.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Improve your skills – Unihockey Skill Training Uster 2026</title>
   <link rel="stylesheet" href="style.css">
@@ -13,12 +13,14 @@
   <!-- NAV -->
   <nav id="navbar">
     <div class="nav-inner">
-      <div class="nav-logo">
-        <img src="bilder/logo.png" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-        <span class="logo-text-fallback" style="display:none">Improve your skills</span>
-      </div>
-      <ul class="nav-links">
-        <li><a href="index.html" class="active">Home</a></li>
+      <a href="index.html" class="nav-logo">
+        <img src="Bilder/logo.png" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+        <span class="logo-text-fallback" style="display:none">Improve&nbsp;your&nbsp;skills</span>
+      </a>
+      <button class="nav-burger" id="navBurger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
         <li><a href="ueber.html">Über uns</a></li>
         <li><a href="kontakt.html">Kontakt</a></li>
         <li><a href="anmeldung.html" class="nav-cta">Anmelden</a></li>
@@ -28,9 +30,8 @@
 
   <!-- HERO -->
   <section id="hero">
-    <!-- PLATZHALTER BILD 1: bilder/hero.jpg → grosses Aktionsbild -->
     <div class="hero-bg">
-      <img src="bilder/hero.jpg" alt="Unihockey Training" class="hero-img" onerror="this.style.display='none'">
+      <img src="Bilder/hero.jpg" alt="Unihockey Training" class="hero-img" onerror="this.style.display='none'">
       <div class="hero-overlay"></div>
     </div>
     <div class="hero-content">
@@ -51,9 +52,7 @@
     <div class="hero-scroll-hint animate-up delay-5"><span></span></div>
   </section>
 
-  <!-- ══════════════════════════════════════════
-       WAS WIR MACHEN (neue Sektion)
-  ══════════════════════════════════════════ -->
+  <!-- WAS WIR MACHEN -->
   <section class="section was-wir-machen">
     <div class="container">
       <div class="wwm-grid">
@@ -78,7 +77,6 @@
           <a href="anmeldung.html" class="btn-primary" style="display:inline-block; margin-top:32px; background:var(--green-dark); color:var(--cream)">Jetzt anmelden – CHF 45.–</a>
         </div>
         <div class="wwm-image">
-          <!-- PLATZHALTER BILD 2: bilder/was-wir-machen.jpg → Trainingsbild oder Logo-Bild -->
           <div class="wwm-img-wrap">
             <img src="Bilder/Symboldbild_Unihockey.jpg" alt="Unihockey Skill Training" onerror="this.parentElement.classList.add('img-placeholder-box')">
           </div>
@@ -126,41 +124,10 @@
       </div>
     </div>
   </section>
-  <!--
-  <!-- GALERIE -->
-  <section class="section">
-    <div class="container">
-      <div class="section-label">Eindrücke</div>
-      <h2 class="section-title">Training in Bildern.</h2>
-      <div class="gallery-grid">
-        <!-- PLATZHALTER BILD 3: bilder/galerie1.jpg → Technik-Übung (gross) -->
-        <div class="gallery-item gallery-item-large">
-          <img src="bilder/galerie1.jpg" alt="Technik-Training" onerror="this.parentElement.classList.add('img-placeholder')">
-          <div class="gallery-label">Technik-Training</div>
-        </div>
-        <!-- PLATZHALTER BILD 4: bilder/galerie2.jpg → Gruppe beim Training -->
-        <div class="gallery-item">
-          <img src="bilder/galerie2.jpg" alt="Teamwork" onerror="this.parentElement.classList.add('img-placeholder')">
-          <div class="gallery-label">Teamwork</div>
-        </div>
-        <!-- PLATZHALTER BILD 5: bilder/galerie3.jpg → Trainer mit Spieler -->
-        <div class="gallery-item">
-          <img src="bilder/galerie3.jpg" alt="Coaching" onerror="this.parentElement.classList.add('img-placeholder')">
-          <div class="gallery-label">Coaching</div>
-        </div>
-        <!-- PLATZHALTER BILD 6: bilder/galerie4.jpg → Halle Atmosphäre -->
-        <div class="gallery-item">
-          <img src="bilder/galerie4.jpg" alt="Halle" onerror="this.parentElement.classList.add('img-placeholder')">
-          <div class="gallery-label">Die Halle</div>
-        </div>
-      </div>
-    </div>
-  </section>
--->
+
   <!-- CTA BANNER -->
   <section class="cta-banner">
-    <!-- PLATZHALTER BILD 7: bilder/cta-bg.jpg → Stimmungsbild Hintergrund -->
-    <img src="bilder/cta-bg.jpg" alt="" class="cta-bg-img" onerror="this.style.display='none'">
+    <img src="Bilder/cta-bg.jpg" alt="" class="cta-bg-img" onerror="this.style.display='none'">
     <div class="cta-overlay"></div>
     <div class="cta-content">
       <h2>Bereit für den nächsten Schritt?</h2>
@@ -179,7 +146,6 @@
         <div class="footer-links">
           <a href="kontakt.html">Kontakt</a>
           <a href="impressum.html">Impressum</a>
-          
         </div>
       </div>
     </div>
@@ -189,6 +155,11 @@
     window.addEventListener('scroll', () => {
       document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
     });
+
+    document.getElementById('navBurger').addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+
     const observer = new IntersectionObserver((e) => {
       e.forEach(i => { if (i.isIntersecting) i.target.classList.add('visible'); });
     }, { threshold: 0.1 });
