@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Über uns – Improve your skills</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar" class="scrolled">
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <img src="bilder/logo.png" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+        <span class="logo-text-fallback" style="display:none">Improve your skills</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ueber.html" class="active">Über uns</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+        <li><a href="anmeldung.html" class="nav-cta">Anmelden</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header section-dark">
+    <!-- PLATZHALTER BILD: bilder/ueber-header.jpg -->
+    <img src="bilder/ueber-header.jpg" alt="" class="page-header-bg" onerror="this.style.display='none'">
+    <div class="page-header-overlay"></div>
+    <div class="page-header-content">
+      <div class="hero-tag">Das Team</div>
+      <h1 class="page-header-title">Über uns.</h1>
+      <p class="hero-sub">Drei Nationalspieler:innen. Eine gemeinsame Idee.</p>
+    </div>
+  </section>
+
+  <!-- ETWAS ZURÜCKGEBEN – mit Bildslider -->
+  <section class="section section-cream">
+    <div class="container">
+      <div class="about-grid about-grid-reverse">
+
+        <!-- BILDSLIDER -->
+        <div class="slider-wrap">
+          <div class="slider" id="slider">
+            <!-- PLATZHALTER BILD 10: bilder/slider1.jpg -->
+            <div class="slide active">
+              <img src="bilder/1ECD3D4C-B83D-4BF2-B8C0-EE69FF124190.jpg" alt="Slide 1" onerror="this.parentElement.classList.add('slide-placeholder')">
+            </div>
+            <!-- PLATZHALTER BILD 11: bilder/slider2.jpg -->
+            <div class="slide">
+              <img src="bilder/54560170314_01b6b9c809_o.jpeg" alt="Slide 2" onerror="this.parentElement.classList.add('slide-placeholder')">
+            </div>
+            <!-- PLATZHALTER BILD 12: bilder/slider3.jpg -->
+            <div class="slide">
+              <img src="bilder/54983832553_b1dfd1ce04_o.jpg" alt="Slide 3" onerror="this.parentElement.classList.add('slide-placeholder')">
+            </div>
+            <!-- PLATZHALTER BILD 13: bilder/slider4.jpg -->
+            <div class="slide">
+              <img src="bilder/54984091234_0a498c59d6_o.jpg" alt="Slide 4" onerror="this.parentElement.classList.add('slide-placeholder')">
+            </div>
+          </div>
+          <button class="slider-btn slider-btn-prev" onclick="changeSlide(-1)" aria-label="Vorheriges Bild">&#8592;</button>
+          <button class="slider-btn slider-btn-next" onclick="changeSlide(1)" aria-label="Nächstes Bild">&#8594;</button>
+          <div class="slider-dots" id="sliderDots"></div>
+        </div>
+
+        <div class="about-text">
+          <div class="section-label">Unser Ansatz</div>
+          <h2 class="section-title" style="font-size:2rem; margin-bottom:24px">Etwas zurückgeben.</h2>
+          <p class="lead">Wir haben alle von grossen Vorbildern und guten Trainern profitiert. Jetzt ist es an uns, dieses Wissen weiterzugeben.</p>
+          <p>
+            Das Skill Training ist nicht nur Sport – es ist eine Möglichkeit, Kindern zu zeigen, was möglich ist, wenn man gezielt trainiert und an sich glaubt. Wir bringen Erfahrungen aus dem Nationalteam und den besten Clubs Europas direkt auf die Halle in Uster.
+          </p>
+          <div class="features-list" style="margin-top:24px">
+            <div class="feature-item">
+              <div class="feature-icon">🎯</div>
+              <div>
+                <strong>Technik-Fokus</strong>
+                <span>Stick-Handling, Schuss, Bewegung – gezielt verbessert</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">👥</div>
+              <div>
+                <strong>Kleine Gruppen</strong>
+                <span>Max. 25 Kinder – jedes Kind bekommt persönliches Feedback</span>
+              </div>
+            </div>
+            <div class="feature-item">
+              <div class="feature-icon">🏆</div>
+              <div>
+                <strong>Top-Level Trainer</strong>
+                <span>Nationalspieler:innen mit jahrelanger Wettkampferfahrung</span>
+              </div>
+            </div>
+          </div>
+          <a href="anmeldung.html" class="btn-primary" style="display:inline-block; margin-top:32px; background:var(--green-dark); color:var(--cream)">Jetzt anmelden</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="section">
+    <div class="container">
+      <div class="section-label">Eure Trainer</div>
+      <h2 class="section-title">Das Team dahinter.</h2>
+      <div class="team-grid">
+        <div class="team-card">
+          <!-- PLATZHALTER BILD: bilder/claudio.jpg -->
+          <div class="team-photo">
+            <img src="bilder/5_claudio_schmid.png" alt="Claudio Schmid" onerror="this.parentElement.classList.add('photo-placeholder')">
+          </div>
+          <div class="team-name">Claudio Schmid</div>
+          <div class="team-role">Organisator &amp; Trainer</div>
+          <div class="team-bio">Nationalspieler · SVWE (Rekordmeister Schweizer Unihockey)</div>
+        </div>
+        <div class="team-card">
+          <!-- PLATZHALTER BILD: bilder/pascal.jpg -->
+          <div class="team-photo">
+            <img src="bilder/17_pascal_schmuki.jpg.avif" alt="Pascal Schmuki" onerror="this.parentElement.classList.add('photo-placeholder')">
+          </div>
+          <div class="team-name">Pascal Schmuki</div>
+          <div class="team-role">Organisator &amp; Trainer</div>
+          <div class="team-bio">Nationalspieler · Storvreta IBK (Schweden, bester Verein der Welt)</div>
+        </div>
+        <div class="team-card">
+          <!-- PLATZHALTER BILD: bilder/vanessa.jpg -->
+          <div class="team-photo">
+            <img src="bilder/20_vanessa_schmuki.jpg" alt="Vanessa Schmuki" onerror="this.parentElement.classList.add('photo-placeholder')">
+          </div>
+          <div class="team-name">Vanessa Schmuki</div>  
+          <div class="team-role">Organisatorin &amp; Trainerin</div>
+          <div class="team-bio">Nationalspielerin · Weltmeisterin · 4-fache Schweizer Meisterin · Kloten-Dietlikon Jets</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">Improve your skills</div>
+        <div class="footer-info">Buchholz Sporthalle · 8610 Uster · 4. Juli 2026</div>
+        <div class="footer-org">Organisiert von Claudio Schmid, Pascal Schmuki &amp; Vanessa Schmuki</div>
+        <div class="footer-links">
+          <a href="kontakt.html">Kontakt</a>
+          <a href="impressum.html">Impressum</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 0);
+    });
+
+    const observer = new IntersectionObserver((e) => {
+      e.forEach(i => { if (i.isIntersecting) i.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.team-card, .feature-item, .slider-wrap, .about-text').forEach(el => {
+      el.classList.add('fade-in'); observer.observe(el);
+    });
+
+    // ─── BILDSLIDER ───
+    let currentSlide = 0;
+    let sliderTimer;
+    const slides = document.querySelectorAll('.slide');
+    const dotsContainer = document.getElementById('sliderDots');
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.classList.add('slider-dot');
+      if (i === 0) dot.classList.add('active');
+      dot.setAttribute('aria-label', `Bild ${i + 1}`);
+      dot.addEventListener('click', () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    });
+
+    function goToSlide(n) {
+      slides[currentSlide].classList.remove('active');
+      document.querySelectorAll('.slider-dot')[currentSlide].classList.remove('active');
+      currentSlide = (n + slides.length) % slides.length;
+      slides[currentSlide].classList.add('active');
+      document.querySelectorAll('.slider-dot')[currentSlide].classList.add('active');
+      resetTimer();
+    }
+
+    function changeSlide(dir) { goToSlide(currentSlide + dir); }
+
+    function resetTimer() {
+      clearInterval(sliderTimer);
+      sliderTimer = setInterval(() => changeSlide(1), 6000);
+    }
+
+    resetTimer();
+  </script>
+</body>
+</html>

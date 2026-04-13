@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt – Improve your skills</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar" class="scrolled">
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <img src="bilder/logo.png" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+        <span class="logo-text-fallback" style="display:none">Improve your skills</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ueber.html">Über uns</a></li>
+        <li><a href="kontakt.html" class="active">Kontakt</a></li>
+        <li><a href="anmeldung.html" class="nav-cta">Anmelden</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header section-dark page-header-short">
+    <div class="page-header-overlay"></div>
+    <div class="page-header-content">
+      <div class="hero-tag">Fragen? Meld dich!</div>
+      <h1 class="page-header-title">Kontakt.</h1>
+    </div>
+  </section>
+
+  <!-- KONTAKT KARTEN -->
+  <section class="section">
+    <div class="container">
+      <div class="kontakt-grid-centered">
+
+        <div class="kontakt-card">
+          <!-- PLATZHALTER BILD: bilder/claudio.jpg -->
+          <div class="team-photo" style="margin:0 auto 16px">
+            <img src="bilder/5_claudio_schmid.png" alt="Claudio Schmid" onerror="this.parentElement.classList.add('photo-placeholder')">
+          </div>
+          <div class="team-name">Claudio Schmid</div>
+          <div class="team-role">Nationalspieler · SVWE</div>
+          <!-- ⚠️ PLATZHALTER: Ersetze mit echter Telefonnummer und E-Mail -->
+          <a href="tel:+41790000001" class="kontakt-link">📞 +41 79 000 00 01</a>
+          <a href="mailto:claudio.schmid@active.ch" class="kontakt-link">✉️ claudio@improveyourskills.ch</a>
+        </div>
+
+        <div class="kontakt-card">
+          <!-- PLATZHALTER BILD: bilder/pascal.jpg -->
+          <div class="team-photo" style="margin:0 auto 16px">
+            <img src="bilder/17_pascal_schmuki.jpg.avif" alt="Pascal Schmuki" onerror="this.parentElement.classList.add('photo-placeholder')">
+          </div>
+          <div class="team-name">Pascal Schmuki</div>
+          <div class="team-role">Nationalspieler · Storvreta IBK</div>
+          <a href="tel:+41790000002" class="kontakt-link">📞 +41 79 000 00 02</a>
+          <a href="mailto:claudio.schmid@active.ch" class="kontakt-link">✉️ pascal@improveyourskills.ch</a>
+        </div>
+
+        <div class="kontakt-card">
+          <!-- PLATZHALTER BILD: bilder/vanessa.jpg -->
+          <div class="team-photo" style="margin:0 auto 16px">
+            <img src="bilder/20_vanessa_schmuki.jpg" alt="Vanessa Schmuki" onerror="this.parentElement.classList.add('photo-placeholder')">
+          </div>
+          <div class="team-name">Vanessa Schmuki</div>
+          <div class="team-role">Nationalspielerin · Kloten Dietlikon Jets</div>
+          <a href="tel:+41790000003" class="kontakt-link">📞 +41 79 000 00 03</a>
+          <a href="mailto:claudio.schmid@active.ch" class="kontakt-link">✉️ vanessa@improveyourskills.ch</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">Improve your skills</div>
+        <div class="footer-info">Buchholz Sporthalle · 8610 Uster · 4. Juli 2026</div>
+        <div class="footer-org">Organisiert von Claudio Schmid, Pascal Schmuki &amp; Vanessa Schmuki</div>
+        <div class="footer-links">
+          <a href="kontakt.html">Kontakt</a>
+          <a href="impressum.html">Impressum</a>
+        
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 0);
+    });
+    const observer = new IntersectionObserver((e) => {
+      e.forEach(i => { if (i.isIntersecting) i.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.kontakt-card').forEach(el => {
+      el.classList.add('fade-in'); observer.observe(el);
+    });
+  </script>
+</body>
+</html>

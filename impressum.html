@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impressum – Improve your skills</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav id="navbar" class="scrolled">
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <img src="bilder/logo.png" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+        <span class="logo-text-fallback" style="display:none">Improve your skills</span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ueber.html">Über uns</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+        <li><a href="anmeldung.html" class="nav-cta">Anmelden</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="page-header section-dark page-header-short">
+    <div class="page-header-overlay"></div>
+    <div class="page-header-content">
+      <h1 class="page-header-title">Impressum.</h1>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container container-narrow">
+      <div class="impressum-card">
+
+        <div class="impressum-block">
+          <h2>Verantwortliche Personen</h2>
+          <!-- ⚠️ PLATZHALTER: Bitte Adressen ergänzen -->
+          <p><strong>Claudio Schmid</strong><br>Weidstrasse 3<br>4656 Starrkich-Wil<br>Schweiz</p>
+          
+
+        <div class="impressum-block">
+          <h2>Kontakt</h2>
+          <!-- ⚠️ PLATZHALTER: E-Mail und Telefon ergänzen -->
+          <p>E-Mail: <a href="mailto:claudio.schmid@active.ch">info@improveyourskills.ch</a>
+        </div>
+
+        <div class="impressum-block">
+          <h2>Veranstaltung</h2>
+          <p>Unihockey Skill Training 2026 – «Improve your skills»<br>Buchholz Sporthalle, 8610 Uster<br>Datum: 4. Juli 2026</p>
+        </div>
+
+        <div class="impressum-block">
+          <h2>Datenschutz &amp; Fotorechte</h2>
+          <p>
+            Der Schutz eurer persönlichen Daten ist uns ein wichtiges Anliegen. Im Rahmen des Unihockey Skill Trainings 2026 werden folgende Daten erhoben: Name, Kontaktdaten sowie allenfalls Foto- und Videoaufnahmen der Teilnehmenden. Diese Daten dienen ausschliesslich der Organisation und Durchführung der Veranstaltung.
+          </p>
+          <p>
+            <strong>Fotorechte:</strong> Am Training können Fotos und Videosequenzen gemacht werden. Diese dienen als Erinnerung für die Familien und werden nicht ohne ausdrückliche Zustimmung im Internet, auf Social Media oder auf dieser Website veröffentlicht. Sollten Aufnahmen zu Werbezwecken oder für die Website verwendet werden, holen wir vorgängig eine separate, schriftliche Einwilligung der erziehungsberechtigten Person ein. Alle Aufnahmen, für die keine weitere Nutzung vereinbart wurde, werden nach der Veranstaltung gelöscht.
+          </p>
+          <p>
+            <strong>Datenweitergabe:</strong> Eine Weitergabe von Personendaten an Dritte findet nicht statt. Ausnahme bildet die technische Verarbeitung durch unsere Dienstleister (z.B. Zahlungsabwicklung via Payrexx), die ihrerseits dem Datenschutzgesetz verpflichtet sind.
+          </p>
+          <p>
+            Für Fragen zum Datenschutz steht euch unser Team jederzeit zur Verfügung: <a href="mailto:claudio.schmid@active.ch">info@improveyourskills.ch</a>
+          </p>
+        </div>
+
+        <div class="impressum-block">
+          <h2>Haftungsausschluss</h2>
+          <p>Die Organisatoren übernehmen keine Gewähr für die Richtigkeit, Vollständigkeit und Aktualität der auf dieser Website bereitgestellten Informationen. Haftungsansprüche wegen Schäden materieller oder immaterieller Art sind grundsätzlich ausgeschlossen.</p>
+        </div>
+
+        <div class="impressum-block">
+          <h2>Urheberrecht</h2>
+          <p>Alle Inhalte dieser Website sind urheberrechtlich geschützt. Eine Verwendung ohne ausdrückliche Genehmigung der Organisatoren ist nicht gestattet.</p>
+        </div>
+
+      </div>
+
+      <div style="text-align:center; margin-top:48px;">
+        <a href="index.html" class="btn-primary" style="display:inline-block; background:var(--green-dark); color:var(--cream)">← Zurück zur Startseite</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">Improve your skills</div>
+        <div class="footer-info">Buchholz Sporthalle · 8610 Uster · 4. Juli 2026</div>
+        <div class="footer-org">Organisiert von Claudio Schmid, Pascal Schmuki &amp; Vanessa Schmuki</div>
+        <div class="footer-links">
+          <a href="kontakt.html">Kontakt</a>
+          <a href="impressum.html">Impressum</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 0);
+    });
+  </script>
+</body>
+</html>
