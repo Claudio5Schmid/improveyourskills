@@ -23,8 +23,7 @@
       <ul class="nav-links" id="navLinks">
         <li><a href="ueber.html">Über uns</a></li>
         <li><a href="kontakt.html">Kontakt</a></li>
-        
-        <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScXHkE1d9n1aOYzRKx8_OQcH4loBu8z9KkZz5Am8lbyD4IrVA/viewform?usp=dialog" target="_blank" class="nav-cta">Anmelden</a></li>
+        <li><a href="anmeldung.html" class="nav-cta">Anmelden</a></li>
       </ul>
     </div>
   </nav>
@@ -32,9 +31,177 @@
   <!-- HERO -->
   <section id="hero">
     <div class="hero-bg">
-      <img src="Bilder/hero.jpg" alt="Unihockey Training" class="hero-img" onerror="this.style.display='none'">
+      <!-- ⚠️ PLATZHALTER: Fotos der drei Trainer als Hero-Hintergrund-Slider
+           Bitte ersetzen mit: Bilder/hero_claudio.jpg, Bilder/hero_pascal.jpg, Bilder/hero_vanessa.jpg -->
+      <div class="hero-slider" id="heroSlider">
+        <div class="hero-slide active">
+          <img src="Bilder/hero_claudio.jpg" alt="Claudio Schmid" onerror="this.parentElement.style.background='var(--green-dark)'">
+        </div>
+        <div class="hero-slide">
+          <img src="Bilder/hero_pascal.jpg" alt="Pascal Schmuki" onerror="this.parentElement.style.background='var(--green-mid)'">
+        </div>
+        <div class="hero-slide">
+          <img src="Bilder/hero_vanessa.jpg" alt="Vanessa Schmuki" onerror="this.parentElement.style.background='var(--green-dark)'">
+        </div>
+      </div>
       <div class="hero-overlay"></div>
     </div>
+    <div class="hero-content">
+      <div class="hero-tag animate-up delay-1">Skill Training 2026</div>
+      <h1 class="hero-title animate-up delay-2">
+        Improve<br>
+        <span class="accent">your</span><br>
+        skills.
+      </h1>
+      <p class="hero-sub animate-up delay-3">
+        U14 Männer &amp; U17 Frauen · Uster · 1. Juli 2026
+      </p>
+      <div class="hero-actions animate-up delay-4">
+        <a href="anmeldung.html" class="btn-primary">Jetzt anmelden</a>
+        <a href="ueber.html" class="btn-ghost">Mehr erfahren ↓</a>
+      </div>
+    </div>
+    <div class="hero-scroll-hint animate-up delay-5"><span></span></div>
+  </section>
+
+  <!-- WAS WIR MACHEN -->
+  <section class="section was-wir-machen">
+    <div class="container">
+      <div class="wwm-grid">
+        <div class="wwm-text">
+          <div class="section-label">Was wir anbieten</div>
+          <h2 class="section-title" style="margin-bottom:24px">Unihockey Skill Training in Uster</h2>
+          <p class="lead">
+            Herzlich willkommen beim <strong>Improve your skills</strong> Skill Training – dem Tagescamp für Nachwuchsspieler:innen, die ihre Unihockey-Fähigkeiten gezielt auf das nächste Level bringen wollen.
+          </p>
+          <p>
+            Wir bieten dir ein intensives, praxisnahes Training unter der Leitung von drei Schweizer Nationalspieler:innen. Egal ob du deine Schusstechnik, dein Stick-Handling oder dein taktisches Verständnis verbessern möchtest – bei uns wirst du individuell gefördert.
+          </p>
+          <p>
+            Unsere Trainingsphilosophie: <strong>Kleine Gruppen, maximale Wirkung.</strong> Mit nur 30 Teilnehmer:innen pro Session hat jedes Kind die Möglichkeit, persönliches Feedback zu erhalten und sich spürbar zu verbessern.
+          </p>
+          <div class="wwm-badges">
+            <span class="badge">🏒 U14 Männer</span>
+            <span class="badge">🏒 U17 Frauen</span>
+            <span class="badge">📍 Uster</span>
+            <span class="badge">📅 1. Juli 2026</span>
+          </div>
+          <a href="anmeldung.html" class="btn-primary" style="display:inline-block; margin-top:32px; background:var(--green-dark); color:var(--cream)">Jetzt anmelden – CHF 48.–</a>
+        </div>
+        <div class="wwm-image">
+          <div class="wwm-img-wrap">
+            <img src="Bilder/Symboldbild_Unihockey.jpg" alt="Unihockey Skill Training" onerror="this.parentElement.classList.add('img-placeholder-box')">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFOS -->
+  <section class="section section-dark">
+    <div class="container">
+      <div class="section-label light">Die Fakten</div>
+      <h2 class="section-title light">Alles auf einen Blick.</h2>
+      <div class="info-cards">
+        <div class="info-card">
+          <div class="info-card-icon">📅</div>
+          <div class="info-card-label">Datum</div>
+          <div class="info-card-value">1. Juli 2026</div>
+          <div class="info-card-sub">Anmeldeschluss: Ende Mai 2026</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">📍</div>
+          <div class="info-card-label">Ort</div>
+          <div class="info-card-value">Buchholz Sporthalle</div>
+          <div class="info-card-sub">8610 Uster</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">🌅</div>
+          <div class="info-card-label">Morgen-Session</div>
+          <div class="info-card-value">09:30 – 12:00</div>
+          <div class="info-card-sub">U14 Männer &amp; U17 Frauen · 30 Plätze</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card-icon">🌆</div>
+          <div class="info-card-label">Nachmittag-Session</div>
+          <div class="info-card-value">13:00 – 15:30</div>
+          <div class="info-card-sub">U14 Männer &amp; U17 Frauen · 30 Plätze</div>
+        </div>
+        <div class="info-card info-card-highlight">
+          <div class="info-card-icon">💰</div>
+          <div class="info-card-label">Kosten</div>
+          <div class="info-card-value">CHF 48.–</div>
+          <div class="info-card-sub">pro Person / Session</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <img src="Bilder/cta-bg.jpg" alt="" class="cta-bg-img" onerror="this.style.display='none'">
+    <div class="cta-overlay"></div>
+    <div class="cta-content">
+      <h2>Bereit für den nächsten Schritt?</h2>
+      <p>Nur noch wenige Plätze verfügbar – jetzt sichern.</p>
+      <a href="anmeldung.html" class="btn-primary">Jetzt anmelden – CHF 48.–</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">Improve your skills</div>
+        <div class="footer-info">Buchholz Sporthalle · 8610 Uster · 1. Juli 2026</div>
+        <div class="footer-org">Organisiert von Claudio Schmid, Pascal Schmuki &amp; Vanessa Schmuki</div>
+        <div class="footer-links">
+          <a href="kontakt.html">Kontakt</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // Hamburger Menu
+    const burger = document.getElementById('navBurger');
+    const navLinks = document.getElementById('navLinks');
+    burger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      burger.classList.toggle('open');
+    });
+    // Menü schliessen bei Link-Klick
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        burger.classList.remove('open');
+      });
+    });
+
+    // Hero Bildslider
+    const heroSlides = document.querySelectorAll('.hero-slide');
+    let heroIdx = 0;
+    setInterval(() => {
+      heroSlides[heroIdx].classList.remove('active');
+      heroIdx = (heroIdx + 1) % heroSlides.length;
+      heroSlides[heroIdx].classList.add('active');
+    }, 5000);
+
+    // Fade-in Observer
+    const observer = new IntersectionObserver((e) => {
+      e.forEach(i => { if (i.isIntersecting) i.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.info-card, .gallery-item, .wwm-text, .wwm-image').forEach(el => {
+      el.classList.add('fade-in'); observer.observe(el);
+    });
+  </script>
+</body>
+</html>    </div>
     <div class="hero-content">
       <div class="hero-tag animate-up delay-1">Skill Training 2026</div>
       <h1 class="hero-title animate-up delay-2">
