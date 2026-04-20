@@ -13,12 +13,14 @@
   <!-- NAV -->
   <nav id="navbar" class="scrolled">
     <div class="nav-inner">
-      <div class="nav-logo">
-        <img src="bilder/logo.png" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+      <a href="index.html" class="nav-logo">
+        <img src="Bilder/logo.png" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
         <span class="logo-text-fallback" style="display:none">Improve your skills</span>
-      </div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
+      </a>
+      <button class="nav-burger" id="navBurger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
         <li><a href="ueber.html">Über uns</a></li>
         <li><a href="kontakt.html">Kontakt</a></li>
         <li><a href="anmeldung.html" class="nav-cta active-cta">Anmelden</a></li>
@@ -32,207 +34,57 @@
     <div class="page-header-content">
       <div class="hero-tag">Mitmachen</div>
       <h1 class="page-header-title">Jetzt anmelden.</h1>
-      <p class="hero-sub">4. Juli 2026 · Buchholz Sporthalle, 8610 Uster · CHF 45.–</p>
+      <p class="hero-sub">1. Juli 2026 · Buchholz Sporthalle, 8610 Uster · CHF 48.–</p>
     </div>
   </section>
 
-  <!-- FORMULAR -->
+  <!-- SESSION WAHL -->
   <section class="section section-cream">
-    <div class="container container-narrow">
+    <div class="container">
 
-      <!-- SCHRITTE -->
-      <div class="steps">
-        <div class="step active">
-          <div class="step-number">1</div>
-          <div class="step-label">Anmeldung</div>
+      <div class="session-split">
+
+        <!-- MORGEN SESSION -->
+        <div class="session-panel session-panel-left">
+          <div class="session-icon">🌅</div>
+          <div class="session-title">Morgen-Session</div>
+          <div class="session-time">09:30 – 12:00 Uhr</div>
+          <div class="session-details">
+            1. Juli 2026<br>
+            Buchholz Sporthalle, Uster<br>
+            U14 Männer &amp; U17 Frauen<br>
+            Max. 30 Plätze
+          </div>
+          <div class="session-price">CHF 48.–</div>
+          <!-- ⚠️ PLATZHALTER: Ersetze # mit dem Link zum Anmeldeformular Morgen-Session -->
+          <a href="#" target="_blank" class="btn-session-light">
+            Anmelden →
+          </a>
         </div>
-        <div class="step-line"></div>
-        <div class="step" id="step2">
-          <div class="step-number">2</div>
-          <div class="step-label">Zahlung</div>
+
+        <!-- NACHMITTAG SESSION -->
+        <div class="session-panel session-panel-right">
+          <div class="session-icon">🌆</div>
+          <div class="session-title">Nachmittag-Session</div>
+          <div class="session-time">13:00 – 15:30 Uhr</div>
+          <div class="session-details">
+            1. Juli 2026<br>
+            Buchholz Sporthalle, Uster<br>
+            U14 Männer &amp; U17 Frauen<br>
+            Max. 30 Plätze
+          </div>
+          <div class="session-price">CHF 48.–</div>
+          <!-- ⚠️ PLATZHALTER: Ersetze # mit dem Link zum Anmeldeformular Nachmittag-Session -->
+          <a href="#" target="_blank" class="btn-session-dark">
+            Anmelden →
+          </a>
         </div>
+
       </div>
 
-      <!-- SCHRITT 1: FORMULAR -->
-      <div id="formStep">
-        <form id="anmeldeForm" class="form-card">
-
-          <!-- SESSION -->
-          <div class="form-section-title">Session wählen</div>
-          <div class="form-group">
-            <label for="session">Gewünschte Session *</label>
-            <select id="session" name="Session" required>
-              <option value="" disabled selected>Bitte wählen…</option>
-              <option value="Morgen (09:00–12:00)">Morgen (09:00–12:00)</option>
-              <option value="Nachmittag (13:30–16:30)">Nachmittag (13:30–16:30)</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="kategorie">Kategorie *</label>
-            <select id="kategorie" name="Kategorie" required>
-              <option value="" disabled selected>Bitte wählen…</option>
-              <option value="U14 Männer">U14 Männer</option>
-              <option value="U17 Frauen">U17 Frauen</option>
-            </select>
-          </div>
-
-          <div class="form-divider"></div>
-
-          <!-- KIND -->
-          <div class="form-section-title">Angaben zum Kind</div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="kind_vorname">Vorname Kind *</label>
-              <input type="text" id="kind_vorname" name="Vorname Kind" placeholder="Luca" required>
-            </div>
-            <div class="form-group">
-              <label for="kind_name">Nachname Kind *</label>
-              <input type="text" id="kind_name" name="Nachname Kind" placeholder="Müller" required>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="kind_email">E-Mail Kind</label>
-              <input type="email" id="kind_email" name="E-Mail Kind" placeholder="luca@mail.ch">
-            </div>
-            <div class="form-group">
-              <label for="kind_handy">Handy Kind</label>
-              <input type="tel" id="kind_handy" name="Handy Kind" placeholder="+41 79 000 00 00">
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="verein">Zugehöriger Verein *</label>
-            <input type="text" id="verein" name="Verein" placeholder="z.B. UHC Uster" required>
-          </div>
-
-          <div class="form-divider"></div>
-
-          <!-- ERZIEHUNGSBERECHTIGTE -->
-          <div class="form-section-title">Erziehungsberechtigte Person</div>
-
-          <div class="form-group">
-            <label for="eltern_geschlecht">Anrede *</label>
-            <select id="eltern_geschlecht" name="Geschlecht Elternteil" required>
-              <option value="" disabled selected>Bitte wählen…</option>
-              <option value="Frau">Frau</option>
-              <option value="Herr">Herr</option>
-              <option value="Divers">Divers / Keine Angabe</option>
-            </select>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="eltern_vorname">Vorname *</label>
-              <input type="text" id="eltern_vorname" name="Vorname Elternteil" placeholder="Anna" required>
-            </div>
-            <div class="form-group">
-              <label for="eltern_name">Nachname *</label>
-              <input type="text" id="eltern_name" name="Nachname Elternteil" placeholder="Müller" required>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="eltern_email">E-Mail *</label>
-              <input type="email" id="eltern_email" name="E-Mail Elternteil" placeholder="anna.mueller@mail.ch" required>
-            </div>
-            <div class="form-group">
-              <label for="eltern_handy">Handy *</label>
-              <input type="tel" id="eltern_handy" name="Handy Elternteil" placeholder="+41 79 000 00 00" required>
-            </div>
-          </div>
-
-          <div class="form-divider"></div>
-
-          <!-- FOTO-EINWILLIGUNG -->
-          <div class="form-section-title">Fotoeinwilligung</div>
-
-          <div class="foto-frage-box">
-            <div class="foto-frage-text">
-              Darf am Training Fotos vom Kind gemacht werden?
-              <button type="button" class="info-btn" onclick="togglePrivacy()" aria-label="Datenschutz Info">
-                <span>ℹ</span>
-              </button>
-            </div>
-
-            <div class="radio-group">
-              <label class="radio-label" id="radioJa">
-                <input type="radio" name="Fotoeinwilligung" value="Ja" required>
-                <span class="radio-custom"></span>
-                <span class="radio-text">Ja, einverstanden</span>
-              </label>
-              <label class="radio-label" id="radioNein">
-                <input type="radio" name="Fotoeinwilligung" value="Nein">
-                <span class="radio-custom"></span>
-                <span class="radio-text">Nein, nicht einverstanden</span>
-              </label>
-            </div>
-
-            <!-- DATENSCHUTZ INFOBOX -->
-            <div class="privacy-box" id="privacyBox" style="display:none">
-              <div class="privacy-box-title">🔒 Datenschutz &amp; Fotorechte</div>
-              <p>Der Schutz eurer Daten und die Privatsphäre der Kinder liegen uns sehr am Herzen.</p>
-              <p><strong>Was bedeutet diese Einwilligung?</strong><br>
-              Am Training werden Fotos und allenfalls kurze Videosequenzen gemacht – als Erinnerung für die Kinder und ihre Familien.</p>
-              <p><strong>Was wir garantieren:</strong></p>
-              <ul>
-                <li>📵 Keine Fotos werden ohne ausdrückliche Genehmigung im Internet, auf Social Media oder auf dieser Website veröffentlicht.</li>
-                <li>👨‍👩‍👧 Die Aufnahmen werden ausschliesslich den Familien zur Verfügung gestellt.</li>
-                <li>🤝 Für Website-Nutzung holen wir eine separate, schriftliche Einwilligung ein.</li>
-                <li>🗑️ Alle nicht genehmigten Aufnahmen werden nach dem Event gelöscht.</li>
-              </ul>
-              <p style="font-size:0.82rem; color:var(--text-muted); margin-top:8px;">
-                Fragen: <a href="mailto:DEINE@EMAIL.CH">DEINE@EMAIL.CH</a>
-              </p>
-            </div>
-          </div>
-
-          <div id="form-error" class="form-error" style="display:none">
-            ❌ Bitte alle Pflichtfelder ausfüllen und zur Fotoeinwilligung Ja oder Nein wählen.
-          </div>
-
-          <button type="submit" class="btn-primary btn-full" style="margin-top:24px">
-            Weiter zur Zahlung →
-          </button>
-          <p class="form-note">* Pflichtfeld · Die Anmeldung ist verbindlich nach Zahlungseingang.</p>
-
-        </form>
-      </div>
-
-      <!-- SCHRITT 2: PAYREXX ZAHLUNG -->
-      <div id="paymentStep" style="display:none">
-        <div class="form-card payment-card">
-          <div class="payment-summary">
-            <div class="payment-summary-title">Zusammenfassung</div>
-            <div class="payment-summary-row">
-              <span>Unihockey Skill Training 2026</span>
-              <span id="summarySession"></span>
-            </div>
-            <div class="payment-summary-row">
-              <span>Teilnehmer:in</span>
-              <span id="summaryName"></span>
-            </div>
-            <div class="payment-summary-total">
-              <span>Gesamt</span>
-              <span>CHF 45.–</span>
-            </div>
-          </div>
-          <div class="form-divider"></div>
-          <div class="payrexx-placeholder">
-            <div class="payrexx-placeholder-icon">💳</div>
-            <div class="payrexx-placeholder-title">Zahlung via Payrexx</div>
-            <div class="payrexx-placeholder-sub">TWINT · Kreditkarte · PostFinance</div>
-            <div class="payrexx-placeholder-note">
-              <!-- ⚠️ Platzhalter – Payrexx Integration hier einfügen.<br>
-              Payrexx Dashboard → Zahlungslink erstellen → iFrame Code hier einfügen -->
-              Die Zahlung wird in Kürze freigeschaltet.<br>
-              Wir melden uns sobald die Anmeldung vollständig möglich ist.
-            </div>
-          </div>
-          <button onclick="goBack()" style="margin-top:16px; width:100%; text-align:center; display:block; padding:12px; border:1px solid rgba(16,44,38,0.2); border-radius:12px; cursor:pointer; background:transparent; font-family:inherit; font-size:0.9rem; color:var(--text-muted);">
-            ← Zurück zur Anmeldung
-          </button>
-        </div>
-      </div>
+      <p class="anmeldung-hint">
+        * Die Anmeldung öffnet sich in einem neuen Tab. · Die Anmeldung ist verbindlich nach Zahlungseingang.
+      </p>
 
     </div>
   </section>
@@ -242,11 +94,10 @@
     <div class="container">
       <div class="footer-inner">
         <div class="footer-brand">Improve your skills</div>
-        <div class="footer-info">Buchholz Sporthalle · 8610 Uster · 4. Juli 2026</div>
+        <div class="footer-info">Buchholz Sporthalle · 8610 Uster · 1. Juli 2026</div>
         <div class="footer-org">Organisiert von Claudio Schmid, Pascal Schmuki &amp; Vanessa Schmuki</div>
         <div class="footer-links">
           <a href="kontakt.html">Kontakt</a>
-          <a href="impressum.html">Impressum</a>
         </div>
       </div>
     </div>
@@ -257,96 +108,18 @@
       document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 0);
     });
 
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyJG1bvN2UIHs3cPeBfZ8uhurk5kitXkXjj9o32TDxmbYnwUiTkzLVqEg7G-AqkpPOd/exec';
-    const MAX_PRO_KATEGORIE = 25;
-
-    function togglePrivacy() {
-      const box = document.getElementById('privacyBox');
-      box.style.display = box.style.display === 'none' ? 'block' : 'none';
-    }
-
-    // Beim Laden: volle Kategorien deaktivieren
-    async function pruefeKapazitaet() {
-      try {
-        const res = await fetch(GOOGLE_SCRIPT_URL);
-        const counts = await res.json();
-        const select = document.getElementById('kategorie');
-        Array.from(select.options).forEach(opt => {
-          if (opt.value && (counts[opt.value] || 0) >= MAX_PRO_KATEGORIE) {
-            opt.disabled = true;
-            opt.text = opt.value + ' (ausgebucht)';
-          }
-        });
-      } catch(err) {
-        console.log('Kapazitäts-Check Fehler:', err);
-      }
-    }
-    pruefeKapazitaet();
-
-    // Radio-Buttons einfärben wenn ausgewählt
-    document.querySelectorAll('input[name="Fotoeinwilligung"]').forEach(radio => {
-      radio.addEventListener('change', function() {
-        document.getElementById('radioJa').classList.remove('selected');
-        document.getElementById('radioNein').classList.remove('selected');
-        this.closest('.radio-label').classList.add('selected');
+    const burger = document.getElementById('navBurger');
+    const navLinks = document.getElementById('navLinks');
+    burger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      burger.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        burger.classList.remove('open');
       });
     });
-
-    document.getElementById('anmeldeForm').addEventListener('submit', async function(e) {
-      e.preventDefault();
-      const errorMsg = document.getElementById('form-error');
-      errorMsg.style.display = 'none';
-
-      // Fotoeinwilligung prüfen
-      const fotoAntwort = document.querySelector('input[name="Fotoeinwilligung"]:checked');
-      if (!fotoAntwort) {
-        errorMsg.textContent = '❌ Bitte alle Pflichtfelder ausfüllen und zur Fotoeinwilligung Ja oder Nein wählen.';
-        errorMsg.style.display = 'block';
-        return;
-      }
-
-      const formData = new FormData(this);
-      const data = {};
-      formData.forEach((value, key) => { data[key] = value; });
-      data['Anmeldedatum'] = new Date().toLocaleDateString('de-CH');
-
-      // Kapazität nochmals prüfen vor dem Absenden
-      try {
-        const res = await fetch(GOOGLE_SCRIPT_URL);
-        const counts = await res.json();
-        const gewaehlteKat = data['Kategorie'];
-        if ((counts[gewaehlteKat] || 0) >= MAX_PRO_KATEGORIE) {
-          errorMsg.textContent = '❌ Diese Kategorie ist leider ausgebucht (max. 25 Plätze).';
-          errorMsg.style.display = 'block';
-          return;
-        }
-      } catch(err) {
-        console.log('Kapazitäts-Check Fehler:', err);
-      }
-
-      document.getElementById('summarySession').textContent = data['Session'] || '';
-      document.getElementById('summaryName').textContent =
-        (data['Vorname Kind'] || '') + ' ' + (data['Nachname Kind'] || '');
-
-      try {
-        await fetch(GOOGLE_SCRIPT_URL, {
-          method: 'POST', mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-      } catch(err) { console.log('Sheets Fehler:', err); }
-
-      document.getElementById('formStep').style.display = 'none';
-      document.getElementById('paymentStep').style.display = 'block';
-      document.getElementById('step2').classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    function goBack() {
-      document.getElementById('formStep').style.display = 'block';
-      document.getElementById('paymentStep').style.display = 'none';
-      document.getElementById('step2').classList.remove('active');
-    }
   </script>
 </body>
 </html>
