@@ -357,6 +357,9 @@ a.nav-logo { text-decoration: none; cursor: pointer; display: flex; align-items:
 .btn-session-light:hover { background: var(--white); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
 .btn-session-dark { display: inline-block; background: var(--green-dark); color: var(--cream); padding: 16px 40px; border-radius: 100px; font-weight: 500; font-size: 0.95rem; font-family: var(--font-body); transition: all var(--transition); }
 .btn-session-dark:hover { background: var(--green-mid); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.session-buttons { display: flex; gap: 12px; align-items: center; justify-content: center; flex-wrap: wrap; }
+.btn-booked { display: inline-block; background: #c94a4a; color: var(--white); padding: 16px 40px; border-radius: 100px; font-weight: 500; font-size: 0.95rem; font-family: var(--font-body); transition: all var(--transition); border: none; cursor: not-allowed; opacity: 0.8; }
+.btn-booked:hover { background: #b03d3d; transform: none; }
 .session-divider { width: 1px; background: rgba(16,44,38,0.15); }
 .anmeldung-hint { text-align: center; margin-top: 32px; font-size: 0.82rem; color: var(--text-muted); }
 
