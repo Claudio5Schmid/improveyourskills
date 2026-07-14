@@ -1,3 +1,4 @@
+ <!--
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -132,3 +133,105 @@
    <!-- End Cloudflare Web Analytics -->
 </body>
 </html>
+-->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="Bilder/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anmeldung – Improve your skills</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar" class="scrolled">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="Bilder/logo.png" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+        <span class="logo-text-fallback" style="display:none">Improve your skills</span>
+      </a>
+      <button class="nav-burger" id="navBurger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="ueber.html">Über uns</a></li>
+        <li><a href="impressionen.html">Impressionen</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+        <li><a href="anmeldung.html" class="active">Anmelden</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <section class="page-header section-dark">
+    <div class="page-header-overlay"></div>
+    <div class="page-header-content">
+      <div class="hero-tag">Anmeldung</div>
+      <h1 class="page-header-title">Bis 2027.</h1>
+      <p class="hero-sub">Die Anmeldung für das Skill Training ist aktuell geschlossen.</p>
+    </div>
+  </section>
+
+  <!-- HINWEIS 2027 -->
+  <section class="section section-cream">
+    <div class="container container-narrow" style="text-align: center;">
+
+      <div class="session-icon">📅</div>
+      <div class="section-label">Save the Date</div>
+      <h2 class="section-title" style="margin-bottom: 24px;">Anmeldungen &amp; Infos folgen im 2027.</h2>
+
+      <p style="font-size: 1.1rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 40px;">
+        Das nächste Improve-your-skills Skill Training in Uster ist bereits in Planung.
+        Alle Details sowie die Anmeldung schalten wir rechtzeitig wieder hier auf.
+        Schau zu gegebener Zeit einfach nochmals vorbei – wir freuen uns auf dich!
+      </p>
+
+      <a href="index.html" class="btn-session-dark">Zurück zur Startseite</a>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">Improve your skills</div>
+        <div class="footer-info">Buchholz Sporthalle · 8610 Uster</div>
+        <div class="footer-org">Organisiert von Vanessa Schmuki, Pascal Schmuki &amp; Claudio Schmid</div>
+        <div class="footer-links">
+          <a href="kontakt.html">Kontakt</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 0);
+    });
+
+    const burger = document.getElementById('navBurger');
+    const navLinks = document.getElementById('navLinks');
+    burger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      burger.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        burger.classList.remove('open');
+      });
+    });
+  </script>
+  <!-- Cloudflare Web Analytics -->
+   <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b2657f182d3647a1b098fc863d27ba11"}'></script>
+   <!-- End Cloudflare Web Analytics -->
+</body>
+</html>
+
+
+
