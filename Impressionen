@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" href="Bilder/logo.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impressionen – Improve your skills</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar" class="scrolled">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">
+        <img src="Bilder/logo.png" alt="Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+        <span class="logo-text-fallback" style="display:none">Improve your skills</span>
+      </a>
+      <button class="nav-burger" id="navBurger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="ueber.html">Über uns</a></li>
+        <li><a href="impressionen.html" class="active">Impressionen</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
+        <li><a href="anmeldung.html" class="nav-cta">Anmelden</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER MIT HINTERGRUNDBILD + BUTTON -->
+  <section class="page-header section-dark" style="min-height: 80vh;">
+
+    <!-- ⚠️ HINTERGRUNDBILD: Lade dein Bild in den Ordner "Bilder" und trage unten
+         beim src den Dateinamen ein (z. B. Bilder/impressionen.jpg).
+         Solange kein Bild da ist, bleibt der Hintergrund einfach dunkelgrün. -->
+    <img src="Bilder/impressionen-hintergrund.jpg" alt="Impressionen"
+         class="page-header-bg" onerror="this.style.display='none'">
+
+    <div class="page-header-overlay"></div>
+
+    <div class="page-header-content">
+      <div class="hero-tag">Galerie</div>
+      <h1 class="page-header-title">Impressionen.</h1>
+      <p class="hero-sub">Eindrücke vom Skill Training – alle Fotos an einem Ort.</p>
+
+      <div style="margin-top: 40px;">
+        <!-- ⚠️ DROPBOX-LINK: Ersetze das # mit deinem Dropbox-Link -->
+        <a href="#" target="_blank" class="btn-primary">Zu den Bildern →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-brand">Improve your skills</div>
+        <div class="footer-info">Buchholz Sporthalle · 8610 Uster · So, 5. Juli 2026</div>
+        <div class="footer-org">Organisiert von Vanessa Schmuki, Pascal Schmuki &amp; Claudio Schmid</div>
+        <div class="footer-links">
+          <a href="kontakt.html">Kontakt</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 0);
+    });
+
+    const burger = document.getElementById('navBurger');
+    const navLinks = document.getElementById('navLinks');
+    burger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+      burger.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        burger.classList.remove('open');
+      });
+    });
+  </script>
+  <!-- Cloudflare Web Analytics -->
+   <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "b2657f182d3647a1b098fc863d27ba11"}'></script>
+   <!-- End Cloudflare Web Analytics -->
+</body>
+</html>
