@@ -232,6 +232,11 @@ Die krassesten Missverhältnisse:
 
 ### 3.3 Referenziert, aber nicht vorhanden
 
+> **Nachtrag 28.07.2026:** Die Verweise auf `logo.png` sind inzwischen entfernt (Commit
+> `feat: replace dead logo.png references with text logo and placeholder favicon`).
+> Die Tabelle beschreibt den Zustand bei `7dd05a6`. Aktueller Stand: siehe
+> `docs/PLATZHALTER.md`.
+
 | Datei | Referenziert in | Sichtbare Folge |
 |---|---|---|
 | `Bilder/logo.png` | **allen 6 Seiten** (Favicon **und** Navigations-Logo) | Kein Logo, kein Favicon. Die Navigation zeigt auf jeder Seite den Text-Ersatz „Improve your skills". Der `onerror`-Handler fängt es ab, aber im Browser-Tab bleibt das Standard-Icon. |

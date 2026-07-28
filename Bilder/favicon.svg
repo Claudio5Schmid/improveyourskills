@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Improve your skills">
+  <title>Improve your skills</title>
+  <desc>
+    PLATZHALTER-FAVICON. Ersetzt die tote Referenz auf Bilder/logo.png.
+
+    Farben ausschliesslich aus src/styles/tokens.css:
+      Hintergrund  #102C26  (Token color-green-dark, style.css Zeile 5)
+      Marke        #F7E7CE  (Token color-cream,       style.css Zeile 7)
+
+    Die Form leitet sich direkt vom Hero-Schriftzug der Startseite ab:
+    drei Zeilen, bei denen die mittlere nur als Kontur gesetzt ist,
+    genau wie "Improve / your / skills." mit dem konturierten "your"
+    (style.css Zeile 113, Selektor .hero-title .accent).
+
+    Bewusst kein echter Schriftzug: SVG-Favicons laden keine Webfonts,
+    "Syne" waere hier nicht verfuegbar und wuerde durch eine beliebige
+    Systemschrift ersetzt. Sobald Syne ab Phase 1 selbst gehostet ist,
+    kann daraus eine echte Wortmarke werden.
+
+    Ersetzbar ueber den Admin ab Phase 3. Siehe docs/PLATZHALTER.md
+  </desc>
+
+  <rect width="64" height="64" rx="14" fill="#102C26"/>
+
+  <!-- Zeile 1: "Improve", gefuellt -->
+  <rect x="16" y="15" width="32" height="9" rx="4.5" fill="#F7E7CE"/>
+
+  <!-- Zeile 2: "your", nur Kontur wie im Hero -->
+  <rect x="17.5" y="29" width="21" height="6" rx="3" fill="none" stroke="#F7E7CE" stroke-width="3"/>
+
+  <!-- Zeile 3: "skills.", gefuellt -->
+  <rect x="16" y="40" width="28" height="9" rx="4.5" fill="#F7E7CE"/>
+</svg>
