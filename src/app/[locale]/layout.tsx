@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
+import { syne, dmSans } from "../fonts";
+import "../globals.css";
 
 export const metadata: Metadata = {
   title: "Improve your skills",
@@ -30,7 +32,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} className={`${syne.variable} ${dmSans.variable}`}>
       <body>
         <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
       </body>

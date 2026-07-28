@@ -72,11 +72,11 @@ Screenshot-Vergleichen als Prüfstein. Weicht eine Breite ab, nehme ich das Stü
 
 ### Risiko
 
-| Risiko | Einschätzung | Umgang |
-|---|---|---|
-| Optische Abweichung beim CSS-Umbau | **mittel** | Zweischritt-Vorgehen oben, Screenshot-Vergleich als Gate |
-| `-webkit-text-stroke` bei „your" rendert anders | gering | In allen Ziel-Browsern identisch; wird explizit auf Safari/iOS geprüft |
-| Next.js auf Netlify | gering | Offizielles Plugin, Standardfall |
+| Risiko                                          | Einschätzung | Umgang                                                                 |
+| ----------------------------------------------- | ------------ | ---------------------------------------------------------------------- |
+| Optische Abweichung beim CSS-Umbau              | **mittel**   | Zweischritt-Vorgehen oben, Screenshot-Vergleich als Gate               |
+| `-webkit-text-stroke` bei „your" rendert anders | gering       | In allen Ziel-Browsern identisch; wird explizit auf Safari/iOS geprüft |
+| Next.js auf Netlify                             | gering       | Offizielles Plugin, Standardfall                                       |
 
 ---
 
@@ -117,11 +117,11 @@ Screenshot-Vergleichen als Prüfstein. Weicht eine Breite ab, nehme ich das Stü
 
 ### Risiko
 
-| Risiko | Einschätzung | Umgang |
-|---|---|---|
-| RLS falsch konfiguriert → Datenleck | **hoch, wenn unbemerkt** | Automatisierte SQL-Tests als Teil der Migration, Ergebnis im Checkpoint |
-| Free-Tier-Pause nach 7 Tagen | sicher eintretend | Wöchentliche Netlify-Funktion (Phase 7), bis dahin unkritisch |
-| Registry und Datenbank laufen auseinander | mittel | Registry ist die Quelle; ein Skript prüft beim Build, dass jeder Schlüssel existiert |
+| Risiko                                    | Einschätzung             | Umgang                                                                               |
+| ----------------------------------------- | ------------------------ | ------------------------------------------------------------------------------------ |
+| RLS falsch konfiguriert → Datenleck       | **hoch, wenn unbemerkt** | Automatisierte SQL-Tests als Teil der Migration, Ergebnis im Checkpoint              |
+| Free-Tier-Pause nach 7 Tagen              | sicher eintretend        | Wöchentliche Netlify-Funktion (Phase 7), bis dahin unkritisch                        |
+| Registry und Datenbank laufen auseinander | mittel                   | Registry ist die Quelle; ein Skript prüft beim Build, dass jeder Schlüssel existiert |
 
 ---
 
@@ -149,10 +149,10 @@ Screenshot-Vergleichen als Prüfstein. Weicht eine Breite ab, nehme ich das Stü
 
 ### Risiko
 
-| Risiko | Einschätzung | Umgang |
-|---|---|---|
-| Magic-Link-Mail landet im Spam | **mittel** | Supabase-Standardversand ist begrenzt; ggf. Resend als SMTP hinterlegen (Phase 5 ohnehin eingerichtet) |
-| Jemand sperrt sich aus | gering | Zugang lässt sich im Supabase-Dashboard jederzeit neu erteilen; steht in `BETRIEB.md` |
+| Risiko                         | Einschätzung | Umgang                                                                                                 |
+| ------------------------------ | ------------ | ------------------------------------------------------------------------------------------------------ |
+| Magic-Link-Mail landet im Spam | **mittel**   | Supabase-Standardversand ist begrenzt; ggf. Resend als SMTP hinterlegen (Phase 5 ohnehin eingerichtet) |
+| Jemand sperrt sich aus         | gering       | Zugang lässt sich im Supabase-Dashboard jederzeit neu erteilen; steht in `BETRIEB.md`                  |
 
 ---
 
@@ -193,12 +193,12 @@ Einen Testordner mit ~30 Fotos gemischter Ausrichtung bereitstellen (Checkpoint-
 
 ### Risiko
 
-| Risiko | Einschätzung | Umgang |
-|---|---|---|
-| Speicherplatz 1 GB | gering | 200 Fotos × 3 Grössen ≈ 120–150 MB pro Jahrgang → reicht für ~6 Jahre |
-| Kompression im Browser auf schwachem Laptop langsam | mittel | Parallelität begrenzen, Fortschritt anzeigen; Messwerte im Checkpoint |
-| Fotos ohne EXIF | sicher eintretend | Kaskade EXIF → Dateidatum → aktuelles Jahr, immer überschreibbar |
-| **Einwilligungen decken Veröffentlichung nicht** | **offen** | Audit §7 Frage 6 — muss vor dem Livegang geklärt sein |
+| Risiko                                              | Einschätzung      | Umgang                                                                |
+| --------------------------------------------------- | ----------------- | --------------------------------------------------------------------- |
+| Speicherplatz 1 GB                                  | gering            | 200 Fotos × 3 Grössen ≈ 120–150 MB pro Jahrgang → reicht für ~6 Jahre |
+| Kompression im Browser auf schwachem Laptop langsam | mittel            | Parallelität begrenzen, Fortschritt anzeigen; Messwerte im Checkpoint |
+| Fotos ohne EXIF                                     | sicher eintretend | Kaskade EXIF → Dateidatum → aktuelles Jahr, immer überschreibbar      |
+| **Einwilligungen decken Veröffentlichung nicht**    | **offen**         | Audit §7 Frage 6 — muss vor dem Livegang geklärt sein                 |
 
 ---
 
@@ -265,10 +265,12 @@ Best Practices ≥ 95, SEO ≥ 95; LCP < 2,5 s, CLS < 0,1, INP < 200 ms.
 **Ich melde die gemessenen Zahlen, auch wenn sie das Ziel verfehlen.**
 
 ### SEO
+
 Titel und Beschreibungen pro Seite und Sprache aus der Datenbank, Open Graph,
 `hreflang`, Canonicals, dynamische `sitemap.xml`, `robots.txt`, JSON-LD, Favicons.
 
 ### Recht (revDSG)
+
 `/impressum` überarbeiten und `/datenschutz` neu, beide dreisprachig, als **Entwurf
 gekennzeichnet**. Verlinkt im Footer — heute ist das Impressum von nirgends erreichbar
 (Audit §5.6). **Ich bin keine Rechtsberatung**; du musst das prüfen und ergänzen.
@@ -282,6 +284,7 @@ trägt aber **nur, wenn Google Fonts und Google Maps verschwinden bzw. erst nach
 laden** (Audit §4 und §5.7). Ich schreibe die Begründung so auf, dass du sie belegen kannst.
 
 ### Livegang
+
 Netlify-Umgebungsvariablen, Build-Einstellungen, Security-Header inkl. einer CSP, die mit
 Supabase, Turnstile und Cloudflare **getestet** ist. Dann eine nummerierte
 Hostpoint-Anleitung auf Deutsch inklusive Rückweg.
@@ -295,16 +298,16 @@ vermeidet Probleme mit Apex-Einträgen. Details in Phase 7.
 
 ## Wichtigste Risiken über alle Phasen
 
-| # | Risiko | Auswirkung | Umgang |
-|---|---|---|---|
-| 1 | **RLS-Fehler legt Kontaktnachrichten oder versteckte Fotos offen** | hoch | Automatisierte Negativ-Tests, Ergebnis im Checkpoint Phase 2 |
-| 2 | **Fotorechte-Zusage widerspricht der Galerie** | hoch, rechtlich | Vor Phase 4 klären (Audit §7 Frage 6) |
-| 3 | **Optische Abweichung beim CSS-Umbau** | mittel | Zweischritt-Vorgehen Phase 1, Screenshot-Gate |
-| 4 | Supabase-Projekt pausiert nach 7 Tagen | mittel | Wöchentliche Keep-alive-Funktion, in `BETRIEB.md` beschrieben |
-| 5 | Netlify-Funktionsaufrufe durch Bildauslieferung | mittel | Aggressives CDN-Caching, Monitoring |
-| 6 | Magic-Link-Mails im Spam | mittel | Resend als SMTP hinterlegen |
-| 7 | Dreisprachigkeit erhöht Aufwand in jeder Phase | mittel | Audit §7 Frage 8 — ist EN/FR wirklich gewollt? |
-| 8 | Free-Tier-Grenzen bei Erfolg | gering | Grenzwerte und Upgrade-Pfad in `BETRIEB.md` |
+| #   | Risiko                                                             | Auswirkung      | Umgang                                                        |
+| --- | ------------------------------------------------------------------ | --------------- | ------------------------------------------------------------- |
+| 1   | **RLS-Fehler legt Kontaktnachrichten oder versteckte Fotos offen** | hoch            | Automatisierte Negativ-Tests, Ergebnis im Checkpoint Phase 2  |
+| 2   | **Fotorechte-Zusage widerspricht der Galerie**                     | hoch, rechtlich | Vor Phase 4 klären (Audit §7 Frage 6)                         |
+| 3   | **Optische Abweichung beim CSS-Umbau**                             | mittel          | Zweischritt-Vorgehen Phase 1, Screenshot-Gate                 |
+| 4   | Supabase-Projekt pausiert nach 7 Tagen                             | mittel          | Wöchentliche Keep-alive-Funktion, in `BETRIEB.md` beschrieben |
+| 5   | Netlify-Funktionsaufrufe durch Bildauslieferung                    | mittel          | Aggressives CDN-Caching, Monitoring                           |
+| 6   | Magic-Link-Mails im Spam                                           | mittel          | Resend als SMTP hinterlegen                                   |
+| 7   | Dreisprachigkeit erhöht Aufwand in jeder Phase                     | mittel          | Audit §7 Frage 8 — ist EN/FR wirklich gewollt?                |
+| 8   | Free-Tier-Grenzen bei Erfolg                                       | gering          | Grenzwerte und Upgrade-Pfad in `BETRIEB.md`                   |
 
 ---
 
@@ -315,10 +318,10 @@ Im Briefing bereits genannt und damit abgedeckt: `next-intl`, `@supabase/supabas
 
 **Nicht genannt — bitte freigeben:**
 
-| Paket | Wofür | Warum nicht selbst bauen |
-|---|---|---|
-| **`@dnd-kit/core`** | Drag-Sortierung im Admin (Team, Karussell, Galerie, Zitate) | Selbstgebautes Drag-and-drop funktioniert auf Touch-Geräten und mit Tastatur erfahrungsgemäss schlecht. `@dnd-kit` ist klein, hat Tastaturunterstützung und läuft nur im Admin — es landet nicht im öffentlichen Bundle. |
-| **`vitest`** | Unit-Tests (EXIF-Jahr, Kompression, Formularprüfung, Sprach-Fallback) | Das Briefing verlangt Unit-Tests; ein Test-Runner wird gebraucht. Vitest ist der Standard neben Next.js und nur eine Entwicklungsabhängigkeit. |
+| Paket               | Wofür                                                                 | Warum nicht selbst bauen                                                                                                                                                                                                 |
+| ------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **`@dnd-kit/core`** | Drag-Sortierung im Admin (Team, Karussell, Galerie, Zitate)           | Selbstgebautes Drag-and-drop funktioniert auf Touch-Geräten und mit Tastatur erfahrungsgemäss schlecht. `@dnd-kit` ist klein, hat Tastaturunterstützung und läuft nur im Admin — es landet nicht im öffentlichen Bundle. |
+| **`vitest`**        | Unit-Tests (EXIF-Jahr, Kompression, Formularprüfung, Sprach-Fallback) | Das Briefing verlangt Unit-Tests; ein Test-Runner wird gebraucht. Vitest ist der Standard neben Next.js und nur eine Entwicklungsabhängigkeit.                                                                           |
 
 Beide sind reine Werkzeuge, keine UI-Bibliotheken — die Regel „kein Tailwind, kein
 UI-Kit" bleibt unberührt. Wenn du eines davon nicht willst, sag es; ich löse es dann von
