@@ -17,3 +17,6 @@ style.css
 public/
 Bilder/
 messages/
+
+# Hand-written German docs (kept as authored; not prettier-reflowed)
+docs/
