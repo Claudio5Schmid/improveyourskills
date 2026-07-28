@@ -1,0 +1,333 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   IMPROVE YOUR SKILLS — DESIGN TOKENS
+   ──────────────────────────────────────────────────────────────────────────
+   Single source of truth for the brand. Every value here was EXTRACTED from
+   the existing hand-written style.css at commit 7dd05a6 — nothing has been
+   redesigned, rounded, renamed for taste, or invented.
+
+   Each token carries a `style.css:NN` comment naming the exact source line.
+   Tokens marked [NEU] did not exist as a named value but appear literally in
+   the old CSS; they are named here so nothing stays hardcoded. Their VALUES
+   are unchanged. Nothing marked [NEU] is a new colour — only a new name for
+   a colour that was already on the page.
+
+   RULE: no component may introduce a raw colour, font, radius or shadow.
+   If a genuinely new value is ever needed, add it here first, derive it from
+   the palette below, and flag it for approval.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ────────────────────────────────────────────────────────────────────────
+     1. BRAND COLOURS — the five that define the identity
+     ──────────────────────────────────────────────────────────────────────── */
+  --color-green-dark:  #102C26;  /* style.css:5   --green-dark   primary brand green */
+  --color-green-mid:   #1a4037;  /* style.css:6   --green-mid    hover / gradient partner */
+  --color-cream:       #F7E7CE;  /* style.css:7   --cream        primary contrast */
+  --color-cream-dark:  #eddbb8;  /* style.css:8   --cream-dark   pressed / hover cream */
+  --color-white:       #ffffff;  /* style.css:9   --white */
+
+  /* Text */
+  --color-text-dark:   #0d1f1c;  /* style.css:10  --text-dark    body copy on light */
+  --color-text-muted:  #4a6b62;  /* style.css:11  --text-muted   secondary copy on light */
+
+  /* ────────────────────────────────────────────────────────────────────────
+     2. RGB TRIPLETS  [NEU — naming only]
+     The old CSS writes rgba(16,44,38,x) and rgba(247,231,206,x) by hand in
+     40+ places. Those are exactly --color-green-dark and --color-cream:
+       #102C26 -> 16,44,38      #F7E7CE -> 247,231,206
+     Exposing the triplets lets every transparency below be composed from the
+     brand colour instead of a magic number, so the palette stays consistent.
+     ──────────────────────────────────────────────────────────────────────── */
+  --rgb-green-dark: 16, 44, 38;      /* = #102C26, style.css:5 */
+  --rgb-cream:      247, 231, 206;   /* = #F7E7CE, style.css:7 */
+  --rgb-black:      0, 0, 0;         /* style.css:332, 357 (two shadow colours) */
+
+  /* ────────────────────────────────────────────────────────────────────────
+     3. GREEN TRANSPARENCIES  [NEU — naming only]
+     Every rgba(16,44,38,x) in the old stylesheet, deduplicated.
+     ──────────────────────────────────────────────────────────────────────── */
+  --color-green-a03: rgba(var(--rgb-green-dark), 0.03);  /* style.css:310  foto-frage-box background */
+  --color-green-a04: rgba(var(--rgb-green-dark), 0.04);  /* style.css:315, 394  radio selected, privacy-box bg */
+  --color-green-a07: rgba(var(--rgb-green-dark), 0.07);  /* style.css:184  .badge background */
+  --color-green-a08: rgba(var(--rgb-green-dark), 0.08);  /* style.css:378, 384  form divider, input focus ring */
+  --color-green-a12: rgba(var(--rgb-green-dark), 0.12);  /* style.css:186, 232, 310, 394  badge/card/box borders */
+  --color-green-a15: rgba(var(--rgb-green-dark), 0.15);  /* style.css:313, 363, 371, 375, 382  input + step borders */
+  --color-green-a25: rgba(var(--rgb-green-dark), 0.25);  /* style.css:317  radio-custom border */
+  --color-green-a30: rgba(var(--rgb-green-dark), 0.30);  /* style.css:385  input placeholder */
+  --color-green-a50: rgba(var(--rgb-green-dark), 0.50);  /* style.css:93   hero overlay, mid stop */
+  --color-green-a70: rgba(var(--rgb-green-dark), 0.70);  /* style.css:93, 223  hero overlay end, cta overlay */
+  --color-green-a75: rgba(var(--rgb-green-dark), 0.75);  /* style.css:134, 210  page-header overlay, gallery label */
+  --color-green-a85: rgba(var(--rgb-green-dark), 0.85);  /* style.css:93   hero overlay, first stop */
+  --color-green-a97: rgba(var(--rgb-green-dark), 0.97);  /* style.css:34, 454  scrolled navbar, mobile menu */
+
+  /* ────────────────────────────────────────────────────────────────────────
+     4. CREAM TRANSPARENCIES  [NEU — naming only]
+     Every rgba(247,231,206,x) in the old stylesheet, deduplicated.
+     These are the "text on green" ramp — the site's most-used scale.
+     ──────────────────────────────────────────────────────────────────────── */
+  --color-cream-a06: rgba(var(--rgb-cream), 0.06);  /* style.css:232  info-card background */
+  --color-cream-a08: rgba(var(--rgb-cream), 0.08);  /* style.css:155, 463  btn-ghost hover, mobile menu divider */
+  --color-cream-a10: rgba(var(--rgb-cream), 0.10);  /* style.css:233  info-card hover background */
+  --color-cream-a12: rgba(var(--rgb-cream), 0.12);  /* style.css:232, 329  card border, event-info rules */
+  --color-cream-a15: rgba(var(--rgb-cream), 0.15);  /* style.css:103  hero-tag background */
+  --color-cream-a30: rgba(var(--rgb-cream), 0.30);  /* style.css:104, 150  hero-tag border, btn-primary hover glow */
+  --color-cream-a35: rgba(var(--rgb-cream), 0.35);  /* style.css:153  btn-ghost border */
+  --color-cream-a40: rgba(var(--rgb-cream), 0.40);  /* style.css:287, 408  slider dot, footer-org */
+  --color-cream-a45: rgba(var(--rgb-cream), 0.45);  /* style.css:238  info-card-label */
+  --color-cream-a50: rgba(var(--rgb-cream), 0.50);  /* style.css:171  section-label.light */
+  --color-cream-a55: rgba(var(--rgb-cream), 0.55);  /* style.css:240, 407  info-card-sub, footer-info */
+  --color-cream-a60: rgba(var(--rgb-cream), 0.60);  /* style.css:351, 410  session-details, footer links */
+  --color-cream-a65: rgba(var(--rgb-cream), 0.65);  /* style.css:330  event-info span */
+  --color-cream-a70: rgba(var(--rgb-cream), 0.70);  /* style.css:226  cta-content paragraph */
+  --color-cream-a72: rgba(var(--rgb-cream), 0.72);  /* style.css:328  kontakt-info paragraph */
+  --color-cream-a75: rgba(var(--rgb-cream), 0.75);  /* style.css:46, 114  nav links, hero subtitle */
+  --color-cream-a85: rgba(var(--rgb-cream), 0.85);  /* style.css:348, 465  session-time, mobile nav links */
+  --color-cream-a90: rgba(var(--rgb-cream), 0.90);  /* style.css:277  slider button background */
+
+  /* ────────────────────────────────────────────────────────────────────────
+     5. STATUS COLOURS — already present in the old CSS, now named
+     NOTE: these are the ONLY hues in the stylesheet outside the green/cream
+     palette. They were introduced for the "Ausgebucht" button and the form
+     error box. They are kept byte-for-byte; no new red was invented.
+     ──────────────────────────────────────────────────────────────────────── */
+  --color-danger:            #c94a4a;             /* style.css:361  .btn-booked background */
+  --color-danger-hover:      #b03d3d;             /* style.css:362  .btn-booked:hover */
+  --color-danger-text:       #8b1a1a;             /* style.css:387  .form-error text */
+  --color-danger-surface:    rgba(200, 50, 50, 0.06);  /* style.css:387  .form-error background */
+  --color-danger-border:     rgba(200, 50, 50, 0.20);  /* style.css:387  .form-error border */
+
+  /* Neutral shadow tints (not brand-tinted — used on light-on-dark buttons) */
+  --color-black-a15: rgba(var(--rgb-black), 0.15);  /* style.css:332  kontakt-email-btn hover shadow */
+  --color-black-a20: rgba(var(--rgb-black), 0.20);  /* style.css:357  btn-session-light hover shadow */
+
+  /* ────────────────────────────────────────────────────────────────────────
+     6. TYPOGRAPHY — families
+     Loaded today from Google Fonts (see docs/AUDIT.md §4). Stacks unchanged.
+     ──────────────────────────────────────────────────────────────────────── */
+  --font-display: 'Syne', sans-serif;     /* style.css:16  --font-head  headlines, numbers, brand */
+  --font-body:    'DM Sans', sans-serif;  /* style.css:17  --font-body  everything else */
+
+  /* Weights actually used in the stylesheet */
+  --font-weight-light:     300;  /* style.css:114, 226, 240, 254, 302, 303, 386, 408 */
+  --font-weight-regular:   400;  /* style.css:46, 320 */
+  --font-weight-medium:    500;  /* style.css:51, 105, 146, 170, 185, 211, 238, 253, 311, 331, 356, 358, 373, 381 */
+  --font-weight-semibold:  600;  /* style.css:374  .step.active .step-label — NOT loaded from Google, see AUDIT §4 */
+  --font-weight-bold:      700;  /* style.css:239, 301, 371, 377, 395, 406 */
+  --font-weight-black:     800;  /* style.css:110, 138, 172, 225, 327, 344, 353 */
+
+  /* ────────────────────────────────────────────────────────────────────────
+     7. TYPOGRAPHY — sizes (rem, ascending)
+     ──────────────────────────────────────────────────────────────────────── */
+  --font-size-3xs:  0.72rem;  /* style.css:238  info-card-label */
+  --font-size-2xs:  0.75rem;  /* style.css:170, 373  section-label, step-label */
+  --font-size-xs:   0.78rem;  /* style.css:211, 303, 386  gallery label, team bio, form note */
+  --font-size-sm:   0.80rem;  /* style.css:105, 377  hero-tag, form-section-title */
+  --font-size-sm2:  0.82rem;  /* style.css:185, 240, 364, 408, 410  badge, card sub, hint, footer */
+  --font-size-sm3:  0.83rem;  /* style.css:381  form label */
+  --font-size-sm4:  0.85rem;  /* style.css:302, 407  team-role, footer-info */
+  --font-size-sm5:  0.88rem;  /* style.css:46, 330, 350, 394  nav, event-info, session details */
+  --font-size-md:   0.90rem;  /* style.css:254, 320, 371, 387  feature text, radio, step, error */
+  --font-size-md2:  0.92rem;  /* style.css:311  foto-frage-text */
+  --font-size-base: 0.95rem;  /* style.css:146, 152, 328, 331, 356, 358, 382, 395  buttons + inputs */
+  --font-size-lg:   1rem;     /* style.css:44, 157  logo fallback, btn-full */
+  --font-size-lg2:  1.05rem;  /* style.css:114, 226  hero subtitle, cta paragraph */
+  --font-size-xl:   1.15rem;  /* style.css:180, 248, 301  lead paragraphs, team name */
+  --font-size-xl2:  1.20rem;  /* style.css:279, 465  slider arrow, mobile nav link */
+  --font-size-2xl:  1.40rem;  /* style.css:252, 347  feature icon, session time */
+  --font-size-3xl:  1.50rem;  /* style.css:239  info-card-value */
+  --font-size-4xl:  1.60rem;  /* style.css:237  info-card icon */
+  --font-size-5xl:  2rem;     /* style.css:327, 484  kontakt h2, mobile page-header-title */
+  --font-size-6xl:  2.40rem;  /* style.css:353  session-price */
+  --font-size-7xl:  3rem;     /* style.css:258, 273, 343  placeholder glyphs, session icon */
+  --font-size-8xl:  4rem;     /* style.css:197  img-placeholder-box glyph */
+
+  /* Fluid display sizes — kept as the exact clamp() expressions in use */
+  --font-size-hero:         clamp(3.5rem, 10vw, 7.5rem);  /* style.css:109  .hero-title */
+  --font-size-hero-mobile:  clamp(2.8rem, 14vw, 5rem);    /* style.css:437  .hero-title @768 */
+  --font-size-page-title:   clamp(2.5rem, 7vw, 5rem);     /* style.css:137  .page-header-title */
+  --font-size-section:      clamp(2.2rem, 5vw, 3.5rem);   /* style.css:172  .section-title */
+  --font-size-cta:          clamp(2rem, 4vw, 3rem);       /* style.css:225  .cta-content h2 */
+  --font-size-session:      clamp(1.6rem, 3vw, 2.2rem);   /* style.css:344  .session-title */
+
+  /* ────────────────────────────────────────────────────────────────────────
+     8. LINE HEIGHTS
+     ──────────────────────────────────────────────────────────────────────── */
+  --line-height-hero:    0.95;  /* style.css:110  .hero-title */
+  --line-height-flat:    1;     /* style.css:138  .page-header-title */
+  --line-height-tight:   1.05;  /* style.css:172  .section-title */
+  --line-height-snug:    1.2;   /* style.css:239  .info-card-value */
+  --line-height-compact: 1.5;   /* style.css:303, 311  team-bio, foto-frage-text */
+  --line-height-body:    1.65;  /* style.css:22   body default */
+  --line-height-relaxed: 1.7;   /* style.css:394  .privacy-box */
+  --line-height-loose:   1.75;  /* style.css:180, 181, 248, 328  lead + body paragraphs */
+  --line-height-airy:    1.9;   /* style.css:350  .session-details */
+
+  /* ────────────────────────────────────────────────────────────────────────
+     9. LETTER SPACING
+     ──────────────────────────────────────────────────────────────────────── */
+  --tracking-display:  -0.03em;  /* style.css:111, 138, 172  hero, page title, section title */
+  --tracking-tight:    -0.02em;  /* style.css:225, 327, 344, 485  cta, kontakt h2, session, mobile title */
+  --tracking-logo:      0.05em;  /* style.css:44   logo text fallback */
+  --tracking-label-sm:  0.08em;  /* style.css:211  gallery label */
+  --tracking-label:     0.12em;  /* style.css:377  form-section-title */
+  --tracking-label-md:  0.14em;  /* style.css:238  info-card-label */
+  --tracking-label-lg:  0.15em;  /* style.css:105  hero-tag */
+  --tracking-label-xl:  0.18em;  /* style.css:170  section-label */
+
+  /* ────────────────────────────────────────────────────────────────────────
+     10. RADII
+     ──────────────────────────────────────────────────────────────────────── */
+  --radius-input: 12px;  /* style.css:12  --radius     inputs, small boxes */
+  --radius-card:  20px;  /* style.css:13  --radius-lg  cards, images, panels */
+  --radius-pill:  100px; /* style.css:106, 147, 153, 186, 212, 331, 356, 358  every pill/badge/button */
+  --radius-round: 50%;   /* style.css:278, 287, 297, 317, 371, 390  avatars, dots, icon buttons */
+
+  /* ────────────────────────────────────────────────────────────────────────
+     11. SHADOWS
+     ──────────────────────────────────────────────────────────────────────── */
+  --shadow-card: 0 4px 24px rgba(var(--rgb-green-dark), 0.12);  /* style.css:14  --shadow */
+  --shadow-lg:   0 12px 48px rgba(var(--rgb-green-dark), 0.20); /* style.css:15  --shadow-lg */
+  --shadow-cream-glow: 0 8px 24px var(--color-cream-a30);       /* style.css:150  .btn-primary:hover */
+  --shadow-dark-soft:  0 8px 24px var(--color-black-a15);       /* style.css:332  .kontakt-email-btn:hover */
+  --shadow-dark-hard:  0 8px 24px var(--color-black-a20);       /* style.css:357  .btn-session-light:hover */
+  --shadow-focus-ring: 0 0 0 3px var(--color-green-a08);        /* style.css:384  input:focus */
+
+  /* ────────────────────────────────────────────────────────────────────────
+     12. SPACING — every step present in the stylesheet
+     ──────────────────────────────────────────────────────────────────────── */
+  --space-1:  2px;    /* style.css:252  feature-icon nudge */
+  --space-2:  4px;    /* style.css:59, 301, 409  burger padding, small gaps */
+  --space-3:  5px;    /* style.css:62  burger bar gap */
+  --space-4:  6px;    /* style.css:184, 370, 390  badge padding-y, step gap */
+  --space-5:  7px;    /* style.css:106, 381  hero-tag padding-y, label margin */
+  --space-6:  8px;    /* style.css:158, 238, 286, 331  small stack gaps */
+  --space-7:  9px;    /* style.css:50   nav-cta padding-y */
+  --space-8:  10px;   /* style.css:182, 313, 329, 405  chip gaps, footer stack */
+  --space-9:  12px;   /* style.css:36, 312, 328, 344, 360  compact gaps */
+  --space-10: 14px;   /* style.css:147, 152, 184  button padding-y, badge padding-x */
+  --space-11: 16px;   /* style.css:115, 138, 157, 203, 231, 251  the workhorse gap */
+  --space-12: 18px;   /* style.css:106, 313  hero-tag padding-x, radio padding-x */
+  --space-13: 20px;   /* style.css:31, 180, 250, 297, 310, 327, 465  section-internal rhythm */
+  --space-14: 22px;   /* style.css:50   nav-cta padding-x */
+  --space-15: 24px;   /* style.css:101, 168, 249, 294, 326, 409  container gutter (mobile), card padding */
+  --space-16: 28px;   /* style.css:106, 111, 114  hero-tag + hero-title margins */
+  --space-17: 32px;   /* style.css:39, 45, 89, 147, 168, 294  container gutter, nav gap, button padding-x */
+  --space-18: 36px;   /* style.css:116, 226, 350, 353  scroll hint, cta margin, session rhythm */
+  --space-19: 40px;   /* style.css:325, 369  kontakt grid gap, steps margin */
+  --space-20: 44px;   /* style.css:114, 278  hero-sub margin, slider button size */
+  --space-21: 48px;   /* style.css:172, 326, 376, 404  section-title margin, card padding, footer padding */
+  --space-22: 56px;   /* style.css:326  kontakt-info padding-y */
+  --space-23: 64px;   /* style.css:179, 245, 477  grid gap, mobile section padding */
+  --space-24: 72px;   /* style.css:340  session-panel padding-y */
+  --space-25: 80px;   /* style.css:130  page-header padding-top (nav clearance) */
+  --space-26: 100px;  /* style.css:165, 221  section padding-y, cta-banner padding-y */
+
+  /* ────────────────────────────────────────────────────────────────────────
+     13. LAYOUT
+     ──────────────────────────────────────────────────────────────────────── */
+  --width-container:        1100px;  /* style.css:39, 168  .nav-inner, .container */
+  --width-container-narrow: 700px;   /* style.css:169  .container-narrow */
+  --width-hero-content:     800px;   /* style.css:101  .hero-content */
+  --width-cta-content:      600px;   /* style.css:224  .cta-content */
+  --width-team-bio:         220px;   /* style.css:303  .team-bio */
+
+  --height-media:        420px;  /* style.css:189, 255, 266, 333  image wraps, slider, map */
+  --height-media-mobile: 280px;  /* style.css:427, 428  same at <=900px */
+  --height-nav-logo:      42px;  /* style.css:42   .nav-logo img */
+  --size-avatar:         160px;  /* style.css:297  .team-photo */
+  --size-icon-button:     44px;  /* style.css:278  .slider-btn — also the min tap target */
+
+  /* ────────────────────────────────────────────────────────────────────────
+     14. MOTION
+     ──────────────────────────────────────────────────────────────────────── */
+  --transition:          0.35s cubic-bezier(0.4, 0, 0.2, 1);  /* style.css:18  --transition */
+  --easing:              cubic-bezier(0.4, 0, 0.2, 1);        /* style.css:18, 416  shared easing curve */
+  --duration-fast:       0.3s;   /* style.css:75   burger bars */
+  --duration-base:       0.35s;  /* style.css:18   the global default */
+  --duration-slow:       0.5s;   /* style.css:206  gallery image zoom */
+  --duration-fade:       0.6s;   /* style.css:419  .fade-in */
+  --duration-slide-up:   0.75s;  /* style.css:416  .animate-up */
+  --duration-slide:      0.8s;   /* style.css:269  about-us carousel crossfade */
+  --duration-hero-slide: 1.5s;   /* style.css:97   hero crossfade */
+
+  /* Staggered entrance delays */
+  --delay-1: 0.10s;  /* style.css:418 */
+  --delay-2: 0.25s;  /* style.css:418 */
+  --delay-3: 0.40s;  /* style.css:418 */
+  --delay-4: 0.55s;  /* style.css:418 */
+  --delay-5: 0.70s;  /* style.css:418 */
+
+  /* Autoplay intervals (currently hardcoded in inline <script>, not CSS) */
+  --interval-hero-slider:  5000ms;  /* index.html:152  setInterval */
+  --interval-about-slider: 6000ms;  /* ueber.html:209  setInterval */
+
+  /* ────────────────────────────────────────────────────────────────────────
+     15. Z-INDEX
+     ──────────────────────────────────────────────────────────────────────── */
+  --z-content:      2;    /* style.css:101, 135, 224  content above overlays */
+  --z-slider-ui:    10;   /* style.css:279, 286  slider buttons + dots */
+  --z-mobile-menu:  998;  /* style.css:459  .nav-links fullscreen */
+  --z-navbar:       999;  /* style.css:31   #navbar */
+  --z-burger:       1000; /* style.css:66   .nav-burger stays above the menu */
+
+  /* ────────────────────────────────────────────────────────────────────────
+     16. GRADIENTS — composed from the tokens above
+     ──────────────────────────────────────────────────────────────────────── */
+  --gradient-hero-overlay: linear-gradient(
+    135deg,
+    var(--color-green-a85) 0%,
+    var(--color-green-a50) 60%,
+    var(--color-green-a70) 100%
+  );  /* style.css:93  .hero-overlay */
+
+  --gradient-placeholder: linear-gradient(
+    135deg,
+    var(--color-green-dark),
+    var(--color-green-mid)
+  );  /* style.css:194, 214, 256, 272  every image placeholder box */
+
+  --gradient-scroll-hint: linear-gradient(
+    to bottom,
+    var(--color-cream),
+    transparent
+  );  /* style.css:119  .hero-scroll-hint span */
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   17. BREAKPOINTS
+   CSS custom properties cannot be used inside @media queries, so these are
+   documented here and mirrored in TypeScript (src/styles/breakpoints.ts) for
+   any JS that needs them. The three widths below are the ONLY ones the old
+   stylesheet uses — all max-width, i.e. the current CSS is desktop-first.
+   Phase 1 re-expresses these mobile-first without changing the rendered
+   result at any width. See docs/PLAN.md §Phase 1.
+
+     --bp-mobile:  480px   style.css:476  single-column, tighter sections
+     --bp-tablet:  768px   style.css:436  hamburger menu appears here
+     --bp-desktop: 900px   style.css:425  two-column grids collapse
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ══════════════════════════════════════════════════════════════════════════
+   18. REDUCED MOTION
+   Not present in the old stylesheet at all — the current site animates
+   regardless of the user's OS setting. This block is an ACCESSIBILITY FIX,
+   not a design change: it alters nothing visually for users who have not
+   asked for reduced motion. Required to reach the Lighthouse a11y target.
+   ══════════════════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition:          0.01ms;
+    --duration-fast:       0.01ms;
+    --duration-base:       0.01ms;
+    --duration-slow:       0.01ms;
+    --duration-fade:       0.01ms;
+    --duration-slide-up:   0.01ms;
+    --duration-slide:      0.01ms;
+    --duration-hero-slide: 0.01ms;
+    --delay-1: 0s;
+    --delay-2: 0s;
+    --delay-3: 0s;
+    --delay-4: 0s;
+    --delay-5: 0s;
+  }
+}
