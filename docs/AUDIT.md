@@ -199,7 +199,7 @@ bestehenden Texte sind eine brauchbare Grundlage.
 | **126 KB** | 1200 × 1200 | ✅ | `Bilder/20_vanessa_schmuki.jpg` | Team-Foto, 160 × 160 px |
 | **88 KB** | 689 × 827 | ✅ | `Bilder/17_pascal_schmuki.jpg.avif` | Team-Foto, 160 × 160 px |
 
-**Gesamt: 111,5 MB in 18 Dateien.** Davon **48,2 MB in 5 Dateien ungenutzt** (❌).
+**Gesamt: 111,5 MB in 18 Dateien.** Davon **48,2 MB in 6 Dateien ungenutzt** (❌).
 
 ### 3.2 Was jede Seite tatsächlich lädt
 
