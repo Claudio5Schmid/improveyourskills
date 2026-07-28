@@ -1,14 +1,26 @@
 {
+  "common": {
+    "brand": "Improve your skills"
+  },
   "nav": {
     "ueber": "Über uns",
     "impressionen": "Impressionen",
     "kontakt": "Kontakt",
-    "anmelden": "Anmelden"
+    "anmelden": "Anmelden",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schliessen"
+  },
+  "footer": {
+    "org": "Organisiert von Vanessa Schmuki, Pascal Schmuki & Claudio Schmid",
+    "contactLink": "Kontakt",
+    "venue": "Buchholz Sporthalle · 8610 Uster",
+    "venueDate": "Buchholz Sporthalle · 8610 Uster · So, 5. Juli 2026"
   },
   "language": {
     "label": "Sprache",
     "de": "Deutsch",
     "en": "English",
-    "fr": "Français"
+    "fr": "Français",
+    "switchTo": "Auf {lang} wechseln"
   }
 }

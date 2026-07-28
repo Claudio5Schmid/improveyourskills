@@ -1,0 +1,28 @@
+/* Discreet locale switch, styled to match the nav links (cream ramp). */
+.switcher {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+.item,
+.active {
+  font-size: var(--font-size-2xs); /* 0.75rem */
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-logo);
+  text-transform: uppercase;
+  transition: color var(--transition);
+}
+.item {
+  color: var(--color-cream-a45);
+}
+.item:hover {
+  color: var(--color-cream);
+}
+.active {
+  color: var(--color-cream);
+}
+.sep {
+  color: var(--color-cream-a30);
+  font-size: var(--font-size-2xs);
+  user-select: none;
+}
