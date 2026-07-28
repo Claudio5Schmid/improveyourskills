@@ -38,7 +38,7 @@ Bis dahin ist dies die manuell gepflegte Fassung.
 | **T2** | Impressum, „Kontakt" (`impressum.html:47`) | ⚠️ Kommentar „E-Mail und Telefon ergänzen". Zusätzlich zeigt der Linktext `info@improveyourskills.ch`, das Ziel ist aber `claudio.schmid@active.ch` | Eine verbindliche Kontaktadresse, konsistent in Text und Link |
 | **T3** | Impressum, Adresse | ⚠️ `4656 Starrkich-Wil` — vermutlich Tippfehler | Vermutlich **Starrkirch-Wil** — bitte bestätigen |
 | **T4** | Impressum, Datum | ⚠️ `4. Juli 2026`, überall sonst `5. Juli 2026` | Korrektes Datum |
-| **T5** | Impressum, Fotorechte | ⚠️ verspricht, Fotos **nicht** zu veröffentlichen und nach dem Anlass zu löschen — direkter Widerspruch zur geplanten Galerie | Klärung der Einwilligungslage, dann neuer Text |
+| **T5** | Impressum, Fotorechte | ⚠️ verspricht, Fotos **nicht** zu veröffentlichen und nach dem Anlass zu löschen. **Einwilligungslage geklärt (28.07.2026):** bei jeder Anmeldung eingeholt; von Kindern ohne Foto-Erlaubnis wurden gar keine Fotos gemacht → Galerie ist gedeckt. Nur der Text widerspricht der Realität | Neuen Text in Phase 7, der die kuratierte Galerie und den OneDrive-Versand an Eltern korrekt beschreibt |
 | **T6** | Impressum, Payrexx | ⚠️ nennt Payrexx als Zahlungsdienstleister, auf der Website nicht vorhanden | Entfernen oder bestätigen |
 | **T7** | Datenschutzerklärung | ❌ existiert nicht | Entwurf kommt in Phase 7, muss von dir geprüft werden |
 | **T8** | Zitate (`testimonials`) | ❌ existieren nicht | Echte Aussagen von Teilnehmenden oder Eltern |

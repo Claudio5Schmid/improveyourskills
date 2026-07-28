@@ -417,37 +417,54 @@ Alles Verhalten steckt in `<script>`-Blöcken am Seitenende — keine externen J
 
 ## 7. Offene Fragen an dich
 
+> **Alle beantwortet am 28.07.2026.** Die Antworten stehen jeweils direkt bei der Frage
+> unter **→ Entscheid**. Zusammengefasst auch in `memory` (project-relaunch-decisions).
+
 Nichts davon blockiert Phase 1 — ausser Frage 1, die die Schrift betrifft.
 
 1. **Google Fonts → selbst hosten?** (§4) Gleiche Schrift, gleiches Aussehen, nur ohne
-   Verbindung zu Google. Ich brauche dein Ja, weil es die Marke berührt. — *Meine Empfehlung: ja.*
+   Verbindung zu Google. Ich brauche dein Ja, weil es die Marke berührt.
+   **→ Entscheid: Ja.** `next/font/google`, selbst gehostet. DM Sans 600/700 werden ergänzt,
+   das ungenutzte Kursiv fällt weg.
 
-2. **Logo.** `Bilder/logo.png` existiert nicht und war nie im Repository. Hast du eine
-   Logo-Datei? Am liebsten SVG, sonst PNG mit mindestens 512 px Höhe und transparentem
-   Hintergrund. Falls es keines gibt: soll der Text „Improve your skills" in Syne dauerhaft
-   das Logo sein? Dann baue ich das sauber statt als Fehler-Ersatz.
+2. **Logo.** `Bilder/logo.png` existiert nicht und war nie im Repository. Soll der
+   Schriftzug „Improve your skills" in Syne dauerhaft das Logo sein?
+   **→ Entscheid: Ja, der grosse Schriftzug in der Mitte ist das Logo.** Der
+   Favicon-Platzhalter `Bilder/favicon.svg` gefällt und soll im Browser-Tab erscheinen
+   (erledigt). Aus dem Schriftzug soll **in einer späteren Phase eine richtige Marke**
+   entwickelt werden — als ausdrückliches Ziel notiert (passt zu Phase 7, evtl. eigene
+   kleine Phase).
 
-3. **Hero-Animation.** Briefing Phase 6 sagt „keine Animation im ersten Viewport der
-   Startseite". Heute ist genau dort die gestaffelte `.animate-up`-Einblendung — sie ist
-   ein prägender Teil des ersten Eindrucks. Ich würde sie **behalten**, aber so umbauen,
-   dass der Text sofort lesbar ist (Bewegung ohne `opacity: 0`-Start). Einverstanden?
+3. **Hero-Animation.** Behalten, aber so umbauen, dass der Text sofort lesbar ist?
+   **→ Entscheid: Ja.**
 
-4. **Google Maps** (§5.7). Karte wie heute lassen, oder datenschutzfreundlich erst nach
-   Klick laden? — *Meine Empfehlung: erst nach Klick, passend zur Cookie-Banner-Begründung.*
+4. **Google Maps** (§5.7). Erst nach Klick laden?
+   **→ Entscheid: Ja, erst nach Klick** (meine Empfehlung).
 
-5. **Ungenutzte Bilder** (48,2 MB, §3.1). Löschen, oder sind das Kandidaten für die
-   Galerie 2026? Ich lösche **nichts** ohne dein Wort.
+5. **Ungenutzte Bilder** (48,2 MB, §3.1). Löschen?
+   **→ Entscheid: Löschen freigegeben.** Erledigt am 28.07.2026 — die 6 ❌-Dateien sind
+   entfernt (in der Git-Historie weiterhin vorhanden, falls je gebraucht).
 
-6. **Impressum-Fotorechte** (§5.6). Der aktuelle Text verspricht, Fotos **nicht** zu
-   veröffentlichen und nach dem Anlass zu löschen. Das widerspricht der geplanten Galerie.
-   Wie ist die reale Lage — habt ihr Einwilligungen, die eine Veröffentlichung decken?
+6. **Impressum-Fotorechte** (§5.6). Deckt eine Einwilligung die Veröffentlichung?
+   **→ Entscheid / Klärung: Ja, gedeckt.** Bei jeder Anmeldung wurde die Einwilligung
+   eingeholt; von Kindern, die nicht fotografiert werden durften, wurden **gar keine**
+   Fotos gemacht. Die öffentliche Galerie ist damit in Ordnung. **Aber:** der heutige
+   Impressum-Text sagt das Gegenteil und muss vor dem Livegang (Phase 7) neu geschrieben
+   werden. Siehe `docs/PLATZHALTER.md` T5.
 
-7. **`impressionen.html` Inhalt.** Die Seite hat ausser dem Header nichts. Sollen die
-   OneDrive-Fotos in die neue Galerie migriert werden, oder fängst du 2027 neu an?
+7. **`impressionen.html` Inhalt.**
+   **→ Entscheid / Klärung — wichtig für Phase 4:** Die Galerie auf der Website ist eine
+   **kuratierte Auswahl von ~20–30 Fotos pro Jahr**, um einen Eindruck zu geben — **nicht**
+   alle Fotos. Pro Session entstehen ~200 Fotos; die vollständigen Sätze gehen zusätzlich
+   per **OneDrive-Link an die Eltern** (nach jeder Einheit verschickt, für den richtigen
+   Download). Gebraucht wird also: ein Jahr-Reiter (Start 2026) und im Admin ein einfacher
+   Upload pro Jahr. OneDrive bleibt ein separater Kanal — ich prüfe in Phase 4, ob ein
+   optionales „OneDrive-Link pro Jahr"-Feld auf der Seite sinnvoll ist.
 
-8. **Sprachen.** Für wen sind EN und FR? Wenn das Training rein regional in Uster ist,
-   kostet die Übersetzung Aufwand in jeder Phase. Kein Widerspruch — ich will nur sicher
-   sein, dass es gewollt ist.
+8. **Sprachen EN/FR.**
+   **→ Entscheid: Nice-to-have, kein Muss.** Aktuell rein lokal. Die next-intl-Struktur
+   wird gebaut (Briefing verlangt es), Deutsch ist Standard, EN/FR bleiben vorerst
+   deutsche Kopien und haben niedrige Priorität.
 
 ---
 
