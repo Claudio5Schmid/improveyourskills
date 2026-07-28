@@ -44,5 +44,88 @@
     "cta": {
       "title": "Bereit für den nächsten Schritt?"
     }
+  },
+  "ueber": {
+    "header": {
+      "tag": "Das Team",
+      "title": "Über uns.",
+      "subtitle": "Drei Nationalspieler:innen. Eine gemeinsame Idee."
+    },
+    "ansatz": {
+      "label": "Unser Ansatz",
+      "title": "Etwas zurückgeben.",
+      "lead": "Wir haben alle von grossen Vorbildern und guten Trainern profitiert. Jetzt ist es an uns, dieses Wissen weiterzugeben.",
+      "p": "Das Skill Training ist nicht nur Sport – es ist eine Möglichkeit, Kindern zu zeigen, was möglich ist, wenn man gezielt trainiert und an sich glaubt. Wir bringen Erfahrungen aus dem Nationalteam und den besten Clubs Europas direkt auf die Halle in Uster.",
+      "feature1Title": "Technik-Fokus",
+      "feature1Text": "Stick-Handling, Schuss, Bewegung – gezielt verbessert",
+      "feature2Title": "Kleine Gruppen",
+      "feature2Text": "Max. 30 Kinder – jedes Kind bekommt persönliches Feedback",
+      "feature3Title": "Top-Level Trainer",
+      "feature3Text": "Nationalspieler:innen mit jahrelanger Wettkampferfahrung",
+      "cta": "Jetzt anmelden"
+    },
+    "team": {
+      "label": "Eure Trainer",
+      "title": "Das Team dahinter.",
+      "claudioName": "Claudio Schmid",
+      "claudioRole": "Organisator & Trainer",
+      "claudioBio": "Nationalspieler · SVWE (Rekordmeister Schweizer Unihockey)",
+      "pascalName": "Pascal Schmuki",
+      "pascalRole": "Organisator & Trainer",
+      "pascalBio": "Nationalspieler · Storvreta IBK (Schweden, bester Verein der Welt)",
+      "vanessaName": "Vanessa Schmuki",
+      "vanessaRole": "Organisatorin & Trainerin",
+      "vanessaBio": "Nationalspielerin · Weltmeisterin · 2-fache Schweizer Meisterin · Kloten-Dietlikon Jets"
+    },
+    "carousel": {
+      "prev": "Vorheriges Bild",
+      "next": "Nächstes Bild",
+      "slide": "Bild {n}"
+    }
+  },
+  "impressionen": {
+    "tag": "Galerie",
+    "title": "Impressionen.",
+    "subtitle": "Eindrücke vom Skill Training – alle Fotos an einem Ort.",
+    "button": "Zu den Bildern →"
+  },
+  "kontakt": {
+    "tag": "Fragen? Meld dich!",
+    "title": "Kontakt.",
+    "infoTitle": "Wir freuen uns von dir zu hören.",
+    "infoText": "Bei Fragen rund um das Skill Training, Anmeldungen oder die Veranstaltung stehen wir dir gerne zur Verfügung.",
+    "emailButton": "✉️ Schreib uns eine E-Mail",
+    "mapTitle": "Buchholz Sporthalle Uster",
+    "mapLoad": "Karte laden",
+    "mapNote": "Beim Laden der Karte werden Daten an Google übertragen."
+  },
+  "anmeldung": {
+    "tag": "Anmeldung",
+    "title": "Bis 2027.",
+    "subtitle": "Die Anmeldung für das Skill Training ist aktuell geschlossen.",
+    "label": "Save the Date",
+    "heading": "Anmeldungen & Infos folgen im 2027.",
+    "text": "Das nächste Improve-your-skills Skill Training in Uster ist bereits in Planung. Alle Details sowie die Anmeldung schalten wir rechtzeitig wieder hier auf. Schau zu gegebener Zeit einfach nochmals vorbei – wir freuen uns auf dich!",
+    "back": "Zurück zur Startseite"
+  },
+  "impressum": {
+    "title": "Impressum.",
+    "personsHeading": "Verantwortliche Personen",
+    "personsBody": "Claudio Schmid\nWeidstrasse 3\n4656 Starrkich-Wil\nSchweiz",
+    "contactHeading": "Kontakt",
+    "contactEmailLabel": "info@improveyourskills.ch",
+    "contactEmail": "claudio.schmid@active.ch",
+    "eventHeading": "Veranstaltung",
+    "eventBody": "Unihockey Skill Training 2026 – «Improve your skills»\nBuchholz Sporthalle, 8610 Uster\nDatum: 4. Juli 2026",
+    "privacyHeading": "Datenschutz & Fotorechte",
+    "privacyP1": "Der Schutz eurer persönlichen Daten ist uns ein wichtiges Anliegen. Im Rahmen des Unihockey Skill Trainings 2026 werden folgende Daten erhoben: Name, Kontaktdaten sowie allenfalls Foto- und Videoaufnahmen der Teilnehmenden. Diese Daten dienen ausschliesslich der Organisation und Durchführung der Veranstaltung.",
+    "privacyP2": "<b>Fotorechte:</b> Am Training können Fotos und Videosequenzen gemacht werden. Diese dienen als Erinnerung für die Familien und werden nicht ohne ausdrückliche Zustimmung im Internet, auf Social Media oder auf dieser Website veröffentlicht. Sollten Aufnahmen zu Werbezwecken oder für die Website verwendet werden, holen wir vorgängig eine separate, schriftliche Einwilligung der erziehungsberechtigten Person ein. Alle Aufnahmen, für die keine weitere Nutzung vereinbart wurde, werden nach der Veranstaltung gelöscht.",
+    "privacyP3": "<b>Datenweitergabe:</b> Eine Weitergabe von Personendaten an Dritte findet nicht statt. Ausnahme bildet die technische Verarbeitung durch unsere Dienstleister (z.B. Zahlungsabwicklung via Payrexx), die ihrerseits dem Datenschutzgesetz verpflichtet sind.",
+    "privacyP4": "Für Fragen zum Datenschutz steht euch unser Team jederzeit zur Verfügung:",
+    "liabilityHeading": "Haftungsausschluss",
+    "liabilityBody": "Die Organisatoren übernehmen keine Gewähr für die Richtigkeit, Vollständigkeit und Aktualität der auf dieser Website bereitgestellten Informationen. Haftungsansprüche wegen Schäden materieller oder immaterieller Art sind grundsätzlich ausgeschlossen.",
+    "copyrightHeading": "Urheberrecht",
+    "copyrightBody": "Alle Inhalte dieser Website sind urheberrechtlich geschützt. Eine Verwendung ohne ausdrückliche Genehmigung der Organisatoren ist nicht gestattet.",
+    "back": "← Zurück zur Startseite"
   }
 }

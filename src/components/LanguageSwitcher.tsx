@@ -25,16 +25,21 @@ export default function LanguageSwitcher() {
               ·
             </span>
           )}
-          <Link
-            href={pathname}
-            locale={loc}
-            hrefLang={loc}
-            aria-current={loc === activeLocale ? "true" : undefined}
-            aria-label={t("switchTo", { lang: t(loc) })}
-            className={loc === activeLocale ? styles.active : styles.item}
-          >
-            {loc.toUpperCase()}
-          </Link>
+          {loc === activeLocale ? (
+            <span className={styles.active} aria-current="true">
+              {loc.toUpperCase()}
+            </span>
+          ) : (
+            <Link
+              href={pathname}
+              locale={loc}
+              hrefLang={loc}
+              aria-label={t("switchTo", { lang: t(loc) })}
+              className={styles.item}
+            >
+              {loc.toUpperCase()}
+            </Link>
+          )}
         </Fragment>
       ))}
     </div>
