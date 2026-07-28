@@ -22,5 +22,27 @@
     "en": "English",
     "fr": "Français",
     "switchTo": "Auf {lang} wechseln"
+  },
+  "home": {
+    "hero": {
+      "tag": "Skill Training 2026",
+      "subtitle": "U14 Männer & U17 Frauen",
+      "ctaPrimary": "Jetzt anmelden",
+      "ctaSecondary": "Mehr erfahren ↓"
+    },
+    "wwm": {
+      "label": "Was wir anbieten",
+      "title": "Unihockey Skill Training in Uster",
+      "p1": "Herzlich willkommen beim <b>Improve your skills</b> Skill Training – dem Tagescamp für Nachwuchsspieler:innen, die ihre Unihockey-Fähigkeiten gezielt auf das nächste Level bringen wollen.",
+      "p2": "Wir bieten dir ein intensives, praxisnahes Training unter der Leitung von drei Schweizer Nationalspieler:innen. Egal ob du deine Schusstechnik, dein Stick-Handling oder dein taktisches Verständnis verbessern möchtest!",
+      "p3": "Unsere Trainingsphilosophie: <b>Kleine Gruppen, maximale Wirkung.</b> Mit nur 30 Teilnehmer:innen pro Session hat jedes Kind die Möglichkeit, persönliches Feedback zu erhalten und sich spürbar zu verbessern.",
+      "badge1": "🏒 U14 Männer",
+      "badge2": "🏒 U17 Frauen",
+      "cta": "Jetzt anmelden – CHF 48.–",
+      "imageAlt": "Unihockey Skill Training"
+    },
+    "cta": {
+      "title": "Bereit für den nächsten Schritt?"
+    }
   }
 }

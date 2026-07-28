@@ -2,6 +2,9 @@ import { setRequestLocale } from "next-intl/server";
 import { use } from "react";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import Hero from "@/components/home/Hero";
+import WasWirAnbieten from "@/components/home/WasWirAnbieten";
+import CtaBanner from "@/components/home/CtaBanner";
 
 export default function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = use(params);
@@ -10,9 +13,11 @@ export default function Home({ params }: { params: Promise<{ locale: string }> }
   return (
     <>
       <Nav variant="hero" />
-      {/* Home sections (hero, "Was wir anbieten", CTA banner) are added in the
-          page-porting step. */}
-      <main />
+      <main>
+        <Hero />
+        <WasWirAnbieten />
+        <CtaBanner />
+      </main>
       <Footer />
     </>
   );

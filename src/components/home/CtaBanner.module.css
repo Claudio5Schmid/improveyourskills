@@ -1,0 +1,28 @@
+/* Closing CTA banner. Ported from style.css:219-226. The referenced background
+   image (Bilder/cta-bg.jpg) never existed, so the old site showed a solid green
+   banner via the onerror handler — reproduced here by simply not rendering it
+   (tracked as placeholder B4 in docs/PLATZHALTER.md). Values → tokens. */
+
+.banner {
+  position: relative;
+  background: var(--color-green-dark);
+  padding: var(--space-26) var(--space-17); /* 100px 32px */
+  text-align: center;
+  overflow: hidden;
+}
+
+.content {
+  position: relative;
+  z-index: var(--z-content);
+  max-width: var(--width-cta-content); /* 600px */
+  margin: 0 auto;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--font-size-cta); /* clamp(2rem,4vw,3rem) */
+  color: var(--color-cream);
+  font-weight: var(--font-weight-black);
+  letter-spacing: var(--tracking-tight);
+  margin-bottom: var(--space-11); /* 16px */
+}
