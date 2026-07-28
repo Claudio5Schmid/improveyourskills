@@ -249,11 +249,22 @@ footer {
   margin-top: var(--space-2);
 }
 .footer-links a {
+  position: relative;
   font-size: var(--font-size-sm2);
   color: var(--color-cream-a60);
   text-decoration: underline;
   text-underline-offset: 3px;
   transition: color var(--transition);
+}
+/* Invisible hit-area expander → 44px tap target, no visual change (brief 1.7). */
+.footer-links a::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 44px;
+  transform: translateY(-50%);
 }
 .footer-links a:hover {
   color: var(--color-cream);

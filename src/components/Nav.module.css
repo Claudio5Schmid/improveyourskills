@@ -30,10 +30,22 @@
 }
 
 .logo {
+  position: relative;
   text-decoration: none;
   cursor: pointer;
   display: flex;
   align-items: center;
+}
+/* Invisible hit-area expander → 44px tap target without changing the visual
+   height or the nav layout (brief 1.7). */
+.logo::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 44px;
+  transform: translateY(-50%);
 }
 .logoText {
   font-family: var(--font-display);
@@ -71,6 +83,17 @@
   padding: 4px;
   z-index: var(--z-burger);
   position: relative;
+}
+/* Invisible 44px hit area centred on the icon (brief 1.7) — the visible bars
+   and the nav height stay exactly as ported. */
+.burger::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%);
 }
 .burger span {
   display: block;
