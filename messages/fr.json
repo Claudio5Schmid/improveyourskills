@@ -1,0 +1,14 @@
+{
+  "nav": {
+    "ueber": "Über uns",
+    "impressionen": "Impressionen",
+    "kontakt": "Kontakt",
+    "anmelden": "Anmelden"
+  },
+  "language": {
+    "label": "Sprache",
+    "de": "Deutsch",
+    "en": "English",
+    "fr": "Français"
+  }
+}
