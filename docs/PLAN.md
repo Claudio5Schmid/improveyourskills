@@ -11,7 +11,7 @@ entscheidest, ob es so weitergeht.
 ## Grundsatz
 
 **Die alte Website bleibt unangetastet online, bis du Parität bestätigt hast.**
-Alles Neue entsteht auf `feat/relaunch` und wird als Netlify-Preview deployt. Die
+Alles Neue entsteht auf `feat/relaunch` und wird als Vercel-Preview deployt. Die
 Hostpoint-DNS wird erst in Phase 7 umgestellt — mit dokumentiertem Rückweg.
 
 Drei Regeln, an die ich mich durchgehend halte:
@@ -24,7 +24,7 @@ Drei Regeln, an die ich mich durchgehend halte:
 
 ## Phase 1 — Umzug auf Next.js, optisch identisch
 
-**Ziel:** dieselbe Website, nicht unterscheidbar, auf Next.js, als Netlify-Preview.
+**Ziel:** dieselbe Website, nicht unterscheidbar, auf Next.js, als Vercel-Preview.
 Keine neuen Funktionen.
 
 ### Vorgehen
@@ -66,7 +66,7 @@ Screenshot-Vergleichen als Prüfstein. Weicht eine Breite ab, nehme ich das Stü
 
 ### Was du manuell tun musst
 
-1. Netlify-Konto anlegen (falls nicht vorhanden) und das GitHub-Repository verbinden.
+1. Vercel-Konto anlegen (falls nicht vorhanden) und das GitHub-Repository verbinden.
 2. Mir bestätigen: Schriften selbst hosten? (Audit §7, Frage 1)
 3. Logo liefern oder entscheiden, dass der Schriftzug das Logo ist. (Audit §7, Frage 2)
 
@@ -76,7 +76,7 @@ Screenshot-Vergleichen als Prüfstein. Weicht eine Breite ab, nehme ich das Stü
 | ----------------------------------------------- | ------------ | ---------------------------------------------------------------------- |
 | Optische Abweichung beim CSS-Umbau              | **mittel**   | Zweischritt-Vorgehen oben, Screenshot-Vergleich als Gate               |
 | `-webkit-text-stroke` bei „your" rendert anders | gering       | In allen Ziel-Browsern identisch; wird explizit auf Safari/iOS geprüft |
-| Next.js auf Netlify                             | gering       | Offizielles Plugin, Standardfall                                       |
+| Next.js auf Vercel                             | gering       | Vercel ist der native Hoster für Next.js — Standardfall                |
 
 ---
 
@@ -110,7 +110,7 @@ Screenshot-Vergleichen als Prüfstein. Weicht eine Breite ab, nehme ich das Stü
 ### Was du manuell tun musst
 
 1. Supabase-Konto anlegen, Projekt erstellen, mir Projekt-URL und Keys geben
-   (die kommen **nur** in die Netlify-Umgebungsvariablen, nie ins Repository).
+   (die kommen **nur** in die Vercel-Umgebungsvariablen, nie ins Repository).
 2. Entscheiden: Hero-Slider mit drei Bildern beibehalten oder auf ein Bild reduzieren?
    Das Briefing nennt in §2.2 nur „hero background image" (Einzahl), tatsächlich sind es
    drei rotierende Bilder. Ich würde alle drei bearbeitbar machen.
@@ -120,7 +120,7 @@ Screenshot-Vergleichen als Prüfstein. Weicht eine Breite ab, nehme ich das Stü
 | Risiko                                    | Einschätzung             | Umgang                                                                               |
 | ----------------------------------------- | ------------------------ | ------------------------------------------------------------------------------------ |
 | RLS falsch konfiguriert → Datenleck       | **hoch, wenn unbemerkt** | Automatisierte SQL-Tests als Teil der Migration, Ergebnis im Checkpoint              |
-| Free-Tier-Pause nach 7 Tagen              | sicher eintretend        | Wöchentliche Netlify-Funktion (Phase 7), bis dahin unkritisch                        |
+| Free-Tier-Pause nach 7 Tagen              | sicher eintretend        | Täglicher Vercel Cron Job (Phase 7), bis dahin unkritisch                           |
 | Registry und Datenbank laufen auseinander | mittel                   | Registry ist die Quelle; ein Skript prüft beim Build, dass jeder Schlüssel existiert |
 
 ---
@@ -181,9 +181,9 @@ Daraus folgt: die Bilder müssen **durch unsere eigene Route laufen**
 Bei einer Weiterleitung kämen die Bytes von Supabase — **mit Supabase-Headern, also ohne
 unser `noindex`**. Der Schutz wäre wirkungslos.
 
-Der Preis dafür: jeder Bildabruf ist ein Funktionsaufruf bei Netlify (Free-Tier:
-125'000/Monat). Ich fange das mit langen `Cache-Control`-Zeiten und unveränderlichen
-Dateinamen ab, sodass der Netlify-CDN-Cache die allermeisten Abrufe beantwortet und die
+Der Preis dafür: jeder Bildabruf, der nicht aus dem Cache kommt, ist ein Funktionsaufruf
+bei Vercel. Ich fange das mit langen `Cache-Control`-Zeiten und unveränderlichen
+Dateinamen ab, sodass Vercels Edge-Cache die allermeisten Abrufe beantwortet und die
 Funktion pro Bild nur selten läuft. Realistisch ist das für eure Besucherzahlen
 unproblematisch — ich beobachte es aber und schreibe die Zahlen in `BETRIEB.md`.
 
@@ -252,7 +252,7 @@ Nur aus vorhandenen Bausteinen — keine neue Designsprache.
 Ausgangslage laut Audit §3.2: Startseite **37 MB**. Ziel: **unter 400 KB Bild-Last**.
 
 - Alle Bilder als WebP in mehreren Grössen, `srcset` + `sizes`, eigener Next.js-Loader
-  (kein Netlify-Bild-CDN, damit kein Kontingent verbraucht wird).
+  (bewusst **nicht** Vercels Image Optimization, damit kein Kontingent verbraucht wird).
 - Feste `width`/`height` überall → **CLS 0**.
 - Hero-Bild vorgeladen, alles andere lazy mit Blur-Platzhalter.
 - **Wichtig zum Hero:** heute werden alle drei Slider-Bilder sofort geladen (26,7 MB).
@@ -285,9 +285,11 @@ laden** (Audit §4 und §5.7). Ich schreibe die Begründung so auf, dass du sie 
 
 ### Livegang
 
-Netlify-Umgebungsvariablen, Build-Einstellungen, Security-Header inkl. einer CSP, die mit
-Supabase, Turnstile und Cloudflare **getestet** ist. Dann eine nummerierte
-Hostpoint-Anleitung auf Deutsch inklusive Rückweg.
+Vercel-Umgebungsvariablen, Security-Header inkl. einer CSP, die mit Supabase, Turnstile
+und Cloudflare **getestet** ist — die Header bleiben in `next.config.ts` (hoster-
+unabhängig), nicht in einer `vercel.json`. Dann eine nummerierte Hostpoint-Anleitung auf
+Deutsch inklusive Rückweg. Der Supabase-Keep-alive läuft als **täglicher Vercel Cron Job**
+(Hobby-Plan erlaubt Crons nur einmal pro Tag — für die 7-Tage-Pause reicht das locker).
 
 **Zur DNS-Entscheidung schon jetzt:** die `CNAME`-Datei sagt `www.improveyourskills.ch`.
 Die Website läuft also auf **www**. Ich empfehle, das beizubehalten (`www` als Hauptadresse,
@@ -304,7 +306,7 @@ vermeidet Probleme mit Apex-Einträgen. Details in Phase 7.
 | 2   | **Fotorechte-Zusage widerspricht der Galerie**                     | hoch, rechtlich | Vor Phase 4 klären (Audit §7 Frage 6)                         |
 | 3   | **Optische Abweichung beim CSS-Umbau**                             | mittel          | Zweischritt-Vorgehen Phase 1, Screenshot-Gate                 |
 | 4   | Supabase-Projekt pausiert nach 7 Tagen                             | mittel          | Wöchentliche Keep-alive-Funktion, in `BETRIEB.md` beschrieben |
-| 5   | Netlify-Funktionsaufrufe durch Bildauslieferung                    | mittel          | Aggressives CDN-Caching, Monitoring                           |
+| 5   | Vercel-Funktionsaufrufe durch Bildauslieferung                    | mittel          | Aggressives CDN-Caching, Monitoring                           |
 | 6   | Magic-Link-Mails im Spam                                           | mittel          | Resend als SMTP hinterlegen                                   |
 | 7   | Dreisprachigkeit erhöht Aufwand in jeder Phase                     | mittel          | Audit §7 Frage 8 — ist EN/FR wirklich gewollt?                |
 | 8   | Free-Tier-Grenzen bei Erfolg                                       | gering          | Grenzwerte und Upgrade-Pfad in `BETRIEB.md`                   |

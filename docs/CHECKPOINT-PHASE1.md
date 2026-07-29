@@ -20,8 +20,10 @@
   nichts abgeschnitten. **Tap-Ziele ≥ 44 px** (unsichtbar vergrössert, Optik unverändert).
 - **Google Maps** auf `/kontakt` lädt erst nach Klick (Datenschutz).
 - **Favicon**-Platzhalter im Browser-Tab; tote `logo.png`-Verweise entfernt.
-- **Netlify-Konfiguration** (`netlify.toml`, `.nvmrc`) und DNS-Vorbereitung
-  (`docs/DNS-HOSTPOINT.md`) liegen bereit.
+- **Vercel-bereit**: Redirects und (später) Security-Header stehen in `next.config.ts`
+  (hoster-unabhängig), Node-Version in `.nvmrc`, DNS-Vorbereitung in
+  `docs/DNS-HOSTPOINT.md`. Kein eigener Hoster-Config nötig (Vercel erkennt Next.js
+  automatisch).
 
 ## Bewusste Abweichung (brauche kein OK, nur zur Info)
 
@@ -32,9 +34,11 @@
 
 ## Was du tun musst, bevor es weitergeht
 
-1. **Netlify-Konto** anlegen (falls noch nicht vorhanden).
-2. Mir Bescheid geben — dann **pushe ich den Branch** `feat/relaunch` auf GitHub und
-   führe dich durch das Verbinden mit Netlify (Preview-Deploy, **ohne** DNS-Umstellung).
+1. **Vercel-Konto** anlegen (kostenlos, „Hobby"-Plan) — am einfachsten mit dem
+   GitHub-Login.
+2. Der Branch `feat/relaunch` ist auf GitHub gepusht. Folge der Anleitung
+   `docs/VERCEL.md`, um das Repo mit Vercel zu verbinden und den Preview-Deploy zu
+   starten (**ohne** DNS-Umstellung).
 3. Die alte Seite bleibt die ganze Zeit unverändert online.
 
 ## Bekannte, bewusst so belassene Punkte (Phase-übergreifend)
@@ -48,5 +52,5 @@
 
 ## Nächster Schritt
 
-Nach deinem OK und dem Netlify-Setup: **Phase 2 — Supabase** (Datenmodell, Sicherheit,
+Nach deinem OK und dem Vercel-Setup: **Phase 2 — Supabase** (Datenmodell, Sicherheit,
 Inhalte editierbar machen). Details in `docs/PLAN.md`.
