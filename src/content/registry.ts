@@ -517,7 +517,7 @@ export type ContentKey = (typeof CONTENT_REGISTRY)[number]["key"];
 export function registryByPage(): Record<PageId, Record<string, ContentField[]>> {
   const out = {} as Record<PageId, Record<string, ContentField[]>>;
   for (const field of CONTENT_REGISTRY) {
-    (out[field.page] ??= {});
+    out[field.page] ??= {};
     (out[field.page][field.section] ??= []).push(field);
   }
   return out;

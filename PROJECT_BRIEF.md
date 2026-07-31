@@ -45,16 +45,16 @@ brief before writing any code.
 
 ### Target stack
 
-| Layer | Choice |
-|---|---|
-| Framework | **Next.js (App Router, TypeScript)** |
-| Styling | Plain CSS / CSS Modules with CSS custom properties, ported from the existing stylesheet. **Do not introduce Tailwind or any UI kit** — it would fight the existing hand-written styles. |
-| Hosting | **Vercel** (migrating away from GitHub Pages) |
-| Backend / DB / Storage / Auth | **Supabase**, free tier, EU Central region |
-| Transactional email | **Resend** (free tier) |
-| Spam protection | **Cloudflare Turnstile** (free) |
-| Analytics | **Cloudflare Web Analytics** (free, cookieless, no consent banner required) |
-| i18n | **next-intl**, locales `de` (default), `en`, `fr` |
+| Layer                         | Choice                                                                                                                                                                                  |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Framework                     | **Next.js (App Router, TypeScript)**                                                                                                                                                    |
+| Styling                       | Plain CSS / CSS Modules with CSS custom properties, ported from the existing stylesheet. **Do not introduce Tailwind or any UI kit** — it would fight the existing hand-written styles. |
+| Hosting                       | **Vercel** (migrating away from GitHub Pages)                                                                                                                                           |
+| Backend / DB / Storage / Auth | **Supabase**, free tier, EU Central region                                                                                                                                              |
+| Transactional email           | **Resend** (free tier)                                                                                                                                                                  |
+| Spam protection               | **Cloudflare Turnstile** (free)                                                                                                                                                         |
+| Analytics                     | **Cloudflare Web Analytics** (free, cookieless, no consent banner required)                                                                                                             |
+| i18n                          | **next-intl**, locales `de` (default), `en`, `fr`                                                                                                                                       |
 
 ### Free-tier constraints you must design around
 
