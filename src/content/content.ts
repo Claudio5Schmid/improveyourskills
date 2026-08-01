@@ -19,6 +19,9 @@ export interface ContentBlock {
   value_en: string | null;
   value_fr: string | null;
   image_path: string | null;
+  image_alt_de: string | null;
+  image_alt_en: string | null;
+  image_alt_fr: string | null;
 }
 
 export interface TeamMember {
@@ -63,7 +66,11 @@ async function fetchSiteContent(): Promise<SiteContent> {
   try {
     const sb = createPublicClient();
     const [blocks, settings, team, carousel] = await Promise.all([
-      sb.from("content_blocks").select("key,kind,value_de,value_en,value_fr,image_path"),
+      sb
+        .from("content_blocks")
+        .select(
+          "key,kind,value_de,value_en,value_fr,image_path,image_alt_de,image_alt_en,image_alt_fr"
+        ),
       sb.from("site_settings").select("*").limit(1).maybeSingle(),
       sb
         .from("team_members")
@@ -137,4 +144,70 @@ export async function getDbContentMessages(locale: Locale): Promise<Record<strin
     setNested(root, block.key, interpolate(raw, settings));
   }
   return root;
+}
+
+// ── Localised accessors for images / rows / settings ─────────────────────────
+
+export interface LocalizedImage {
+  src: string | null;
+  alt: string;
+}
+
+/** Map of image content_blocks by key, with the localised alt text. */
+export async function getImageMap(locale: Locale): Promise<Record<string, LocalizedImage>> {
+  const { blocks } = await getSiteContent();
+  const altColumn = `image_alt_${locale}` as "image_alt_de" | "image_alt_en" | "image_alt_fr";
+  const map: Record<string, LocalizedImage> = {};
+  for (const block of blocks) {
+    if (block.kind !== "image") continue;
+    map[block.key] = { src: block.image_path, alt: block[altColumn] ?? block.image_alt_de ?? "" };
+  }
+  return map;
+}
+
+export interface LocalizedTeamMember {
+  name: string;
+  role: string;
+  bio: string;
+  photo: string | null;
+}
+
+export async function getTeam(locale: Locale): Promise<LocalizedTeamMember[]> {
+  const { team } = await getSiteContent();
+  const roleCol = `role_${locale}` as "role_de" | "role_en" | "role_fr";
+  const extraCol = `extra_${locale}` as "extra_de" | "extra_en" | "extra_fr";
+  return team.map((m) => ({
+    name: m.name,
+    role: m[roleCol] ?? m.role_de ?? "",
+    bio: m[extraCol] ?? m.extra_de ?? "",
+    photo: m.photo_path,
+  }));
+}
+
+export async function getCarousel(locale: Locale): Promise<LocalizedImage[]> {
+  const { carousel } = await getSiteContent();
+  const altCol = `alt_${locale}` as "alt_de" | "alt_en" | "alt_fr";
+  return carousel
+    .filter((c) => c.image_path)
+    .map((c) => ({ src: c.image_path, alt: c[altCol] ?? c.alt_de ?? "" }));
+}
+
+export async function getSettings(): Promise<SiteSettings | null> {
+  return (await getSiteContent()).settings;
+}
+
+/** Format the course date the way the old site showed it: "So, 5. Juli 2026". */
+export function formatCourseDate(date: string | null): string {
+  if (!date) return "";
+  const d = new Date(`${date}T00:00:00`);
+  if (Number.isNaN(d.getTime())) return "";
+  const weekday = new Intl.DateTimeFormat("de-CH", { weekday: "short" })
+    .format(d)
+    .replace(/\.$/, "");
+  const rest = new Intl.DateTimeFormat("de-CH", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(d);
+  return `${weekday}, ${rest}`;
 }

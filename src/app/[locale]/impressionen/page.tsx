@@ -1,8 +1,8 @@
-import { setRequestLocale } from "next-intl/server";
-import { useTranslations } from "next-intl";
-import { use } from "react";
+import { getTranslations, getLocale, setRequestLocale } from "next-intl/server";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import { getImageMap } from "@/content/content";
+import type { Locale } from "@/i18n/routing";
 
 /**
  * Impressionen — Phase-1 faithful port of the current page: a tall header with
@@ -12,11 +12,18 @@ import Footer from "@/components/Footer";
  */
 const ONEDRIVE_URL =
   "https://1drv.ms/f/c/5b3d63cbc09cd128/IgBai4t0ht06QqeepkLl4vNsAQMaz8AItNJmlnnRuWKX_nI?e=fZfvtA";
+const FALLBACK_HEADER = "/Bilder/Bilderimpressionen-hintergrund.jpg.JPG";
 
-export default function ImpressionenPage({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = use(params);
+export default async function ImpressionenPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
   setRequestLocale(locale);
-  const t = useTranslations("impressionen");
+  const t = await getTranslations("impressionen");
+  const images = await getImageMap((await getLocale()) as Locale);
+  const headerImage = images["impressionen.headerImage"]?.src ?? FALLBACK_HEADER;
 
   return (
     <>
@@ -25,7 +32,7 @@ export default function ImpressionenPage({ params }: { params: Promise<{ locale:
         <section className="page-header section-dark" style={{ minHeight: "80vh" }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/Bilder/Bilderimpressionen-hintergrund.jpg.JPG"
+            src={headerImage}
             alt=""
             className="page-header-bg"
             style={{ objectPosition: "center top" }}

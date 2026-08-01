@@ -1,11 +1,19 @@
-import { useTranslations } from "next-intl";
+import { getTranslations, getLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import FadeIn from "@/components/FadeIn";
+import { getImageMap } from "@/content/content";
+import type { Locale } from "@/i18n/routing";
 import styles from "./WasWirAnbieten.module.css";
 
-export default function WasWirAnbieten() {
-  const t = useTranslations("home.wwm");
+export default async function WasWirAnbieten() {
+  const t = await getTranslations("home.wwm");
+  const locale = (await getLocale()) as Locale;
+  const images = await getImageMap(locale);
   const bold = { b: (chunks: React.ReactNode) => <strong>{chunks}</strong> };
+
+  const image = images["home.wwm.image"];
+  const imageSrc = image?.src ?? "/Bilder/Bild_Waswirmachen.JPG";
+  const imageAlt = image?.alt || t("imageAlt");
 
   return (
     <section className={`section ${styles.section}`}>
@@ -40,7 +48,7 @@ export default function WasWirAnbieten() {
           <FadeIn>
             <div className={styles.imgWrap}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/Bilder/Bild_Waswirmachen.JPG" alt={t("imageAlt")} />
+              <img src={imageSrc} alt={imageAlt} />
             </div>
           </FadeIn>
         </div>
