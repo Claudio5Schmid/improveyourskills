@@ -1,28 +1,73 @@
-/* Discreet locale switch, styled to match the nav links (cream ramp). */
+/* Globe trigger + language dropdown, in the nav's cream-on-green style. */
 .switcher {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: var(--space-6);
 }
-.item,
-.active {
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  color: var(--color-cream-a75);
   font-size: var(--font-size-2xs); /* 0.75rem */
   font-weight: var(--font-weight-medium);
   letter-spacing: var(--tracking-logo);
   text-transform: uppercase;
+  padding: var(--space-2);
   transition: color var(--transition);
 }
-.item {
-  color: var(--color-cream-a45);
+.trigger:hover,
+.trigger[aria-expanded="true"] {
+  color: var(--color-cream);
+}
+.globe {
+  display: block;
+}
+.current {
+  line-height: 1;
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + var(--space-6));
+  right: 0;
+  list-style: none;
+  margin: 0;
+  padding: var(--space-4);
+  background: var(--color-green-a97);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--color-cream-a15);
+  border-radius: var(--radius-input);
+  box-shadow: var(--shadow-lg);
+  min-width: 150px;
+  z-index: var(--z-navbar);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.item,
+.itemActive {
+  display: block;
+  padding: var(--space-6) var(--space-9); /* 8px 12px */
+  border-radius: var(--radius-input);
+  font-size: var(--font-size-sm5); /* 0.88rem */
+  color: var(--color-cream-a75);
+  text-transform: none;
+  letter-spacing: normal;
+  transition: all var(--transition);
+  white-space: nowrap;
 }
 .item:hover {
   color: var(--color-cream);
+  background: var(--color-cream-a08);
 }
-.active {
+.itemActive {
   color: var(--color-cream);
-}
-.sep {
-  color: var(--color-cream-a30);
-  font-size: var(--font-size-2xs);
-  user-select: none;
+  background: var(--color-cream-a10);
 }
