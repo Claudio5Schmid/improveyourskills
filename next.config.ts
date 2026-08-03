@@ -22,6 +22,21 @@ const nextConfig: NextConfig = {
       { source: "/impressum.html", destination: "/impressum", statusCode: 301 },
     ];
   },
+
+  /**
+   * Keep the admin out of search engines. The `<meta name="robots">` tag in the
+   * admin layout says the same thing, but a header also covers responses that
+   * are not HTML pages (redirects, route handlers) — and it cannot be lost in a
+   * refactor of the layout.
+   */
+  async headers() {
+    return [
+      {
+        source: "/admin/:path*",
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);
