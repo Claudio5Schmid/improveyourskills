@@ -1,15 +1,16 @@
-import { setRequestLocale } from "next-intl/server";
-import { useTranslations } from "next-intl";
-import { use } from "react";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { Link } from "@/i18n/navigation";
+import { getSettings } from "@/content/content";
 import styles from "./Anmeldung.module.css";
 
-export default function AnmeldungPage({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = use(params);
+export default async function AnmeldungPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   setRequestLocale(locale);
-  const t = useTranslations("anmeldung");
+  const t = await getTranslations("anmeldung");
+  const settings = await getSettings();
+  const isOpen = settings?.registration_open ?? false;
 
   return (
     <>
@@ -26,15 +27,37 @@ export default function AnmeldungPage({ params }: { params: Promise<{ locale: st
 
         <section className="section section-cream">
           <div className="container container-narrow" style={{ textAlign: "center" }}>
-            <div className={styles.icon}>📅</div>
-            <div className="section-label">{t("label")}</div>
-            <h2 className="section-title" style={{ marginBottom: "var(--space-15)" }}>
-              {t("heading")}
-            </h2>
-            <p className={styles.text}>{t("text")}</p>
-            <Link href="/" className={styles.backButton}>
-              {t("back")}
-            </Link>
+            {isOpen ? (
+              /* The actual form is Phase 5. Until then, the "open" state just tells
+                 visitors we are open and how to reach us; it is not the empty
+                 Save-the-Date. */
+              <>
+                <div className={styles.icon}>✍️</div>
+                <div className="section-label">Anmeldung</div>
+                <h2 className="section-title" style={{ marginBottom: "var(--space-15)" }}>
+                  Anmeldung geöffnet
+                </h2>
+                <p className={styles.text}>
+                  Das Formular wird in wenigen Tagen hier aufgeschaltet. Bitte schau bald wieder
+                  vorbei — oder schreib uns bis dahin per <Link href="/kontakt">Kontakt</Link>.
+                </p>
+                <Link href="/kontakt" className={styles.backButton}>
+                  Zum Kontakt
+                </Link>
+              </>
+            ) : (
+              <>
+                <div className={styles.icon}>📅</div>
+                <div className="section-label">{t("label")}</div>
+                <h2 className="section-title" style={{ marginBottom: "var(--space-15)" }}>
+                  {t("heading")}
+                </h2>
+                <p className={styles.text}>{t("text")}</p>
+                <Link href="/" className={styles.backButton}>
+                  {t("back")}
+                </Link>
+              </>
+            )}
           </div>
         </section>
       </main>
