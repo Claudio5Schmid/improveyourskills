@@ -37,3 +37,6 @@ yarn-error.log*
 
 # ─── Misc ───────────────────────────────────────────────────────────────
 *.tsbuildinfo
+
+# Claude Code session-local config (per-user permissions, launch profile).
+.claude/
