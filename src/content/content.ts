@@ -1,5 +1,6 @@
 import { unstable_cache } from "next/cache";
 import { createPublicClient, hasSupabaseEnv } from "@/lib/supabase/server";
+import { mediaUrl } from "@/lib/media/url";
 import type { Locale } from "@/i18n/routing";
 
 export interface SiteSettings {
@@ -99,19 +100,15 @@ export const getSiteContent = unstable_cache(fetchSiteContent, ["site-content-v1
 
 // ── Placeholder interpolation (brief §2.4) ───────────────────────────────────
 
-/** Format a franc amount the Swiss way: whole francs as "48.–", else "48.50". */
-export function formatPrice(chf: number | null): string {
-  if (chf == null) return "";
-  const n = Number(chf);
-  return Number.isInteger(n) ? `${n}.–` : n.toFixed(2);
-}
+// Re-export so existing imports (`from "@/content/content"`) keep working.
+export { formatPrice, formatCourseDate } from "./format";
+import { formatPrice as fmtPrice, interpolateContent } from "./format";
 
 function interpolate(text: string, settings: SiteSettings): string {
-  const year = settings.current_edition_year;
-  return text
-    .replaceAll("{year}", String(year))
-    .replaceAll("{nextYear}", String(year + 1))
-    .replaceAll("{price}", formatPrice(settings.price_chf));
+  return interpolateContent(text, {
+    year: settings.current_edition_year,
+    price: fmtPrice(settings.price_chf),
+  });
 }
 
 function setNested(root: Record<string, unknown>, key: string, value: string): void {
@@ -160,7 +157,10 @@ export async function getImageMap(locale: Locale): Promise<Record<string, Locali
   const map: Record<string, LocalizedImage> = {};
   for (const block of blocks) {
     if (block.kind !== "image") continue;
-    map[block.key] = { src: block.image_path, alt: block[altColumn] ?? block.image_alt_de ?? "" };
+    map[block.key] = {
+      src: mediaUrl(block.image_path),
+      alt: block[altColumn] ?? block.image_alt_de ?? "",
+    };
   }
   return map;
 }
@@ -180,7 +180,7 @@ export async function getTeam(locale: Locale): Promise<LocalizedTeamMember[]> {
     name: m.name,
     role: m[roleCol] ?? m.role_de ?? "",
     bio: m[extraCol] ?? m.extra_de ?? "",
-    photo: m.photo_path,
+    photo: mediaUrl(m.photo_path),
   }));
 }
 
@@ -189,25 +189,13 @@ export async function getCarousel(locale: Locale): Promise<LocalizedImage[]> {
   const altCol = `alt_${locale}` as "alt_de" | "alt_en" | "alt_fr";
   return carousel
     .filter((c) => c.image_path)
-    .map((c) => ({ src: c.image_path, alt: c[altCol] ?? c.alt_de ?? "" }));
+    .map((c) => ({ src: mediaUrl(c.image_path), alt: c[altCol] ?? c.alt_de ?? "" }));
 }
 
 export async function getSettings(): Promise<SiteSettings | null> {
   return (await getSiteContent()).settings;
 }
 
-/** Format the course date the way the old site showed it: "So, 5. Juli 2026". */
-export function formatCourseDate(date: string | null): string {
-  if (!date) return "";
-  const d = new Date(`${date}T00:00:00`);
-  if (Number.isNaN(d.getTime())) return "";
-  const weekday = new Intl.DateTimeFormat("de-CH", { weekday: "short" })
-    .format(d)
-    .replace(/\.$/, "");
-  const rest = new Intl.DateTimeFormat("de-CH", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  }).format(d);
-  return `${weekday}, ${rest}`;
-}
+// formatPrice / formatCourseDate are re-exported from ./format at the top of
+// this file — the definitions moved there so they can be unit-tested without
+// dragging in Next's cache machinery.
