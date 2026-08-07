@@ -1,23 +1,32 @@
+import type { Metadata } from "next";
 import { getTranslations, getLocale, setRequestLocale } from "next-intl/server";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { getImageMap } from "@/content/content";
+import { getGalleryPhotos, galleryYears } from "@/lib/gallery/data";
 import type { Locale } from "@/i18n/routing";
+import Gallery from "./Gallery";
+
+const FALLBACK_HEADER = "/Bilder/Bilderimpressionen-hintergrund.jpg.JPG";
+const ALL = "alle";
 
 /**
- * Impressionen — Phase-1 faithful port of the current page: a tall header with
- * a background image and a button linking to the external OneDrive folder.
- * Phase 4 replaces this with the on-site, per-year gallery (the OneDrive link
- * stays as a separate channel for parents — see docs/PLAN.md §Phase 4).
+ * The page itself may be indexed, but Google Images must never surface the
+ * photos in it (brief §Phase 4 — consent covers "an impression of the
+ * training", not a searchable public photo archive). `noimageindex` is the
+ * page-level half of that; the other half is the X-Robots-Tag header every
+ * `/api/foto/…` response sends on the image bytes themselves.
  */
-const ONEDRIVE_URL =
-  "https://1drv.ms/f/c/5b3d63cbc09cd128/IgBai4t0ht06QqeepkLl4vNsAQMaz8AItNJmlnnRuWKX_nI?e=fZfvtA";
-const FALLBACK_HEADER = "/Bilder/Bilderimpressionen-hintergrund.jpg.JPG";
+export const metadata: Metadata = {
+  robots: { index: true, follow: true, noimageindex: true },
+};
 
 export default async function ImpressionenPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string }>;
+  searchParams: Promise<{ jahr?: string }>;
 }) {
   const { locale } = await params;
   setRequestLocale(locale);
@@ -25,11 +34,22 @@ export default async function ImpressionenPage({
   const images = await getImageMap((await getLocale()) as Locale);
   const headerImage = images["impressionen.headerImage"]?.src ?? FALLBACK_HEADER;
 
+  const photos = await getGalleryPhotos();
+  const years = galleryYears(photos);
+
+  // Default = most recent year with photos (brief). ?jahr= only wins if it
+  // actually names "alle" or a year that has something to show.
+  const requestedYear = (await searchParams).jahr;
+  const initialYear =
+    requestedYear === ALL || (requestedYear != null && years.includes(Number(requestedYear)))
+      ? requestedYear
+      : (years[0]?.toString() ?? ALL);
+
   return (
     <>
       <Nav variant="page" />
       <main>
-        <section className="page-header section-dark" style={{ minHeight: "80vh" }}>
+        <section className="page-header section-dark page-header-short">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={headerImage}
@@ -42,16 +62,12 @@ export default async function ImpressionenPage({
             <div className="hero-tag">{t("tag")}</div>
             <h1 className="page-header-title">{t("title")}</h1>
             <p className="hero-sub">{t("subtitle")}</p>
-            <div style={{ marginTop: "var(--space-19)" }}>
-              <a
-                href={ONEDRIVE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary"
-              >
-                {t("button")}
-              </a>
-            </div>
+          </div>
+        </section>
+
+        <section className="section section-cream">
+          <div className="container">
+            <Gallery photos={photos} years={years} initialYear={initialYear} />
           </div>
         </section>
       </main>

@@ -87,7 +87,15 @@
     "tag": "Galerie",
     "title": "Impressionen.",
     "subtitle": "Eindrücke vom Skill Training – alle Fotos an einem Ort.",
-    "button": "Zu den Bildern →"
+    "filterAll": "Alle",
+    "empty": "Noch keine Fotos hier – schau bald wieder vorbei.",
+    "openPhoto": "Foto {n} öffnen",
+    "lightbox": {
+      "close": "Schliessen",
+      "prev": "Vorheriges Foto",
+      "next": "Nächstes Foto",
+      "counter": "Foto {n} von {total}"
+    }
   },
   "kontakt": {
     "tag": "Fragen? Meld dich!",
