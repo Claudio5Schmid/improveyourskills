@@ -324,6 +324,9 @@
   --z-mobile-menu: 998; /* style.css:459  .nav-links fullscreen */
   --z-navbar: 999; /* style.css:31   #navbar */
   --z-burger: 1000; /* style.css:66   .nav-burger stays above the menu */
+  --z-lightbox: 1001; /* Phase 4 — new, not in the old CSS. The gallery lightbox must
+                          sit above absolutely everything, including the burger button;
+                          one step past the previous highest z-index (--z-burger). */
 
   /* ────────────────────────────────────────────────────────────────────────
      16. GRADIENTS — composed from the tokens above

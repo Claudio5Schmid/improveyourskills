@@ -184,6 +184,21 @@ a {
   letter-spacing: var(--tracking-display);
   margin-bottom: var(--space-11);
 }
+/* Missed in the original Phase-1 port (style.css:483-489): below 480px the
+   title's clamp() floor (2.5rem) is still wide enough to overflow a long
+   word like "Impressionen." — found while building the Phase-4 gallery
+   page, whose header is the first to actually carry a title that long at
+   this width. `--bp-mobile` (documented in tokens.css §17) can't be used
+   inside the query itself — custom properties don't work in media
+   conditions — so the breakpoint is the same literal 480px as everywhere
+   else that references it. */
+@media (max-width: 480px) {
+  .page-header-title {
+    font-size: var(--font-size-5xl);
+    letter-spacing: var(--tracking-tight);
+    overflow-wrap: anywhere;
+  }
+}
 
 /* ── Shared badge + hero tag/subtitle (style.css:102-114, 183-187) ────────*/
 .hero-tag {
