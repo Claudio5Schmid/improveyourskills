@@ -9,3 +9,12 @@ import { revalidateTag } from "next/cache";
 export function refreshPublicContent(): void {
   revalidateTag("content");
 }
+
+/**
+ * The gallery (`src/lib/gallery/data.ts`) is cached separately from the rest
+ * of the content — different table, different admin surface, no reason to
+ * invalidate one on every edit of the other.
+ */
+export function refreshGalleryPhotos(): void {
+  revalidateTag("gallery");
+}

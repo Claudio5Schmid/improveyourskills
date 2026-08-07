@@ -16,7 +16,7 @@ const ITEMS: NavItem[] = [
   { href: "/admin/inhalte", label: "Inhalte" },
   { href: "/admin/team", label: "Team" },
   { href: "/admin/karussell", label: "Karussell" },
-  { href: "/admin/galerie", label: "Galerie", soon: true },
+  { href: "/admin/galerie", label: "Galerie" },
   { href: "/admin/zitate", label: "Zitate & Zahlen" },
   { href: "/admin/einstellungen", label: "Anmeldung & Einstellungen" },
   { href: "/admin/nachrichten", label: "Nachrichten", soon: true },
