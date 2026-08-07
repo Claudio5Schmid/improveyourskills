@@ -37,9 +37,14 @@ export function isSupportedImage(file: File): boolean {
 
 /**
  * Load a File into an HTMLImageElement, honouring EXIF rotation so portrait
- * phone photos don't come out sideways.
+ * phone photos don't come out sideways (evergreen browsers auto-orient on
+ * decode; the canvas re-encode below has no EXIF at all, so orientation and
+ * every other tag — including GPS — is gone from the output by construction).
+ *
+ * Exported so the gallery pipeline (`@/lib/gallery/resize`) can decode a File
+ * ONCE and draw it at several sizes, instead of re-decoding per variant.
  */
-async function loadImage(file: File): Promise<HTMLImageElement> {
+export async function loadImage(file: File): Promise<HTMLImageElement> {
   const url = URL.createObjectURL(file);
   try {
     return await new Promise<HTMLImageElement>((resolve, reject) => {
@@ -53,14 +58,17 @@ async function loadImage(file: File): Promise<HTMLImageElement> {
   }
 }
 
-export async function resizeToWebp(file: File, options: ResizeOptions): Promise<ResizedImage> {
+/** Draw an already-decoded image at `maxEdge` (long side) and encode to WebP. */
+export async function drawResizedWebp(
+  source: CanvasImageSource & { width: number; height: number },
+  options: ResizeOptions
+): Promise<ResizedImage> {
   const quality = options.quality ?? DEFAULT_QUALITY;
-  const source = await loadImage(file);
 
-  const longest = Math.max(source.naturalWidth, source.naturalHeight);
+  const longest = Math.max(source.width, source.height);
   const scale = longest > options.maxEdge ? options.maxEdge / longest : 1;
-  const width = Math.max(1, Math.round(source.naturalWidth * scale));
-  const height = Math.max(1, Math.round(source.naturalHeight * scale));
+  const width = Math.max(1, Math.round(source.width * scale));
+  const height = Math.max(1, Math.round(source.height * scale));
 
   const canvas = document.createElement("canvas");
   canvas.width = width;
@@ -76,6 +84,11 @@ export async function resizeToWebp(file: File, options: ResizeOptions): Promise<
   if (!blob) throw new Error("WebP-Kodierung fehlgeschlagen.");
 
   return { blob, width, height, mime: "image/webp", bytes: blob.size };
+}
+
+export async function resizeToWebp(file: File, options: ResizeOptions): Promise<ResizedImage> {
+  const source = await loadImage(file);
+  return drawResizedWebp(source, options);
 }
 
 /**
