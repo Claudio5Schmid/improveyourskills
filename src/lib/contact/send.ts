@@ -3,7 +3,6 @@ import "server-only";
 import { Resend } from "resend";
 import { renderNotificationEmail, renderAutoReplyEmail, type NotificationEmailInput } from "./email-templates";
 
-const PASCAL_EMAIL = "pascal.schmuki@bluewin.ch";
 // Resend's own shared test sender — works with no domain verification, but
 // only Resend account owners can receive at it. Real deployments must set
 // RESEND_FROM_EMAIL once the domain is verified (docs/RESEND.md).
@@ -14,17 +13,25 @@ function fromAddress(): string {
 }
 
 /**
- * Sends both the notification to Pascal and the visitor's auto-reply.
- * Returns whether BOTH went out — the brief only gives us one
+ * Sends both the notification to the admin recipient and the visitor's
+ * auto-reply. Returns whether BOTH went out — the brief only gives us one
  * `email_delivery_status` per message, and a visitor who never got their
- * confirmation is worth flagging too, even if Pascal's copy arrived fine.
- * Never throws: a missing API key or a Resend outage must not stop the
+ * confirmation is worth flagging too, even if the admin's copy arrived fine.
+ * Never throws: a missing env var or a Resend outage must not stop the
  * message from being saved (brief — see actions.ts).
  */
 export async function sendContactEmails(input: NotificationEmailInput): Promise<boolean> {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     console.error("[contact] RESEND_API_KEY ist nicht gesetzt — E-Mail-Versand übersprungen.");
+    return false;
+  }
+  // No fallback here on purpose — unlike the sender address, a wrong or
+  // stale default recipient would silently misroute every contact-form
+  // notification. Fail loudly and skip sending instead.
+  const toEmail = process.env.CONTACT_TO_EMAIL?.trim();
+  if (!toEmail) {
+    console.error("[contact] CONTACT_TO_EMAIL ist nicht gesetzt — E-Mail-Versand übersprungen.");
     return false;
   }
   const resend = new Resend(apiKey);
@@ -35,7 +42,7 @@ export async function sendContactEmails(input: NotificationEmailInput): Promise<
   const [notifyResult, replyResult] = await Promise.allSettled([
     resend.emails.send({
       from: fromAddress(),
-      to: PASCAL_EMAIL,
+      to: toEmail,
       replyTo: input.email,
       subject: notification.subject,
       html: notification.html,

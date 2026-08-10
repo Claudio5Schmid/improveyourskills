@@ -64,7 +64,7 @@ export interface NotificationEmailInput {
   locale: "de" | "en" | "fr";
 }
 
-/** To pascal.schmuki@bluewin.ch — always German, this is an internal admin-facing email. */
+/** To CONTACT_TO_EMAIL (send.ts) — always German, this is an internal admin-facing email. */
 export function renderNotificationEmail(input: NotificationEmailInput): {
   subject: string;
   html: string;

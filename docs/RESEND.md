@@ -16,12 +16,19 @@ der Mailversand fehlt.
 3. In Vercel unter *Settings → Environment Variables* eintragen:
    - `RESEND_API_KEY` = der eben erzeugte Schlüssel (Production **und**
      Preview).
+   - `CONTACT_TO_EMAIL` = die Adresse, die neue Anfragen bekommen soll, z. B.
+     `info@improveyourskills.ch` (Production **und** Preview). **Kein
+     Fallback** — ohne diesen Wert wird die Benachrichtigung übersprungen und
+     nur als Fehler geloggt, statt irgendwo unkontrolliert zu landen. Die
+     Nachricht selbst geht dabei trotzdem nicht verloren (landet weiterhin im
+     Admin unter „Nachrichten").
 
 **Zwischenstand:** Ab hier funktioniert der Versand bereits — aber nur mit
 Resends eigener Testadresse (`onboarding@resend.dev`) als Absender, und die
-kommt **nur bei dir selbst** (dem Resend-Account-Inhaber) an, nicht bei
-anderen Empfänger:innen. Für den echten Betrieb (Mails an Pascal und an
-Besucher:innen) muss die eigene Domain verifiziert sein — Schritt 2.
+kommt **nur bei dir selbst** (dem Resend-Account-Inhaber) an, unabhängig
+davon, was bei `CONTACT_TO_EMAIL` steht. Für den echten Betrieb (Mails, die
+auch bei Dritten ankommen) muss die eigene Domain verifiziert sein —
+Schritt 2.
 
 ## 2. Domain verifizieren (DNS bei Hostpoint)
 
@@ -95,10 +102,11 @@ tun.
 ## Checkliste
 
 - [ ] `RESEND_API_KEY` in Vercel (Production + Preview)
+- [ ] `CONTACT_TO_EMAIL` in Vercel gesetzt (Production + Preview)
 - [ ] Domain in Resend verifiziert
 - [ ] `RESEND_FROM_EMAIL` in Vercel gesetzt
 - [ ] `NEXT_PUBLIC_TURNSTILE_SITE_KEY` in Vercel
 - [ ] `TURNSTILE_SECRET_KEY` in Vercel
 - [ ] `CONTACT_IP_HASH_SALT` in Vercel
 - [ ] Testnachricht über das echte Formular geschickt, in „Nachrichten" im
-      Admin geprüft, E-Mail bei Pascal angekommen
+      Admin geprüft, E-Mail bei der `CONTACT_TO_EMAIL`-Adresse angekommen
