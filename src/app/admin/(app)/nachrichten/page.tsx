@@ -1,4 +1,5 @@
 import { requireAdmin } from "@/lib/admin/auth";
+import { ToastHost } from "@/lib/admin/toast";
 import NachrichtenList, { type ContactMessageRow } from "./NachrichtenList";
 
 export default async function NachrichtenPage() {
@@ -9,12 +10,12 @@ export default async function NachrichtenPage() {
     .order("created_at", { ascending: false });
 
   return (
-    <>
+    <ToastHost>
       <p className="a-label">Verwaltung</p>
       <h1 className="a-page-title">Nachrichten</h1>
       <p className="a-page-lead">Eingänge aus dem Kontaktformular, neueste zuerst.</p>
 
       <NachrichtenList initialMessages={(data as ContactMessageRow[] | null) ?? []} />
-    </>
+    </ToastHost>
   );
 }
