@@ -93,6 +93,8 @@ export default function Gallery({
             <img
               src={`/api/foto/${photo.id}/thumb`}
               alt=""
+              width={photo.thumb.width || undefined}
+              height={photo.thumb.height || undefined}
               loading="lazy"
               draggable={false}
               onContextMenu={(e) => e.preventDefault()}
