@@ -28,21 +28,19 @@ export default async function AnmeldungPage({ params }: { params: Promise<{ loca
         <section className="section section-cream">
           <div className="container container-narrow" style={{ textAlign: "center" }}>
             {isOpen ? (
-              /* The actual form is Phase 5. Until then, the "open" state just tells
-                 visitors we are open and how to reach us; it is not the empty
-                 Save-the-Date. */
+              /* No self-service registration form is planned (confirmed with Claudio
+                 during Phase 5 — Phase 5 built only the Kontakt form, see
+                 PROJECT_BRIEF.md §Phase 5). The "open" state tells visitors we're
+                 open and points them at /kontakt; that's the whole flow. */
               <>
                 <div className={styles.icon}>✍️</div>
-                <div className="section-label">Anmeldung</div>
+                <div className="section-label">{t("openLabel")}</div>
                 <h2 className="section-title" style={{ marginBottom: "var(--space-15)" }}>
-                  Anmeldung geöffnet
+                  {t("openHeading")}
                 </h2>
-                <p className={styles.text}>
-                  Das Formular wird in wenigen Tagen hier aufgeschaltet. Bitte schau bald wieder
-                  vorbei — oder schreib uns bis dahin per <Link href="/kontakt">Kontakt</Link>.
-                </p>
+                <p className={styles.text}>{t("openText")}</p>
                 <Link href="/kontakt" className={styles.backButton}>
-                  Zum Kontakt
+                  {t("openButton")}
                 </Link>
               </>
             ) : (
