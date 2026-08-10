@@ -16,7 +16,7 @@ export default function KontaktPage({ params }: { params: Promise<{ locale: stri
     <>
       <Nav variant="page" />
       <main>
-        <section className="page-header section-dark page-header-short">
+        <section className="page-header section-dark">
           <div className="page-header-overlay" />
           <div className="page-header-content">
             <div className="hero-tag">{t("tag")}</div>

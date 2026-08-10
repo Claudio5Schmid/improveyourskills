@@ -49,7 +49,7 @@ export default async function ImpressionenPage({
     <>
       <Nav variant="page" />
       <main>
-        <section className="page-header section-dark page-header-short">
+        <section className="page-header section-dark">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={headerImage}
