@@ -5,6 +5,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
 import KontaktMap from "./KontaktMap";
+import KontaktForm from "./KontaktForm";
 import styles from "./Kontakt.module.css";
 
 export default function KontaktPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -30,9 +31,7 @@ export default function KontaktPage({ params }: { params: Promise<{ locale: stri
               <FadeIn className={styles.info}>
                 <h2>{t("infoTitle")}</h2>
                 <p>{t("infoText")}</p>
-                <a href="mailto:pascal.schmuki@bluewin.ch" className={styles.emailBtn}>
-                  {t("emailButton")}
-                </a>
+                <KontaktForm />
               </FadeIn>
 
               {/* Direct grid child so align-items:stretch matches the info height. */}

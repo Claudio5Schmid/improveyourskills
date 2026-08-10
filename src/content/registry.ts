@@ -441,15 +441,6 @@ export const CONTENT_REGISTRY = [
     page: "kontakt",
     section: "Info",
   },
-  {
-    key: "kontakt.emailButton",
-    kind: "text",
-    label: "E-Mail-Button (Text)",
-    maxLength: 40,
-    page: "kontakt",
-    section: "Info",
-  },
-
   // ─── Anmeldung (geschlossener Zustand) ──────────────────────────────────────
   {
     key: "anmeldung.tag",

@@ -102,10 +102,33 @@
     "title": "Kontakt.",
     "infoTitle": "Wir freuen uns von dir zu hören.",
     "infoText": "Bei Fragen rund um das Skill Training, Anmeldungen oder die Veranstaltung stehen wir dir gerne zur Verfügung.",
-    "emailButton": "✉️ Schreib uns eine E-Mail",
     "mapTitle": "Buchholz Sporthalle Uster",
     "mapLoad": "Karte laden",
-    "mapNote": "Beim Laden der Karte werden Daten an Google übertragen."
+    "mapNote": "Beim Laden der Karte werden Daten an Google übertragen.",
+    "form": {
+      "firstName": "Vorname",
+      "lastName": "Name",
+      "email": "E-Mail-Adresse",
+      "emailPlaceholder": "vorname@beispiel.ch",
+      "message": "Nachricht",
+      "messagePlaceholder": "Wie können wir dir helfen?",
+      "consent": "Ich bin einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage gespeichert werden. Mehr dazu in der <link>Datenschutzerklärung</link>.",
+      "consentLinkText": "Datenschutzerklärung",
+      "submit": "Nachricht senden",
+      "submitPending": "Wird gesendet …",
+      "successTitle": "Danke für deine Nachricht!",
+      "successText": "Wir melden uns so schnell wie möglich bei dir. Du bekommst gleich auch eine Bestätigung per E-Mail.",
+      "errors": {
+        "required": "Pflichtfeld.",
+        "tooLong": "Das ist zu lang.",
+        "invalidEmail": "Bitte gib eine gültige E-Mail-Adresse ein.",
+        "consentRequired": "Bitte bestätige die Einwilligung.",
+        "turnstileRequired": "Bitte bestätige, dass du kein Roboter bist.",
+        "turnstileFailed": "Die Sicherheitsprüfung ist fehlgeschlagen. Bitte versuch es nochmals.",
+        "tooMany": "Du hast in letzter Zeit schon mehrere Nachrichten geschickt. Bitte warte etwas, bevor du es erneut versuchst.",
+        "serverError": "Etwas ist schiefgelaufen. Bitte versuch es später nochmals oder schreib uns direkt an pascal.schmuki@bluewin.ch."
+      }
+    }
   },
   "anmeldung": {
     "tag": "Anmeldung",
@@ -114,7 +137,11 @@
     "label": "Save the Date",
     "heading": "Anmeldungen & Infos folgen im 2027.",
     "text": "Das nächste Improve-your-skills Skill Training in Uster ist bereits in Planung. Alle Details sowie die Anmeldung schalten wir rechtzeitig wieder hier auf. Schau zu gegebener Zeit einfach nochmals vorbei – wir freuen uns auf dich!",
-    "back": "Zurück zur Startseite"
+    "back": "Zurück zur Startseite",
+    "openLabel": "Anmeldung offen",
+    "openHeading": "Die Anmeldung ist offen.",
+    "openText": "Meld dich unverbindlich über unser Kontaktformular – wir schicken dir alle weiteren Infos zur Anmeldung.",
+    "openButton": "Zum Kontaktformular"
   },
   "impressum": {
     "title": "Impressum.",
@@ -134,6 +161,22 @@
     "liabilityBody": "Die Organisatoren übernehmen keine Gewähr für die Richtigkeit, Vollständigkeit und Aktualität der auf dieser Website bereitgestellten Informationen. Haftungsansprüche wegen Schäden materieller oder immaterieller Art sind grundsätzlich ausgeschlossen.",
     "copyrightHeading": "Urheberrecht",
     "copyrightBody": "Alle Inhalte dieser Website sind urheberrechtlich geschützt. Eine Verwendung ohne ausdrückliche Genehmigung der Organisatoren ist nicht gestattet.",
+    "back": "← Zurück zur Startseite"
+  },
+  "datenschutz": {
+    "title": "Datenschutz.",
+    "draftNotice": "Diese Seite ist ein Entwurf und noch nicht rechtlich geprüft. Die vollständige Fassung folgt in einer späteren Phase des Website-Relaunchs.",
+    "intro": "Diese Seite beschreibt, was mit deinen Daten passiert, wenn du das Kontaktformular auf improveyourskills.ch nutzt.",
+    "formHeading": "Kontaktformular",
+    "formBody": "Wenn du das Kontaktformular ausfüllst, speichern wir Vorname, Name, E-Mail-Adresse und deine Nachricht, um deine Anfrage zu beantworten. Zusätzlich speichern wir eine Prüfsumme (Hash) deiner IP-Adresse, um Missbrauch durch automatisierte Anfragen zu verhindern — nie die IP-Adresse selbst.",
+    "accessHeading": "Wer hat Zugriff",
+    "accessBody": "Nur die Administratoren dieser Website (siehe Impressum) sehen die gespeicherten Nachrichten.",
+    "processorsHeading": "Eingesetzte Dienste",
+    "processorsBody": "Supabase (Datenbank, EU-Region) speichert die Nachricht. Resend verschickt die Benachrichtigungs- und Bestätigungs-E-Mails. Cloudflare Turnstile prüft, dass ein Mensch und keine Software das Formular abschickt.",
+    "retentionHeading": "Speicherdauer",
+    "retentionBody": "Noch nicht abschliessend festgelegt — folgt mit der vollständigen Fassung dieser Seite.",
+    "contactHeading": "Fragen dazu",
+    "contactBody": "Für Fragen zum Datenschutz erreichst du uns über das Kontaktformular oder die Angaben im Impressum.",
     "back": "← Zurück zur Startseite"
   }
 }

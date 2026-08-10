@@ -4,7 +4,8 @@
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  /* minmax(0, ...), not bare 1fr — see the 900px override below for why. */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: var(--space-19); /* 40px */
   align-items: stretch;
 }
@@ -16,7 +17,10 @@
   padding: var(--space-22) var(--space-21); /* 56px 48px */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* flex-start, not center (Phase 5): the card now holds a full form whose
+     height changes as validation errors appear/disappear — centering would
+     make the whole block visibly jump. */
+  justify-content: flex-start;
 }
 .info h2 {
   font-family: var(--font-display);
@@ -51,6 +55,11 @@
   background: var(--color-white);
   transform: translateY(-2px);
   box-shadow: var(--shadow-dark-soft);
+}
+.emailBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .mapWrap {
@@ -109,11 +118,128 @@
 /* style.css:429-434 */
 @media (max-width: 900px) {
   .grid {
-    grid-template-columns: 1fr;
+    /* minmax(0, 1fr), not bare 1fr (Phase 5): a plain `1fr` implies
+       minmax(auto, 1fr), whose `auto` minimum is driven by the widest
+       min-content contribution of ANY item sharing this column across
+       every row — including the Turnstile widget's initial (wider,
+       pre-collapse) render, even after it shrinks back down. That blew the
+       single mobile column out to ~396px and forced the whole page to
+       scroll horizontally. minmax(0, 1fr) makes the track fill the
+       available space instead of reserving room for content. */
+    grid-template-columns: minmax(0, 1fr);
   }
   .mapWrap,
   .mapFrame,
   .mapPlaceholder {
     min-height: 300px;
   }
+}
+
+/* ── Contact form (Phase 5) — new, built only from tokens ────────────────── */
+.form {
+  margin-top: var(--space-17);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-13);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.fieldLabel {
+  font-size: var(--font-size-sm4);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-cream-a75);
+}
+
+.input,
+.textarea {
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  color: var(--color-text-dark);
+  background: var(--color-white);
+  border: 1px solid transparent;
+  border-radius: var(--radius-input);
+  padding: var(--space-9) var(--space-11);
+  transition: all var(--transition);
+}
+.input:focus,
+.textarea:focus {
+  outline: none;
+  border-color: var(--color-cream);
+}
+.inputInvalid {
+  border-color: var(--color-danger);
+}
+.textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.fieldError {
+  font-size: var(--font-size-xs);
+  color: var(--color-danger);
+}
+
+/* Real input a bot fills in but a visitor never sees or tabs to. */
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.consentRow {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-8);
+}
+.consentRow input[type="checkbox"] {
+  accent-color: var(--color-cream);
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  margin-top: 2px;
+}
+.consentText {
+  font-size: var(--font-size-sm4);
+  color: var(--color-cream-a75);
+  line-height: var(--line-height-loose);
+}
+.consentText a {
+  color: var(--color-cream);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.generalError {
+  font-size: var(--font-size-sm4);
+  color: var(--color-danger);
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: var(--radius-input);
+  padding: var(--space-9) var(--space-11);
+}
+
+.submitRow {
+  margin-top: var(--space-4);
+}
+
+.successBox {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+.successBox h2 {
+  font-family: var(--font-display);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-black);
+  color: var(--color-cream);
+}
+.successBox p {
+  color: var(--color-cream-a72);
+  line-height: var(--line-height-loose);
 }
