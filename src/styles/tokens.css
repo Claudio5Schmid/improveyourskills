@@ -285,11 +285,18 @@
   --width-hero-content: 800px; /* style.css:101  .hero-content */
   --width-cta-content: 600px; /* style.css:224  .cta-content */
   --width-team-bio: 220px; /* style.css:303  .team-bio */
+  --width-team-bio-lg: 260px; /* NEW (Phase 6) — paired with the bigger/bolder bio
+    text below; 220px wrapped too tightly once the national-team line grew a step
+    in size and weight. Flagged per the iron rule. */
 
   --height-media: 420px; /* style.css:189, 255, 266, 333  image wraps, slider, map */
   --height-media-mobile: 280px; /* style.css:427, 428  same at <=900px */
   --height-nav-logo: 42px; /* style.css:42   .nav-logo img */
   --size-avatar: 160px; /* style.css:297  .team-photo */
+  --size-avatar-lg: 200px; /* NEW (Phase 6) — brief asks for "larger" trainer photos on
+    Über uns; not in the original CSS. 25% bigger than --size-avatar, same circular
+    treatment. --size-avatar itself is left alone since admin.css reuses it for the
+    (deliberately compact) photo preview in the Team editor. Flagged per the iron rule. */
   --size-icon-button: 44px; /* style.css:278  .slider-btn — also the min tap target */
 
   /* ────────────────────────────────────────────────────────────────────────

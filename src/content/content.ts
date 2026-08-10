@@ -47,14 +47,44 @@ export interface CarouselImage {
   alt_fr: string | null;
 }
 
+export interface StatRow {
+  id: string;
+  sort_order: number;
+  value: string;
+  label_de: string | null;
+  label_en: string | null;
+  label_fr: string | null;
+}
+
+export interface TestimonialRow {
+  id: string;
+  sort_order: number;
+  quote_de: string | null;
+  quote_en: string | null;
+  quote_fr: string | null;
+  author_name: string | null;
+  author_role_de: string | null;
+  author_role_en: string | null;
+  author_role_fr: string | null;
+}
+
 interface SiteContent {
   blocks: ContentBlock[];
   settings: SiteSettings | null;
   team: TeamMember[];
   carousel: CarouselImage[];
+  stats: StatRow[];
+  testimonials: TestimonialRow[];
 }
 
-const EMPTY: SiteContent = { blocks: [], settings: null, team: [], carousel: [] };
+const EMPTY: SiteContent = {
+  blocks: [],
+  settings: null,
+  team: [],
+  carousel: [],
+  stats: [],
+  testimonials: [],
+};
 
 /**
  * One cached read of all public content. Revalidates every 5 minutes and is
@@ -66,7 +96,7 @@ async function fetchSiteContent(): Promise<SiteContent> {
   if (!hasSupabaseEnv()) return EMPTY;
   try {
     const sb = createPublicClient();
-    const [blocks, settings, team, carousel] = await Promise.all([
+    const [blocks, settings, team, carousel, stats, testimonials] = await Promise.all([
       sb
         .from("content_blocks")
         .select(
@@ -81,12 +111,23 @@ async function fetchSiteContent(): Promise<SiteContent> {
         .from("carousel_images")
         .select("id,sort_order,image_path,alt_de,alt_en,alt_fr")
         .order("sort_order"),
+      // RLS already restricts anon reads to visible=true (same pattern as
+      // gallery_photos) — no client-side filter needed here.
+      sb.from("stats").select("id,sort_order,value,label_de,label_en,label_fr").order("sort_order"),
+      sb
+        .from("testimonials")
+        .select(
+          "id,sort_order,quote_de,quote_en,quote_fr,author_name,author_role_de,author_role_en,author_role_fr"
+        )
+        .order("sort_order"),
     ]);
     return {
       blocks: (blocks.data as ContentBlock[] | null) ?? [],
       settings: (settings.data as SiteSettings | null) ?? null,
       team: (team.data as TeamMember[] | null) ?? [],
       carousel: (carousel.data as CarouselImage[] | null) ?? [],
+      stats: (stats.data as StatRow[] | null) ?? [],
+      testimonials: (testimonials.data as TestimonialRow[] | null) ?? [],
     };
   } catch {
     return EMPTY;
@@ -194,6 +235,36 @@ export async function getCarousel(locale: Locale): Promise<LocalizedImage[]> {
 
 export async function getSettings(): Promise<SiteSettings | null> {
   return (await getSiteContent()).settings;
+}
+
+export interface LocalizedStat {
+  value: string;
+  label: string;
+}
+
+export async function getStats(locale: Locale): Promise<LocalizedStat[]> {
+  const { stats } = await getSiteContent();
+  const labelCol = `label_${locale}` as "label_de" | "label_en" | "label_fr";
+  return stats.map((s) => ({ value: s.value, label: s[labelCol] ?? s.label_de ?? "" }));
+}
+
+export interface LocalizedTestimonial {
+  quote: string;
+  authorName: string;
+  authorRole: string;
+}
+
+export async function getTestimonials(locale: Locale): Promise<LocalizedTestimonial[]> {
+  const { testimonials } = await getSiteContent();
+  const quoteCol = `quote_${locale}` as "quote_de" | "quote_en" | "quote_fr";
+  const roleCol = `author_role_${locale}` as "author_role_de" | "author_role_en" | "author_role_fr";
+  return testimonials
+    .map((t) => ({
+      quote: t[quoteCol] ?? t.quote_de ?? "",
+      authorName: t.author_name ?? "",
+      authorRole: t[roleCol] ?? t.author_role_de ?? "",
+    }))
+    .filter((t) => t.quote.trim() !== "");
 }
 
 // formatPrice / formatCourseDate are re-exported from ./format at the top of

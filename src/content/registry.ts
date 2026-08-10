@@ -316,6 +316,14 @@ export const CONTENT_REGISTRY = [
     section: "Unser Ansatz",
   },
   {
+    key: "ueber.ansatz.feature1Image",
+    kind: "image",
+    label: "Feature 1 · Bild",
+    help: "Optional. Ohne Bild bleibt es beim Emoji 🎯.",
+    page: "ueber",
+    section: "Unser Ansatz",
+  },
+  {
     key: "ueber.ansatz.feature2Title",
     kind: "text",
     label: "Feature 2 · Titel",
@@ -332,6 +340,14 @@ export const CONTENT_REGISTRY = [
     section: "Unser Ansatz",
   },
   {
+    key: "ueber.ansatz.feature2Image",
+    kind: "image",
+    label: "Feature 2 · Bild",
+    help: "Optional. Ohne Bild bleibt es beim Emoji 👥.",
+    page: "ueber",
+    section: "Unser Ansatz",
+  },
+  {
     key: "ueber.ansatz.feature3Title",
     kind: "text",
     label: "Feature 3 · Titel",
@@ -344,6 +360,14 @@ export const CONTENT_REGISTRY = [
     kind: "text",
     label: "Feature 3 · Text",
     maxLength: 120,
+    page: "ueber",
+    section: "Unser Ansatz",
+  },
+  {
+    key: "ueber.ansatz.feature3Image",
+    kind: "image",
+    label: "Feature 3 · Bild",
+    help: "Optional. Ohne Bild bleibt es beim Emoji 🏆.",
     page: "ueber",
     section: "Unser Ansatz",
   },
@@ -373,6 +397,35 @@ export const CONTENT_REGISTRY = [
     maxLength: 60,
     page: "ueber",
     section: "Team",
+  },
+
+  // ─── Über uns · Banner ──────────────────────────────────────────────────────
+  {
+    key: "ueber.banner",
+    kind: "image",
+    label: "Breites Banner-Bild",
+    help: "Optional, zwischen Team und Zitaten. Ohne Bild erscheint hier gar nichts — kein leerer Platzhalter-Balken.",
+    page: "ueber",
+    section: "Banner",
+  },
+
+  // ─── Über uns · Zitate ──────────────────────────────────────────────────────
+  {
+    key: "ueber.zitate.label",
+    kind: "text",
+    label: "Label",
+    maxLength: 40,
+    page: "ueber",
+    section: "Zitate",
+  },
+  {
+    key: "ueber.zitate.title",
+    kind: "text",
+    label: "Titel",
+    help: "Die Zitate selbst bearbeitest du unter «Zitate & Zahlen».",
+    maxLength: 60,
+    page: "ueber",
+    section: "Zitate",
   },
 
   // ─── Impressionen ───────────────────────────────────────────────────────────

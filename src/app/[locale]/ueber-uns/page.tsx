@@ -3,16 +3,25 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
 import { Link } from "@/i18n/navigation";
-import { getTeam, getCarousel, getImageMap, type LocalizedImage } from "@/content/content";
+import {
+  getTeam,
+  getCarousel,
+  getImageMap,
+  getStats,
+  getTestimonials,
+  type LocalizedImage,
+} from "@/content/content";
 import type { Locale } from "@/i18n/routing";
 import AboutCarousel from "./AboutCarousel";
+import StatsBand from "./StatsBand";
 import styles from "./Ueber.module.css";
 
-// Icons are structural; the titles/texts come from the DB (ueber.ansatz.*).
+// Icons are structural; the titles/texts (and optional replacement images)
+// come from the DB (ueber.ansatz.*).
 const FEATURES = [
-  { icon: "🎯", title: "feature1Title", text: "feature1Text" },
-  { icon: "👥", title: "feature2Title", text: "feature2Text" },
-  { icon: "🏆", title: "feature3Title", text: "feature3Text" },
+  { icon: "🎯", title: "feature1Title", text: "feature1Text", imageKey: "ueber.ansatz.feature1Image" },
+  { icon: "👥", title: "feature2Title", text: "feature2Text", imageKey: "ueber.ansatz.feature2Image" },
+  { icon: "🏆", title: "feature3Title", text: "feature3Text", imageKey: "ueber.ansatz.feature3Image" },
 ] as const;
 
 // Fallbacks used only if the DB returns nothing (keeps the page populated).
@@ -51,17 +60,21 @@ export default async function UeberPage({ params }: { params: Promise<{ locale: 
   const h = await getTranslations("ueber.header");
   const a = await getTranslations("ueber.ansatz");
   const tm = await getTranslations("ueber.team");
+  const tz = await getTranslations("ueber.zitate");
 
-  const [team, carousel, images] = await Promise.all([
+  const [team, carousel, images, stats, testimonials] = await Promise.all([
     getTeam(loc),
     getCarousel(loc),
     getImageMap(loc),
+    getStats(loc),
+    getTestimonials(loc),
   ]);
 
   const teamList = team.length > 0 ? team : FALLBACK_TEAM;
   const slides = carousel.length > 0 ? carousel : FALLBACK_CAROUSEL;
   const carouselSlides = slides.map((s) => ({ src: s.src as string, alt: s.alt }));
   const headerImage = images["ueber.header.image"]?.src ?? null;
+  const bannerImage = images["ueber.banner"]?.src ?? null;
 
   return (
     <>
@@ -79,6 +92,8 @@ export default async function UeberPage({ params }: { params: Promise<{ locale: 
             <p className="hero-sub">{h("subtitle")}</p>
           </div>
         </section>
+
+        <StatsBand stats={stats} />
 
         {/* Etwas zurückgeben */}
         <section className="section section-cream">
@@ -99,15 +114,25 @@ export default async function UeberPage({ params }: { params: Promise<{ locale: 
                 <p className={styles.lead}>{a("lead")}</p>
                 <p>{a("p")}</p>
                 <div className={styles.features}>
-                  {FEATURES.map((f) => (
-                    <div key={f.title} className={styles.featureItem}>
-                      <div className={styles.featureIcon}>{f.icon}</div>
-                      <div>
-                        <strong>{a(f.title)}</strong>
-                        <span>{a(f.text)}</span>
+                  {FEATURES.map((f) => {
+                    const featureImage = images[f.imageKey]?.src;
+                    return (
+                      <div key={f.title} className={styles.featureItem}>
+                        <div className={styles.featureIcon}>
+                          {featureImage ? (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img src={featureImage} alt="" className={styles.featureImg} />
+                          ) : (
+                            f.icon
+                          )}
+                        </div>
+                        <div>
+                          <strong>{a(f.title)}</strong>
+                          <span>{a(f.text)}</span>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
                 <Link
                   href="/anmeldung"
@@ -148,6 +173,35 @@ export default async function UeberPage({ params }: { params: Promise<{ locale: 
             </div>
           </div>
         </section>
+
+        {/* Banner — optional, skips entirely if empty (docs/PLATZHALTER.md B10) */}
+        {bannerImage && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={bannerImage} alt="" className={styles.banner} />
+        )}
+
+        {/* Zitate — skips entirely if none are visible yet (docs/PLATZHALTER.md T8) */}
+        {testimonials.length > 0 && (
+          <section className="section section-cream">
+            <div className="container">
+              <div className="section-label">{tz("label")}</div>
+              <h2 className="section-title">{tz("title")}</h2>
+              <div className={styles.testimonialsGrid}>
+                {testimonials.map((t, i) => (
+                  <FadeIn key={i} className={styles.testimonialCard}>
+                    <p className={styles.testimonialQuote}>{t.quote}</p>
+                    {t.authorName && (
+                      <div className={styles.testimonialAuthor}>{t.authorName}</div>
+                    )}
+                    {t.authorRole && (
+                      <div className={styles.testimonialRole}>{t.authorRole}</div>
+                    )}
+                  </FadeIn>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
       </main>
       <Footer info="venueDate" />
     </>

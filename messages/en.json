@@ -81,6 +81,10 @@
       "prev": "Vorheriges Bild",
       "next": "Nächstes Bild",
       "slide": "Bild {n}"
+    },
+    "zitate": {
+      "label": "Stimmen",
+      "title": "Was andere sagen."
     }
   },
   "impressionen": {
