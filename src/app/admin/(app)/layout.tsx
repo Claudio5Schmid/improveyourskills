@@ -10,7 +10,11 @@ import AdminNav from "./AdminNav";
  * their own endpoints and do not inherit this check.
  */
 export default async function AdminAppLayout({ children }: { children: React.ReactNode }) {
-  const { displayName, email } = await requireAdmin();
+  const { displayName, email, supabase } = await requireAdmin();
+  const { count: unreadMessages } = await supabase
+    .from("contact_messages")
+    .select("id", { count: "exact", head: true })
+    .is("read_at", null);
 
   return (
     <div className="a-shell">
@@ -20,7 +24,7 @@ export default async function AdminAppLayout({ children }: { children: React.Rea
           <small>Verwaltung</small>
         </Link>
 
-        <AdminNav />
+        <AdminNav unreadMessages={unreadMessages ?? 0} />
 
         <div className="a-user">
           <span>

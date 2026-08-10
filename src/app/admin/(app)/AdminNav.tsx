@@ -19,10 +19,10 @@ const ITEMS: NavItem[] = [
   { href: "/admin/galerie", label: "Galerie" },
   { href: "/admin/zitate", label: "Zitate & Zahlen" },
   { href: "/admin/einstellungen", label: "Anmeldung & Einstellungen" },
-  { href: "/admin/nachrichten", label: "Nachrichten", soon: true },
+  { href: "/admin/nachrichten", label: "Nachrichten" },
 ];
 
-export default function AdminNav() {
+export default function AdminNav({ unreadMessages = 0 }: { unreadMessages?: number }) {
   const pathname = usePathname();
 
   const isActive = (href: string) =>
@@ -39,6 +39,11 @@ export default function AdminNav() {
               aria-current={isActive(item.href) ? "page" : undefined}
             >
               {item.label}
+              {item.href === "/admin/nachrichten" && unreadMessages > 0 && (
+                <span className="a-badge a-badge-warn" style={{ marginLeft: "var(--space-4)" }}>
+                  {unreadMessages}
+                </span>
+              )}
             </Link>
           </li>
         ))}
