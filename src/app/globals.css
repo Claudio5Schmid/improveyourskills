@@ -287,16 +287,19 @@ footer {
 
 /* ── Entrance + scroll-reveal animations (style.css:413-420) ──────────────*/
 /* Wired to motion tokens so prefers-reduced-motion (handled in tokens.css)
-   makes them resolve instantly — content is never left hidden. Visual result
-   under normal motion is unchanged from the old site. */
+   makes them resolve instantly — content is never left hidden.
+   Deliberate deviation from the old site (Phase 6, approved in Phase 0 —
+   docs/AUDIT.md §7 Frage 3): the original started at opacity 0, so the hero
+   text was invisible for the first fraction of a second on every load —
+   exactly what the brief's "no animation on the homepage's first viewport"
+   rules out. Kept the staggered slide-up character, dropped the fade: text
+   is fully legible from the first frame, only its position still animates. */
 .animate-up {
-  opacity: 0;
   transform: translateY(28px);
   animation: slideUp var(--duration-slide-up) var(--easing) forwards;
 }
 @keyframes slideUp {
   to {
-    opacity: 1;
     transform: translateY(0);
   }
 }
