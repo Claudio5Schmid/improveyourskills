@@ -10,11 +10,13 @@ import { supabaseUrl } from "./env";
  *
  * This is deliberately NOT how admin writes work in this project (those use
  * the signed-in admin's own session — see `./session.ts` — so RLS still
- * gates every statement). The service-role key is reserved for the one
- * thing RLS genuinely cannot express: letting an anonymous VISITOR read
- * bytes out of the private `gallery` bucket, gated by a `hidden` flag that
- * lives in a different table than the storage object itself
- * (`/api/foto/[id]/[size]`, Phase 4).
+ * gates every statement). The service-role key is reserved for cases RLS
+ * genuinely cannot express, because the gate isn't something Postgres can
+ * see: letting an anonymous VISITOR read bytes out of the private `gallery`
+ * bucket, gated by a `hidden` flag that lives in a different table
+ * (`/api/foto/[id]/[size]`, Phase 4); and letting a visitor INSERT into
+ * `contact_messages` — which deliberately has no insert policy at all —
+ * gated by a passed Turnstile check (Phase 5).
  *
  * Throws loudly if the key is missing rather than silently falling back to
  * the anon client — a route that's supposed to bypass RLS must never
