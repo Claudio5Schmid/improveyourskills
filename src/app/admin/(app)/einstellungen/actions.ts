@@ -16,6 +16,7 @@ interface Settings {
   contact_email: string | null;
   venue_name: string | null;
   venue_address: string | null;
+  ueber_ansatz_visible: boolean;
 }
 
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
@@ -53,6 +54,7 @@ export async function saveSettings(input: Settings): Promise<Result> {
       contact_email: email,
       venue_name: input.venue_name?.trim() || null,
       venue_address: input.venue_address?.trim() || null,
+      ueber_ansatz_visible: input.ueber_ansatz_visible,
       updated_by: userId,
     })
     .eq("id", true);

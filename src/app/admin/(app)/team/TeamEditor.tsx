@@ -248,7 +248,6 @@ function TeamRow({ member, language, dirty, pending, onPatch, onSave, onDelete }
   };
 
   const roleField = `role_${language}` as const;
-  const extraField = `extra_${language}` as const;
 
   return (
     <div
@@ -297,19 +296,6 @@ function TeamRow({ member, language, dirty, pending, onPatch, onSave, onDelete }
           {language !== "de" && !(member[roleField] ?? "").trim() ? (
             <p className="a-field-help">Leer — fällt auf Deutsch zurück.</p>
           ) : null}
-        </div>
-
-        <div className="a-field">
-          <label className="a-field-label">
-            Zusatz <span style={{ color: "var(--color-text-muted)", fontWeight: 400 }}>· {language.toUpperCase()}</span>
-          </label>
-          <textarea
-            className="a-textarea"
-            value={member[extraField] ?? ""}
-            onChange={(e) => onPatch({ [extraField]: e.target.value || null } as Partial<TeamMemberRow>)}
-            rows={2}
-            maxLength={200}
-          />
         </div>
 
         <div className="a-row-actions">

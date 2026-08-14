@@ -11,6 +11,7 @@ export interface SiteSettings {
   contact_email: string | null;
   venue_name: string | null;
   venue_address: string | null;
+  ueber_ansatz_visible: boolean;
 }
 
 export interface ContentBlock {

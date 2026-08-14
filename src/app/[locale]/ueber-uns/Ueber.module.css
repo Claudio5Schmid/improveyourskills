@@ -197,16 +197,6 @@
   font-weight: var(--font-weight-light);
   margin-bottom: var(--space-6); /* 8px */
 }
-.bio {
-  /* Phase 6: stronger than before (was font-size-xs / text-muted / light) —
-     the national-team line is a trust signal, brief asks it to read as one. */
-  font-size: var(--font-size-sm4); /* 0.85rem, was xs */
-  color: var(--color-green-dark); /* was text-muted */
-  font-weight: var(--font-weight-medium); /* was light */
-  line-height: var(--line-height-compact); /* 1.5 */
-  max-width: var(--width-team-bio-lg);
-  margin: 0 auto;
-}
 .teamCard:nth-child(1) .photo img {
   object-position: center 5%;
 }

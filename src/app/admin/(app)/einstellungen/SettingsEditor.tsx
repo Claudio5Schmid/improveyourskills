@@ -12,6 +12,7 @@ export interface SettingsRow {
   contact_email: string | null;
   venue_name: string | null;
   venue_address: string | null;
+  ueber_ansatz_visible: boolean;
 }
 
 interface FormState extends Omit<SettingsRow, "price_chf"> {
@@ -46,6 +47,7 @@ export default function SettingsEditor({ initial }: { initial: SettingsRow }) {
         contact_email: values.contact_email,
         venue_name: values.venue_name,
         venue_address: values.venue_address,
+        ueber_ansatz_visible: values.ueber_ansatz_visible,
       });
       if (!result.ok) return toast.error(result.error ?? "Speichern fehlgeschlagen.");
       setDirty(false);
@@ -167,6 +169,31 @@ export default function SettingsEditor({ initial }: { initial: SettingsRow }) {
             />
           </div>
         </div>
+      </div>
+
+      <div className="a-card">
+        <div className="a-card-head">
+          <h2 className="a-card-title">Über uns — Abschnitt „Etwas zurückgeben“</h2>
+          <span
+            className={`a-badge ${values.ueber_ansatz_visible ? "a-badge-open" : "a-badge-warn"}`}
+          >
+            {values.ueber_ansatz_visible ? "Sichtbar" : "Ausgeblendet"}
+          </span>
+        </div>
+
+        <label style={{ display: "inline-flex", alignItems: "center", gap: "var(--space-8)" }}>
+          <input
+            type="checkbox"
+            checked={values.ueber_ansatz_visible}
+            onChange={(e) => patch({ ueber_ansatz_visible: e.target.checked })}
+          />
+          <strong>Abschnitt anzeigen</strong>
+        </label>
+        <p className="a-field-help" style={{ marginTop: "var(--space-6)" }}>
+          Steuert den Karussell- und Textblock ganz unten auf <code>/ueber-uns</code> (Inhalte
+          unter <em>Inhalte → Über uns</em>). Solange der Schalter aus ist, wird der Abschnitt
+          nicht angezeigt — die Texte und Bilder bleiben aber erhalten.
+        </p>
       </div>
 
       <div className="a-card">

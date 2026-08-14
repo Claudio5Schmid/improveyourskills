@@ -10,6 +10,7 @@ const FALLBACK: SettingsRow = {
   contact_email: null,
   venue_name: null,
   venue_address: null,
+  ueber_ansatz_visible: false,
 };
 
 export default async function EinstellungenPage() {

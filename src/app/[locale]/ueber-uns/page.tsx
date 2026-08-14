@@ -9,6 +9,7 @@ import {
   getImageMap,
   getStats,
   getTestimonials,
+  getSettings,
   type LocalizedImage,
 } from "@/content/content";
 import type { Locale } from "@/i18n/routing";
@@ -62,12 +63,13 @@ export default async function UeberPage({ params }: { params: Promise<{ locale: 
   const tm = await getTranslations("ueber.team");
   const tz = await getTranslations("ueber.zitate");
 
-  const [team, carousel, images, stats, testimonials] = await Promise.all([
+  const [team, carousel, images, stats, testimonials, settings] = await Promise.all([
     getTeam(loc),
     getCarousel(loc),
     getImageMap(loc),
     getStats(loc),
     getTestimonials(loc),
+    getSettings(),
   ]);
 
   const teamList = team.length > 0 ? team : FALLBACK_TEAM;
@@ -93,65 +95,7 @@ export default async function UeberPage({ params }: { params: Promise<{ locale: 
           </div>
         </section>
 
-        <StatsBand stats={stats} />
-
-        {/* Etwas zurückgeben */}
-        <section className="section section-cream">
-          <div className="container">
-            <div className={`${styles.grid} ${styles.gridReverse}`}>
-              <FadeIn>
-                <AboutCarousel slides={carouselSlides} />
-              </FadeIn>
-
-              <FadeIn className={styles.text}>
-                <div className="section-label">{a("label")}</div>
-                <h2
-                  className="section-title"
-                  style={{ fontSize: "var(--font-size-5xl)", marginBottom: "var(--space-15)" }}
-                >
-                  {a("title")}
-                </h2>
-                <p className={styles.lead}>{a("lead")}</p>
-                <p>{a("p")}</p>
-                <div className={styles.features}>
-                  {FEATURES.map((f) => {
-                    const featureImage = images[f.imageKey]?.src;
-                    return (
-                      <div key={f.title} className={styles.featureItem}>
-                        <div className={styles.featureIcon}>
-                          {featureImage ? (
-                            // eslint-disable-next-line @next/next/no-img-element
-                            <img src={featureImage} alt="" className={styles.featureImg} />
-                          ) : (
-                            f.icon
-                          )}
-                        </div>
-                        <div>
-                          <strong>{a(f.title)}</strong>
-                          <span>{a(f.text)}</span>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-                <Link
-                  href="/anmeldung"
-                  className="btn-primary"
-                  style={{
-                    display: "inline-block",
-                    marginTop: "var(--space-17)",
-                    background: "var(--color-green-dark)",
-                    color: "var(--color-cream)",
-                  }}
-                >
-                  {a("cta")}
-                </Link>
-              </FadeIn>
-            </div>
-          </div>
-        </section>
-
-        {/* Team */}
+        {/* Team — directly after the header, no intro text (Block B, Aug 2026) */}
         <section className="section">
           <div className="container">
             <div className="section-label">{tm("label")}</div>
@@ -167,12 +111,72 @@ export default async function UeberPage({ params }: { params: Promise<{ locale: 
                   </div>
                   <div className={styles.name}>{member.name}</div>
                   <div className={styles.role}>{member.role}</div>
-                  <div className={styles.bio}>{member.bio}</div>
                 </FadeIn>
               ))}
             </div>
           </div>
         </section>
+
+        <StatsBand stats={stats} />
+
+        {/* Etwas zurückgeben — hidden by default (site_settings.ueber_ansatz_visible),
+            re-enable in Admin → Einstellungen once the content is ready. */}
+        {settings?.ueber_ansatz_visible && (
+          <section className="section section-cream">
+            <div className="container">
+              <div className={`${styles.grid} ${styles.gridReverse}`}>
+                <FadeIn>
+                  <AboutCarousel slides={carouselSlides} />
+                </FadeIn>
+
+                <FadeIn className={styles.text}>
+                  <div className="section-label">{a("label")}</div>
+                  <h2
+                    className="section-title"
+                    style={{ fontSize: "var(--font-size-5xl)", marginBottom: "var(--space-15)" }}
+                  >
+                    {a("title")}
+                  </h2>
+                  <p className={styles.lead}>{a("lead")}</p>
+                  <p>{a("p")}</p>
+                  <div className={styles.features}>
+                    {FEATURES.map((f) => {
+                      const featureImage = images[f.imageKey]?.src;
+                      return (
+                        <div key={f.title} className={styles.featureItem}>
+                          <div className={styles.featureIcon}>
+                            {featureImage ? (
+                              // eslint-disable-next-line @next/next/no-img-element
+                              <img src={featureImage} alt="" className={styles.featureImg} />
+                            ) : (
+                              f.icon
+                            )}
+                          </div>
+                          <div>
+                            <strong>{a(f.title)}</strong>
+                            <span>{a(f.text)}</span>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                  <Link
+                    href="/anmeldung"
+                    className="btn-primary"
+                    style={{
+                      display: "inline-block",
+                      marginTop: "var(--space-17)",
+                      background: "var(--color-green-dark)",
+                      color: "var(--color-cream)",
+                    }}
+                  >
+                    {a("cta")}
+                  </Link>
+                </FadeIn>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Banner — optional, skips entirely if empty (docs/PLATZHALTER.md B10) */}
         {bannerImage && (
