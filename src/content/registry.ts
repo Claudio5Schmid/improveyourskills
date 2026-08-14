@@ -166,26 +166,9 @@ export const CONTENT_REGISTRY = [
   {
     key: "home.wwm.p1",
     kind: "longtext",
-    label: "Absatz 1",
-    help: "Fett mit <b>…</b> möglich.",
-    maxLength: 400,
-    page: "home",
-    section: "Was wir anbieten",
-  },
-  {
-    key: "home.wwm.p2",
-    kind: "longtext",
-    label: "Absatz 2",
-    maxLength: 400,
-    page: "home",
-    section: "Was wir anbieten",
-  },
-  {
-    key: "home.wwm.p3",
-    kind: "longtext",
-    label: "Absatz 3",
-    help: "Fett mit <b>…</b> möglich.",
-    maxLength: 400,
+    label: "Text",
+    help: "Fett mit <b>…</b> möglich. Kurz halten — die Startseite lebt von Bildern, nicht von Fliesstext.",
+    maxLength: 240,
     page: "home",
     section: "Was wir anbieten",
   },
@@ -220,6 +203,61 @@ export const CONTENT_REGISTRY = [
     label: "Bild",
     page: "home",
     section: "Was wir anbieten",
+  },
+
+  // ─── Home · Eindrücke (horizontale Bilderreihe) ────────────────────────────
+  // NEW (Aug 2026 UI-Pass) — the whole section is skipped on the public page
+  // until at least one of the 6 images below is filled in (same pattern as
+  // the Über-uns banner, B10 in docs/PLATZHALTER.md).
+  {
+    key: "home.gallery.title",
+    kind: "text",
+    label: "Titel",
+    maxLength: 60,
+    page: "home",
+    section: "Eindrücke",
+  },
+  {
+    key: "home.gallery.image1",
+    kind: "image",
+    label: "Bild 1",
+    page: "home",
+    section: "Eindrücke",
+  },
+  {
+    key: "home.gallery.image2",
+    kind: "image",
+    label: "Bild 2",
+    page: "home",
+    section: "Eindrücke",
+  },
+  {
+    key: "home.gallery.image3",
+    kind: "image",
+    label: "Bild 3",
+    page: "home",
+    section: "Eindrücke",
+  },
+  {
+    key: "home.gallery.image4",
+    kind: "image",
+    label: "Bild 4",
+    page: "home",
+    section: "Eindrücke",
+  },
+  {
+    key: "home.gallery.image5",
+    kind: "image",
+    label: "Bild 5",
+    page: "home",
+    section: "Eindrücke",
+  },
+  {
+    key: "home.gallery.image6",
+    kind: "image",
+    label: "Bild 6",
+    page: "home",
+    section: "Eindrücke",
   },
 
   // ─── Home · Abschluss-Banner ────────────────────────────────────────────────

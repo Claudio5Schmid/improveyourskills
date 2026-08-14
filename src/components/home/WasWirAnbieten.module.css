@@ -15,13 +15,9 @@
 
 .text .lead {
   font-size: var(--font-size-xl); /* 1.15rem */
+  color: var(--color-text-muted);
   line-height: var(--line-height-loose); /* 1.75 */
   margin-bottom: var(--space-13); /* 20px */
-}
-.text p {
-  color: var(--color-text-muted);
-  margin-bottom: var(--space-11); /* 16px */
-  line-height: var(--line-height-loose);
 }
 
 .badges {

@@ -4,6 +4,7 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Hero from "@/components/home/Hero";
 import WasWirAnbieten from "@/components/home/WasWirAnbieten";
+import Eindruecke from "@/components/home/Eindruecke";
 import CtaBanner from "@/components/home/CtaBanner";
 
 export default function Home({ params }: { params: Promise<{ locale: string }> }) {
@@ -16,6 +17,7 @@ export default function Home({ params }: { params: Promise<{ locale: string }> }
       <main>
         <Hero />
         <WasWirAnbieten />
+        <Eindruecke />
         <CtaBanner />
       </main>
       <Footer />

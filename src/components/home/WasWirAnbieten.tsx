@@ -25,8 +25,6 @@ export default async function WasWirAnbieten() {
               {t("title")}
             </h2>
             <p className="lead">{t.rich("p1", bold)}</p>
-            <p>{t("p2")}</p>
-            <p>{t.rich("p3", bold)}</p>
             <div className={styles.badges}>
               <span className="badge">{t("badge1")}</span>
               <span className="badge">{t("badge2")}</span>
