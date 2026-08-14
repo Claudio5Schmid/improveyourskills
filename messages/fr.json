@@ -30,6 +30,12 @@
       "ctaPrimary": "Jetzt anmelden",
       "ctaSecondary": "Mehr erfahren ↓"
     },
+    "facts": {
+      "title": "Alles auf einen Blick",
+      "lead": "Die wichtigsten Eckdaten zum Training – kurz und knapp.",
+      "statusOpen": "Datum noch offen",
+      "statusSoon": "Infos folgen"
+    },
     "wwm": {
       "label": "Was wir anbieten",
       "title": "Unihockey Skill Training in Uster",

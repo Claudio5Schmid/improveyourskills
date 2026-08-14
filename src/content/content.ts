@@ -69,6 +69,21 @@ export interface TestimonialRow {
   author_role_fr: string | null;
 }
 
+export type HomeFactStatus = "set" | "open" | "soon";
+
+export interface HomeFactRow {
+  id: string;
+  sort_order: number;
+  icon: string;
+  label_de: string;
+  label_en: string | null;
+  label_fr: string | null;
+  status: HomeFactStatus;
+  value_de: string | null;
+  value_en: string | null;
+  value_fr: string | null;
+}
+
 interface SiteContent {
   blocks: ContentBlock[];
   settings: SiteSettings | null;
@@ -76,6 +91,7 @@ interface SiteContent {
   carousel: CarouselImage[];
   stats: StatRow[];
   testimonials: TestimonialRow[];
+  homeFacts: HomeFactRow[];
 }
 
 const EMPTY: SiteContent = {
@@ -85,6 +101,7 @@ const EMPTY: SiteContent = {
   carousel: [],
   stats: [],
   testimonials: [],
+  homeFacts: [],
 };
 
 /**
@@ -97,7 +114,7 @@ async function fetchSiteContent(): Promise<SiteContent> {
   if (!hasSupabaseEnv()) return EMPTY;
   try {
     const sb = createPublicClient();
-    const [blocks, settings, team, carousel, stats, testimonials] = await Promise.all([
+    const [blocks, settings, team, carousel, stats, testimonials, homeFacts] = await Promise.all([
       sb
         .from("content_blocks")
         .select(
@@ -121,6 +138,12 @@ async function fetchSiteContent(): Promise<SiteContent> {
           "id,sort_order,quote_de,quote_en,quote_fr,author_name,author_role_de,author_role_en,author_role_fr"
         )
         .order("sort_order"),
+      sb
+        .from("home_facts")
+        .select(
+          "id,sort_order,icon,label_de,label_en,label_fr,status,value_de,value_en,value_fr"
+        )
+        .order("sort_order"),
     ]);
     return {
       blocks: (blocks.data as ContentBlock[] | null) ?? [],
@@ -129,6 +152,7 @@ async function fetchSiteContent(): Promise<SiteContent> {
       carousel: (carousel.data as CarouselImage[] | null) ?? [],
       stats: (stats.data as StatRow[] | null) ?? [],
       testimonials: (testimonials.data as TestimonialRow[] | null) ?? [],
+      homeFacts: (homeFacts.data as HomeFactRow[] | null) ?? [],
     };
   } catch {
     return EMPTY;
@@ -266,6 +290,25 @@ export async function getTestimonials(locale: Locale): Promise<LocalizedTestimon
       authorRole: t[roleCol] ?? t.author_role_de ?? "",
     }))
     .filter((t) => t.quote.trim() !== "");
+}
+
+export interface LocalizedHomeFact {
+  icon: string;
+  label: string;
+  status: HomeFactStatus;
+  value: string;
+}
+
+export async function getHomeFacts(locale: Locale): Promise<LocalizedHomeFact[]> {
+  const { homeFacts } = await getSiteContent();
+  const labelCol = `label_${locale}` as "label_de" | "label_en" | "label_fr";
+  const valueCol = `value_${locale}` as "value_de" | "value_en" | "value_fr";
+  return homeFacts.map((f) => ({
+    icon: f.icon,
+    label: f[labelCol] ?? f.label_de,
+    status: f.status,
+    value: f[valueCol] ?? f.value_de ?? "",
+  }));
 }
 
 // formatPrice / formatCourseDate are re-exported from ./format at the top of

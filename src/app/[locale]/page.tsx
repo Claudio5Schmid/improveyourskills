@@ -3,6 +3,7 @@ import { use } from "react";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Hero from "@/components/home/Hero";
+import Eckdaten from "@/components/home/Eckdaten";
 import WasWirAnbieten from "@/components/home/WasWirAnbieten";
 import Eindruecke from "@/components/home/Eindruecke";
 import CtaBanner from "@/components/home/CtaBanner";
@@ -16,6 +17,7 @@ export default function Home({ params }: { params: Promise<{ locale: string }> }
       <Nav variant="hero" />
       <main>
         <Hero />
+        <Eckdaten />
         <WasWirAnbieten />
         <Eindruecke />
         <CtaBanner />

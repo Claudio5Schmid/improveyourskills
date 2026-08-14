@@ -146,6 +146,48 @@ export const CONTENT_REGISTRY = [
     section: "Hero",
   },
 
+  // ─── Home · Eckdaten ────────────────────────────────────────────────────────
+  // NEW (Aug 2026 UI-Pass, Block E). The facts themselves (icon/label/value/
+  // status/order) live in their own table (home_facts, admin at
+  // /admin/eckdaten) — same split as team_members vs. content_blocks. Only the
+  // section's own title/lead and the two shared status hints are registered
+  // here.
+  {
+    key: "home.facts.title",
+    kind: "text",
+    label: "Titel",
+    maxLength: 60,
+    page: "home",
+    section: "Eckdaten",
+  },
+  {
+    key: "home.facts.lead",
+    kind: "longtext",
+    label: "Beschreibung",
+    help: "Maximal 1-2 Sätze.",
+    maxLength: 200,
+    page: "home",
+    section: "Eckdaten",
+  },
+  {
+    key: "home.facts.statusOpen",
+    kind: "text",
+    label: "Hinweistext — Status «Datum noch offen»",
+    help: "Wird bei jedem Eckdatum mit diesem Status statt eines Werts angezeigt.",
+    maxLength: 60,
+    page: "home",
+    section: "Eckdaten",
+  },
+  {
+    key: "home.facts.statusSoon",
+    kind: "text",
+    label: "Hinweistext — Status «Kommt bald»",
+    help: "Wird bei jedem Eckdatum mit diesem Status statt eines Werts angezeigt.",
+    maxLength: 60,
+    page: "home",
+    section: "Eckdaten",
+  },
+
   // ─── Home · Was wir anbieten ────────────────────────────────────────────────
   {
     key: "home.wwm.label",
