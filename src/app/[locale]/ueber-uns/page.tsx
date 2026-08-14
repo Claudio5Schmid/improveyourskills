@@ -2,6 +2,7 @@ import { getTranslations, getLocale, setRequestLocale } from "next-intl/server";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
+import PositionedImage from "@/components/PositionedImage";
 import { Link } from "@/i18n/navigation";
 import {
   getTeam,
@@ -32,25 +33,37 @@ const FALLBACK_TEAM = [
     role: "Organisator & Trainer",
     bio: "Nationalspieler · SVWE (Rekordmeister Schweizer Unihockey)",
     photo: "/Bilder/5_claudio_schmid.png",
+    focalX: 50,
+    focalY: 50,
+    zoom: 1,
   },
   {
     name: "Pascal Schmuki",
     role: "Organisator & Trainer",
     bio: "Nationalspieler · Storvreta IBK (Schweden, bester Verein der Welt)",
     photo: "/Bilder/17_pascal_schmuki.jpg.avif",
+    focalX: 50,
+    focalY: 50,
+    zoom: 1,
   },
   {
     name: "Vanessa Schmuki",
     role: "Organisatorin & Trainerin",
     bio: "Nationalspielerin · Weltmeisterin · 2-fache Schweizer Meisterin · Kloten-Dietlikon Jets",
     photo: "/Bilder/20_vanessa_schmuki.jpg",
+    focalX: 50,
+    focalY: 50,
+    zoom: 1,
   },
 ];
+// focalY: 35 on the 4th slide reproduces the old hardcoded
+// ":nth-child(4) { object-position: center 35% }" for this specific fallback
+// photo — now data instead of a position-bound CSS hack.
 const FALLBACK_CAROUSEL: LocalizedImage[] = [
-  { src: "/Bilder/54984091234_0a498c59d6_o.jpg", alt: "" },
-  { src: "/Bilder/54560170314_01b6b9c809_o.jpeg", alt: "" },
-  { src: "/Bilder/54983832553_b1dfd1ce04_o.jpg", alt: "" },
-  { src: "/Bilder/1ECD3D4C-B83D-4BF2-B8C0-EE69FF124190.jpg", alt: "" },
+  { src: "/Bilder/54984091234_0a498c59d6_o.jpg", alt: "", focalX: 50, focalY: 50, zoom: 1 },
+  { src: "/Bilder/54560170314_01b6b9c809_o.jpeg", alt: "", focalX: 50, focalY: 50, zoom: 1 },
+  { src: "/Bilder/54983832553_b1dfd1ce04_o.jpg", alt: "", focalX: 50, focalY: 50, zoom: 1 },
+  { src: "/Bilder/1ECD3D4C-B83D-4BF2-B8C0-EE69FF124190.jpg", alt: "", focalX: 50, focalY: 35, zoom: 1 },
 ];
 
 export default async function UeberPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -74,18 +87,30 @@ export default async function UeberPage({ params }: { params: Promise<{ locale: 
 
   const teamList = team.length > 0 ? team : FALLBACK_TEAM;
   const slides = carousel.length > 0 ? carousel : FALLBACK_CAROUSEL;
-  const carouselSlides = slides.map((s) => ({ src: s.src as string, alt: s.alt }));
-  const headerImage = images["ueber.header.image"]?.src ?? null;
-  const bannerImage = images["ueber.banner"]?.src ?? null;
+  const carouselSlides = slides.map((s) => ({
+    src: s.src as string,
+    alt: s.alt,
+    focalX: s.focalX,
+    focalY: s.focalY,
+    zoom: s.zoom,
+  }));
+  const headerImage = images["ueber.header.image"];
+  const bannerImage = images["ueber.banner"];
 
   return (
     <>
       <Nav variant="page" />
       <main>
         <section className="page-header section-dark">
-          {headerImage && (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={headerImage} alt="" className="page-header-bg" />
+          {headerImage?.src && (
+            <PositionedImage
+              src={headerImage.src}
+              alt=""
+              focalX={headerImage.focalX}
+              focalY={headerImage.focalY}
+              zoom={headerImage.zoom}
+              className="page-header-bg"
+            />
           )}
           <div className="page-header-overlay" />
           <div className="page-header-content">
@@ -105,8 +130,13 @@ export default async function UeberPage({ params }: { params: Promise<{ locale: 
                 <FadeIn key={member.name} className={styles.teamCard}>
                   <div className={styles.photo}>
                     {member.photo && (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img src={member.photo} alt={member.name} />
+                      <PositionedImage
+                        src={member.photo}
+                        alt={member.name}
+                        focalX={member.focalX}
+                        focalY={member.focalY}
+                        zoom={member.zoom}
+                      />
                     )}
                   </div>
                   <div className={styles.name}>{member.name}</div>
@@ -141,13 +171,19 @@ export default async function UeberPage({ params }: { params: Promise<{ locale: 
                   <p>{a("p")}</p>
                   <div className={styles.features}>
                     {FEATURES.map((f) => {
-                      const featureImage = images[f.imageKey]?.src;
+                      const featureImage = images[f.imageKey];
                       return (
                         <div key={f.title} className={styles.featureItem}>
                           <div className={styles.featureIcon}>
-                            {featureImage ? (
-                              // eslint-disable-next-line @next/next/no-img-element
-                              <img src={featureImage} alt="" className={styles.featureImg} />
+                            {featureImage?.src ? (
+                              <PositionedImage
+                                src={featureImage.src}
+                                alt=""
+                                focalX={featureImage.focalX}
+                                focalY={featureImage.focalY}
+                                zoom={featureImage.zoom}
+                                className={styles.featureImg}
+                              />
                             ) : (
                               f.icon
                             )}
@@ -179,9 +215,15 @@ export default async function UeberPage({ params }: { params: Promise<{ locale: 
         )}
 
         {/* Banner — optional, skips entirely if empty (docs/PLATZHALTER.md B10) */}
-        {bannerImage && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={bannerImage} alt="" className={styles.banner} />
+        {bannerImage?.src && (
+          <PositionedImage
+            src={bannerImage.src}
+            alt=""
+            focalX={bannerImage.focalX}
+            focalY={bannerImage.focalY}
+            zoom={bannerImage.zoom}
+            className={styles.banner}
+          />
         )}
 
         {/* Zitate — skips entirely if none are visible yet (docs/PLATZHALTER.md T8) */}

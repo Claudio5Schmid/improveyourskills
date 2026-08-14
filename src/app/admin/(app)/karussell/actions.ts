@@ -15,6 +15,9 @@ interface CarouselInput {
   alt_de: string | null;
   alt_en: string | null;
   alt_fr: string | null;
+  focal_x: number;
+  focal_y: number;
+  zoom: number;
   visible: boolean;
 }
 

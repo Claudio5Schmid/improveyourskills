@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getTranslations, getLocale, setRequestLocale } from "next-intl/server";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
+import PositionedImage from "@/components/PositionedImage";
 import { getImageMap } from "@/content/content";
 import { getGalleryPhotos, galleryYears } from "@/lib/gallery/data";
 import type { Locale } from "@/i18n/routing";
@@ -32,7 +33,12 @@ export default async function ImpressionenPage({
   setRequestLocale(locale);
   const t = await getTranslations("impressionen");
   const images = await getImageMap((await getLocale()) as Locale);
-  const headerImage = images["impressionen.headerImage"]?.src ?? FALLBACK_HEADER;
+  const dbHeaderImage = images["impressionen.headerImage"];
+  // focalY: 20 approximates the old hardcoded "object-position: center top"
+  // for the static fallback (no DB row to store a focal point on).
+  const headerImage = dbHeaderImage?.src
+    ? dbHeaderImage
+    : { src: FALLBACK_HEADER, alt: "", focalX: 50, focalY: 20, zoom: 1 };
 
   const photos = await getGalleryPhotos();
   const years = galleryYears(photos);
@@ -50,12 +56,13 @@ export default async function ImpressionenPage({
       <Nav variant="page" />
       <main>
         <section className="page-header section-dark">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={headerImage}
+          <PositionedImage
+            src={headerImage.src ?? FALLBACK_HEADER}
             alt=""
+            focalX={headerImage.focalX}
+            focalY={headerImage.focalY}
+            zoom={headerImage.zoom}
             className="page-header-bg"
-            style={{ objectPosition: "center top" }}
           />
           <div className="page-header-overlay" />
           <div className="page-header-content">

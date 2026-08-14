@@ -20,6 +20,7 @@ import {
 import { CSS } from "@dnd-kit/utilities";
 import ImageField from "@/components/admin/ImageField";
 import ConfirmDialog from "@/components/admin/ConfirmDialog";
+import type { FocalPoint } from "@/components/admin/FocalPointEditor";
 import { useToast, useUnsavedWarning } from "@/lib/admin/toast";
 import { deleteTeamMember, reorderTeam, saveTeamMember } from "./actions";
 
@@ -34,6 +35,9 @@ export interface TeamMemberRow {
   extra_en: string | null;
   extra_fr: string | null;
   photo_path: string | null;
+  focal_x: number;
+  focal_y: number;
+  zoom: number;
   visible: boolean;
 }
 
@@ -77,6 +81,9 @@ export default function TeamEditor({ initialMembers }: { initialMembers: TeamMem
       extra_en: row.extra_en,
       extra_fr: row.extra_fr,
       photo_path: row.photo_path,
+      focal_x: row.focal_x,
+      focal_y: row.focal_y,
+      zoom: row.zoom,
       visible: row.visible,
     });
     setPendingIds((current) => {
@@ -147,6 +154,9 @@ export default function TeamEditor({ initialMembers }: { initialMembers: TeamMem
         extra_en: null,
         extra_fr: null,
         photo_path: null,
+        focal_x: 50,
+        focal_y: 50,
+        zoom: 1,
         visible: true,
       },
     ]);
@@ -281,6 +291,11 @@ function TeamRow({ member, language, dirty, pending, onPatch, onSave, onDelete }
           label="Foto"
           value={member.photo_path}
           onChange={(next) => onPatch({ photo_path: next })}
+          focal={{ focalX: member.focal_x, focalY: member.focal_y, zoom: member.zoom }}
+          onFocalChange={(next: FocalPoint) =>
+            onPatch({ focal_x: next.focalX, focal_y: next.focalY, zoom: next.zoom })
+          }
+          aspectRatio="1 / 1"
         />
 
         <div className="a-field">

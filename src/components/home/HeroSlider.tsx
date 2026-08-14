@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import PositionedImage from "@/components/PositionedImage";
+import type { LocalizedImage } from "@/content/content";
 import styles from "./Hero.module.css";
 
 /**
@@ -8,7 +10,7 @@ import styles from "./Hero.module.css";
  * inline script). Images are decorative (alt=""); auto-advance is skipped under
  * prefers-reduced-motion and when there is only one image.
  */
-export default function HeroSlider({ slides }: { slides: string[] }) {
+export default function HeroSlider({ slides }: { slides: LocalizedImage[] }) {
   const [active, setActive] = useState(0);
 
   useEffect(() => {
@@ -22,10 +24,15 @@ export default function HeroSlider({ slides }: { slides: string[] }) {
 
   return (
     <div className={styles.slider}>
-      {slides.map((src, i) => (
-        <div key={src} className={`${styles.slide}${i === active ? ` ${styles.active}` : ""}`}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={src} alt="" />
+      {slides.map((slide, i) => (
+        <div key={slide.src} className={`${styles.slide}${i === active ? ` ${styles.active}` : ""}`}>
+          <PositionedImage
+            src={slide.src ?? ""}
+            alt=""
+            focalX={slide.focalX}
+            focalY={slide.focalY}
+            zoom={slide.zoom}
+          />
         </div>
       ))}
     </div>

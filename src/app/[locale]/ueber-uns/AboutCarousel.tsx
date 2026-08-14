@@ -2,7 +2,16 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
+import PositionedImage from "@/components/PositionedImage";
 import styles from "./Ueber.module.css";
+
+export interface CarouselSlide {
+  src: string;
+  alt: string;
+  focalX?: number;
+  focalY?: number;
+  zoom?: number;
+}
 
 /**
  * Über-uns image carousel. Behaviour ported from the old inline script:
@@ -12,7 +21,7 @@ import styles from "./Ueber.module.css";
  */
 const AUTOPLAY_MS = 6000;
 
-export default function AboutCarousel({ slides }: { slides: { src: string; alt: string }[] }) {
+export default function AboutCarousel({ slides }: { slides: CarouselSlide[] }) {
   const t = useTranslations("ueber.carousel");
   const [current, setCurrent] = useState(0);
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -49,8 +58,13 @@ export default function AboutCarousel({ slides }: { slides: { src: string; alt: 
             key={slide.src}
             className={`${styles.slide}${i === current ? ` ${styles.active}` : ""}`}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={slide.src} alt={slide.alt} />
+            <PositionedImage
+              src={slide.src}
+              alt={slide.alt}
+              focalX={slide.focalX}
+              focalY={slide.focalY}
+              zoom={slide.zoom}
+            />
           </div>
         ))}
       </div>

@@ -32,6 +32,9 @@ export interface ContentField {
   readonly page: PageId;
   /** German section grouping within the page. */
   readonly section: string;
+  /** Image fields only — CSS aspect-ratio of the target usage, so the
+      focal-point picker (Block F) previews the actual crop shape. */
+  readonly aspectRatio?: string;
 }
 
 export const CONTENT_REGISTRY = [
@@ -128,6 +131,7 @@ export const CONTENT_REGISTRY = [
     help: "Rotierendes Hintergrundbild (z. B. Vanessa).",
     page: "home",
     section: "Hero",
+    aspectRatio: "16 / 9",
   },
   {
     key: "home.hero.image2",
@@ -136,6 +140,7 @@ export const CONTENT_REGISTRY = [
     help: "Rotierendes Hintergrundbild (z. B. Pascal).",
     page: "home",
     section: "Hero",
+    aspectRatio: "16 / 9",
   },
   {
     key: "home.hero.image3",
@@ -144,6 +149,7 @@ export const CONTENT_REGISTRY = [
     help: "Rotierendes Hintergrundbild (z. B. Claudio).",
     page: "home",
     section: "Hero",
+    aspectRatio: "16 / 9",
   },
 
   // ─── Home · Eckdaten ────────────────────────────────────────────────────────
@@ -245,6 +251,7 @@ export const CONTENT_REGISTRY = [
     label: "Bild",
     page: "home",
     section: "Was wir anbieten",
+    aspectRatio: "4 / 3",
   },
 
   // ─── Home · Eindrücke (horizontale Bilderreihe) ────────────────────────────
@@ -265,6 +272,7 @@ export const CONTENT_REGISTRY = [
     label: "Bild 1",
     page: "home",
     section: "Eindrücke",
+    aspectRatio: "3 / 4",
   },
   {
     key: "home.gallery.image2",
@@ -272,6 +280,7 @@ export const CONTENT_REGISTRY = [
     label: "Bild 2",
     page: "home",
     section: "Eindrücke",
+    aspectRatio: "3 / 4",
   },
   {
     key: "home.gallery.image3",
@@ -279,6 +288,7 @@ export const CONTENT_REGISTRY = [
     label: "Bild 3",
     page: "home",
     section: "Eindrücke",
+    aspectRatio: "3 / 4",
   },
   {
     key: "home.gallery.image4",
@@ -286,6 +296,7 @@ export const CONTENT_REGISTRY = [
     label: "Bild 4",
     page: "home",
     section: "Eindrücke",
+    aspectRatio: "3 / 4",
   },
   {
     key: "home.gallery.image5",
@@ -293,6 +304,7 @@ export const CONTENT_REGISTRY = [
     label: "Bild 5",
     page: "home",
     section: "Eindrücke",
+    aspectRatio: "3 / 4",
   },
   {
     key: "home.gallery.image6",
@@ -300,6 +312,7 @@ export const CONTENT_REGISTRY = [
     label: "Bild 6",
     page: "home",
     section: "Eindrücke",
+    aspectRatio: "3 / 4",
   },
 
   // ─── Home · Abschluss-Banner ────────────────────────────────────────────────
@@ -344,6 +357,7 @@ export const CONTENT_REGISTRY = [
     help: "Optional. Ohne Bild bleibt der Kopf dunkelgrün.",
     page: "ueber",
     section: "Kopf",
+    aspectRatio: "16 / 9",
   },
 
   // ─── Über uns · Unser Ansatz ────────────────────────────────────────────────
@@ -402,6 +416,7 @@ export const CONTENT_REGISTRY = [
     help: "Optional. Ohne Bild bleibt es beim Emoji 🎯.",
     page: "ueber",
     section: "Unser Ansatz",
+    aspectRatio: "1 / 1",
   },
   {
     key: "ueber.ansatz.feature2Title",
@@ -426,6 +441,7 @@ export const CONTENT_REGISTRY = [
     help: "Optional. Ohne Bild bleibt es beim Emoji 👥.",
     page: "ueber",
     section: "Unser Ansatz",
+    aspectRatio: "1 / 1",
   },
   {
     key: "ueber.ansatz.feature3Title",
@@ -450,6 +466,7 @@ export const CONTENT_REGISTRY = [
     help: "Optional. Ohne Bild bleibt es beim Emoji 🏆.",
     page: "ueber",
     section: "Unser Ansatz",
+    aspectRatio: "1 / 1",
   },
   {
     key: "ueber.ansatz.cta",
@@ -487,6 +504,7 @@ export const CONTENT_REGISTRY = [
     help: "Optional, zwischen Team und Zitaten. Ohne Bild erscheint hier gar nichts — kein leerer Platzhalter-Balken.",
     page: "ueber",
     section: "Banner",
+    aspectRatio: "3 / 1",
   },
 
   // ─── Über uns · Zitate ──────────────────────────────────────────────────────
@@ -539,6 +557,7 @@ export const CONTENT_REGISTRY = [
     label: "Kopf-Hintergrundbild",
     page: "impressionen",
     section: "Kopf",
+    aspectRatio: "16 / 9",
   },
 
   // ─── Kontakt ────────────────────────────────────────────────────────────────

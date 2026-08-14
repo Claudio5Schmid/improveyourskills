@@ -73,6 +73,26 @@ export async function setPhotoHidden(id: string, hidden: boolean): Promise<Resul
   return { ok: true };
 }
 
+/** Repositioning an already-uploaded photo (Block F) — metadata only, the
+    three stored WebP files never change. */
+export async function setPhotoFocal(
+  id: string,
+  focal: { focalX: number; focalY: number; zoom: number }
+): Promise<Result> {
+  const { supabase } = await requireAdmin();
+  const { error } = await supabase
+    .from("gallery_photos")
+    .update({
+      focal_x: Math.min(100, Math.max(0, focal.focalX)),
+      focal_y: Math.min(100, Math.max(0, focal.focalY)),
+      zoom: Math.min(3, Math.max(1, focal.zoom)),
+    })
+    .eq("id", id);
+  if (error) return { ok: false, error: error.message };
+  refreshGalleryPhotos();
+  return { ok: true };
+}
+
 /** Deletes the DB row AND all three storage objects (brief: delete removes all three files). */
 export async function deleteGalleryPhoto(id: string): Promise<Result> {
   const { supabase } = await requireAdmin();

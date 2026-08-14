@@ -4,6 +4,7 @@ import { useId, useRef, useState } from "react";
 import { mediaUrl } from "@/lib/media/url";
 import { uploadContentImage } from "@/lib/media/upload";
 import { isSupportedImage } from "@/lib/media/resize";
+import FocalPointEditor, { DEFAULT_FOCAL, type FocalPoint } from "./FocalPointEditor";
 
 export interface ImageFieldProps {
   /** Registry key — becomes the storage folder AND identifies the value. */
@@ -15,6 +16,11 @@ export interface ImageFieldProps {
   value: string | null;
   /** Called with the new path (or null when removed). Parent owns the value. */
   onChange: (nextPath: string | null) => void;
+  /** Focal point + zoom (Block F). Omit to hide the positioning UI entirely. */
+  focal?: FocalPoint;
+  onFocalChange?: (next: FocalPoint) => void;
+  /** CSS aspect-ratio of the target usage, for the positioning preview. */
+  aspectRatio?: string;
 }
 
 /**
@@ -115,6 +121,15 @@ export default function ImageField(props: ImageFieldProps) {
         <p role="alert" className="a-error" style={{ marginTop: "var(--space-8)" }}>
           {error}
         </p>
+      ) : null}
+
+      {props.value && props.onFocalChange ? (
+        <FocalPointEditor
+          src={previewUrl ?? ""}
+          aspectRatio={props.aspectRatio}
+          value={props.focal ?? DEFAULT_FOCAL}
+          onChange={props.onFocalChange}
+        />
       ) : null}
 
       {props.value ? (

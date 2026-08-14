@@ -3,6 +3,7 @@
 import { useMemo, useState, useTransition } from "react";
 import type { ContentField, PageId } from "@/content/registry";
 import ImageField from "@/components/admin/ImageField";
+import { DEFAULT_FOCAL, type FocalPoint } from "@/components/admin/FocalPointEditor";
 import { useToast, useUnsavedWarning } from "@/lib/admin/toast";
 import { saveInhaltePage } from "./actions";
 
@@ -20,6 +21,8 @@ export interface EditorField {
   /** Image slot: current path + alts. */
   path?: string | null;
   alts?: Record<Loc, string>;
+  /** Image slot: focal point + zoom (Block F). */
+  focal?: FocalPoint;
 }
 
 interface EditorSection {
@@ -63,6 +66,11 @@ export default function InhalteEditor({ page, pageLabel, sections }: Props) {
     setDirty(true);
   };
 
+  const setFocal = (key: string, next: FocalPoint) => {
+    setValues((v) => ({ ...v, focals: { ...v.focals, [key]: next } }));
+    setDirty(true);
+  };
+
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (pending) return;
@@ -75,6 +83,10 @@ export default function InhalteEditor({ page, pageLabel, sections }: Props) {
           for (const loc of LOCALES) {
             formData.set(`${field.key}::alt_${loc.code}`, values.alts[field.key]?.[loc.code] ?? "");
           }
+          const focal = values.focals[field.key] ?? DEFAULT_FOCAL;
+          formData.set(`${field.key}::focal_x`, String(focal.focalX));
+          formData.set(`${field.key}::focal_y`, String(focal.focalY));
+          formData.set(`${field.key}::zoom`, String(focal.zoom));
         } else {
           for (const loc of LOCALES) {
             formData.set(`${field.key}::${loc.code}`, values.texts[field.key]?.[loc.code] ?? "");
@@ -138,6 +150,9 @@ export default function InhalteEditor({ page, pageLabel, sections }: Props) {
                   help={field.help}
                   value={values.paths[field.key] ?? null}
                   onChange={(next) => setPath(field.key, next)}
+                  focal={values.focals[field.key] ?? DEFAULT_FOCAL}
+                  onFocalChange={(next) => setFocal(field.key, next)}
+                  aspectRatio={field.aspectRatio}
                 />
                 <TextInput
                   label={`Alternativtext (${language.toUpperCase()})`}
@@ -236,18 +251,20 @@ function buildInitial(sections: EditorSection[]) {
   const texts: Record<string, Record<Loc, string>> = {};
   const paths: Record<string, string | null> = {};
   const alts: Record<string, Record<Loc, string>> = {};
+  const focals: Record<string, FocalPoint> = {};
 
   for (const section of sections) {
-    for (const { field, texts: t, path, alts: a } of section.fields) {
+    for (const { field, texts: t, path, alts: a, focal } of section.fields) {
       if (field.kind === "image") {
         paths[field.key] = path ?? null;
         alts[field.key] = { de: a?.de ?? "", en: a?.en ?? "", fr: a?.fr ?? "" };
+        focals[field.key] = focal ?? DEFAULT_FOCAL;
       } else {
         texts[field.key] = { de: t?.de ?? "", en: t?.en ?? "", fr: t?.fr ?? "" };
       }
     }
   }
-  return { texts, paths, alts };
+  return { texts, paths, alts, focals };
 }
 
 function isSetInAny(record: Record<Loc, string> | undefined): boolean {

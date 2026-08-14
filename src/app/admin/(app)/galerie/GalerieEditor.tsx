@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   DndContext,
   PointerSensor,
@@ -19,8 +19,16 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import ConfirmDialog from "@/components/admin/ConfirmDialog";
+import PositionedImage from "@/components/PositionedImage";
+import FocalPointEditor, { DEFAULT_FOCAL, type FocalPoint } from "@/components/admin/FocalPointEditor";
 import { useToast } from "@/lib/admin/toast";
-import { deleteGalleryPhoto, reorderGalleryYear, setPhotoHidden, type NewPhotoInput } from "./actions";
+import {
+  deleteGalleryPhoto,
+  reorderGalleryYear,
+  setPhotoFocal,
+  setPhotoHidden,
+  type NewPhotoInput,
+} from "./actions";
 import UploadPanel from "./UploadPanel";
 
 export interface AdminPhoto {
@@ -30,6 +38,9 @@ export interface AdminPhoto {
   hidden: boolean;
   /** Signed (existing photos) or the public route (freshly uploaded this session). */
   thumbUrl: string | null;
+  focalX: number;
+  focalY: number;
+  zoom: number;
 }
 
 export default function GalerieEditor({
@@ -56,6 +67,9 @@ export default function GalerieEditor({
         // Safe: a fresh row defaults to hidden = false, so the public route
         // already serves it — no signed URL needed for this session's uploads.
         thumbUrl: `/api/foto/${i.id}/thumb`,
+        focalX: 50,
+        focalY: 50,
+        zoom: 1,
       })),
       ...current,
     ]);
@@ -71,6 +85,31 @@ export default function GalerieEditor({
       return;
     }
     toast.success(nextHidden ? "Foto verborgen." : "Foto wieder sichtbar.");
+  };
+
+  const [positioning, setPositioning] = useState<AdminPhoto | null>(null);
+  const [positioningValue, setPositioningValue] = useState<FocalPoint>(DEFAULT_FOCAL);
+  const [savingPosition, setSavingPosition] = useState(false);
+
+  const openPositioning = (photo: AdminPhoto) => {
+    setPositioning(photo);
+    setPositioningValue({ focalX: photo.focalX, focalY: photo.focalY, zoom: photo.zoom });
+  };
+
+  const savePositioning = async () => {
+    if (!positioning) return;
+    setSavingPosition(true);
+    const result = await setPhotoFocal(positioning.id, positioningValue);
+    setSavingPosition(false);
+    if (!result.ok) {
+      toast.error(result.error ?? "Position konnte nicht gespeichert werden.");
+      return;
+    }
+    setPhotos((current) =>
+      current.map((p) => (p.id === positioning.id ? { ...p, ...positioningValue } : p))
+    );
+    toast.success("Position gespeichert.");
+    setPositioning(null);
   };
 
   const [confirmDelete, setConfirmDelete] = useState<AdminPhoto | null>(null);
@@ -122,9 +161,19 @@ export default function GalerieEditor({
             onReorder={(ids) => void reorderWithinYear(year, ids)}
             onToggleHidden={(p) => void toggleHidden(p)}
             onDelete={(p) => setConfirmDelete(p)}
+            onPosition={openPositioning}
           />
         ))
       )}
+
+      <PositionDialog
+        photo={positioning}
+        value={positioningValue}
+        onChange={setPositioningValue}
+        onCancel={() => setPositioning(null)}
+        onSave={() => void savePositioning()}
+        saving={savingPosition}
+      />
 
       <ConfirmDialog
         open={!!confirmDelete}
@@ -167,12 +216,14 @@ function YearGroup({
   onReorder,
   onToggleHidden,
   onDelete,
+  onPosition,
 }: {
   year: number;
   photos: AdminPhoto[];
   onReorder: (ids: string[]) => void;
   onToggleHidden: (p: AdminPhoto) => void;
   onDelete: (p: AdminPhoto) => void;
+  onPosition: (p: AdminPhoto) => void;
 }) {
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 8 } }),
@@ -211,6 +262,7 @@ function YearGroup({
                 photo={photo}
                 onToggleHidden={() => onToggleHidden(photo)}
                 onDelete={() => onDelete(photo)}
+                onPosition={() => onPosition(photo)}
               />
             ))}
           </div>
@@ -224,10 +276,12 @@ function PhotoTile({
   photo,
   onToggleHidden,
   onDelete,
+  onPosition,
 }: {
   photo: AdminPhoto;
   onToggleHidden: () => void;
   onDelete: () => void;
+  onPosition: () => void;
 }) {
   const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({
     id: photo.id,
@@ -242,6 +296,15 @@ function PhotoTile({
     <div ref={setNodeRef} style={style} className={`a-photo-tile ${photo.hidden ? "a-photo-tile-hidden" : ""}`}>
       {photo.hidden && <span className="a-photo-tile-badge">verborgen</span>}
       <div className="a-photo-tile-actions">
+        <button
+          type="button"
+          className="a-icon-btn"
+          onClick={onPosition}
+          aria-label="Bildposition anpassen"
+          title="Bildposition anpassen"
+        >
+          ⊹
+        </button>
         <button
           type="button"
           className="a-icon-btn"
@@ -263,12 +326,77 @@ function PhotoTile({
       </div>
       <div className="a-photo-tile-grip" {...attributes} {...listeners} aria-label="Foto verschieben">
         {photo.thumbUrl ? (
-          /* eslint-disable-next-line @next/next/no-img-element */
-          <img src={photo.thumbUrl} alt="" draggable={false} />
+          <PositionedImage
+            src={photo.thumbUrl}
+            alt=""
+            focalX={photo.focalX}
+            focalY={photo.focalY}
+            zoom={photo.zoom}
+            draggable={false}
+          />
         ) : (
           <div style={{ width: "100%", height: "100%" }} />
         )}
       </div>
     </div>
+  );
+}
+
+/** Same open/close pattern as ConfirmDialog.tsx, extracted here since this
+    dialog isn't a yes/no confirmation. */
+function useDialogOpen(open: boolean, onCancel: () => void) {
+  const ref = useRef<HTMLDialogElement>(null);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (open && !el.open) el.showModal();
+    if (!open && el.open) el.close();
+  }, [open]);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const onDialogCancel = (e: Event) => {
+      e.preventDefault();
+      onCancel();
+    };
+    el.addEventListener("cancel", onDialogCancel);
+    return () => el.removeEventListener("cancel", onDialogCancel);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  return ref;
+}
+
+function PositionDialog({
+  photo,
+  value,
+  onChange,
+  onCancel,
+  onSave,
+  saving,
+}: {
+  photo: AdminPhoto | null;
+  value: FocalPoint;
+  onChange: (next: FocalPoint) => void;
+  onCancel: () => void;
+  onSave: () => void;
+  saving: boolean;
+}) {
+  const dialogRef = useDialogOpen(!!photo, onCancel);
+
+  return (
+    <dialog ref={dialogRef} className="a-dialog" onClose={onCancel}>
+      <h2>Bildposition anpassen</h2>
+      {photo?.thumbUrl && (
+        <FocalPointEditor src={photo.thumbUrl} aspectRatio="1 / 1" value={value} onChange={onChange} />
+      )}
+      <div className="a-dialog-actions">
+        <button type="button" className="a-btn" onClick={onCancel}>
+          Abbrechen
+        </button>
+        <button type="button" className="a-btn a-btn-primary" onClick={onSave} disabled={saving}>
+          {saving ? "Speichern …" : "Speichern"}
+        </button>
+      </div>
+    </dialog>
   );
 }

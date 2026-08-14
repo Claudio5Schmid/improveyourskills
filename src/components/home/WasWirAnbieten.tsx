@@ -1,6 +1,7 @@
 import { getTranslations, getLocale } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import FadeIn from "@/components/FadeIn";
+import PositionedImage from "@/components/PositionedImage";
 import { getImageMap } from "@/content/content";
 import type { Locale } from "@/i18n/routing";
 import styles from "./WasWirAnbieten.module.css";
@@ -45,8 +46,13 @@ export default async function WasWirAnbieten() {
 
           <FadeIn>
             <div className={styles.imgWrap}>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={imageSrc} alt={imageAlt} />
+              <PositionedImage
+                src={imageSrc}
+                alt={imageAlt}
+                focalX={image?.focalX}
+                focalY={image?.focalY}
+                zoom={image?.zoom}
+              />
             </div>
           </FadeIn>
         </div>

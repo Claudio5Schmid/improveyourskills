@@ -10,6 +10,9 @@ interface PhotoRow {
   sort_order: number;
   hidden: boolean;
   path_thumb: string;
+  focal_x: number;
+  focal_y: number;
+  zoom: number;
 }
 
 export default async function GaleriePage() {
@@ -18,7 +21,7 @@ export default async function GaleriePage() {
   const [{ data: photoRows }, { data: settings }] = await Promise.all([
     supabase
       .from("gallery_photos")
-      .select("id,year,sort_order,hidden,path_thumb")
+      .select("id,year,sort_order,hidden,path_thumb,focal_x,focal_y,zoom")
       .order("year", { ascending: false })
       .order("sort_order", { ascending: true }),
     supabase.from("site_settings").select("current_edition_year").maybeSingle(),
@@ -43,6 +46,9 @@ export default async function GaleriePage() {
     sortOrder: r.sort_order,
     hidden: r.hidden,
     thumbUrl: urlByPath.get(r.path_thumb) ?? null,
+    focalX: r.focal_x,
+    focalY: r.focal_y,
+    zoom: r.zoom,
   }));
 
   const currentEditionYear = settings?.current_edition_year ?? new Date().getFullYear();

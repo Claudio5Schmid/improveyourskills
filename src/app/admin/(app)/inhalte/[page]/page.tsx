@@ -36,7 +36,7 @@ export default async function InhaltePagePage({
   const { data: blocks } = await supabase
     .from("content_blocks")
     .select(
-      "key,kind,value_de,value_en,value_fr,image_path,image_alt_de,image_alt_en,image_alt_fr"
+      "key,kind,value_de,value_en,value_fr,image_path,image_alt_de,image_alt_en,image_alt_fr,focal_x,focal_y,zoom"
     )
     .in("key", keys);
 
@@ -55,6 +55,11 @@ export default async function InhaltePagePage({
               de: block?.image_alt_de ?? "",
               en: block?.image_alt_en ?? "",
               fr: block?.image_alt_fr ?? "",
+            },
+            focal: {
+              focalX: block?.focal_x ?? 50,
+              focalY: block?.focal_y ?? 50,
+              zoom: block?.zoom ?? 1,
             },
           }
         : {

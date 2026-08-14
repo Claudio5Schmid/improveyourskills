@@ -31,6 +31,9 @@ type FieldRow = {
   image_alt_de?: string | null;
   image_alt_en?: string | null;
   image_alt_fr?: string | null;
+  focal_x?: number;
+  focal_y?: number;
+  zoom?: number;
 };
 
 /**
@@ -64,6 +67,9 @@ export async function saveInhaltePage(
       row.image_alt_de = normaliseString(formData.get(`${field.key}::alt_de`));
       row.image_alt_en = normaliseString(formData.get(`${field.key}::alt_en`));
       row.image_alt_fr = normaliseString(formData.get(`${field.key}::alt_fr`));
+      row.focal_x = clampFocal(formData.get(`${field.key}::focal_x`), 50);
+      row.focal_y = clampFocal(formData.get(`${field.key}::focal_y`), 50);
+      row.zoom = clampZoom(formData.get(`${field.key}::zoom`));
     } else {
       for (const loc of LOCALES) {
         const raw = formData.get(`${field.key}::${loc}`);
@@ -121,6 +127,16 @@ function normaliseString(raw: FormDataEntryValue | null): string | null {
   if (raw === null) return null;
   const trimmed = String(raw).trim();
   return trimmed === "" ? null : trimmed;
+}
+
+function clampFocal(raw: FormDataEntryValue | null, fallback: number): number {
+  const n = Number(raw);
+  return Number.isFinite(n) ? Math.min(100, Math.max(0, n)) : fallback;
+}
+
+function clampZoom(raw: FormDataEntryValue | null): number {
+  const n = Number(raw);
+  return Number.isFinite(n) ? Math.min(3, Math.max(1, n)) : 1;
 }
 
 function normalisePath(raw: FormDataEntryValue | null): string | null {

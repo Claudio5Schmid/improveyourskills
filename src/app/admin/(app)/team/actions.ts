@@ -19,6 +19,9 @@ interface TeamInput {
   extra_en: string | null;
   extra_fr: string | null;
   photo_path: string | null;
+  focal_x: number;
+  focal_y: number;
+  zoom: number;
   visible: boolean;
 }
 

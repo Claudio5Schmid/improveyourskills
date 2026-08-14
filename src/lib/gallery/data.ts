@@ -9,6 +9,9 @@ export interface GalleryPhoto {
   thumb: { width: number | null; height: number | null };
   medium: { width: number | null; height: number | null };
   large: { width: number | null; height: number | null };
+  focalX: number;
+  focalY: number;
+  zoom: number;
 }
 
 interface PhotoRow {
@@ -22,6 +25,9 @@ interface PhotoRow {
   height_medium: number | null;
   width_large: number | null;
   height_large: number | null;
+  focal_x: number;
+  focal_y: number;
+  zoom: number;
 }
 
 /**
@@ -40,7 +46,7 @@ async function fetchGalleryPhotos(): Promise<GalleryPhoto[]> {
     const { data } = await sb
       .from("gallery_photos")
       .select(
-        "id,year,sort_order,blur_data_url,width_thumb,height_thumb,width_medium,height_medium,width_large,height_large"
+        "id,year,sort_order,blur_data_url,width_thumb,height_thumb,width_medium,height_medium,width_large,height_large,focal_x,focal_y,zoom"
       )
       .order("year", { ascending: false })
       .order("sort_order", { ascending: true });
@@ -53,6 +59,9 @@ async function fetchGalleryPhotos(): Promise<GalleryPhoto[]> {
       thumb: { width: row.width_thumb, height: row.height_thumb },
       medium: { width: row.width_medium, height: row.height_medium },
       large: { width: row.width_large, height: row.height_large },
+      focalX: row.focal_x,
+      focalY: row.focal_y,
+      zoom: row.zoom,
     }));
   } catch {
     return [];

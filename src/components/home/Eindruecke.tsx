@@ -1,4 +1,5 @@
 import { getTranslations, getLocale } from "next-intl/server";
+import PositionedImage from "@/components/PositionedImage";
 import { getImageMap, type LocalizedImage } from "@/content/content";
 import type { Locale } from "@/i18n/routing";
 import styles from "./Eindruecke.module.css";
@@ -34,8 +35,14 @@ export default async function Eindruecke() {
       <div className={styles.scrollRow}>
         {photos.map((photo, i) => (
           <div key={i} className={styles.item}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={photo.src ?? undefined} alt={photo.alt} loading={i === 0 ? undefined : "lazy"} />
+            <PositionedImage
+              src={photo.src ?? ""}
+              alt={photo.alt}
+              focalX={photo.focalX}
+              focalY={photo.focalY}
+              zoom={photo.zoom}
+              loading={i === 0 ? undefined : "lazy"}
+            />
           </div>
         ))}
       </div>

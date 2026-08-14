@@ -24,6 +24,9 @@ export interface ContentBlock {
   image_alt_de: string | null;
   image_alt_en: string | null;
   image_alt_fr: string | null;
+  focal_x: number;
+  focal_y: number;
+  zoom: number;
 }
 
 export interface TeamMember {
@@ -37,6 +40,9 @@ export interface TeamMember {
   extra_en: string | null;
   extra_fr: string | null;
   photo_path: string | null;
+  focal_x: number;
+  focal_y: number;
+  zoom: number;
 }
 
 export interface CarouselImage {
@@ -46,6 +52,9 @@ export interface CarouselImage {
   alt_de: string | null;
   alt_en: string | null;
   alt_fr: string | null;
+  focal_x: number;
+  focal_y: number;
+  zoom: number;
 }
 
 export interface StatRow {
@@ -118,16 +127,18 @@ async function fetchSiteContent(): Promise<SiteContent> {
       sb
         .from("content_blocks")
         .select(
-          "key,kind,value_de,value_en,value_fr,image_path,image_alt_de,image_alt_en,image_alt_fr"
+          "key,kind,value_de,value_en,value_fr,image_path,image_alt_de,image_alt_en,image_alt_fr,focal_x,focal_y,zoom"
         ),
       sb.from("site_settings").select("*").limit(1).maybeSingle(),
       sb
         .from("team_members")
-        .select("id,sort_order,name,role_de,role_en,role_fr,extra_de,extra_en,extra_fr,photo_path")
+        .select(
+          "id,sort_order,name,role_de,role_en,role_fr,extra_de,extra_en,extra_fr,photo_path,focal_x,focal_y,zoom"
+        )
         .order("sort_order"),
       sb
         .from("carousel_images")
-        .select("id,sort_order,image_path,alt_de,alt_en,alt_fr")
+        .select("id,sort_order,image_path,alt_de,alt_en,alt_fr,focal_x,focal_y,zoom")
         .order("sort_order"),
       // RLS already restricts anon reads to visible=true (same pattern as
       // gallery_photos) — no client-side filter needed here.
@@ -214,6 +225,9 @@ export async function getDbContentMessages(locale: Locale): Promise<Record<strin
 export interface LocalizedImage {
   src: string | null;
   alt: string;
+  focalX: number;
+  focalY: number;
+  zoom: number;
 }
 
 /** Map of image content_blocks by key, with the localised alt text. */
@@ -226,6 +240,9 @@ export async function getImageMap(locale: Locale): Promise<Record<string, Locali
     map[block.key] = {
       src: mediaUrl(block.image_path),
       alt: block[altColumn] ?? block.image_alt_de ?? "",
+      focalX: block.focal_x,
+      focalY: block.focal_y,
+      zoom: block.zoom,
     };
   }
   return map;
@@ -236,6 +253,9 @@ export interface LocalizedTeamMember {
   role: string;
   bio: string;
   photo: string | null;
+  focalX: number;
+  focalY: number;
+  zoom: number;
 }
 
 export async function getTeam(locale: Locale): Promise<LocalizedTeamMember[]> {
@@ -246,6 +266,9 @@ export async function getTeam(locale: Locale): Promise<LocalizedTeamMember[]> {
     name: m.name,
     role: m[roleCol] ?? m.role_de ?? "",
     bio: m[extraCol] ?? m.extra_de ?? "",
+    focalX: m.focal_x,
+    focalY: m.focal_y,
+    zoom: m.zoom,
     photo: mediaUrl(m.photo_path),
   }));
 }
@@ -255,7 +278,13 @@ export async function getCarousel(locale: Locale): Promise<LocalizedImage[]> {
   const altCol = `alt_${locale}` as "alt_de" | "alt_en" | "alt_fr";
   return carousel
     .filter((c) => c.image_path)
-    .map((c) => ({ src: mediaUrl(c.image_path), alt: c[altCol] ?? c.alt_de ?? "" }));
+    .map((c) => ({
+      src: mediaUrl(c.image_path),
+      alt: c[altCol] ?? c.alt_de ?? "",
+      focalX: c.focal_x,
+      focalY: c.focal_y,
+      zoom: c.zoom,
+    }));
 }
 
 export async function getSettings(): Promise<SiteSettings | null> {

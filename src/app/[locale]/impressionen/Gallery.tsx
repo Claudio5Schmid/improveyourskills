@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import { useTranslations } from "next-intl";
+import PositionedImage from "@/components/PositionedImage";
 import Lightbox from "./Lightbox";
 import styles from "./Impressionen.module.css";
 import type { GalleryPhoto } from "@/lib/gallery/data";
@@ -89,10 +90,12 @@ export default function Gallery({
             aria-label={t("openPhoto", { n: i + 1 })}
             onClick={() => setLightboxIndex(i)}
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <PositionedImage
               src={`/api/foto/${photo.id}/thumb`}
               alt=""
+              focalX={photo.focalX}
+              focalY={photo.focalY}
+              zoom={photo.zoom}
               width={photo.thumb.width || undefined}
               height={photo.thumb.height || undefined}
               loading="lazy"

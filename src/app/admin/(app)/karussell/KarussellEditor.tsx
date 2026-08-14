@@ -20,6 +20,7 @@ import {
 import { CSS } from "@dnd-kit/utilities";
 import ImageField from "@/components/admin/ImageField";
 import ConfirmDialog from "@/components/admin/ConfirmDialog";
+import type { FocalPoint } from "@/components/admin/FocalPointEditor";
 import { useToast, useUnsavedWarning } from "@/lib/admin/toast";
 import { deleteCarouselImage, reorderCarousel, saveCarouselImage } from "./actions";
 
@@ -30,6 +31,9 @@ export interface CarouselRow {
   alt_de: string | null;
   alt_en: string | null;
   alt_fr: string | null;
+  focal_x: number;
+  focal_y: number;
+  zoom: number;
   visible: boolean;
 }
 
@@ -69,6 +73,9 @@ export default function KarussellEditor({ initialImages }: { initialImages: Caro
       alt_de: row.alt_de,
       alt_en: row.alt_en,
       alt_fr: row.alt_fr,
+      focal_x: row.focal_x,
+      focal_y: row.focal_y,
+      zoom: row.zoom,
       visible: row.visible,
     });
     setPendingIds((current) => {
@@ -133,6 +140,9 @@ export default function KarussellEditor({ initialImages }: { initialImages: Caro
         alt_de: null,
         alt_en: null,
         alt_fr: null,
+        focal_x: 50,
+        focal_y: 50,
+        zoom: 1,
         visible: true,
       },
     ]);
@@ -244,6 +254,11 @@ function CarouselRowEditor({ row, language, dirty, pending, onPatch, onSave, onD
           label="Bild"
           value={row.image_path}
           onChange={(next) => onPatch({ image_path: next })}
+          focal={{ focalX: row.focal_x, focalY: row.focal_y, zoom: row.zoom }}
+          onFocalChange={(next: FocalPoint) =>
+            onPatch({ focal_x: next.focalX, focal_y: next.focalY, zoom: next.zoom })
+          }
+          aspectRatio="4 / 3"
         />
 
         <div className="a-field">

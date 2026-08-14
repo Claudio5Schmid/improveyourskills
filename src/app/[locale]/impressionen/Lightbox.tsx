@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
+import PositionedImage from "@/components/PositionedImage";
 import styles from "./Impressionen.module.css";
 import type { GalleryPhoto } from "@/lib/gallery/data";
 
@@ -142,11 +143,13 @@ export default function Lightbox({ photos, index, onClose, onNavigate }: Lightbo
         style={{ aspectRatio, backgroundImage: photo.blurDataUrl ? `url(${photo.blurDataUrl})` : undefined }}
         onClick={(e) => e.stopPropagation()}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <PositionedImage
           key={photo.id}
           src={`/api/foto/${photo.id}/large`}
           alt=""
+          focalX={photo.focalX}
+          focalY={photo.focalY}
+          zoom={photo.zoom}
           className={styles.lightboxImg}
           draggable={false}
           onContextMenu={(e) => e.preventDefault()}
