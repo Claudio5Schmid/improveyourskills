@@ -146,7 +146,7 @@ a {
 /* ── Page header, used on every subpage (style.css:127-139) ───────────────*/
 .page-header {
   position: relative;
-  min-height: 50vh;
+  min-height: var(--height-page-header);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -154,7 +154,7 @@ a {
   overflow: hidden;
 }
 .page-header-short {
-  min-height: 32vh;
+  min-height: var(--height-page-header-short);
 }
 .page-header-bg {
   position: absolute;
@@ -185,16 +185,13 @@ a {
   margin-bottom: var(--space-11);
 }
 /* Missed in the original Phase-1 port (style.css:483-489): below 480px the
-   title's clamp() floor (2.5rem) is still wide enough to overflow a long
-   word like "Impressionen." — found while building the Phase-4 gallery
-   page, whose header is the first to actually carry a title that long at
-   this width. `--bp-mobile` (documented in tokens.css §17) can't be used
-   inside the query itself — custom properties don't work in media
-   conditions — so the breakpoint is the same literal 480px as everywhere
-   else that references it. */
+   title's clamp() floor was still wide enough to overflow a long word like
+   "Impressionen." Since the Aug 2026 size pass (tokens.css) the clamp floor
+   itself is already down at 1.75rem — small enough that no override is
+   needed below 622px wide — but the tight tracking + overflow-wrap stay as
+   a defensive backstop for any longer string a future translation adds. */
 @media (max-width: 480px) {
   .page-header-title {
-    font-size: var(--font-size-5xl);
     letter-spacing: var(--tracking-tight);
     overflow-wrap: anywhere;
   }

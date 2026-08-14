@@ -199,8 +199,10 @@
   /* Fluid display sizes — kept as the exact clamp() expressions in use */
   --font-size-hero: clamp(3.5rem, 10vw, 7.5rem); /* style.css:109  .hero-title */
   --font-size-hero-mobile: clamp(2.8rem, 14vw, 5rem); /* style.css:437  .hero-title @768 */
-  --font-size-page-title: clamp(2.5rem, 7vw, 5rem); /* style.css:137  .page-header-title */
-  --font-size-section: clamp(2.2rem, 5vw, 3.5rem); /* style.css:172  .section-title */
+  --font-size-page-title: clamp(1.75rem, 4.5vw, 2.75rem); /* was clamp(2.5rem,7vw,5rem) — shrunk
+    Aug 2026 so the subpage hero doesn't eat the whole first screen (style.css:137 origin) */
+  --font-size-section: clamp(1.8rem, 4vw, 2.75rem); /* was clamp(2.2rem,5vw,3.5rem) — one step
+    smaller, Aug 2026, so section titles read as content, not a second hero (style.css:172 origin) */
   --font-size-cta: clamp(2rem, 4vw, 3rem); /* style.css:225  .cta-content h2 */
   --font-size-session: clamp(1.6rem, 3vw, 2.2rem); /* style.css:344  .session-title */
 
@@ -288,6 +290,11 @@
 
   --height-media: 420px; /* style.css:189, 255, 266, 333  image wraps, slider, map */
   --height-media-mobile: 280px; /* style.css:427, 428  same at <=900px */
+  --height-page-header: clamp(200px, 30vh, 320px); /* NEW (Aug 2026) — was a bare
+    min-height:50vh in globals.css .page-header; that filled most of the first screen
+    on every subpage before any real content showed. Flagged per the iron rule. */
+  --height-page-header-short: clamp(160px, 20vh, 240px); /* NEW (Aug 2026) — same fix,
+    scaled down for .page-header-short (Datenschutz/Impressum), was a bare 32vh. */
   --height-nav-logo: 42px; /* style.css:42   .nav-logo img */
   --size-avatar: 160px; /* style.css:297  .team-photo */
   --size-avatar-lg: 200px; /* NEW (Phase 6) — brief asks for "larger" trainer photos on

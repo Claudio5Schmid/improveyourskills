@@ -4,7 +4,9 @@
 
 .hero {
   position: relative;
-  min-height: 100vh;
+  /* Aug 2026: was 100vh — knocked down just enough that the next section
+     visibly peeks in on load, a hint there's more below the fold. */
+  min-height: 92vh;
   display: flex;
   align-items: center;
   justify-content: center;
