@@ -66,16 +66,7 @@
     },
     "team": {
       "label": "Eure Trainer",
-      "title": "Das Team dahinter.",
-      "claudioName": "Claudio Schmid",
-      "claudioRole": "Organisator & Trainer",
-      "claudioBio": "Nationalspieler · SVWE (Rekordmeister Schweizer Unihockey)",
-      "pascalName": "Pascal Schmuki",
-      "pascalRole": "Organisator & Trainer",
-      "pascalBio": "Nationalspieler · Storvreta IBK (Schweden, bester Verein der Welt)",
-      "vanessaName": "Vanessa Schmuki",
-      "vanessaRole": "Organisatorin & Trainerin",
-      "vanessaBio": "Nationalspielerin · Weltmeisterin · 2-fache Schweizer Meisterin · Kloten-Dietlikon Jets"
+      "title": "Das Team dahinter."
     },
     "carousel": {
       "prev": "Vorheriges Bild",
