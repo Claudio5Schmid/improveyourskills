@@ -6,6 +6,12 @@ import { Link, usePathname } from "@/i18n/navigation";
 import { routing, type Locale } from "@/i18n/routing";
 import styles from "./LanguageSwitcher.module.css";
 
+// FR is hidden from the switcher until it has a real translation (Block H,
+// Aug 2026) — routing.locales still lists it (the /fr route stays reachable,
+// nothing about the i18n structure changes), so re-enabling it later is just
+// deleting this filter, not re-plumbing routing.
+const VISIBLE_LOCALES = routing.locales.filter((loc) => loc !== "fr");
+
 function GlobeIcon() {
   return (
     <svg
@@ -69,7 +75,7 @@ export default function LanguageSwitcher() {
 
       {open && (
         <ul className={styles.menu} role="menu">
-          {routing.locales.map((loc: Locale) => (
+          {VISIBLE_LOCALES.map((loc: Locale) => (
             <li key={loc} role="none">
               <Link
                 href={pathname}

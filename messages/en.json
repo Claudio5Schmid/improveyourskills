@@ -3,182 +3,182 @@
     "brand": "Improve your skills"
   },
   "nav": {
-    "ueber": "Über uns",
-    "impressionen": "Impressionen",
-    "kontakt": "Kontakt",
-    "anmelden": "Anmelden",
-    "openMenu": "Menü öffnen",
-    "closeMenu": "Menü schliessen"
+    "ueber": "About us",
+    "impressionen": "Gallery",
+    "kontakt": "Contact",
+    "anmelden": "Register",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
   },
   "footer": {
-    "org": "Organisiert von Vanessa Schmuki, Pascal Schmuki & Claudio Schmid",
-    "contactLink": "Kontakt",
+    "org": "Organised by Vanessa Schmuki, Pascal Schmuki & Claudio Schmid",
+    "contactLink": "Contact",
     "venue": "Buchholz Sporthalle · 8610 Uster",
-    "venueDate": "Buchholz Sporthalle · 8610 Uster · So, 5. Juli 2026"
+    "venueDate": "Buchholz Sporthalle · 8610 Uster · Sun, 5 July 2026"
   },
   "language": {
-    "label": "Sprache",
+    "label": "Language",
     "de": "Deutsch",
     "en": "English",
     "fr": "Français",
-    "switchTo": "Auf {lang} wechseln"
+    "switchTo": "Switch to {lang}"
   },
   "home": {
     "hero": {
       "tag": "Skill Training 2026",
-      "subtitle": "U14 Männer & U17 Frauen",
-      "ctaPrimary": "Jetzt anmelden",
-      "ctaSecondary": "Mehr erfahren ↓"
+      "subtitle": "U14 Boys & U17 Girls",
+      "ctaPrimary": "Register now",
+      "ctaSecondary": "Learn more ↓"
     },
     "facts": {
-      "title": "Alles auf einen Blick",
-      "lead": "Die wichtigsten Eckdaten zum Training – kurz und knapp.",
-      "statusOpen": "Datum noch offen",
-      "statusSoon": "Infos folgen"
+      "title": "Everything at a glance",
+      "lead": "The key facts about the training – short and simple.",
+      "statusOpen": "Date not yet set",
+      "statusSoon": "More info coming soon"
     },
     "wwm": {
-      "label": "Was wir anbieten",
-      "title": "Unihockey Skill Training in Uster",
-      "p1": "Das <b>Improve your skills</b> Skill Training ist unser Tagescamp für Nachwuchsspieler:innen – geleitet von drei Schweizer Nationalspieler:innen, in kleinen Gruppen mit persönlichem Feedback.",
-      "badge1": "🏒 U14 Männer",
-      "badge2": "🏒 U17 Frauen",
-      "cta": "Jetzt anmelden – CHF 48.–",
-      "imageAlt": "Unihockey Skill Training"
+      "label": "What we offer",
+      "title": "Floorball Skill Training in Uster",
+      "p1": "The <b>Improve your skills</b> Skill Training is our day camp for young players – led by three Swiss national team players, in small groups with personal feedback.",
+      "badge1": "🏒 U14 Boys",
+      "badge2": "🏒 U17 Girls",
+      "cta": "Register now – CHF 48.–",
+      "imageAlt": "Floorball Skill Training"
     },
     "gallery": {
-      "title": "Eindrücke vom Training"
+      "title": "Impressions from training"
     },
     "cta": {
-      "title": "Bereit für den nächsten Schritt?"
+      "title": "Ready for the next step?"
     }
   },
   "ueber": {
     "header": {
-      "tag": "Das Team",
-      "title": "Über uns.",
-      "subtitle": "Drei Nationalspieler:innen. Eine gemeinsame Idee."
+      "tag": "The Team",
+      "title": "About us.",
+      "subtitle": "Three national team players. One shared idea."
     },
     "ansatz": {
-      "label": "Unser Ansatz",
-      "title": "Etwas zurückgeben.",
-      "lead": "Wir haben alle von grossen Vorbildern und guten Trainern profitiert. Jetzt ist es an uns, dieses Wissen weiterzugeben.",
-      "p": "Das Skill Training ist nicht nur Sport – es ist eine Möglichkeit, Kindern zu zeigen, was möglich ist, wenn man gezielt trainiert und an sich glaubt. Wir bringen Erfahrungen aus dem Nationalteam und den besten Clubs Europas direkt auf die Halle in Uster.",
-      "feature1Title": "Technik-Fokus",
-      "feature1Text": "Stick-Handling, Schuss, Bewegung – gezielt verbessert",
-      "feature2Title": "Kleine Gruppen",
-      "feature2Text": "Max. 30 Kinder – jedes Kind bekommt persönliches Feedback",
-      "feature3Title": "Top-Level Trainer",
-      "feature3Text": "Nationalspieler:innen mit jahrelanger Wettkampferfahrung",
-      "cta": "Jetzt anmelden"
+      "label": "Our Approach",
+      "title": "Giving something back.",
+      "lead": "We've all benefited from great role models and good coaches. Now it's our turn to pass that knowledge on.",
+      "p": "The Skill Training is more than just sport – it's a chance to show kids what's possible when you train with purpose and believe in yourself. We bring experience from the national team and Europe's top clubs straight to the hall in Uster.",
+      "feature1Title": "Technique Focus",
+      "feature1Text": "Stick handling, shooting, movement – improved with purpose",
+      "feature2Title": "Small Groups",
+      "feature2Text": "Max. 30 kids – every child gets personal feedback",
+      "feature3Title": "Top-Level Coaches",
+      "feature3Text": "National team players with years of competitive experience",
+      "cta": "Register now"
     },
     "team": {
-      "label": "Eure Trainer",
-      "title": "Das Team dahinter."
+      "label": "Your Coaches",
+      "title": "The team behind it."
     },
     "carousel": {
-      "prev": "Vorheriges Bild",
-      "next": "Nächstes Bild",
-      "slide": "Bild {n}"
+      "prev": "Previous image",
+      "next": "Next image",
+      "slide": "Image {n}"
     },
     "zitate": {
-      "label": "Stimmen",
-      "title": "Was andere sagen."
+      "label": "Voices",
+      "title": "What others say."
     }
   },
   "impressionen": {
-    "tag": "Galerie",
-    "title": "Impressionen.",
-    "subtitle": "Eindrücke vom Skill Training – alle Fotos an einem Ort.",
-    "filterAll": "Alle",
-    "empty": "Noch keine Fotos hier – schau bald wieder vorbei.",
-    "openPhoto": "Foto {n} öffnen",
+    "tag": "Gallery",
+    "title": "Impressions.",
+    "subtitle": "Impressions from the Skill Training – all photos in one place.",
+    "filterAll": "All",
+    "empty": "No photos here yet – check back soon.",
+    "openPhoto": "Open photo {n}",
     "lightbox": {
-      "close": "Schliessen",
-      "prev": "Vorheriges Foto",
-      "next": "Nächstes Foto",
-      "counter": "Foto {n} von {total}"
+      "close": "Close",
+      "prev": "Previous photo",
+      "next": "Next photo",
+      "counter": "Photo {n} of {total}"
     }
   },
   "kontakt": {
-    "tag": "Fragen? Meld dich!",
-    "title": "Kontakt.",
-    "infoTitle": "Wir freuen uns von dir zu hören.",
-    "infoText": "Bei Fragen rund um das Skill Training, Anmeldungen oder die Veranstaltung stehen wir dir gerne zur Verfügung.",
+    "tag": "Questions? Get in touch!",
+    "title": "Contact.",
+    "infoTitle": "We'd love to hear from you.",
+    "infoText": "For questions about the Skill Training, registration or the event, we're happy to help.",
     "mapTitle": "Buchholz Sporthalle Uster",
-    "mapLoad": "Karte laden",
-    "mapNote": "Beim Laden der Karte werden Daten an Google übertragen.",
+    "mapLoad": "Load map",
+    "mapNote": "Loading the map sends data to Google.",
     "form": {
-      "firstName": "Vorname",
-      "lastName": "Name",
-      "email": "E-Mail-Adresse",
-      "emailPlaceholder": "vorname@beispiel.ch",
-      "message": "Nachricht",
-      "messagePlaceholder": "Wie können wir dir helfen?",
-      "consent": "Ich bin einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage gespeichert werden. Mehr dazu in der <link>Datenschutzerklärung</link>.",
-      "consentLinkText": "Datenschutzerklärung",
-      "submit": "Nachricht senden",
-      "submitPending": "Wird gesendet …",
-      "successTitle": "Danke für deine Nachricht!",
-      "successText": "Wir melden uns so schnell wie möglich bei dir. Du bekommst gleich auch eine Bestätigung per E-Mail.",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email address",
+      "emailPlaceholder": "yourname@example.com",
+      "message": "Message",
+      "messagePlaceholder": "How can we help you?",
+      "consent": "I agree that my information will be stored to process my request. More details in the <link>privacy policy</link>.",
+      "consentLinkText": "Privacy Policy",
+      "submit": "Send message",
+      "submitPending": "Sending …",
+      "successTitle": "Thanks for your message!",
+      "successText": "We'll get back to you as soon as possible. You'll also receive a confirmation by email shortly.",
       "errors": {
-        "required": "Pflichtfeld.",
-        "tooLong": "Das ist zu lang.",
-        "invalidEmail": "Bitte gib eine gültige E-Mail-Adresse ein.",
-        "consentRequired": "Bitte bestätige die Einwilligung.",
-        "turnstileRequired": "Bitte bestätige, dass du kein Roboter bist.",
-        "turnstileFailed": "Die Sicherheitsprüfung ist fehlgeschlagen. Bitte versuch es nochmals.",
-        "tooMany": "Du hast in letzter Zeit schon mehrere Nachrichten geschickt. Bitte warte etwas, bevor du es erneut versuchst.",
-        "serverError": "Etwas ist schiefgelaufen. Bitte versuch es später nochmals oder schreib uns direkt an pascal.schmuki@bluewin.ch."
+        "required": "Required field.",
+        "tooLong": "This is too long.",
+        "invalidEmail": "Please enter a valid email address.",
+        "consentRequired": "Please confirm your consent.",
+        "turnstileRequired": "Please confirm that you're not a robot.",
+        "turnstileFailed": "The security check failed. Please try again.",
+        "tooMany": "You've already sent several messages recently. Please wait a bit before trying again.",
+        "serverError": "Something went wrong. Please try again later or email us directly at pascal.schmuki@bluewin.ch."
       }
     }
   },
   "anmeldung": {
-    "tag": "Anmeldung",
-    "title": "Bis 2027.",
-    "subtitle": "Die Anmeldung für das Skill Training ist aktuell geschlossen.",
+    "tag": "Registration",
+    "title": "See you in 2027.",
+    "subtitle": "Registration for the Skill Training is currently closed.",
     "label": "Save the Date",
-    "heading": "Anmeldungen & Infos folgen im 2027.",
-    "text": "Das nächste Improve-your-skills Skill Training in Uster ist bereits in Planung. Alle Details sowie die Anmeldung schalten wir rechtzeitig wieder hier auf. Schau zu gegebener Zeit einfach nochmals vorbei – wir freuen uns auf dich!",
-    "back": "Zurück zur Startseite",
-    "openLabel": "Anmeldung offen",
-    "openHeading": "Die Anmeldung ist offen.",
-    "openText": "Meld dich unverbindlich über unser Kontaktformular – wir schicken dir alle weiteren Infos zur Anmeldung.",
-    "openButton": "Zum Kontaktformular"
+    "heading": "Registration & info coming in 2027.",
+    "text": "The next Improve your skills Skill Training in Uster is already in the works. We'll post all the details and registration here in good time. Just check back later – we're looking forward to seeing you!",
+    "back": "Back to homepage",
+    "openLabel": "Registration open",
+    "openHeading": "Registration is open.",
+    "openText": "Get in touch via our contact form, no obligation – we'll send you all the details about registering.",
+    "openButton": "Go to contact form"
   },
   "impressum": {
-    "title": "Impressum.",
-    "personsHeading": "Verantwortliche Personen",
-    "personsBody": "Claudio Schmid\nWeidstrasse 3\n4656 Starrkich-Wil\nSchweiz",
-    "contactHeading": "Kontakt",
+    "title": "Legal Notice.",
+    "personsHeading": "Responsible Persons",
+    "personsBody": "Claudio Schmid\nWeidstrasse 3\n4656 Starrkich-Wil\nSwitzerland",
+    "contactHeading": "Contact",
     "contactEmailLabel": "info@improveyourskills.ch",
     "contactEmail": "claudio.schmid@active.ch",
-    "eventHeading": "Veranstaltung",
-    "eventBody": "Unihockey Skill Training 2026 – «Improve your skills»\nBuchholz Sporthalle, 8610 Uster\nDatum: 4. Juli 2026",
-    "privacyHeading": "Datenschutz & Fotorechte",
-    "privacyP1": "Der Schutz eurer persönlichen Daten ist uns ein wichtiges Anliegen. Im Rahmen des Unihockey Skill Trainings 2026 werden folgende Daten erhoben: Name, Kontaktdaten sowie allenfalls Foto- und Videoaufnahmen der Teilnehmenden. Diese Daten dienen ausschliesslich der Organisation und Durchführung der Veranstaltung.",
-    "privacyP2": "<b>Fotorechte:</b> Am Training können Fotos und Videosequenzen gemacht werden. Diese dienen als Erinnerung für die Familien und werden nicht ohne ausdrückliche Zustimmung im Internet, auf Social Media oder auf dieser Website veröffentlicht. Sollten Aufnahmen zu Werbezwecken oder für die Website verwendet werden, holen wir vorgängig eine separate, schriftliche Einwilligung der erziehungsberechtigten Person ein. Alle Aufnahmen, für die keine weitere Nutzung vereinbart wurde, werden nach der Veranstaltung gelöscht.",
-    "privacyP3": "<b>Datenweitergabe:</b> Eine Weitergabe von Personendaten an Dritte findet nicht statt. Ausnahme bildet die technische Verarbeitung durch unsere Dienstleister (z.B. Zahlungsabwicklung via Payrexx), die ihrerseits dem Datenschutzgesetz verpflichtet sind.",
-    "privacyP4": "Für Fragen zum Datenschutz steht euch unser Team jederzeit zur Verfügung:",
-    "liabilityHeading": "Haftungsausschluss",
-    "liabilityBody": "Die Organisatoren übernehmen keine Gewähr für die Richtigkeit, Vollständigkeit und Aktualität der auf dieser Website bereitgestellten Informationen. Haftungsansprüche wegen Schäden materieller oder immaterieller Art sind grundsätzlich ausgeschlossen.",
-    "copyrightHeading": "Urheberrecht",
-    "copyrightBody": "Alle Inhalte dieser Website sind urheberrechtlich geschützt. Eine Verwendung ohne ausdrückliche Genehmigung der Organisatoren ist nicht gestattet.",
-    "back": "← Zurück zur Startseite"
+    "eventHeading": "Event",
+    "eventBody": "Floorball Skill Training 2026 – «Improve your skills»\nBuchholz Sporthalle, 8610 Uster\nDate: 4 July 2026",
+    "privacyHeading": "Privacy & Photo Rights",
+    "privacyP1": "Protecting your personal data is important to us. As part of the Floorball Skill Training 2026, the following data is collected: name, contact details, and possibly photo and video recordings of participants. This data is used solely to organise and run the event.",
+    "privacyP2": "<b>Photo rights:</b> Photos and video clips may be taken during the training. These serve as keepsakes for families and are not published online, on social media, or on this website without explicit consent. If any recordings are used for promotional purposes or on the website, we obtain separate, written consent from the parent or guardian beforehand. Any recordings for which no further use has been agreed are deleted after the event.",
+    "privacyP3": "<b>Data sharing:</b> Personal data is not shared with third parties. The exception is technical processing by our service providers (e.g. payment processing via Payrexx), who are themselves bound by data protection law.",
+    "privacyP4": "If you have any questions about data protection, our team is happy to help at any time:",
+    "liabilityHeading": "Disclaimer",
+    "liabilityBody": "The organisers accept no responsibility for the accuracy, completeness, or currency of the information provided on this website. Liability claims for damages of a material or immaterial nature are generally excluded.",
+    "copyrightHeading": "Copyright",
+    "copyrightBody": "All content on this website is protected by copyright. Use without the express permission of the organisers is not permitted.",
+    "back": "← Back to homepage"
   },
   "datenschutz": {
-    "title": "Datenschutz.",
-    "draftNotice": "Diese Seite ist ein Entwurf und noch nicht rechtlich geprüft. Die vollständige Fassung folgt in einer späteren Phase des Website-Relaunchs.",
-    "intro": "Diese Seite beschreibt, was mit deinen Daten passiert, wenn du das Kontaktformular auf improveyourskills.ch nutzt.",
-    "formHeading": "Kontaktformular",
-    "formBody": "Wenn du das Kontaktformular ausfüllst, speichern wir Vorname, Name, E-Mail-Adresse und deine Nachricht, um deine Anfrage zu beantworten. Zusätzlich speichern wir eine Prüfsumme (Hash) deiner IP-Adresse, um Missbrauch durch automatisierte Anfragen zu verhindern — nie die IP-Adresse selbst.",
-    "accessHeading": "Wer hat Zugriff",
-    "accessBody": "Nur die Administratoren dieser Website (siehe Impressum) sehen die gespeicherten Nachrichten.",
-    "processorsHeading": "Eingesetzte Dienste",
-    "processorsBody": "Supabase (Datenbank, EU-Region) speichert die Nachricht. Resend verschickt die Benachrichtigungs- und Bestätigungs-E-Mails. Cloudflare Turnstile prüft, dass ein Mensch und keine Software das Formular abschickt.",
-    "retentionHeading": "Speicherdauer",
-    "retentionBody": "Noch nicht abschliessend festgelegt — folgt mit der vollständigen Fassung dieser Seite.",
-    "contactHeading": "Fragen dazu",
-    "contactBody": "Für Fragen zum Datenschutz erreichst du uns über das Kontaktformular oder die Angaben im Impressum.",
-    "back": "← Zurück zur Startseite"
+    "title": "Privacy Policy.",
+    "draftNotice": "This page is a draft and has not yet been legally reviewed. The full version will follow in a later phase of the website relaunch.",
+    "intro": "This page describes what happens to your data when you use the contact form on improveyourskills.ch.",
+    "formHeading": "Contact Form",
+    "formBody": "When you fill out the contact form, we store your first name, last name, email address and message in order to answer your request. We also store a checksum (hash) of your IP address to prevent abuse from automated requests — never the IP address itself.",
+    "accessHeading": "Who has access",
+    "accessBody": "Only the administrators of this website (see legal notice) can see the stored messages.",
+    "processorsHeading": "Services used",
+    "processorsBody": "Supabase (database, EU region) stores the message. Resend sends the notification and confirmation emails. Cloudflare Turnstile checks that a human, not a bot, submitted the form.",
+    "retentionHeading": "Retention period",
+    "retentionBody": "Not yet finally determined — will follow with the full version of this page.",
+    "contactHeading": "Questions about this",
+    "contactBody": "For questions about data protection, you can reach us via the contact form or the details in the legal notice.",
+    "back": "← Back to homepage"
   }
 }
