@@ -67,48 +67,50 @@ export default function KontaktForm() {
         <input type="text" id="website" name="website" tabIndex={-1} autoComplete="off" />
       </div>
 
-      <div className={styles.field}>
-        <label className={styles.fieldLabel} htmlFor="firstName">
-          {t("firstName")}
-        </label>
-        <input
-          id="firstName"
-          name="firstName"
-          type="text"
-          autoComplete="given-name"
-          required
-          defaultValue={state.values?.firstName ?? ""}
-          className={`${styles.input} ${fieldError("firstName") ? styles.inputInvalid : ""}`}
-          aria-invalid={fieldError("firstName") ? true : undefined}
-          aria-describedby={fieldError("firstName") ? "firstName-error" : undefined}
-        />
-        {fieldError("firstName") && (
-          <p id="firstName-error" role="alert" className={styles.fieldError}>
-            {fieldError("firstName")}
-          </p>
-        )}
-      </div>
+      <div className={styles.fieldRow}>
+        <div className={styles.field}>
+          <label className={styles.fieldLabel} htmlFor="firstName">
+            {t("firstName")}
+          </label>
+          <input
+            id="firstName"
+            name="firstName"
+            type="text"
+            autoComplete="given-name"
+            required
+            defaultValue={state.values?.firstName ?? ""}
+            className={`${styles.input} ${fieldError("firstName") ? styles.inputInvalid : ""}`}
+            aria-invalid={fieldError("firstName") ? true : undefined}
+            aria-describedby={fieldError("firstName") ? "firstName-error" : undefined}
+          />
+          {fieldError("firstName") && (
+            <p id="firstName-error" role="alert" className={styles.fieldError}>
+              {fieldError("firstName")}
+            </p>
+          )}
+        </div>
 
-      <div className={styles.field}>
-        <label className={styles.fieldLabel} htmlFor="lastName">
-          {t("lastName")}
-        </label>
-        <input
-          id="lastName"
-          name="lastName"
-          type="text"
-          autoComplete="family-name"
-          required
-          defaultValue={state.values?.lastName ?? ""}
-          className={`${styles.input} ${fieldError("lastName") ? styles.inputInvalid : ""}`}
-          aria-invalid={fieldError("lastName") ? true : undefined}
-          aria-describedby={fieldError("lastName") ? "lastName-error" : undefined}
-        />
-        {fieldError("lastName") && (
-          <p id="lastName-error" role="alert" className={styles.fieldError}>
-            {fieldError("lastName")}
-          </p>
-        )}
+        <div className={styles.field}>
+          <label className={styles.fieldLabel} htmlFor="lastName">
+            {t("lastName")}
+          </label>
+          <input
+            id="lastName"
+            name="lastName"
+            type="text"
+            autoComplete="family-name"
+            required
+            defaultValue={state.values?.lastName ?? ""}
+            className={`${styles.input} ${fieldError("lastName") ? styles.inputInvalid : ""}`}
+            aria-invalid={fieldError("lastName") ? true : undefined}
+            aria-describedby={fieldError("lastName") ? "lastName-error" : undefined}
+          />
+          {fieldError("lastName") && (
+            <p id="lastName-error" role="alert" className={styles.fieldError}>
+              {fieldError("lastName")}
+            </p>
+          )}
+        </div>
       </div>
 
       <div className={styles.field}>

@@ -25,16 +25,17 @@ export default function KontaktPage({ params }: { params: Promise<{ locale: stri
           </div>
         </section>
 
-        <section className="section">
+        <section className={`section ${styles.compactSection}`}>
           <div className="container">
-            <div className={styles.grid}>
+            <div className={styles.stack}>
               <FadeIn className={styles.info}>
                 <h2>{t("infoTitle")}</h2>
                 <p>{t("infoText")}</p>
                 <KontaktForm />
               </FadeIn>
 
-              {/* Direct grid child so align-items:stretch matches the info height. */}
+              {/* Full width, fixed height — no longer a grid sibling of .info,
+                  so it can never be stretched by the form's own height. */}
               <KontaktMap />
             </div>
           </div>
