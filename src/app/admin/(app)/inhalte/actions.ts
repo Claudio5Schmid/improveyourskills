@@ -60,7 +60,20 @@ export async function saveInhaltePage(
   const rows: FieldRow[] = [];
 
   for (const field of allowed) {
-    const row: FieldRow = { key: field.key, kind: field.kind, updated_by: session.userId };
+    // focal_x/focal_y/zoom are NOT NULL columns. PostgREST's bulk upsert scans
+    // every row for its column set — if some rows in this batch (image
+    // fields) set these keys and others (text fields) don't, the ones that
+    // don't get an explicit NULL instead of the column default, which then
+    // fails the NOT NULL constraint (400). Setting the defaults on every row
+    // up front, regardless of kind, keeps the batch shape uniform.
+    const row: FieldRow = {
+      key: field.key,
+      kind: field.kind,
+      updated_by: session.userId,
+      focal_x: 50,
+      focal_y: 50,
+      zoom: 1,
+    };
 
     if (field.kind === "image") {
       row.image_path = normalisePath(formData.get(`${field.key}::path`));
