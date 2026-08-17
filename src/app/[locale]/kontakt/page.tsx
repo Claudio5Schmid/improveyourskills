@@ -1,13 +1,30 @@
+import type { Metadata } from "next";
 import { getLocale, getTranslations, setRequestLocale } from "next-intl/server";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
 import PositionedImage from "@/components/PositionedImage";
 import { getImageMap } from "@/content/content";
+import { pageMetadata } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
 import KontaktMap from "./KontaktMap";
 import KontaktForm from "./KontaktForm";
 import styles from "./Kontakt.module.css";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "seo.kontakt" });
+  return pageMetadata({
+    locale: locale as Locale,
+    pathname: "/kontakt",
+    title: t("title"),
+    description: t("description"),
+  });
+}
 
 export default async function KontaktPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

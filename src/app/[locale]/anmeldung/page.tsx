@@ -1,10 +1,28 @@
+import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Calendar, PenLine } from "lucide-react";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { Link } from "@/i18n/navigation";
 import { getSettings } from "@/content/content";
+import { pageMetadata } from "@/lib/seo";
+import type { Locale } from "@/i18n/routing";
 import styles from "./Anmeldung.module.css";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "seo.anmeldung" });
+  return pageMetadata({
+    locale: locale as Locale,
+    pathname: "/anmeldung",
+    title: t("title"),
+    description: t("description"),
+  });
+}
 
 export default async function AnmeldungPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;

@@ -144,8 +144,31 @@
     "openText": "Meld dich unverbindlich über unser Kontaktformular – wir schicken dir alle weiteren Infos zur Anmeldung.",
     "openButton": "Zum Kontaktformular"
   },
+  "seo": {
+    "home": {
+      "title": "Unihockey Skill Training in Uster",
+      "description": "Skill Training für U14 Männer & U17 Frauen in Uster, geleitet von drei Schweizer Nationalspieler:innen. Technik, kleine Gruppen, persönliches Feedback."
+    },
+    "ueber": {
+      "title": "Über uns",
+      "description": "Vanessa Schmuki, Pascal Schmuki und Claudio Schmid: drei Nationalspieler:innen, eine gemeinsame Idee. Lern das Team hinter dem Skill Training in Uster kennen."
+    },
+    "impressionen": {
+      "title": "Impressionen",
+      "description": "Fotos vom Unihockey Skill Training in Uster – ein Eindruck von Training, Teamgeist und den schönsten Momenten."
+    },
+    "kontakt": {
+      "title": "Kontakt",
+      "description": "Fragen zum Unihockey Skill Training in Uster? Schreib uns über das Kontaktformular – wir melden uns so schnell wie möglich."
+    },
+    "anmeldung": {
+      "title": "Anmeldung",
+      "description": "Alle Infos zur Anmeldung für das Unihockey Skill Training in Uster."
+    }
+  },
   "impressum": {
     "title": "Impressum.",
+    "metaDescription": "Impressum von improveyourskills.ch — verantwortlich für diese Website, Kontakt und Fotorechte.",
     "responsibleHeading": "Verantwortlich für diese Website",
     "responsibleBody": "improveyourskills.ch\nc/o Claudio Schmid",
     "projectNote": "Ein privates, nicht-kommerzielles Projekt von Vanessa Schmuki, Pascal Schmuki und Claudio Schmid.",
@@ -163,6 +186,7 @@
   },
   "datenschutz": {
     "title": "Datenschutz.",
+    "metaDescription": "Datenschutzerklärung von improveyourskills.ch — welche Daten wir erheben, welche Cookies wir verwenden und deine Rechte.",
     "draftNotice": "Diese Seite beschreibt so genau wie möglich, wie improveyourskills.ch mit Daten umgeht. Sie ist von uns erstellt, ersetzt aber keine Rechtsberatung — bitte einmal durchlesen und bei Bedarf ergänzen.",
     "intro": "Diese Datenschutzerklärung gilt für die Website improveyourskills.ch.",
     "responsibleHeading": "Verantwortliche Stelle",

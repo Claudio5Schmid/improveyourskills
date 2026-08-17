@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getTranslations, getLocale, setRequestLocale } from "next-intl/server";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -13,10 +14,26 @@ import {
   getSettings,
   type LocalizedImage,
 } from "@/content/content";
+import { pageMetadata } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
 import AboutCarousel from "./AboutCarousel";
 import StatsBand from "./StatsBand";
 import styles from "./Ueber.module.css";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "seo.ueber" });
+  return pageMetadata({
+    locale: locale as Locale,
+    pathname: "/ueber-uns",
+    title: t("title"),
+    description: t("description"),
+  });
+}
 
 // Icons are structural; the titles/texts (and optional replacement images)
 // come from the DB (ueber.ansatz.*).

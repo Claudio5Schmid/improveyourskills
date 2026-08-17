@@ -1,10 +1,10 @@
 import type { MetadataRoute } from "next";
+import { siteUrl } from "@/lib/site-url";
 
 /**
  * `/robots.txt`. The public site may be indexed; the admin never, and
  * `/api/foto/` (Phase 4's private-bucket photo route) never — its own
  * X-Robots-Tag header already says so per-response, this is the second layer.
- * The sitemap entry follows in Phase 7 with the rest of the SEO work.
  */
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -13,5 +13,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/admin", "/api/foto/"],
     },
+    sitemap: `${siteUrl()}/sitemap.xml`,
   };
 }

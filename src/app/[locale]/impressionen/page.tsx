@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import PositionedImage from "@/components/PositionedImage";
 import { getImageMap } from "@/content/content";
 import { getGalleryPhotos, galleryYears } from "@/lib/gallery/data";
+import { pageMetadata } from "@/lib/seo";
 import type { Locale } from "@/i18n/routing";
 import Gallery from "./Gallery";
 
@@ -18,9 +19,21 @@ const ALL = "alle";
  * page-level half of that; the other half is the X-Robots-Tag header every
  * `/api/foto/…` response sends on the image bytes themselves.
  */
-export const metadata: Metadata = {
-  robots: { index: true, follow: true, noimageindex: true },
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "seo.impressionen" });
+  return pageMetadata({
+    locale: locale as Locale,
+    pathname: "/impressionen",
+    title: t("title"),
+    description: t("description"),
+    robots: { index: true, follow: true, noimageindex: true },
+  });
+}
 
 export default async function ImpressionenPage({
   params,

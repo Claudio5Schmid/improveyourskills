@@ -144,8 +144,31 @@
     "openText": "Get in touch via our contact form, no obligation – we'll send you all the details about registering.",
     "openButton": "Go to contact form"
   },
+  "seo": {
+    "home": {
+      "title": "Floorball Skill Training in Uster",
+      "description": "Skill training for U14 boys & U17 girls in Uster, led by three Swiss national-team players. Technique, small groups, personal feedback."
+    },
+    "ueber": {
+      "title": "About us",
+      "description": "Vanessa Schmuki, Pascal Schmuki and Claudio Schmid: three national-team players, one shared idea. Meet the team behind the skill training in Uster."
+    },
+    "impressionen": {
+      "title": "Gallery",
+      "description": "Photos from the floorball skill training in Uster — a glimpse of the training, the team spirit and the best moments."
+    },
+    "kontakt": {
+      "title": "Contact",
+      "description": "Questions about the floorball skill training in Uster? Write to us via the contact form — we'll get back to you as soon as possible."
+    },
+    "anmeldung": {
+      "title": "Registration",
+      "description": "Everything about registering for the floorball skill training in Uster."
+    }
+  },
   "impressum": {
     "title": "Legal Notice.",
+    "metaDescription": "Legal notice for improveyourskills.ch — who is responsible for this website, contact details and photo rights.",
     "responsibleHeading": "Responsible for this website",
     "responsibleBody": "improveyourskills.ch\nc/o Claudio Schmid",
     "projectNote": "A private, non-commercial project by Vanessa Schmuki, Pascal Schmuki and Claudio Schmid.",
@@ -163,6 +186,7 @@
   },
   "datenschutz": {
     "title": "Privacy Policy.",
+    "metaDescription": "Privacy policy for improveyourskills.ch — what data we collect, which cookies we use, and your rights.",
     "draftNotice": "This page describes, as precisely as we can, how improveyourskills.ch handles data. We wrote it ourselves — it is not legal advice, so please read it through and add to it if needed.",
     "intro": "This privacy policy applies to the improveyourskills.ch website.",
     "responsibleHeading": "Controller",

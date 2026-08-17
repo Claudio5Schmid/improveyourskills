@@ -1,10 +1,28 @@
-import { setRequestLocale } from "next-intl/server";
+import type { Metadata } from "next";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { useTranslations } from "next-intl";
 import { use } from "react";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { Link } from "@/i18n/navigation";
+import { pageMetadata } from "@/lib/seo";
+import type { Locale } from "@/i18n/routing";
 import styles from "@/components/legal/Legal.module.css";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "impressum" });
+  return pageMetadata({
+    locale: locale as Locale,
+    pathname: "/impressum",
+    title: t("title").replace(/\.$/, ""),
+    description: t("metaDescription"),
+  });
+}
 
 /**
  * Impressum — Phase 7, real content (Claudio supplied the responsible-party

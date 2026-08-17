@@ -683,6 +683,103 @@ export const CONTENT_REGISTRY = [
     page: "anmeldung",
     section: "Hinweis",
   },
+
+  // ─── SEO (Phase 7) ──────────────────────────────────────────────────────────
+  // Title + description Google shows in search results and other sites show
+  // in link previews, per page. Deliberately separate from the visible page
+  // copy above (kind of text a search engine wants often reads oddly as an
+  // on-page heading, and vice versa). "{year}" is filled in automatically,
+  // same as everywhere else (site_settings.current_edition_year).
+  {
+    key: "seo.home.title",
+    kind: "text",
+    label: "Seitentitel",
+    help: "Erscheint in der Browser-Titelleiste und bei Google. « · Improve your skills» wird automatisch angehängt.",
+    maxLength: 60,
+    page: "home",
+    section: "SEO",
+  },
+  {
+    key: "seo.home.description",
+    kind: "longtext",
+    label: "Kurzbeschreibung",
+    help: "Der Text unter dem Titel bei Google-Suchergebnissen. Ideal 120–160 Zeichen.",
+    maxLength: 200,
+    page: "home",
+    section: "SEO",
+  },
+  {
+    key: "seo.ueber.title",
+    kind: "text",
+    label: "Seitentitel",
+    help: "Erscheint in der Browser-Titelleiste und bei Google. « · Improve your skills» wird automatisch angehängt.",
+    maxLength: 60,
+    page: "ueber",
+    section: "SEO",
+  },
+  {
+    key: "seo.ueber.description",
+    kind: "longtext",
+    label: "Kurzbeschreibung",
+    help: "Der Text unter dem Titel bei Google-Suchergebnissen. Ideal 120–160 Zeichen.",
+    maxLength: 200,
+    page: "ueber",
+    section: "SEO",
+  },
+  {
+    key: "seo.impressionen.title",
+    kind: "text",
+    label: "Seitentitel",
+    help: "Erscheint in der Browser-Titelleiste und bei Google. « · Improve your skills» wird automatisch angehängt.",
+    maxLength: 60,
+    page: "impressionen",
+    section: "SEO",
+  },
+  {
+    key: "seo.impressionen.description",
+    kind: "longtext",
+    label: "Kurzbeschreibung",
+    help: "Der Text unter dem Titel bei Google-Suchergebnissen. Ideal 120–160 Zeichen.",
+    maxLength: 200,
+    page: "impressionen",
+    section: "SEO",
+  },
+  {
+    key: "seo.kontakt.title",
+    kind: "text",
+    label: "Seitentitel",
+    help: "Erscheint in der Browser-Titelleiste und bei Google. « · Improve your skills» wird automatisch angehängt.",
+    maxLength: 60,
+    page: "kontakt",
+    section: "SEO",
+  },
+  {
+    key: "seo.kontakt.description",
+    kind: "longtext",
+    label: "Kurzbeschreibung",
+    help: "Der Text unter dem Titel bei Google-Suchergebnissen. Ideal 120–160 Zeichen.",
+    maxLength: 200,
+    page: "kontakt",
+    section: "SEO",
+  },
+  {
+    key: "seo.anmeldung.title",
+    kind: "text",
+    label: "Seitentitel",
+    help: "Erscheint in der Browser-Titelleiste und bei Google. « · Improve your skills» wird automatisch angehängt.",
+    maxLength: 60,
+    page: "anmeldung",
+    section: "SEO",
+  },
+  {
+    key: "seo.anmeldung.description",
+    kind: "longtext",
+    label: "Kurzbeschreibung",
+    help: "Der Text unter dem Titel bei Google-Suchergebnissen. Ideal 120–160 Zeichen.",
+    maxLength: 200,
+    page: "anmeldung",
+    section: "SEO",
+  },
 ] as const satisfies readonly ContentField[];
 
 /** Union of every registered key — use for type-safe content lookups. */
