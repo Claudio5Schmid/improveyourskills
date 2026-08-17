@@ -13,6 +13,8 @@
  * (hero images ~2000px, thumbnails ~480px) and does not need any dependency.
  */
 
+import { SIZE_SPECS, type ImageSize } from "@/lib/image-sizes";
+
 export interface ResizeOptions {
   /** Longest edge in pixels. The other dimension follows the aspect ratio. */
   maxEdge: number;
@@ -92,11 +94,28 @@ export async function resizeToWebp(file: File, options: ResizeOptions): Promise<
 }
 
 /**
- * Content-blocks media (hero, WWM, page headers, team photos, carousel).
- * One size is enough for now — the responsive-loader work is Phase 7.
- * 2000 px on the long edge is generous for a hero on a 2× display and still
- * lands comfortably inside the bucket's 5 MB limit at q=0.82.
+ * Draw an already-decoded image at all three brief sizes (thumb/medium/
+ * large — `@/lib/image-sizes`) from a single decode. Shared by the gallery
+ * pipeline (`@/lib/gallery/resize`, which adds its own blur placeholder on
+ * top) and content_blocks/team/carousel uploads below — one loop instead of
+ * two copies of the same three numbers.
  */
-export function resizeContentImage(file: File): Promise<ResizedImage> {
-  return resizeToWebp(file, { maxEdge: 2000 });
+export async function resizeAllVariants(
+  source: CanvasImageSource & { width: number; height: number }
+): Promise<Record<ImageSize, ResizedImage>> {
+  const variants = {} as Record<ImageSize, ResizedImage>;
+  for (const spec of SIZE_SPECS) {
+    variants[spec.size] = await drawResizedWebp(source, { maxEdge: spec.maxEdge, quality: spec.quality });
+  }
+  return variants;
+}
+
+/**
+ * Content-blocks media (hero, WWM, page headers, team photos, carousel).
+ * Phase 7: three sizes per upload, same as the gallery — mobile no longer
+ * downloads the same 2000px file as desktop.
+ */
+export async function resizeContentImage(file: File): Promise<Record<ImageSize, ResizedImage>> {
+  const source = await loadImage(file);
+  return resizeAllVariants(source);
 }

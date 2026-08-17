@@ -4,6 +4,7 @@ import { useId, useRef, useState } from "react";
 import { mediaUrl } from "@/lib/media/url";
 import { uploadContentImage } from "@/lib/media/upload";
 import { isSupportedImage } from "@/lib/media/resize";
+import type { ImagePaths } from "@/lib/image-sizes";
 import FocalPointEditor, { DEFAULT_FOCAL, type FocalPoint } from "./FocalPointEditor";
 
 export interface ImageFieldProps {
@@ -12,10 +13,14 @@ export interface ImageFieldProps {
   /** Human label ("Hero-Bild 1"). */
   label: string;
   help?: string;
-  /** Current stored value (either a legacy `/Bilder/…` or a `media/` bucket path). */
-  value: string | null;
-  /** Called with the new path (or null when removed). Parent owns the value. */
-  onChange: (nextPath: string | null) => void;
+  /**
+   * Current stored paths for all three sizes. `large` may be a legacy
+   * `/Bilder/…` reference (pre-Phase-7 uploads) — thumb/medium are then
+   * null, which is expected until the image is re-uploaded.
+   */
+  value: ImagePaths | null;
+  /** Called with the new paths (or null when removed). Parent owns the value. */
+  onChange: (next: ImagePaths | null) => void;
   /** Focal point + zoom (Block F). Omit to hide the positioning UI entirely. */
   focal?: FocalPoint;
   onFocalChange?: (next: FocalPoint) => void;
@@ -42,7 +47,7 @@ export default function ImageField(props: ImageFieldProps) {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const inputId = useId();
 
-  const previewUrl = mediaUrl(props.value);
+  const previewUrl = mediaUrl(props.value?.large ?? null);
 
   const handleFile = async (file: File) => {
     setError(null);
@@ -53,7 +58,7 @@ export default function ImageField(props: ImageFieldProps) {
     setUploading(true);
     try {
       const result = await uploadContentImage(file, props.fieldKey);
-      props.onChange(result.path);
+      props.onChange({ thumb: result.pathThumb, medium: result.pathMedium, large: result.pathLarge });
     } catch (e) {
       setError(e instanceof Error ? e.message : "Upload fehlgeschlagen.");
     } finally {

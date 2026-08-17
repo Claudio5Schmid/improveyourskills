@@ -21,6 +21,7 @@ import { CSS } from "@dnd-kit/utilities";
 import ImageField from "@/components/admin/ImageField";
 import ConfirmDialog from "@/components/admin/ConfirmDialog";
 import type { FocalPoint } from "@/components/admin/FocalPointEditor";
+import { toImagePaths } from "@/lib/image-sizes";
 import { useToast, useUnsavedWarning } from "@/lib/admin/toast";
 import { deleteCarouselImage, reorderCarousel, saveCarouselImage } from "./actions";
 
@@ -28,6 +29,8 @@ export interface CarouselRow {
   id: string;
   sort_order: number;
   image_path: string | null;
+  image_path_thumb: string | null;
+  image_path_medium: string | null;
   alt_de: string | null;
   alt_en: string | null;
   alt_fr: string | null;
@@ -70,6 +73,8 @@ export default function KarussellEditor({ initialImages }: { initialImages: Caro
     const result = await saveCarouselImage({
       id: row.id.startsWith("new-") ? undefined : row.id,
       image_path: row.image_path,
+      image_path_thumb: row.image_path_thumb,
+      image_path_medium: row.image_path_medium,
       alt_de: row.alt_de,
       alt_en: row.alt_en,
       alt_fr: row.alt_fr,
@@ -137,6 +142,8 @@ export default function KarussellEditor({ initialImages }: { initialImages: Caro
         id,
         sort_order: current.length + 1,
         image_path: null,
+        image_path_thumb: null,
+        image_path_medium: null,
         alt_de: null,
         alt_en: null,
         alt_fr: null,
@@ -252,8 +259,14 @@ function CarouselRowEditor({ row, language, dirty, pending, onPatch, onSave, onD
         <ImageField
           fieldKey={`karussell.${row.id}`}
           label="Bild"
-          value={row.image_path}
-          onChange={(next) => onPatch({ image_path: next })}
+          value={toImagePaths(row.image_path, row.image_path_thumb, row.image_path_medium)}
+          onChange={(next) =>
+            onPatch({
+              image_path: next?.large ?? null,
+              image_path_thumb: next?.thumb ?? null,
+              image_path_medium: next?.medium ?? null,
+            })
+          }
           focal={{ focalX: row.focal_x, focalY: row.focal_y, zoom: row.zoom }}
           onFocalChange={(next: FocalPoint) =>
             onPatch({ focal_x: next.focalX, focal_y: next.focalY, zoom: next.zoom })

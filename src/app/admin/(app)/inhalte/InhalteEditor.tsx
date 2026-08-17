@@ -4,6 +4,7 @@ import { useMemo, useState, useTransition } from "react";
 import type { ContentField, PageId } from "@/content/registry";
 import ImageField from "@/components/admin/ImageField";
 import { DEFAULT_FOCAL, type FocalPoint } from "@/components/admin/FocalPointEditor";
+import type { ImagePaths } from "@/lib/image-sizes";
 import { useToast, useUnsavedWarning } from "@/lib/admin/toast";
 import { saveInhaltePage } from "./actions";
 
@@ -18,8 +19,8 @@ export interface EditorField {
   field: ContentField;
   /** Current text per locale, or null when unset. */
   texts?: Record<Loc, string>;
-  /** Image slot: current path + alts. */
-  path?: string | null;
+  /** Image slot: current paths (all three sizes) + alts. */
+  path?: ImagePaths | null;
   alts?: Record<Loc, string>;
   /** Image slot: focal point + zoom (Block F). */
   focal?: FocalPoint;
@@ -61,7 +62,7 @@ export default function InhalteEditor({ page, pageLabel, sections }: Props) {
     setDirty(true);
   };
 
-  const setPath = (key: string, next: string | null) => {
+  const setPath = (key: string, next: ImagePaths | null) => {
     setValues((v) => ({ ...v, paths: { ...v.paths, [key]: next } }));
     setDirty(true);
   };
@@ -79,7 +80,10 @@ export default function InhalteEditor({ page, pageLabel, sections }: Props) {
     for (const section of sections) {
       for (const { field } of section.fields) {
         if (field.kind === "image") {
-          formData.set(`${field.key}::path`, values.paths[field.key] ?? "");
+          const paths = values.paths[field.key];
+          formData.set(`${field.key}::path`, paths?.large ?? "");
+          formData.set(`${field.key}::path_thumb`, paths?.thumb ?? "");
+          formData.set(`${field.key}::path_medium`, paths?.medium ?? "");
           for (const loc of LOCALES) {
             formData.set(`${field.key}::alt_${loc.code}`, values.alts[field.key]?.[loc.code] ?? "");
           }
@@ -249,7 +253,7 @@ function TextInput({ label, help, value, onChange, maxLength, multiline, languag
 
 function buildInitial(sections: EditorSection[]) {
   const texts: Record<string, Record<Loc, string>> = {};
-  const paths: Record<string, string | null> = {};
+  const paths: Record<string, ImagePaths | null> = {};
   const alts: Record<string, Record<Loc, string>> = {};
   const focals: Record<string, FocalPoint> = {};
 

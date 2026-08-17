@@ -1,6 +1,6 @@
 import { unstable_cache } from "next/cache";
 import { createPublicClient, hasSupabaseEnv } from "@/lib/supabase/server";
-import { mediaUrl } from "@/lib/media/url";
+import { mediaUrl, mediaSrcSet } from "@/lib/media/url";
 import type { Locale } from "@/i18n/routing";
 
 export interface SiteSettings {
@@ -21,6 +21,8 @@ export interface ContentBlock {
   value_en: string | null;
   value_fr: string | null;
   image_path: string | null;
+  image_path_thumb: string | null;
+  image_path_medium: string | null;
   image_alt_de: string | null;
   image_alt_en: string | null;
   image_alt_fr: string | null;
@@ -40,6 +42,8 @@ export interface TeamMember {
   extra_en: string | null;
   extra_fr: string | null;
   photo_path: string | null;
+  photo_path_thumb: string | null;
+  photo_path_medium: string | null;
   focal_x: number;
   focal_y: number;
   zoom: number;
@@ -49,6 +53,8 @@ export interface CarouselImage {
   id: string;
   sort_order: number;
   image_path: string | null;
+  image_path_thumb: string | null;
+  image_path_medium: string | null;
   alt_de: string | null;
   alt_en: string | null;
   alt_fr: string | null;
@@ -127,18 +133,20 @@ async function fetchSiteContent(): Promise<SiteContent> {
       sb
         .from("content_blocks")
         .select(
-          "key,kind,value_de,value_en,value_fr,image_path,image_alt_de,image_alt_en,image_alt_fr,focal_x,focal_y,zoom"
+          "key,kind,value_de,value_en,value_fr,image_path,image_path_thumb,image_path_medium,image_alt_de,image_alt_en,image_alt_fr,focal_x,focal_y,zoom"
         ),
       sb.from("site_settings").select("*").limit(1).maybeSingle(),
       sb
         .from("team_members")
         .select(
-          "id,sort_order,name,role_de,role_en,role_fr,extra_de,extra_en,extra_fr,photo_path,focal_x,focal_y,zoom"
+          "id,sort_order,name,role_de,role_en,role_fr,extra_de,extra_en,extra_fr,photo_path,photo_path_thumb,photo_path_medium,focal_x,focal_y,zoom"
         )
         .order("sort_order"),
       sb
         .from("carousel_images")
-        .select("id,sort_order,image_path,alt_de,alt_en,alt_fr,focal_x,focal_y,zoom")
+        .select(
+          "id,sort_order,image_path,image_path_thumb,image_path_medium,alt_de,alt_en,alt_fr,focal_x,focal_y,zoom"
+        )
         .order("sort_order"),
       // RLS already restricts anon reads to visible=true (same pattern as
       // gallery_photos) — no client-side filter needed here.
@@ -224,6 +232,9 @@ export async function getDbContentMessages(locale: Locale): Promise<Record<strin
 
 export interface LocalizedImage {
   src: string | null;
+  /** Responsive candidates for the same image (thumb/medium/large) — null
+      until the row has at least two sizes stored (Phase 7). */
+  srcSet: string | null;
   alt: string;
   focalX: number;
   focalY: number;
@@ -239,6 +250,11 @@ export async function getImageMap(locale: Locale): Promise<Record<string, Locali
     if (block.kind !== "image") continue;
     map[block.key] = {
       src: mediaUrl(block.image_path),
+      srcSet: mediaSrcSet({
+        thumb: block.image_path_thumb,
+        medium: block.image_path_medium,
+        large: block.image_path,
+      }),
       alt: block[altColumn] ?? block.image_alt_de ?? "",
       focalX: block.focal_x,
       focalY: block.focal_y,
@@ -253,6 +269,7 @@ export interface LocalizedTeamMember {
   role: string;
   bio: string;
   photo: string | null;
+  photoSrcSet: string | null;
   focalX: number;
   focalY: number;
   zoom: number;
@@ -270,6 +287,11 @@ export async function getTeam(locale: Locale): Promise<LocalizedTeamMember[]> {
     focalY: m.focal_y,
     zoom: m.zoom,
     photo: mediaUrl(m.photo_path),
+    photoSrcSet: mediaSrcSet({
+      thumb: m.photo_path_thumb,
+      medium: m.photo_path_medium,
+      large: m.photo_path,
+    }),
   }));
 }
 
@@ -280,6 +302,11 @@ export async function getCarousel(locale: Locale): Promise<LocalizedImage[]> {
     .filter((c) => c.image_path)
     .map((c) => ({
       src: mediaUrl(c.image_path),
+      srcSet: mediaSrcSet({
+        thumb: c.image_path_thumb,
+        medium: c.image_path_medium,
+        large: c.image_path,
+      }),
       alt: c[altCol] ?? c.alt_de ?? "",
       focalX: c.focal_x,
       focalY: c.focal_y,

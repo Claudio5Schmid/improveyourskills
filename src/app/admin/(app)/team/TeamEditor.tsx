@@ -21,6 +21,7 @@ import { CSS } from "@dnd-kit/utilities";
 import ImageField from "@/components/admin/ImageField";
 import ConfirmDialog from "@/components/admin/ConfirmDialog";
 import type { FocalPoint } from "@/components/admin/FocalPointEditor";
+import { toImagePaths } from "@/lib/image-sizes";
 import { useToast, useUnsavedWarning } from "@/lib/admin/toast";
 import { deleteTeamMember, reorderTeam, saveTeamMember } from "./actions";
 
@@ -35,6 +36,8 @@ export interface TeamMemberRow {
   extra_en: string | null;
   extra_fr: string | null;
   photo_path: string | null;
+  photo_path_thumb: string | null;
+  photo_path_medium: string | null;
   focal_x: number;
   focal_y: number;
   zoom: number;
@@ -81,6 +84,8 @@ export default function TeamEditor({ initialMembers }: { initialMembers: TeamMem
       extra_en: row.extra_en,
       extra_fr: row.extra_fr,
       photo_path: row.photo_path,
+      photo_path_thumb: row.photo_path_thumb,
+      photo_path_medium: row.photo_path_medium,
       focal_x: row.focal_x,
       focal_y: row.focal_y,
       zoom: row.zoom,
@@ -154,6 +159,8 @@ export default function TeamEditor({ initialMembers }: { initialMembers: TeamMem
         extra_en: null,
         extra_fr: null,
         photo_path: null,
+        photo_path_thumb: null,
+        photo_path_medium: null,
         focal_x: 50,
         focal_y: 50,
         zoom: 1,
@@ -289,8 +296,14 @@ function TeamRow({ member, language, dirty, pending, onPatch, onSave, onDelete }
         <ImageField
           fieldKey={`team.${member.id}`}
           label="Foto"
-          value={member.photo_path}
-          onChange={(next) => onPatch({ photo_path: next })}
+          value={toImagePaths(member.photo_path, member.photo_path_thumb, member.photo_path_medium)}
+          onChange={(next) =>
+            onPatch({
+              photo_path: next?.large ?? null,
+              photo_path_thumb: next?.thumb ?? null,
+              photo_path_medium: next?.medium ?? null,
+            })
+          }
           focal={{ focalX: member.focal_x, focalY: member.focal_y, zoom: member.zoom }}
           onFocalChange={(next: FocalPoint) =>
             onPatch({ focal_x: next.focalX, focal_y: next.focalY, zoom: next.zoom })

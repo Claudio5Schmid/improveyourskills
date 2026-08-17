@@ -28,6 +28,8 @@ export default function HeroSlider({ slides }: { slides: LocalizedImage[] }) {
         <div key={slide.src} className={`${styles.slide}${i === active ? ` ${styles.active}` : ""}`}>
           <PositionedImage
             src={slide.src ?? ""}
+            srcSet={slide.srcSet}
+            sizes="100vw"
             alt=""
             focalX={slide.focalX}
             focalY={slide.focalY}

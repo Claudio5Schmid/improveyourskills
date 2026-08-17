@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { requireAdmin } from "@/lib/admin/auth";
 import { CONTENT_REGISTRY, type PageId } from "@/content/registry";
+import { toImagePaths } from "@/lib/image-sizes";
 import { ToastHost } from "@/lib/admin/toast";
 import InhalteEditor, { type EditorField } from "../InhalteEditor";
 
@@ -48,7 +49,7 @@ export default async function InhaltePagePage({
   const { data: blocks } = await supabase
     .from("content_blocks")
     .select(
-      "key,kind,value_de,value_en,value_fr,image_path,image_alt_de,image_alt_en,image_alt_fr,focal_x,focal_y,zoom"
+      "key,kind,value_de,value_en,value_fr,image_path,image_path_thumb,image_path_medium,image_alt_de,image_alt_en,image_alt_fr,focal_x,focal_y,zoom"
     )
     .in("key", keys);
 
@@ -62,7 +63,11 @@ export default async function InhaltePagePage({
       field.kind === "image"
         ? {
             field,
-            path: block?.image_path ?? null,
+            path: toImagePaths(
+              block?.image_path ?? null,
+              block?.image_path_thumb ?? null,
+              block?.image_path_medium ?? null
+            ),
             alts: {
               de: block?.image_alt_de ?? "",
               en: block?.image_alt_en ?? "",

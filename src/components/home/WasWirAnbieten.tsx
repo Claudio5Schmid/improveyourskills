@@ -65,6 +65,8 @@ export default async function WasWirAnbieten() {
                   <div key={i} className={styles.tile}>
                     <PositionedImage
                       src={tile.src ?? ""}
+                      srcSet={tile.srcSet}
+                      sizes="(max-width: 900px) 50vw, 25vw"
                       alt={tile.alt}
                       focalX={tile.focalX}
                       focalY={tile.focalY}
@@ -78,6 +80,8 @@ export default async function WasWirAnbieten() {
               <div className={styles.imgWrap}>
                 <PositionedImage
                   src={imageSrc}
+                  srcSet={image?.srcSet}
+                  sizes="(max-width: 900px) 100vw, 50vw"
                   alt={imageAlt}
                   focalX={image?.focalX}
                   focalY={image?.focalY}

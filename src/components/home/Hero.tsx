@@ -11,9 +11,9 @@ import styles from "./Hero.module.css";
 // (docs/PLATZHALTER.md B6 — faces in the upper third), now expressed as data
 // instead of CSS so it stays overridable per-image once real DB rows exist.
 const FALLBACK_SLIDES: LocalizedImage[] = [
-  { src: "/Bilder/55193886120_4a1069cdcf_o.jpeg", alt: "", focalX: 50, focalY: 20, zoom: 1 },
-  { src: "/Bilder/54878038952_978afe6028_o.jpg", alt: "", focalX: 50, focalY: 20, zoom: 1 },
-  { src: "/54923280127_69f6204584_k.jpg", alt: "", focalX: 50, focalY: 20, zoom: 1 },
+  { src: "/Bilder/55193886120_4a1069cdcf_o.jpeg", srcSet: null, alt: "", focalX: 50, focalY: 20, zoom: 1 },
+  { src: "/Bilder/54878038952_978afe6028_o.jpg", srcSet: null, alt: "", focalX: 50, focalY: 20, zoom: 1 },
+  { src: "/54923280127_69f6204584_k.jpg", srcSet: null, alt: "", focalX: 50, focalY: 20, zoom: 1 },
 ];
 
 export default async function Hero() {

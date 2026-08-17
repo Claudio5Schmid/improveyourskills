@@ -41,6 +41,8 @@ export default async function KontaktPage({ params }: { params: Promise<{ locale
           {headerImage?.src && (
             <PositionedImage
               src={headerImage.src}
+              srcSet={headerImage.srcSet}
+              sizes="100vw"
               alt=""
               focalX={headerImage.focalX}
               focalY={headerImage.focalY}

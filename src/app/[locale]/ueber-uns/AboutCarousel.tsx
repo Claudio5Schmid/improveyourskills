@@ -7,6 +7,7 @@ import styles from "./Ueber.module.css";
 
 export interface CarouselSlide {
   src: string;
+  srcSet?: string | null;
   alt: string;
   focalX?: number;
   focalY?: number;
@@ -60,6 +61,8 @@ export default function AboutCarousel({ slides }: { slides: CarouselSlide[] }) {
           >
             <PositionedImage
               src={slide.src}
+              srcSet={slide.srcSet}
+              sizes="(max-width: 900px) 100vw, 50vw"
               alt={slide.alt}
               focalX={slide.focalX}
               focalY={slide.focalY}

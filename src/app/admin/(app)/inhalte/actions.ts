@@ -28,6 +28,8 @@ type FieldRow = {
   value_en?: string | null;
   value_fr?: string | null;
   image_path?: string | null;
+  image_path_thumb?: string | null;
+  image_path_medium?: string | null;
   image_alt_de?: string | null;
   image_alt_en?: string | null;
   image_alt_fr?: string | null;
@@ -77,6 +79,8 @@ export async function saveInhaltePage(
 
     if (field.kind === "image") {
       row.image_path = normalisePath(formData.get(`${field.key}::path`));
+      row.image_path_thumb = normalisePath(formData.get(`${field.key}::path_thumb`));
+      row.image_path_medium = normalisePath(formData.get(`${field.key}::path_medium`));
       row.image_alt_de = normaliseString(formData.get(`${field.key}::alt_de`));
       row.image_alt_en = normaliseString(formData.get(`${field.key}::alt_en`));
       row.image_alt_fr = normaliseString(formData.get(`${field.key}::alt_fr`));

@@ -37,6 +37,8 @@ export default async function Eindruecke() {
           <div key={i} className={styles.item}>
             <PositionedImage
               src={photo.src ?? ""}
+              srcSet={photo.srcSet}
+              sizes="(max-width: 900px) 220px, 280px"
               alt={photo.alt}
               focalX={photo.focalX}
               focalY={photo.focalY}

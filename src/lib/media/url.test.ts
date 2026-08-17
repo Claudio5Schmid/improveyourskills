@@ -1,5 +1,5 @@
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { isStorageMedia, mediaUrl } from "./url";
+import { isStorageMedia, mediaUrl, mediaSrcSet } from "./url";
 
 const ORIGINAL = process.env.NEXT_PUBLIC_SUPABASE_URL;
 
@@ -36,6 +36,35 @@ describe("mediaUrl", () => {
   it("percent-encodes each path segment", () => {
     expect(mediaUrl("home/hero/hase & fuchs.webp")).toBe(
       "https://ref.supabase.co/storage/v1/object/public/media/home/hero/hase%20%26%20fuchs.webp"
+    );
+  });
+});
+
+describe("mediaSrcSet", () => {
+  it("builds all three candidates with their width descriptors, in size order", () => {
+    expect(
+      mediaSrcSet({ thumb: "x_thumb.webp", medium: "x_medium.webp", large: "x_large.webp" })
+    ).toBe(
+      "https://ref.supabase.co/storage/v1/object/public/media/x_thumb.webp 480w, " +
+        "https://ref.supabase.co/storage/v1/object/public/media/x_medium.webp 1200w, " +
+        "https://ref.supabase.co/storage/v1/object/public/media/x_large.webp 2000w"
+    );
+  });
+
+  it("returns null for a pre-Phase-7 row that only has the large variant", () => {
+    // Exactly the shape of every image_path/photo_path row before this
+    // migration — thumb/medium are null until re-uploaded.
+    expect(mediaSrcSet({ thumb: null, medium: null, large: "x_large.webp" })).toBeNull();
+  });
+
+  it("returns null when nothing is set at all", () => {
+    expect(mediaSrcSet({ thumb: null, medium: null, large: null })).toBeNull();
+  });
+
+  it("still builds a two-candidate srcset if only one size is missing", () => {
+    expect(mediaSrcSet({ thumb: "x_thumb.webp", medium: null, large: "x_large.webp" })).toBe(
+      "https://ref.supabase.co/storage/v1/object/public/media/x_thumb.webp 480w, " +
+        "https://ref.supabase.co/storage/v1/object/public/media/x_large.webp 2000w"
     );
   });
 });

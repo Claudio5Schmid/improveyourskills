@@ -51,7 +51,7 @@ export default async function ImpressionenPage({
   // for the static fallback (no DB row to store a focal point on).
   const headerImage = dbHeaderImage?.src
     ? dbHeaderImage
-    : { src: FALLBACK_HEADER, alt: "", focalX: 50, focalY: 20, zoom: 1 };
+    : { src: FALLBACK_HEADER, srcSet: null, alt: "", focalX: 50, focalY: 20, zoom: 1 };
 
   const photos = await getGalleryPhotos();
   const years = galleryYears(photos);
@@ -71,6 +71,8 @@ export default async function ImpressionenPage({
         <section className="page-header section-dark">
           <PositionedImage
             src={headerImage.src ?? FALLBACK_HEADER}
+            srcSet={headerImage.srcSet}
+            sizes="100vw"
             alt=""
             focalX={headerImage.focalX}
             focalY={headerImage.focalY}

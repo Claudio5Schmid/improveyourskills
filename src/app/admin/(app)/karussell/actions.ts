@@ -12,6 +12,8 @@ export interface Result {
 interface CarouselInput {
   id?: string;
   image_path: string | null;
+  image_path_thumb: string | null;
+  image_path_medium: string | null;
   alt_de: string | null;
   alt_en: string | null;
   alt_fr: string | null;

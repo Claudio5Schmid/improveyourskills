@@ -50,6 +50,7 @@ const FALLBACK_TEAM = [
     role: "Organisator & Trainer",
     bio: "Nationalspieler · SVWE (Rekordmeister Schweizer Unihockey)",
     photo: "/Bilder/5_claudio_schmid.png",
+    photoSrcSet: null,
     focalX: 50,
     focalY: 50,
     zoom: 1,
@@ -59,6 +60,7 @@ const FALLBACK_TEAM = [
     role: "Organisator & Trainer",
     bio: "Nationalspieler · Storvreta IBK (Schweden, bester Verein der Welt)",
     photo: "/Bilder/17_pascal_schmuki.jpg.avif",
+    photoSrcSet: null,
     focalX: 50,
     focalY: 50,
     zoom: 1,
@@ -68,6 +70,7 @@ const FALLBACK_TEAM = [
     role: "Organisatorin & Trainerin",
     bio: "Nationalspielerin · Weltmeisterin · 2-fache Schweizer Meisterin · Kloten-Dietlikon Jets",
     photo: "/Bilder/20_vanessa_schmuki.jpg",
+    photoSrcSet: null,
     focalX: 50,
     focalY: 50,
     zoom: 1,
@@ -77,10 +80,17 @@ const FALLBACK_TEAM = [
 // ":nth-child(4) { object-position: center 35% }" for this specific fallback
 // photo — now data instead of a position-bound CSS hack.
 const FALLBACK_CAROUSEL: LocalizedImage[] = [
-  { src: "/Bilder/54984091234_0a498c59d6_o.jpg", alt: "", focalX: 50, focalY: 50, zoom: 1 },
-  { src: "/Bilder/54560170314_01b6b9c809_o.jpeg", alt: "", focalX: 50, focalY: 50, zoom: 1 },
-  { src: "/Bilder/54983832553_b1dfd1ce04_o.jpg", alt: "", focalX: 50, focalY: 50, zoom: 1 },
-  { src: "/Bilder/1ECD3D4C-B83D-4BF2-B8C0-EE69FF124190.jpg", alt: "", focalX: 50, focalY: 35, zoom: 1 },
+  { src: "/Bilder/54984091234_0a498c59d6_o.jpg", srcSet: null, alt: "", focalX: 50, focalY: 50, zoom: 1 },
+  { src: "/Bilder/54560170314_01b6b9c809_o.jpeg", srcSet: null, alt: "", focalX: 50, focalY: 50, zoom: 1 },
+  { src: "/Bilder/54983832553_b1dfd1ce04_o.jpg", srcSet: null, alt: "", focalX: 50, focalY: 50, zoom: 1 },
+  {
+    src: "/Bilder/1ECD3D4C-B83D-4BF2-B8C0-EE69FF124190.jpg",
+    srcSet: null,
+    alt: "",
+    focalX: 50,
+    focalY: 35,
+    zoom: 1,
+  },
 ];
 
 export default async function UeberPage({ params }: { params: Promise<{ locale: string }> }) {
@@ -106,6 +116,7 @@ export default async function UeberPage({ params }: { params: Promise<{ locale: 
   const slides = carousel.length > 0 ? carousel : FALLBACK_CAROUSEL;
   const carouselSlides = slides.map((s) => ({
     src: s.src as string,
+    srcSet: s.srcSet,
     alt: s.alt,
     focalX: s.focalX,
     focalY: s.focalY,
@@ -122,6 +133,8 @@ export default async function UeberPage({ params }: { params: Promise<{ locale: 
           {headerImage?.src && (
             <PositionedImage
               src={headerImage.src}
+              srcSet={headerImage.srcSet}
+              sizes="100vw"
               alt=""
               focalX={headerImage.focalX}
               focalY={headerImage.focalY}
@@ -149,6 +162,8 @@ export default async function UeberPage({ params }: { params: Promise<{ locale: 
                     {member.photo && (
                       <PositionedImage
                         src={member.photo}
+                        srcSet={member.photoSrcSet}
+                        sizes="200px"
                         alt={member.name}
                         focalX={member.focalX}
                         focalY={member.focalY}
@@ -195,6 +210,8 @@ export default async function UeberPage({ params }: { params: Promise<{ locale: 
                             {featureImage?.src ? (
                               <PositionedImage
                                 src={featureImage.src}
+                                srcSet={featureImage.srcSet}
+                                sizes="32px"
                                 alt=""
                                 focalX={featureImage.focalX}
                                 focalY={featureImage.focalY}
@@ -235,6 +252,8 @@ export default async function UeberPage({ params }: { params: Promise<{ locale: 
         {bannerImage?.src && (
           <PositionedImage
             src={bannerImage.src}
+            srcSet={bannerImage.srcSet}
+            sizes="100vw"
             alt=""
             focalX={bannerImage.focalX}
             focalY={bannerImage.focalY}
