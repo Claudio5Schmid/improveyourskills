@@ -3,6 +3,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 import { routing } from "./i18n/routing";
 import { supabaseAnonKey, supabaseUrl, hasSupabaseEnv } from "./lib/supabase/env";
+import { buildCsp } from "./lib/csp";
 
 const intlMiddleware = createMiddleware(routing);
 
@@ -76,11 +77,22 @@ async function adminMiddleware(request: NextRequest): Promise<NextResponse> {
 }
 
 export default async function middleware(request: NextRequest) {
-  if (request.nextUrl.pathname.startsWith("/admin")) {
-    return adminMiddleware(request);
-  }
-  // Everything else is the public, localised site.
-  return intlMiddleware(request);
+  // A fresh nonce per request, needed for the CSP — that's the one security
+  // header that can't be static in next.config.ts (see src/lib/csp.ts).
+  // Set on the request BEFORE either branch runs, so it's present on the
+  // exact same `request` object both `adminMiddleware` and next-intl's own
+  // `intlMiddleware` read from and hand onward to rendering.
+  const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
+  const csp = buildCsp(nonce);
+  request.headers.set("x-nonce", nonce);
+  request.headers.set("Content-Security-Policy", csp);
+
+  const response = request.nextUrl.pathname.startsWith("/admin")
+    ? await adminMiddleware(request)
+    : intlMiddleware(request);
+
+  response.headers.set("Content-Security-Policy", csp);
+  return response;
 }
 
 export const config = {

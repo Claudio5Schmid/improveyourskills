@@ -24,13 +24,35 @@ const nextConfig: NextConfig = {
   },
 
   /**
-   * Keep the admin out of search engines. The `<meta name="robots">` tag in the
-   * admin layout says the same thing, but a header also covers responses that
-   * are not HTML pages (redirects, route handlers) — and it cannot be lost in a
-   * refactor of the layout.
+   * Security headers (brief Phase 7 §Livegang). Four of the five live here,
+   * static, on every route — the fifth, Content-Security-Policy, needs a
+   * fresh nonce per request and is set in `src/middleware.ts` instead (see
+   * `src/lib/csp.ts` for why and what it allows).
+   *
+   * Keep the admin out of search engines. The `<meta name="robots">` tag in
+   * the admin layout says the same thing, but a header also covers responses
+   * that are not HTML pages (redirects, route handlers) — and it cannot be
+   * lost in a refactor of the layout.
    */
   async headers() {
     return [
+      {
+        source: "/:path*",
+        headers: [
+          // HTTPS only, for this domain's subdomains too. No `preload` yet —
+          // that's a near-irreversible commitment (submitted to browsers'
+          // built-in list) that should wait for Claudio's explicit go-ahead,
+          // once the real domain is live and stable (docs/DNS-HOSTPOINT.md).
+          { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains" },
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          // Nothing on this site uses any of these browser features.
+          {
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=(), payment=(), usb=()",
+          },
+        ],
+      },
       {
         source: "/admin/:path*",
         headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
