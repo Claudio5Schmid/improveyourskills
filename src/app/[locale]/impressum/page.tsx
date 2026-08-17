@@ -4,20 +4,22 @@ import { use } from "react";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { Link } from "@/i18n/navigation";
+import styles from "@/components/legal/Legal.module.css";
 
 /**
- * Impressum — faithful Phase-1 port. The old page referenced .impressum-card /
- * .impressum-block classes that were never styled, so it renders with browser
- * defaults (kept here for parity). It is also orphaned in the current site
- * (linked from nowhere) and contains known errors (see docs/AUDIT.md §5.6).
- * Phase 7 replaces it with a proper, reviewed Impressum + Datenschutz.
+ * Impressum — Phase 7, real content (Claudio supplied the responsible-party
+ * text, 2026-08-17). No venue/date block anymore: the Footer below already
+ * renders that dynamically from site_settings, so it can't drift out of sync
+ * the way the old static text did (docs/AUDIT.md §5.6, T3/T4).
  */
 export default function ImpressumPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = use(params);
   setRequestLocale(locale);
   const t = useTranslations("impressum");
-  const bold = { b: (chunks: React.ReactNode) => <strong>{chunks}</strong> };
-  const mail = <a href={`mailto:${t("contactEmail")}`}>{t("contactEmailLabel")}</a>;
+  const mail = <a href={`mailto:${t("contactEmail")}`}>{t("contactEmail")}</a>;
+  const datenschutzLink = {
+    link: (chunks: React.ReactNode) => <Link href="/datenschutz">{chunks}</Link>,
+  };
 
   return (
     <>
@@ -30,40 +32,33 @@ export default function ImpressumPage({ params }: { params: Promise<{ locale: st
           </div>
         </section>
 
-        <section className="section">
+        <section className={`section ${styles.section}`}>
           <div className="container container-narrow">
-            <div className="impressum-card">
-              <div className="impressum-block">
-                <h2>{t("personsHeading")}</h2>
-                <p style={{ whiteSpace: "pre-line" }}>{t("personsBody")}</p>
+            <div className={styles.card}>
+              <div className={styles.block}>
+                <h2>{t("responsibleHeading")}</h2>
+                <p>{t("responsibleBody")}</p>
+                <p>{t("projectNote")}</p>
               </div>
 
-              <div className="impressum-block">
+              <div className={styles.block}>
                 <h2>{t("contactHeading")}</h2>
                 <p>E-Mail: {mail}</p>
+                <p>{t("contactMore")}</p>
               </div>
 
-              <div className="impressum-block">
-                <h2>{t("eventHeading")}</h2>
-                <p style={{ whiteSpace: "pre-line" }}>{t("eventBody")}</p>
+              <div className={styles.block}>
+                <h2>{t("photoHeading")}</h2>
+                <p>{t("photoBody")}</p>
+                <p>{t.rich("photoMore", datenschutzLink)}</p>
               </div>
 
-              <div className="impressum-block">
-                <h2>{t("privacyHeading")}</h2>
-                <p>{t("privacyP1")}</p>
-                <p>{t.rich("privacyP2", bold)}</p>
-                <p>{t.rich("privacyP3", bold)}</p>
-                <p>
-                  {t("privacyP4")} {mail}
-                </p>
-              </div>
-
-              <div className="impressum-block">
+              <div className={styles.block}>
                 <h2>{t("liabilityHeading")}</h2>
                 <p>{t("liabilityBody")}</p>
               </div>
 
-              <div className="impressum-block">
+              <div className={styles.block}>
                 <h2>{t("copyrightHeading")}</h2>
                 <p>{t("copyrightBody")}</p>
               </div>

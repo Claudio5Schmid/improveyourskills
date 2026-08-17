@@ -1,23 +1,20 @@
-import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { useTranslations } from "next-intl";
 import { use } from "react";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { Link } from "@/i18n/navigation";
+import styles from "@/components/legal/Legal.module.css";
 
 /**
- * Draft privacy page — exists so the contact form's consent checkbox
- * (Phase 5) has something real to link to, not a dead link. Deliberately
- * minimal and factual (only describes what Phase 5 itself introduced: the
- * contact form's data flow). NOT linked from the footer or nav — Phase 7
- * replaces this with the full, reviewed Datenschutzerklärung (see
- * PROJECT_BRIEF.md §Phase 7) and links it from the footer then.
+ * Datenschutzerklärung — Phase 7, full version. Replaces the Phase-5 stopgap
+ * (which only covered the contact form). Every claim here is checked against
+ * what the code actually does (cookies, processors, retention) rather than
+ * generic boilerplate — see the Phase-7 checkpoint for the source facts.
+ * Still explicitly marked as a draft Claudio must read before launch (brief:
+ * "not legal advice"), but no longer noindex — this is the real page now,
+ * linked from the footer.
  */
-export const metadata: Metadata = {
-  robots: { index: false, follow: true },
-};
-
 export default function DatenschutzPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = use(params);
   setRequestLocale(locale);
@@ -34,47 +31,57 @@ export default function DatenschutzPage({ params }: { params: Promise<{ locale: 
           </div>
         </section>
 
-        <section className="section">
+        <section className={`section ${styles.section}`}>
           <div className="container container-narrow">
-            <div className="impressum-card">
-              <div
-                className="impressum-block"
-                style={{
-                  padding: "var(--space-13)",
-                  borderRadius: "var(--radius-input)",
-                  background: "var(--color-danger-surface)",
-                  border: "1px solid var(--color-danger-border)",
-                  color: "var(--color-danger-text)",
-                }}
-              >
+            <div className={styles.card}>
+              <div className={styles.notice}>
                 <p>{t("draftNotice")}</p>
               </div>
 
-              <div className="impressum-block">
+              <div className={styles.block}>
                 <p>{t("intro")}</p>
               </div>
 
-              <div className="impressum-block">
-                <h2>{t("formHeading")}</h2>
-                <p>{t("formBody")}</p>
+              <div className={styles.block}>
+                <h2>{t("responsibleHeading")}</h2>
+                <p>{t("responsibleBody")}</p>
               </div>
 
-              <div className="impressum-block">
-                <h2>{t("accessHeading")}</h2>
-                <p>{t("accessBody")}</p>
+              <div className={styles.block}>
+                <h2>{t("dataHeading")}</h2>
+                <p>{t("dataContactBody")}</p>
+                <p>{t("dataPhotosBody")}</p>
+                <p>{t("dataLogsBody")}</p>
+                <p>{t("dataAdminBody")}</p>
               </div>
 
-              <div className="impressum-block">
+              <div className={styles.block}>
+                <h2>{t("cookiesHeading")}</h2>
+                <p>{t("cookiesBody")}</p>
+                <ul className={styles.cookieList}>
+                  <li>{t("cookieLocale")}</li>
+                  <li>{t("cookieAdmin")}</li>
+                  <li>{t("cookieTurnstile")}</li>
+                </ul>
+                <p>{t("cookiesNoBanner")}</p>
+              </div>
+
+              <div className={styles.block}>
                 <h2>{t("processorsHeading")}</h2>
                 <p>{t("processorsBody")}</p>
               </div>
 
-              <div className="impressum-block">
+              <div className={styles.block}>
                 <h2>{t("retentionHeading")}</h2>
                 <p>{t("retentionBody")}</p>
               </div>
 
-              <div className="impressum-block">
+              <div className={styles.block}>
+                <h2>{t("rightsHeading")}</h2>
+                <p>{t("rightsBody")}</p>
+              </div>
+
+              <div className={styles.block}>
                 <h2>{t("contactHeading")}</h2>
                 <p>{t("contactBody")}</p>
               </div>

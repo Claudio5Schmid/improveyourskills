@@ -40,6 +40,8 @@ export default async function Footer({ info = "none" }: { info?: "none" | "venue
           <div className="footer-org">{t("org")}</div>
           <div className="footer-links">
             <Link href="/kontakt">{t("contactLink")}</Link>
+            <Link href="/impressum">{t("impressumLink")}</Link>
+            <Link href="/datenschutz">{t("datenschutzLink")}</Link>
           </div>
         </div>
       </div>
