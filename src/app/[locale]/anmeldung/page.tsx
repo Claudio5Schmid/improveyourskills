@@ -1,4 +1,5 @@
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { Calendar, PenLine } from "lucide-react";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { Link } from "@/i18n/navigation";
@@ -25,7 +26,7 @@ export default async function AnmeldungPage({ params }: { params: Promise<{ loca
           </div>
         </section>
 
-        <section className="section section-cream">
+        <section className={`section ${styles.compactSection}`}>
           <div className="container container-narrow" style={{ textAlign: "center" }}>
             {isOpen ? (
               /* No self-service registration form is planned (confirmed with Claudio
@@ -33,9 +34,11 @@ export default async function AnmeldungPage({ params }: { params: Promise<{ loca
                  PROJECT_BRIEF.md §Phase 5). The "open" state tells visitors we're
                  open and points them at /kontakt; that's the whole flow. */
               <>
-                <div className={styles.icon}>✍️</div>
+                <div className={styles.iconWrap}>
+                  <PenLine size={28} strokeWidth={1.75} />
+                </div>
                 <div className="section-label">{t("openLabel")}</div>
-                <h2 className="section-title" style={{ marginBottom: "var(--space-15)" }}>
+                <h2 className="section-title" style={{ marginBottom: "var(--space-13)" }}>
                   {t("openHeading")}
                 </h2>
                 <p className={styles.text}>{t("openText")}</p>
@@ -45,9 +48,11 @@ export default async function AnmeldungPage({ params }: { params: Promise<{ loca
               </>
             ) : (
               <>
-                <div className={styles.icon}>📅</div>
+                <div className={styles.iconWrap}>
+                  <Calendar size={28} strokeWidth={1.75} />
+                </div>
                 <div className="section-label">{t("label")}</div>
-                <h2 className="section-title" style={{ marginBottom: "var(--space-15)" }}>
+                <h2 className="section-title" style={{ marginBottom: "var(--space-13)" }}>
                   {t("heading")}
                 </h2>
                 <p className={styles.text}>{t("text")}</p>

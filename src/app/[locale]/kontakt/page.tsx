@@ -1,23 +1,36 @@
-import { setRequestLocale } from "next-intl/server";
-import { useTranslations } from "next-intl";
-import { use } from "react";
+import { getLocale, getTranslations, setRequestLocale } from "next-intl/server";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/FadeIn";
+import PositionedImage from "@/components/PositionedImage";
+import { getImageMap } from "@/content/content";
+import type { Locale } from "@/i18n/routing";
 import KontaktMap from "./KontaktMap";
 import KontaktForm from "./KontaktForm";
 import styles from "./Kontakt.module.css";
 
-export default function KontaktPage({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = use(params);
+export default async function KontaktPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   setRequestLocale(locale);
-  const t = useTranslations("kontakt");
+  const t = await getTranslations("kontakt");
+  const images = await getImageMap((await getLocale()) as Locale);
+  const headerImage = images["kontakt.headerImage"];
 
   return (
     <>
       <Nav variant="page" />
       <main>
         <section className="page-header section-dark">
+          {headerImage?.src && (
+            <PositionedImage
+              src={headerImage.src}
+              alt=""
+              focalX={headerImage.focalX}
+              focalY={headerImage.focalY}
+              zoom={headerImage.zoom}
+              className="page-header-bg"
+            />
+          )}
           <div className="page-header-overlay" />
           <div className="page-header-content">
             <div className="hero-tag">{t("tag")}</div>

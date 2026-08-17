@@ -248,10 +248,43 @@ export const CONTENT_REGISTRY = [
   {
     key: "home.wwm.image",
     kind: "image",
-    label: "Bild",
+    label: "Bild (Fallback)",
+    help: "Wird nur gezeigt, solange keine der 4 Kacheln unten gefüllt ist.",
     page: "home",
     section: "Was wir anbieten",
     aspectRatio: "4 / 3",
+  },
+  {
+    key: "home.wwm.image1",
+    kind: "image",
+    label: "Kachel 1",
+    page: "home",
+    section: "Was wir anbieten",
+    aspectRatio: "1 / 1",
+  },
+  {
+    key: "home.wwm.image2",
+    kind: "image",
+    label: "Kachel 2",
+    page: "home",
+    section: "Was wir anbieten",
+    aspectRatio: "1 / 1",
+  },
+  {
+    key: "home.wwm.image3",
+    kind: "image",
+    label: "Kachel 3",
+    page: "home",
+    section: "Was wir anbieten",
+    aspectRatio: "1 / 1",
+  },
+  {
+    key: "home.wwm.image4",
+    kind: "image",
+    label: "Kachel 4",
+    page: "home",
+    section: "Was wir anbieten",
+    aspectRatio: "1 / 1",
   },
 
   // ─── Home · Eindrücke (horizontale Bilderreihe) ────────────────────────────
@@ -313,16 +346,6 @@ export const CONTENT_REGISTRY = [
     page: "home",
     section: "Eindrücke",
     aspectRatio: "3 / 4",
-  },
-
-  // ─── Home · Abschluss-Banner ────────────────────────────────────────────────
-  {
-    key: "home.cta.title",
-    kind: "text",
-    label: "Überschrift",
-    maxLength: 60,
-    page: "home",
-    section: "Abschluss-Banner",
   },
 
   // ─── Über uns · Kopf ────────────────────────────────────────────────────────
@@ -576,6 +599,15 @@ export const CONTENT_REGISTRY = [
     maxLength: 40,
     page: "kontakt",
     section: "Kopf",
+  },
+  {
+    key: "kontakt.headerImage",
+    kind: "image",
+    label: "Kopf-Hintergrundbild",
+    help: "Optional. Ohne Bild bleibt der Kopf dunkelgrün.",
+    page: "kontakt",
+    section: "Kopf",
+    aspectRatio: "16 / 9",
   },
   {
     key: "kontakt.infoTitle",

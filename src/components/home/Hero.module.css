@@ -4,9 +4,9 @@
 
 .hero {
   position: relative;
-  /* Aug 2026: was 100vh — knocked down just enough that the next section
-     visibly peeks in on load, a hint there's more below the fold. */
-  min-height: 92vh;
+  /* Full-bleed again (Aug 2026 feedback): a brief 92vh experiment left a
+     visible gap before the next section that read as broken, not "peek". */
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;

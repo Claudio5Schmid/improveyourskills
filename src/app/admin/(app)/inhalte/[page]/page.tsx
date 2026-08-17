@@ -27,7 +27,19 @@ export default async function InhaltePagePage({
 
   const { supabase } = await requireAdmin();
 
-  const fields = CONTENT_REGISTRY.filter((f) => f.page === pageId);
+  // "Unser Ansatz" only shows here while it's actually live on the site
+  // (site_settings.ueber_ansatz_visible) — keeps the admin free of fields
+  // for sections nobody can currently see (Claudio's ask, Aug 2026). The
+  // registry entries themselves stay put; re-enabling the section in
+  // Einstellungen brings the fields straight back, nothing to re-plumb.
+  const showAnsatz =
+    pageId !== "ueber" ||
+    (await supabase.from("site_settings").select("ueber_ansatz_visible").maybeSingle()).data
+      ?.ueber_ansatz_visible === true;
+
+  const fields = CONTENT_REGISTRY.filter(
+    (f) => f.page === pageId && (showAnsatz || !f.key.startsWith("ueber.ansatz."))
+  );
   const keys = fields.map((f) => f.key);
 
   // Fetch straight through the admin's own client (RLS: public read on

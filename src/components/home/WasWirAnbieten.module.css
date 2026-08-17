@@ -40,6 +40,34 @@
   object-fit: cover;
 }
 
+/* Tile grid (Aug 2026 feedback) — replaces the single big image once at
+   least one tile is set. 2x2, each tile a hover-zoom crop, same card
+   treatment (radius/shadow) as the rest of the site. */
+.tileGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-11); /* 16px */
+}
+.tile {
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--transition);
+  /* Only takes effect when the image's own focal zoom is 1 (the default) —
+     PositionedImage's inline transform otherwise wins, see its component
+     comment. Acceptable trade-off: a zoomed tile just skips the hover. */
+}
+.tile:hover img {
+  transform: scale(1.08);
+}
+
 /* style.css:425-427 */
 @media (max-width: 900px) {
   .grid {

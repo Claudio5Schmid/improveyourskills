@@ -6,7 +6,6 @@ import Hero from "@/components/home/Hero";
 import Eckdaten from "@/components/home/Eckdaten";
 import WasWirAnbieten from "@/components/home/WasWirAnbieten";
 import Eindruecke from "@/components/home/Eindruecke";
-import CtaBanner from "@/components/home/CtaBanner";
 
 export default function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = use(params);
@@ -20,7 +19,6 @@ export default function Home({ params }: { params: Promise<{ locale: string }> }
         <Eckdaten />
         <WasWirAnbieten />
         <Eindruecke />
-        <CtaBanner />
       </main>
       <Footer />
     </>
