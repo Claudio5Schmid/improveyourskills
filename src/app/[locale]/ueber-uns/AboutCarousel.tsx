@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import PositionedImage from "@/components/PositionedImage";
+import { useMountedSlides } from "@/components/useMountedSlides";
 import styles from "./Ueber.module.css";
 
 export interface CarouselSlide {
@@ -28,6 +29,7 @@ export default function AboutCarousel({ slides }: { slides: CarouselSlide[] }) {
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
   const reduced = useRef(false);
   const count = slides.length;
+  const shouldMount = useMountedSlides(count, current);
 
   const startTimer = useCallback(() => {
     if (reduced.current || count <= 1) return;
@@ -59,15 +61,17 @@ export default function AboutCarousel({ slides }: { slides: CarouselSlide[] }) {
             key={slide.src}
             className={`${styles.slide}${i === current ? ` ${styles.active}` : ""}`}
           >
-            <PositionedImage
-              src={slide.src}
-              srcSet={slide.srcSet}
-              sizes="(max-width: 900px) 100vw, 50vw"
-              alt={slide.alt}
-              focalX={slide.focalX}
-              focalY={slide.focalY}
-              zoom={slide.zoom}
-            />
+            {shouldMount(i) && (
+              <PositionedImage
+                src={slide.src}
+                srcSet={slide.srcSet}
+                sizes="(max-width: 900px) 100vw, 50vw"
+                alt={slide.alt}
+                focalX={slide.focalX}
+                focalY={slide.focalY}
+                zoom={slide.zoom}
+              />
+            )}
           </div>
         ))}
       </div>

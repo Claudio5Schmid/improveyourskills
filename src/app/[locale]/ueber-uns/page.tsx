@@ -168,6 +168,7 @@ export default async function UeberPage({ params }: { params: Promise<{ locale: 
                         focalX={member.focalX}
                         focalY={member.focalY}
                         zoom={member.zoom}
+                        loading="lazy"
                       />
                     )}
                   </div>
@@ -217,6 +218,7 @@ export default async function UeberPage({ params }: { params: Promise<{ locale: 
                                 focalY={featureImage.focalY}
                                 zoom={featureImage.zoom}
                                 className={styles.featureImg}
+                                loading="lazy"
                               />
                             ) : (
                               f.icon
@@ -259,6 +261,7 @@ export default async function UeberPage({ params }: { params: Promise<{ locale: 
             focalY={bannerImage.focalY}
             zoom={bannerImage.zoom}
             className={styles.banner}
+            loading="lazy"
           />
         )}
 
