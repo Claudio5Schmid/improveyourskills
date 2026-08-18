@@ -1,0 +1,42 @@
+/* "Eindrücke" — horizontal scroll-snap photo strip (Aug 2026 UI-pass, Block D).
+   New section, built only from existing tokens (radius-card, shadow-lg,
+   height-media family) — same treatment as every other media wrap on the
+   site, just narrower and side-scrolling instead of full-width. */
+
+.section {
+  background: var(--color-cream);
+  overflow: hidden;
+}
+
+.scrollRow {
+  display: flex;
+  gap: var(--space-15); /* 24px */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: var(--space-17);
+  padding: 0 var(--space-17) var(--space-6); /* bottom pad clears the scrollbar */
+  -webkit-overflow-scrolling: touch;
+}
+
+.item {
+  flex: 0 0 auto;
+  width: 280px;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  scroll-snap-align: start;
+  background: var(--color-cream-dark);
+}
+.item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 900px) {
+  .item {
+    width: 220px;
+  }
+}

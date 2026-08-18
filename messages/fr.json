@@ -1,0 +1,216 @@
+{
+  "common": {
+    "brand": "Improve your skills"
+  },
+  "nav": {
+    "ueber": "Über uns",
+    "impressionen": "Impressionen",
+    "kontakt": "Kontakt",
+    "anmelden": "Anmelden",
+    "openMenu": "Menü öffnen",
+    "closeMenu": "Menü schliessen"
+  },
+  "footer": {
+    "org": "Organisiert von Vanessa Schmuki, Pascal Schmuki & Claudio Schmid",
+    "contactLink": "Kontakt",
+    "impressumLink": "Impressum",
+    "datenschutzLink": "Datenschutz",
+    "venue": "Buchholz Sporthalle · 8610 Uster",
+    "venueDate": "Buchholz Sporthalle · 8610 Uster · So, 5. Juli 2026"
+  },
+  "language": {
+    "label": "Sprache",
+    "de": "Deutsch",
+    "en": "English",
+    "fr": "Français",
+    "switchTo": "Auf {lang} wechseln"
+  },
+  "home": {
+    "hero": {
+      "tag": "Skill Training 2026",
+      "subtitle": "U14 Männer & U17 Frauen",
+      "ctaPrimary": "Jetzt anmelden",
+      "ctaSecondary": "Mehr erfahren ↓"
+    },
+    "facts": {
+      "title": "Alles auf einen Blick",
+      "lead": "Die wichtigsten Eckdaten zum Training – kurz und knapp.",
+      "statusOpen": "Datum noch offen",
+      "statusSoon": "Infos folgen"
+    },
+    "wwm": {
+      "label": "Was wir anbieten",
+      "title": "Unihockey Skill Training in Uster",
+      "p1": "Das <b>Improve your skills</b> Skill Training ist unser Tagescamp für Nachwuchsspieler:innen – geleitet von drei Schweizer Nationalspieler:innen, in kleinen Gruppen mit persönlichem Feedback.",
+      "badge1": "🏒 U14 Männer",
+      "badge2": "🏒 U17 Frauen",
+      "cta": "Jetzt anmelden – CHF 48.–",
+      "imageAlt": "Unihockey Skill Training"
+    },
+    "gallery": {
+      "title": "Eindrücke vom Training"
+    }
+  },
+  "ueber": {
+    "header": {
+      "tag": "Das Team",
+      "title": "Über uns.",
+      "subtitle": "Drei Nationalspieler:innen. Eine gemeinsame Idee."
+    },
+    "ansatz": {
+      "label": "Unser Ansatz",
+      "title": "Etwas zurückgeben.",
+      "lead": "Wir haben alle von grossen Vorbildern und guten Trainern profitiert. Jetzt ist es an uns, dieses Wissen weiterzugeben.",
+      "p": "Das Skill Training ist nicht nur Sport – es ist eine Möglichkeit, Kindern zu zeigen, was möglich ist, wenn man gezielt trainiert und an sich glaubt. Wir bringen Erfahrungen aus dem Nationalteam und den besten Clubs Europas direkt auf die Halle in Uster.",
+      "feature1Title": "Technik-Fokus",
+      "feature1Text": "Stick-Handling, Schuss, Bewegung – gezielt verbessert",
+      "feature2Title": "Kleine Gruppen",
+      "feature2Text": "Max. 30 Kinder – jedes Kind bekommt persönliches Feedback",
+      "feature3Title": "Top-Level Trainer",
+      "feature3Text": "Nationalspieler:innen mit jahrelanger Wettkampferfahrung",
+      "cta": "Jetzt anmelden"
+    },
+    "team": {
+      "label": "Eure Trainer",
+      "title": "Das Team dahinter."
+    },
+    "carousel": {
+      "prev": "Vorheriges Bild",
+      "next": "Nächstes Bild",
+      "slide": "Bild {n}"
+    },
+    "zitate": {
+      "label": "Stimmen",
+      "title": "Was andere sagen."
+    }
+  },
+  "impressionen": {
+    "tag": "Galerie",
+    "title": "Impressionen.",
+    "subtitle": "Eindrücke vom Skill Training – alle Fotos an einem Ort.",
+    "filterAll": "Alle",
+    "empty": "Noch keine Fotos hier – schau bald wieder vorbei.",
+    "openPhoto": "Foto {n} öffnen",
+    "lightbox": {
+      "close": "Schliessen",
+      "prev": "Vorheriges Foto",
+      "next": "Nächstes Foto",
+      "counter": "Foto {n} von {total}"
+    }
+  },
+  "kontakt": {
+    "tag": "Fragen? Meld dich!",
+    "title": "Kontakt.",
+    "infoTitle": "Wir freuen uns von dir zu hören.",
+    "infoText": "Bei Fragen rund um das Skill Training, Anmeldungen oder die Veranstaltung stehen wir dir gerne zur Verfügung.",
+    "mapTitle": "Buchholz Sporthalle Uster",
+    "mapLoad": "Karte laden",
+    "mapNote": "Beim Laden der Karte werden Daten an Google übertragen.",
+    "form": {
+      "firstName": "Vorname",
+      "lastName": "Name",
+      "email": "E-Mail-Adresse",
+      "emailPlaceholder": "vorname@beispiel.ch",
+      "message": "Nachricht",
+      "messagePlaceholder": "Wie können wir dir helfen?",
+      "consent": "Ich bin einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage gespeichert werden. Mehr dazu in der <link>Datenschutzerklärung</link>.",
+      "consentLinkText": "Datenschutzerklärung",
+      "submit": "Nachricht senden",
+      "submitPending": "Wird gesendet …",
+      "successTitle": "Danke für deine Nachricht!",
+      "successText": "Wir melden uns so schnell wie möglich bei dir. Du bekommst gleich auch eine Bestätigung per E-Mail.",
+      "errors": {
+        "required": "Pflichtfeld.",
+        "tooLong": "Das ist zu lang.",
+        "invalidEmail": "Bitte gib eine gültige E-Mail-Adresse ein.",
+        "consentRequired": "Bitte bestätige die Einwilligung.",
+        "turnstileRequired": "Bitte bestätige, dass du kein Roboter bist.",
+        "turnstileFailed": "Die Sicherheitsprüfung ist fehlgeschlagen. Bitte versuch es nochmals.",
+        "tooMany": "Du hast in letzter Zeit schon mehrere Nachrichten geschickt. Bitte warte etwas, bevor du es erneut versuchst.",
+        "serverError": "Etwas ist schiefgelaufen. Bitte versuch es später nochmals oder schreib uns direkt an pascal.schmuki@bluewin.ch."
+      }
+    }
+  },
+  "anmeldung": {
+    "tag": "Anmeldung",
+    "title": "Bis 2027.",
+    "subtitle": "Die Anmeldung für das Skill Training ist aktuell geschlossen.",
+    "label": "Save the Date",
+    "heading": "Anmeldungen & Infos folgen im 2027.",
+    "text": "Das nächste Improve-your-skills Skill Training in Uster ist bereits in Planung. Alle Details sowie die Anmeldung schalten wir rechtzeitig wieder hier auf. Schau zu gegebener Zeit einfach nochmals vorbei – wir freuen uns auf dich!",
+    "back": "Zurück zur Startseite",
+    "openLabel": "Anmeldung offen",
+    "openHeading": "Die Anmeldung ist offen.",
+    "openText": "Meld dich unverbindlich über unser Kontaktformular – wir schicken dir alle weiteren Infos zur Anmeldung.",
+    "openButton": "Zum Kontaktformular"
+  },
+  "seo": {
+    "home": {
+      "title": "Unihockey Skill Training in Uster",
+      "description": "Skill Training für U14 Männer & U17 Frauen in Uster, geleitet von drei Schweizer Nationalspieler:innen. Technik, kleine Gruppen, persönliches Feedback."
+    },
+    "ueber": {
+      "title": "Über uns",
+      "description": "Vanessa Schmuki, Pascal Schmuki und Claudio Schmid: drei Nationalspieler:innen, eine gemeinsame Idee. Lern das Team hinter dem Skill Training in Uster kennen."
+    },
+    "impressionen": {
+      "title": "Impressionen",
+      "description": "Fotos vom Unihockey Skill Training in Uster – ein Eindruck von Training, Teamgeist und den schönsten Momenten."
+    },
+    "kontakt": {
+      "title": "Kontakt",
+      "description": "Fragen zum Unihockey Skill Training in Uster? Schreib uns über das Kontaktformular – wir melden uns so schnell wie möglich."
+    },
+    "anmeldung": {
+      "title": "Anmeldung",
+      "description": "Alle Infos zur Anmeldung für das Unihockey Skill Training in Uster."
+    }
+  },
+  "impressum": {
+    "title": "Impressum.",
+    "metaDescription": "Impressum von improveyourskills.ch — verantwortlich für diese Website, Kontakt und Fotorechte.",
+    "responsibleHeading": "Verantwortlich für diese Website",
+    "responsibleBody": "improveyourskills.ch\nc/o Claudio Schmid",
+    "projectNote": "Ein privates, nicht-kommerzielles Projekt von Vanessa Schmuki, Pascal Schmuki und Claudio Schmid.",
+    "contactHeading": "Kontakt",
+    "contactEmail": "info@improveyourskills.ch",
+    "contactMore": "Weitere Kontaktangaben auf Anfrage.",
+    "photoHeading": "Fotorechte",
+    "photoBody": "An unseren Trainings entstehen Fotos und Videos. Fotografiert wird nur, wer bei der Anmeldung dazu eingewilligt hat — alle anderen werden nicht abgelichtet. Eine kuratierte Auswahl davon zeigen wir in der Galerie auf dieser Website; die vollständigen Aufnahmen erhalten die Eltern zusätzlich über einen privaten Link. Wer ein Foto entfernt haben möchte, meldet sich über die Kontaktangaben oben.",
+    "photoMore": "Mehr zum Umgang mit Daten in der <link>Datenschutzerklärung</link>.",
+    "liabilityHeading": "Haftungsausschluss",
+    "liabilityBody": "Die Organisatoren übernehmen keine Gewähr für die Richtigkeit, Vollständigkeit und Aktualität der auf dieser Website bereitgestellten Informationen. Haftungsansprüche wegen Schäden materieller oder immaterieller Art sind grundsätzlich ausgeschlossen.",
+    "copyrightHeading": "Urheberrecht",
+    "copyrightBody": "Alle Inhalte dieser Website sind urheberrechtlich geschützt. Eine Verwendung ohne ausdrückliche Genehmigung der Organisatoren ist nicht gestattet.",
+    "back": "← Zurück zur Startseite"
+  },
+  "datenschutz": {
+    "title": "Datenschutz.",
+    "metaDescription": "Datenschutzerklärung von improveyourskills.ch — welche Daten wir erheben, welche Cookies wir verwenden und deine Rechte.",
+    "draftNotice": "Diese Seite beschreibt so genau wie möglich, wie improveyourskills.ch mit Daten umgeht. Sie ist von uns erstellt, ersetzt aber keine Rechtsberatung — bitte einmal durchlesen und bei Bedarf ergänzen.",
+    "intro": "Diese Datenschutzerklärung gilt für die Website improveyourskills.ch.",
+    "responsibleHeading": "Verantwortliche Stelle",
+    "responsibleBody": "Verantwortlich für die Datenbearbeitung auf dieser Website ist improveyourskills.ch, c/o Claudio Schmid (siehe Impressum).",
+    "dataHeading": "Welche Daten wir erheben",
+    "dataContactBody": "Kontaktformular: Wenn du das Formular auf /kontakt ausfüllst, speichern wir Vorname, Name, E-Mail-Adresse und deine Nachricht, um deine Anfrage zu beantworten. Zusätzlich speichern wir eine Prüfsumme (Hash) deiner IP-Adresse zum Schutz vor Missbrauch durch automatisierte Anfragen — nie die IP-Adresse selbst.",
+    "dataPhotosBody": "Fotos: Die Bilder in der Galerie stammen von unseren Trainings. Die Einwilligung zur Veröffentlichung holen wir bei der Anmeldung zum Training ein, ausserhalb dieser Website. Wer nicht eingewilligt hat, wird nicht fotografiert.",
+    "dataLogsBody": "Technische Protokolle: Wie bei jedem Webserver üblich, verarbeiten unsere Hosting- und Datenbank-Anbieter beim Aufruf der Website automatisch technische Daten (z. B. IP-Adresse, Zeitpunkt des Zugriffs) in Server-Logs. Diese dienen nur der Sicherheit und Fehlerbehebung und werden nicht mit anderen Daten verknüpft.",
+    "dataAdminBody": "Admin-Zugang: Die Organisator:innen melden sich über einen Link per E-Mail an, ohne Passwort. Dabei wird ein Sitzungs-Cookie gesetzt, siehe unten.",
+    "cookiesHeading": "Cookies",
+    "cookiesBody": "Wir verwenden nur technisch notwendige Cookies, keine für Werbung oder Tracking über andere Websites hinweg:",
+    "cookieLocale": "Ein Cookie merkt sich deine gewählte Sprache.",
+    "cookieAdmin": "Ein Sitzungs-Cookie hält eingeloggte Organisator:innen im Admin-Bereich angemeldet — nur aktiv, wenn jemand von uns eingeloggt ist.",
+    "cookieTurnstile": "Auf der Kontaktseite lädt Cloudflare Turnstile ein Skript, das Formular-Spam erkennt und dafür eigene technische Cookies setzt — nicht für Werbung oder Tracking.",
+    "cookieAnalytics": "Für anonyme Besucherzahlen setzen wir Cloudflare Web Analytics ein — bewusst eine Variante, die ganz ohne Cookie auskommt und dich nicht einzeln wiedererkennt, auch nicht über andere Websites hinweg.",
+    "cookiesNoBanner": "Weil wir ausschliesslich technisch notwendige Cookies und ein cookieloses Analyse-Tool einsetzen, verzichten wir auf ein Cookie-Banner.",
+    "processorsHeading": "Wer die Daten verarbeitet",
+    "processorsBody": "Supabase (Datenbank und Bilder-Speicher, Rechenzentrum in der EU), Vercel (Hosting und Betrieb der Website), Resend (Versand der E-Mails ab Kontaktformular) und Cloudflare (Turnstile-Spamschutz und cookielose Web Analytics) verarbeiten Daten ausschliesslich in unserem Auftrag und zu den oben genannten Zwecken — nicht für eigene Zwecke.",
+    "retentionHeading": "Aufbewahrungsdauer",
+    "retentionBody": "Nachrichten aus dem Kontaktformular bleiben gespeichert, bis eine der Organisator:innen sie manuell löscht — es gibt aktuell keine automatische Löschfrist.",
+    "rightsHeading": "Deine Rechte",
+    "rightsBody": "Du kannst jederzeit Auskunft über deine gespeicherten Daten verlangen sowie deren Berichtigung, Löschung oder Einschränkung der Bearbeitung. Melde dich dafür über die Angaben im Impressum. Solltest du der Meinung sein, dass wir mit deinen Daten nicht korrekt umgehen, kannst du dich auch an den Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) wenden.",
+    "contactHeading": "Fragen dazu",
+    "contactBody": "Für Fragen zum Datenschutz erreichst du uns über das Kontaktformular oder die Angaben im Impressum.",
+    "back": "← Zurück zur Startseite"
+  }
+}

@@ -1,0 +1,216 @@
+{
+  "common": {
+    "brand": "Improve your skills"
+  },
+  "nav": {
+    "ueber": "About us",
+    "impressionen": "Gallery",
+    "kontakt": "Contact",
+    "anmelden": "Register",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "footer": {
+    "org": "Organised by Vanessa Schmuki, Pascal Schmuki & Claudio Schmid",
+    "contactLink": "Contact",
+    "impressumLink": "Legal notice",
+    "datenschutzLink": "Privacy",
+    "venue": "Buchholz Sporthalle · 8610 Uster",
+    "venueDate": "Buchholz Sporthalle · 8610 Uster · Sun, 5 July 2026"
+  },
+  "language": {
+    "label": "Language",
+    "de": "Deutsch",
+    "en": "English",
+    "fr": "Français",
+    "switchTo": "Switch to {lang}"
+  },
+  "home": {
+    "hero": {
+      "tag": "Skill Training 2026",
+      "subtitle": "U14 Boys & U17 Girls",
+      "ctaPrimary": "Register now",
+      "ctaSecondary": "Learn more ↓"
+    },
+    "facts": {
+      "title": "Everything at a glance",
+      "lead": "The key facts about the training – short and simple.",
+      "statusOpen": "Date not yet set",
+      "statusSoon": "More info coming soon"
+    },
+    "wwm": {
+      "label": "What we offer",
+      "title": "Floorball Skill Training in Uster",
+      "p1": "The <b>Improve your skills</b> Skill Training is our day camp for young players – led by three Swiss national team players, in small groups with personal feedback.",
+      "badge1": "🏒 U14 Boys",
+      "badge2": "🏒 U17 Girls",
+      "cta": "Register now – CHF 48.–",
+      "imageAlt": "Floorball Skill Training"
+    },
+    "gallery": {
+      "title": "Impressions from training"
+    }
+  },
+  "ueber": {
+    "header": {
+      "tag": "The Team",
+      "title": "About us.",
+      "subtitle": "Three national team players. One shared idea."
+    },
+    "ansatz": {
+      "label": "Our Approach",
+      "title": "Giving something back.",
+      "lead": "We've all benefited from great role models and good coaches. Now it's our turn to pass that knowledge on.",
+      "p": "The Skill Training is more than just sport – it's a chance to show kids what's possible when you train with purpose and believe in yourself. We bring experience from the national team and Europe's top clubs straight to the hall in Uster.",
+      "feature1Title": "Technique Focus",
+      "feature1Text": "Stick handling, shooting, movement – improved with purpose",
+      "feature2Title": "Small Groups",
+      "feature2Text": "Max. 30 kids – every child gets personal feedback",
+      "feature3Title": "Top-Level Coaches",
+      "feature3Text": "National team players with years of competitive experience",
+      "cta": "Register now"
+    },
+    "team": {
+      "label": "Your Coaches",
+      "title": "The team behind it."
+    },
+    "carousel": {
+      "prev": "Previous image",
+      "next": "Next image",
+      "slide": "Image {n}"
+    },
+    "zitate": {
+      "label": "Voices",
+      "title": "What others say."
+    }
+  },
+  "impressionen": {
+    "tag": "Gallery",
+    "title": "Impressions.",
+    "subtitle": "Impressions from the Skill Training – all photos in one place.",
+    "filterAll": "All",
+    "empty": "No photos here yet – check back soon.",
+    "openPhoto": "Open photo {n}",
+    "lightbox": {
+      "close": "Close",
+      "prev": "Previous photo",
+      "next": "Next photo",
+      "counter": "Photo {n} of {total}"
+    }
+  },
+  "kontakt": {
+    "tag": "Questions? Get in touch!",
+    "title": "Contact.",
+    "infoTitle": "We'd love to hear from you.",
+    "infoText": "For questions about the Skill Training, registration or the event, we're happy to help.",
+    "mapTitle": "Buchholz Sporthalle Uster",
+    "mapLoad": "Load map",
+    "mapNote": "Loading the map sends data to Google.",
+    "form": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email address",
+      "emailPlaceholder": "yourname@example.com",
+      "message": "Message",
+      "messagePlaceholder": "How can we help you?",
+      "consent": "I agree that my information will be stored to process my request. More details in the <link>privacy policy</link>.",
+      "consentLinkText": "Privacy Policy",
+      "submit": "Send message",
+      "submitPending": "Sending …",
+      "successTitle": "Thanks for your message!",
+      "successText": "We'll get back to you as soon as possible. You'll also receive a confirmation by email shortly.",
+      "errors": {
+        "required": "Required field.",
+        "tooLong": "This is too long.",
+        "invalidEmail": "Please enter a valid email address.",
+        "consentRequired": "Please confirm your consent.",
+        "turnstileRequired": "Please confirm that you're not a robot.",
+        "turnstileFailed": "The security check failed. Please try again.",
+        "tooMany": "You've already sent several messages recently. Please wait a bit before trying again.",
+        "serverError": "Something went wrong. Please try again later or email us directly at pascal.schmuki@bluewin.ch."
+      }
+    }
+  },
+  "anmeldung": {
+    "tag": "Registration",
+    "title": "See you in 2027.",
+    "subtitle": "Registration for the Skill Training is currently closed.",
+    "label": "Save the Date",
+    "heading": "Registration & info coming in 2027.",
+    "text": "The next Improve your skills Skill Training in Uster is already in the works. We'll post all the details and registration here in good time. Just check back later – we're looking forward to seeing you!",
+    "back": "Back to homepage",
+    "openLabel": "Registration open",
+    "openHeading": "Registration is open.",
+    "openText": "Get in touch via our contact form, no obligation – we'll send you all the details about registering.",
+    "openButton": "Go to contact form"
+  },
+  "seo": {
+    "home": {
+      "title": "Floorball Skill Training in Uster",
+      "description": "Skill training for U14 boys & U17 girls in Uster, led by three Swiss national-team players. Technique, small groups, personal feedback."
+    },
+    "ueber": {
+      "title": "About us",
+      "description": "Vanessa Schmuki, Pascal Schmuki and Claudio Schmid: three national-team players, one shared idea. Meet the team behind the skill training in Uster."
+    },
+    "impressionen": {
+      "title": "Gallery",
+      "description": "Photos from the floorball skill training in Uster — a glimpse of the training, the team spirit and the best moments."
+    },
+    "kontakt": {
+      "title": "Contact",
+      "description": "Questions about the floorball skill training in Uster? Write to us via the contact form — we'll get back to you as soon as possible."
+    },
+    "anmeldung": {
+      "title": "Registration",
+      "description": "Everything about registering for the floorball skill training in Uster."
+    }
+  },
+  "impressum": {
+    "title": "Legal Notice.",
+    "metaDescription": "Legal notice for improveyourskills.ch — who is responsible for this website, contact details and photo rights.",
+    "responsibleHeading": "Responsible for this website",
+    "responsibleBody": "improveyourskills.ch\nc/o Claudio Schmid",
+    "projectNote": "A private, non-commercial project by Vanessa Schmuki, Pascal Schmuki and Claudio Schmid.",
+    "contactHeading": "Contact",
+    "contactEmail": "info@improveyourskills.ch",
+    "contactMore": "Further contact details available on request.",
+    "photoHeading": "Photo rights",
+    "photoBody": "Photos and videos are taken during our trainings. We only photograph participants whose registration included consent to this — everyone else is not photographed. We show a curated selection of these in the gallery on this website; parents also receive the full set via a private link. If you would like a photo removed, get in touch using the contact details above.",
+    "photoMore": "More on how we handle data in the <link>privacy policy</link>.",
+    "liabilityHeading": "Disclaimer",
+    "liabilityBody": "The organisers accept no responsibility for the accuracy, completeness, or currency of the information provided on this website. Liability claims for damages of a material or immaterial nature are generally excluded.",
+    "copyrightHeading": "Copyright",
+    "copyrightBody": "All content on this website is protected by copyright. Use without the express permission of the organisers is not permitted.",
+    "back": "← Back to homepage"
+  },
+  "datenschutz": {
+    "title": "Privacy Policy.",
+    "metaDescription": "Privacy policy for improveyourskills.ch — what data we collect, which cookies we use, and your rights.",
+    "draftNotice": "This page describes, as precisely as we can, how improveyourskills.ch handles data. We wrote it ourselves — it is not legal advice, so please read it through and add to it if needed.",
+    "intro": "This privacy policy applies to the improveyourskills.ch website.",
+    "responsibleHeading": "Controller",
+    "responsibleBody": "The party responsible for data processing on this website is improveyourskills.ch, c/o Claudio Schmid (see legal notice).",
+    "dataHeading": "What data we collect",
+    "dataContactBody": "Contact form: when you fill out the form on /kontakt, we store your first name, last name, email address and message to answer your request. We also store a checksum (hash) of your IP address to protect against abuse from automated requests — never the IP address itself.",
+    "dataPhotosBody": "Photos: the images in the gallery come from our trainings. We obtain consent for publication when registering for the training, outside of this website. Anyone who has not consented is not photographed.",
+    "dataLogsBody": "Technical logs: as with any web server, our hosting and database providers automatically process technical data (e.g. IP address, time of access) in server logs when the website is accessed. These are used only for security and troubleshooting and are not linked with other data.",
+    "dataAdminBody": "Admin access: the organisers sign in via a link sent by email, without a password. This sets a session cookie — see below.",
+    "cookiesHeading": "Cookies",
+    "cookiesBody": "We only use strictly necessary cookies, none for advertising or cross-site tracking:",
+    "cookieLocale": "A cookie remembers your chosen language.",
+    "cookieAdmin": "A session cookie keeps signed-in organisers logged into the admin area — only active while one of us is logged in.",
+    "cookieTurnstile": "On the contact page, Cloudflare Turnstile loads a script that detects form spam and sets its own technical cookies for that purpose — not for advertising or tracking.",
+    "cookieAnalytics": "For anonymous visitor counts we use Cloudflare Web Analytics — deliberately a version that works entirely without a cookie and doesn't recognise you individually, not even across other websites.",
+    "cookiesNoBanner": "Because we only use strictly necessary cookies and a cookieless analytics tool, we don't show a cookie banner.",
+    "processorsHeading": "Who processes the data",
+    "processorsBody": "Supabase (database and image storage, data centre in the EU), Vercel (hosting and running the website), Resend (sending emails from the contact form) and Cloudflare (Turnstile spam protection and cookieless Web Analytics) process data solely on our behalf and for the purposes named above — never for their own purposes.",
+    "retentionHeading": "Retention period",
+    "retentionBody": "Contact-form messages remain stored until one of the organisers deletes them manually — there is currently no automatic deletion period.",
+    "rightsHeading": "Your rights",
+    "rightsBody": "You can request information about your stored data at any time, as well as its correction, deletion, or restriction of processing. Get in touch using the details in the legal notice. If you believe we are not handling your data correctly, you may also contact the Swiss Federal Data Protection and Information Commissioner (FDPIC).",
+    "contactHeading": "Questions about this",
+    "contactBody": "For questions about data protection, you can reach us via the contact form or the details in the legal notice.",
+    "back": "← Back to homepage"
+  }
+}

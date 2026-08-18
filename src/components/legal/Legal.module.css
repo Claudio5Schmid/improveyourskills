@@ -1,0 +1,73 @@
+/* Shared look for /impressum and /datenschutz — Phase 7. Both pages were
+   unstyled since Phase 1 (parity with the old site's broken .impressum-card
+   CSS, see git history). Now that they are the real legal pages, they get the
+   same card/section language as the rest of the site (Eckdaten.module.css:
+   white section, cream card, --radius-card/--shadow-card) instead of browser
+   defaults. No new tokens. */
+
+.section {
+  background: var(--color-white);
+}
+
+.card {
+  background: var(--color-cream);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-21); /* 48px, "card padding" per tokens.css */
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-23); /* 64px, "grid gap" — generous block rhythm */
+}
+
+.block h2 {
+  font-family: var(--font-display);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-black);
+  color: var(--color-text-dark);
+  margin-bottom: var(--space-9); /* 12px */
+}
+
+.block p {
+  color: var(--color-text-muted);
+  line-height: var(--line-height-loose);
+  font-size: var(--font-size-base);
+  white-space: pre-line;
+}
+
+.block p + p {
+  margin-top: var(--space-9); /* 12px */
+}
+
+.block a {
+  color: var(--color-green-dark);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.cookieList {
+  list-style: disc;
+  padding-left: var(--space-17); /* 32px */
+  color: var(--color-text-muted);
+  line-height: var(--line-height-loose);
+  font-size: var(--font-size-base);
+}
+.cookieList li + li {
+  margin-top: var(--space-6); /* 8px */
+}
+
+.notice {
+  padding: var(--space-13); /* 20px */
+  border-radius: var(--radius-input);
+  background: var(--color-danger-surface);
+  border: 1px solid var(--color-danger-border);
+  color: var(--color-danger-text);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-loose);
+}
+
+@media (max-width: 640px) {
+  .card {
+    padding: var(--space-15); /* 24px, "card padding (mobile)" per tokens.css */
+    gap: var(--space-19); /* 40px */
+  }
+}

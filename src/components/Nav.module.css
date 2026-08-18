@@ -1,0 +1,154 @@
+/* Navigation. Ported from style.css:26-79 (+ mobile menu 447-474). The mobile
+   breakpoint is kept desktop-first here to match the old file exactly; the
+   mobile-first rework happens in a later Phase-1 step. Values → tokens.css.
+   Burger-bar geometry (24×2px and the rotate offsets) are icon-construction
+   constants, not brand tokens, so they stay as literals. */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-navbar);
+  padding: var(--space-13) 0; /* 20px */
+  transition: var(--transition);
+}
+.navbar.scrolled {
+  background: var(--color-green-a97);
+  backdrop-filter: blur(12px);
+  padding: var(--space-9) 0; /* 12px */
+  box-shadow: var(--shadow-card);
+}
+
+.inner {
+  max-width: var(--width-container);
+  margin: 0 auto;
+  padding: 0 var(--space-17); /* 32px */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  position: relative;
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+/* Invisible hit-area expander → 44px tap target without changing the visual
+   height or the nav layout (brief 1.7). */
+.logo::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 44px;
+  transform: translateY(-50%);
+}
+.logoText {
+  font-family: var(--font-display);
+  font-size: var(--font-size-lg); /* 1rem */
+  color: var(--color-cream);
+  letter-spacing: var(--tracking-logo); /* 0.05em */
+  white-space: nowrap;
+}
+
+.links {
+  list-style: none;
+  display: flex;
+  gap: var(--space-17); /* 32px */
+  align-items: center;
+}
+.links a {
+  color: var(--color-cream-a75);
+  font-size: var(--font-size-sm5); /* 0.88rem */
+  font-weight: var(--font-weight-regular);
+  transition: color var(--transition);
+}
+.links a:hover,
+.links a.active {
+  color: var(--color-cream);
+}
+
+/* ── Burger (style.css:59-79) ─────────────────────────────────────────────*/
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: var(--z-burger);
+  position: relative;
+}
+/* Invisible 44px hit area centred on the icon (brief 1.7) — the visible bars
+   and the nav height stay exactly as ported. */
+.burger::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%);
+}
+.burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-cream);
+  transition: all var(--duration-fast) ease; /* 0.3s */
+}
+.burger.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.burger.open span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-8px);
+}
+.burger.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ── Mobile fullscreen menu (style.css:447-474) ───────────────────────────*/
+@media (max-width: 768px) {
+  .burger {
+    display: flex;
+  }
+  .links {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    background: var(--color-green-a97);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    z-index: var(--z-mobile-menu);
+    gap: 0;
+  }
+  .links.open {
+    display: flex;
+  }
+  .links li {
+    border-bottom: 1px solid var(--color-cream-a08);
+    width: 100%;
+    text-align: center;
+  }
+  .links li:last-child {
+    border: none;
+  }
+  .links a {
+    display: block;
+    padding: var(--space-13) 0; /* 20px */
+    font-size: var(--font-size-xl2); /* 1.2rem */
+    color: var(--color-cream-a85);
+  }
+}

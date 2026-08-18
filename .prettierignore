@@ -1,0 +1,22 @@
+# Build output
+.next/
+out/
+build/
+coverage/
+node_modules/
+
+# Generated
+next-env.d.ts
+package-lock.json
+
+# Legacy static site (kept as Phase-1 reference; do not reformat)
+*.html
+style.css
+
+# Data / assets
+public/
+Bilder/
+messages/
+
+# Hand-written German docs (kept as authored; not prettier-reflowed)
+docs/

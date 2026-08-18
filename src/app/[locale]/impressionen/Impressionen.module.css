@@ -1,0 +1,222 @@
+/* Phase 4 — new code, written mobile-first (unlike the ported Phase-1 CSS).
+   Every value is a token from tokens.css; nothing invented except
+   --z-lightbox, added to tokens.css itself and flagged in the checkpoint. */
+
+.empty {
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-lg);
+  padding: var(--space-25) 0;
+}
+
+/* ── Year filter chips ───────────────────────────────────────────────────*/
+.filterBar {
+  display: flex;
+  gap: var(--space-6);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-17);
+}
+
+.chip {
+  padding: var(--space-6) var(--space-15);
+  min-height: var(--size-icon-button);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-green-a15);
+  background: var(--color-white);
+  color: var(--color-text-dark);
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm4);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.chip:hover {
+  border-color: var(--color-green-dark);
+}
+
+.chipActive {
+  background: var(--color-green-dark);
+  border-color: var(--color-green-dark);
+  color: var(--color-cream);
+}
+
+/* ── Masonry grid ─────────────────────────────────────────────────────────
+   CSS multi-column instead of a JS masonry library — each tile reserves its
+   own height via aspect-ratio from the stored thumb dimensions, so nothing
+   shifts as images load in. */
+.grid {
+  column-count: 2;
+  column-gap: var(--space-9);
+}
+
+@media (min-width: 640px) {
+  .grid {
+    column-count: 3;
+    column-gap: var(--space-11);
+  }
+}
+
+@media (min-width: 1000px) {
+  .grid {
+    column-count: 4;
+  }
+}
+
+.tile {
+  display: block;
+  width: 100%;
+  break-inside: avoid;
+  margin-bottom: var(--space-9);
+  border: none;
+  border-radius: var(--radius-input);
+  overflow: hidden;
+  background-color: var(--color-green-a07);
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  padding: 0;
+}
+
+@media (min-width: 640px) {
+  .tile {
+    margin-bottom: var(--space-11);
+    border-radius: var(--radius-card);
+  }
+}
+
+.tile img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform var(--duration-base) var(--easing);
+  /* Friction only (per docs/PLAN.md §Phase 4) — a determined visitor can
+     still get the pixels; this just removes the one-click save/copy. */
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+.tile:hover img {
+  transform: scale(1.04);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tile:hover img {
+    transform: none;
+  }
+}
+
+/* ── Lightbox ─────────────────────────────────────────────────────────────*/
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-lightbox);
+  background: var(--color-green-a97);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-15);
+}
+
+.lightboxImgWrap {
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--radius-input);
+  overflow: hidden;
+}
+
+.lightboxImg {
+  display: block;
+  max-width: 100%;
+  max-height: 88vh;
+  width: auto;
+  height: auto;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  user-select: none;
+  animation: lightboxIn var(--duration-fast) var(--easing);
+}
+
+@keyframes lightboxIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightboxImg {
+    animation: none;
+  }
+}
+
+.lightboxClose,
+.lightboxPrev,
+.lightboxNext {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-icon-button);
+  height: var(--size-icon-button);
+  border-radius: var(--radius-round);
+  border: 1px solid var(--color-cream-a35);
+  background: var(--color-green-a70);
+  color: var(--color-cream);
+  font-size: var(--font-size-2xl);
+  line-height: 1;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.lightboxClose:hover,
+.lightboxPrev:hover,
+.lightboxNext:hover {
+  background: var(--color-green-mid);
+  border-color: var(--color-cream);
+}
+
+.lightboxClose {
+  top: var(--space-13);
+  right: var(--space-13);
+}
+
+.lightboxPrev {
+  left: var(--space-9);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lightboxNext {
+  right: var(--space-9);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@media (min-width: 640px) {
+  .lightboxPrev {
+    left: var(--space-17);
+  }
+  .lightboxNext {
+    right: var(--space-17);
+  }
+}
+
+.lightboxCounter {
+  position: fixed;
+  bottom: var(--space-13);
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--color-cream-a75);
+  font-size: var(--font-size-sm4);
+  letter-spacing: var(--tracking-label-sm);
+}

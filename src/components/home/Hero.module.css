@@ -1,0 +1,121 @@
+/* Home hero. Ported from style.css:81-122 (+ the 768px overrides). Values →
+   tokens.css. The shared `.hero-tag` / `.hero-sub` / `.animate-up` / button
+   classes live in globals.css; only hero-specific pieces are here. */
+
+.hero {
+  position: relative;
+  /* Full-bleed again (Aug 2026 feedback): a brief 92vh experiment left a
+     visible gap before the next section that read as broken, not "peek". */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--color-green-dark);
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+}
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-hero-overlay);
+}
+
+/* Image slider */
+.slider {
+  position: absolute;
+  inset: 0;
+}
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity var(--duration-hero-slide) ease; /* 1.5s */
+}
+.slide.active {
+  opacity: 1;
+}
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* object-position/transform now come from PositionedImage's inline style
+     (Block F, Aug 2026) — per-image focal point instead of one fixed crop. */
+}
+
+.content {
+  position: relative;
+  z-index: var(--z-content);
+  text-align: center;
+  padding: 0 var(--space-15); /* 24px */
+  max-width: var(--width-hero-content); /* 800px */
+  margin: 0 auto;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--font-size-hero); /* clamp(3.5rem,10vw,7.5rem) */
+  font-weight: var(--font-weight-black);
+  color: var(--color-cream);
+  line-height: var(--line-height-hero); /* 0.95 */
+  letter-spacing: var(--tracking-display);
+  margin-bottom: var(--space-16); /* 28px */
+  text-align: center;
+}
+.accent {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--color-cream);
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-11); /* 16px */
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.scrollHint {
+  position: absolute;
+  bottom: var(--space-18); /* 36px */
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: var(--z-content);
+}
+.scrollHint span {
+  display: block;
+  width: 2px;
+  height: 48px;
+  background: var(--gradient-scroll-hint);
+  margin: 0 auto;
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scaleY(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleY(1.2);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scrollHint span {
+    animation: none;
+  }
+}
+
+/* style.css:436-443 — mobile hero overrides */
+@media (max-width: 768px) {
+  .title {
+    font-size: var(--font-size-hero-mobile); /* clamp(2.8rem,14vw,5rem) */
+  }
+  .actions {
+    flex-direction: column;
+    align-items: center;
+  }
+}
