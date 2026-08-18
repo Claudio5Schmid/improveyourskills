@@ -14,6 +14,16 @@ import { supabaseUrl } from "./supabase/env";
  *   into (`TurnstileWidget.tsx`).
  * - maps.google.com / www.google.com: the click-to-load embed on /kontakt
  *   (`KontaktMap.tsx`) — never loaded until the visitor clicks.
+ * - static.cloudflareinsights.com: the cookieless Web Analytics beacon
+ *   (`CloudflareAnalytics.tsx`, public layout only — never loads on /admin,
+ *   that layout doesn't render the component). Nonce'd like Next's own
+ *   scripts, since it's a static tag in our HTML, not one strict-dynamic
+ *   would trust automatically; the host entry is the same non-strict-dynamic
+ *   fallback as the other two. connect-src ALSO needs the bare
+ *   `cloudflareinsights.com` (no `static.` — confirmed by actually loading
+ *   the beacon and watching where it reports to, not by reading Cloudflare's
+ *   docs): that's where the beacon's own tracking call goes, a different
+ *   host than the one the script file itself loads from.
  *
  * `'strict-dynamic'` + the nonce is the real protection (only script tags
  * Next itself placed, or that a nonce'd script inserts, may run); the
@@ -47,6 +57,7 @@ export function buildCsp(nonce: string): string {
       `'nonce-${nonce}'`,
       "'strict-dynamic'",
       "https://challenges.cloudflare.com",
+      "https://static.cloudflareinsights.com",
       ...(isDev ? ["'unsafe-eval'"] : []),
     ],
     "style-src": ["'self'", "'unsafe-inline'"],
@@ -55,6 +66,8 @@ export function buildCsp(nonce: string): string {
     "connect-src": [
       "'self'",
       "https://challenges.cloudflare.com",
+      "https://static.cloudflareinsights.com",
+      "https://cloudflareinsights.com",
       ...(supabaseOrigin ? [supabaseOrigin] : []),
       ...(isDev ? ["ws:", "wss:"] : []),
     ],

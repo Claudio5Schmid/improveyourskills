@@ -43,11 +43,12 @@ wieder einen Banner.
 
 ## Cloudflare Web Analytics
 
-Im Brief als spätere Ergänzung vorgesehen. Cloudflare Web Analytics ist
-**cookielos** (arbeitet ohne Cookie, misst aggregiert), braucht deshalb selbst
-keinen Banner. Solange es noch nicht eingebaut ist, steht das auch so in der
-Datenschutzerklärung — sobald es dazukommt, wird der entsprechende Absatz dort
-mit aktualisiert.
+Seit Phase 7 aktiv (`src/components/CloudflareAnalytics.tsx`, nur in der echten
+Produktions-Version, nie lokal oder auf einer Vorschau). Cloudflare Web Analytics
+ist **cookielos** (arbeitet ohne Cookie, misst aggregiert, erkennt niemanden
+einzeln) — braucht deshalb selbst keinen Banner und ändert nichts an der
+Begründung oben. Nur im `/admin`-Bereich läuft es bewusst nicht mit — das misst
+den Besuch der Website, nicht die Arbeit der Organisator:innen im Admin.
 
 ## Wo das öffentlich steht
 

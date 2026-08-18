@@ -4,6 +4,7 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
 import { siteUrl } from "@/lib/site-url";
+import CloudflareAnalytics from "@/components/CloudflareAnalytics";
 import { syne, dmSans } from "../fonts";
 import "../globals.css";
 
@@ -48,6 +49,7 @@ export default async function LocaleLayout({
     <html lang={locale} className={`${syne.variable} ${dmSans.variable}`}>
       <body>
         <NextIntlClientProvider messages={messages}>{children}</NextIntlClientProvider>
+        <CloudflareAnalytics />
       </body>
     </html>
   );

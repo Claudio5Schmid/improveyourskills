@@ -80,6 +80,7 @@ export default function DatenschutzPage({ params }: { params: Promise<{ locale: 
                   <li>{t("cookieLocale")}</li>
                   <li>{t("cookieAdmin")}</li>
                   <li>{t("cookieTurnstile")}</li>
+                  <li>{t("cookieAnalytics")}</li>
                 </ul>
                 <p>{t("cookiesNoBanner")}</p>
               </div>
