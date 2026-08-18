@@ -78,6 +78,40 @@ in Vercel ein, nie ins Repository.
 
 ---
 
+## Der tägliche Keep-alive (Phase 7)
+
+**Warum es das gibt:** Supabase pausiert Gratis-Projekte nach rund 7 Tagen ohne
+Aktivität. Ein pausiertes Projekt beantwortet keine Anfragen — die Website würde dann
+auf ihre eingebauten deutschen Standardtexte zurückfallen: keine von dir bearbeiteten
+Inhalte, keine hochgeladenen Bilder, bis jemand das Projekt von Hand wieder aufweckt.
+
+Dagegen läuft **einmal täglich um 04:00 UTC** (also 05:00 bzw. 06:00 Schweizer Zeit)
+ein winziger automatischer Aufruf, der einen einzigen Wert aus der Datenbank liest.
+Das genügt, damit Supabase das Projekt als aktiv zählt. Eingerichtet ist das in
+`vercel.json`; der Endpunkt selbst ist `/api/cron/keep-alive`.
+
+> Warum ausgerechnet in `vercel.json`, wo doch sonst alles hoster-unabhängig in
+> `next.config.ts` liegt? Weil es für zeitgesteuerte Aufgaben schlicht keine
+> hoster-unabhängige Variante gibt. Die Datei enthält deshalb **nur** den Zeitplan.
+
+**Was du tun musst — einmalig:**
+
+1. Einen langen Zufallstext erzeugen (Passwortgenerator, ca. 40 Zeichen).
+2. In Vercel unter **Settings → Environment Variables** als `CRON_SECRET` hinterlegen,
+   für **Production**.
+3. Neu deployen (oder das nächste Deployment abwarten).
+
+**Wichtig:** Ohne gesetztes `CRON_SECRET` verweigert der Endpunkt bewusst den Dienst
+(Antwort 503). Das ist Absicht — sonst könnte ihn jeder Fremde aufrufen. Der Preis
+davon: wenn du den Wert vergisst, läuft der Keep-alive nicht, und das Projekt pausiert
+irgendwann trotzdem. Du siehst das in Vercel unter **Cron Jobs** als fehlgeschlagenen
+Lauf.
+
+Ob es funktioniert hat, siehst du dort ebenfalls: ein erfolgreicher Lauf antwortet
+`{"ok":true,"ms":…}`.
+
+---
+
 ## Wenn etwas klemmt
 
 - **Production-Build (main) rot?** Erwartet, solange `main` noch die alte Seite ist —
