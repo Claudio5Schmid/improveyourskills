@@ -24,9 +24,20 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-export function generateStaticParams() {
-  return routing.locales.map((locale) => ({ locale }));
-}
+/**
+ * Force dynamic rendering — deliberately no `generateStaticParams` here.
+ * The CSP in `src/middleware.ts` gives every `<script>` tag a fresh nonce
+ * per request (see `src/lib/csp.ts`), but a statically prerendered/cached
+ * page bakes in whatever nonce (or none) was present at cache time, which
+ * then never matches the fresh nonce on the response header. The mismatch
+ * makes the browser silently block every script on the page: no mobile
+ * menu, no language switcher, no nav scroll-background, nothing. `next dev`
+ * never shows this (nothing is cached there), which is why it only surfaced
+ * in production. Next's own docs are explicit about this: per-request
+ * nonces require dynamic rendering. Traffic here is low enough that losing
+ * ISR caching is the right trade for a working site.
+ */
+export const dynamic = "force-dynamic";
 
 export default async function LocaleLayout({
   children,
