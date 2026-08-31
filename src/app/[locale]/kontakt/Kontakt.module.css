@@ -231,7 +231,7 @@
 .generalError {
   font-size: var(--font-size-sm4);
   color: var(--color-danger);
-  background: rgba(0, 0, 0, 0.15);
+  background: var(--color-black-a15);
   border-radius: var(--radius-input);
   padding: var(--space-9) var(--space-11);
 }
