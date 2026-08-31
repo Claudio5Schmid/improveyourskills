@@ -1,0 +1,443 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-31T00:00:00.000Z",
+  "title": "Design System: Improve your skills",
+  "extensions": {
+    "colorMeta": {
+      "green-dark": {
+        "role": "primary",
+        "displayName": "Tannengrün",
+        "canonical": "#102c26",
+        "tonalRamp": [
+          "oklch(15% 0.028 168)",
+          "oklch(24% 0.030 168)",
+          "oklch(34% 0.032 168)",
+          "oklch(45% 0.032 168)",
+          "oklch(56% 0.030 168)",
+          "oklch(68% 0.026 168)",
+          "oklch(82% 0.018 168)",
+          "oklch(95% 0.008 168)"
+        ]
+      },
+      "green-mid": {
+        "role": "primary",
+        "displayName": "Tannengrün mittel",
+        "canonical": "#1a4037",
+        "tonalRamp": [
+          "oklch(15% 0.035 167)",
+          "oklch(24% 0.040 167)",
+          "oklch(34% 0.044 167)",
+          "oklch(45% 0.044 167)",
+          "oklch(56% 0.040 167)",
+          "oklch(68% 0.034 167)",
+          "oklch(82% 0.022 167)",
+          "oklch(95% 0.010 167)"
+        ]
+      },
+      "cream": {
+        "role": "secondary",
+        "displayName": "Sandcreme",
+        "canonical": "#f7e7ce",
+        "tonalRamp": [
+          "oklch(15% 0.030 85)",
+          "oklch(24% 0.035 85)",
+          "oklch(34% 0.040 85)",
+          "oklch(45% 0.042 85)",
+          "oklch(56% 0.042 85)",
+          "oklch(68% 0.040 85)",
+          "oklch(82% 0.038 85)",
+          "oklch(95% 0.030 85)"
+        ]
+      },
+      "cream-dark": {
+        "role": "secondary",
+        "displayName": "Sandcreme dunkel",
+        "canonical": "#eddbb8",
+        "tonalRamp": [
+          "oklch(15% 0.035 84)",
+          "oklch(24% 0.042 84)",
+          "oklch(34% 0.048 84)",
+          "oklch(45% 0.052 84)",
+          "oklch(56% 0.052 84)",
+          "oklch(68% 0.050 84)",
+          "oklch(82% 0.046 84)",
+          "oklch(95% 0.034 84)"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "Reines Weiss",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(24% 0 0)",
+          "oklch(34% 0 0)",
+          "oklch(45% 0 0)",
+          "oklch(56% 0 0)",
+          "oklch(68% 0 0)",
+          "oklch(82% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "text-dark": {
+        "role": "neutral",
+        "displayName": "Tiefes Textgrün",
+        "canonical": "#0d1f1c",
+        "tonalRamp": [
+          "oklch(15% 0.020 173)",
+          "oklch(24% 0.022 173)",
+          "oklch(34% 0.024 173)",
+          "oklch(45% 0.024 173)",
+          "oklch(56% 0.022 173)",
+          "oklch(68% 0.018 173)",
+          "oklch(82% 0.012 173)",
+          "oklch(95% 0.006 173)"
+        ]
+      },
+      "text-muted": {
+        "role": "neutral",
+        "displayName": "Gedämpftes Salbeigrün",
+        "canonical": "#4a6b62",
+        "tonalRamp": [
+          "oklch(15% 0.024 168)",
+          "oklch(24% 0.028 168)",
+          "oklch(34% 0.030 168)",
+          "oklch(45% 0.032 168)",
+          "oklch(56% 0.030 168)",
+          "oklch(68% 0.026 168)",
+          "oklch(82% 0.018 168)",
+          "oklch(95% 0.008 168)"
+        ]
+      },
+      "danger": {
+        "role": "tertiary",
+        "displayName": "Signalrot",
+        "canonical": "#c94a4a",
+        "tonalRamp": [
+          "oklch(15% 0.060 25)",
+          "oklch(24% 0.085 25)",
+          "oklch(34% 0.110 25)",
+          "oklch(45% 0.135 25)",
+          "oklch(56% 0.150 25)",
+          "oklch(68% 0.130 25)",
+          "oklch(82% 0.080 25)",
+          "oklch(95% 0.030 25)"
+        ]
+      },
+      "danger-hover": {
+        "role": "tertiary",
+        "displayName": "Signalrot gedrückt",
+        "canonical": "#b03d3d",
+        "tonalRamp": [
+          "oklch(15% 0.058 25)",
+          "oklch(24% 0.082 25)",
+          "oklch(34% 0.106 25)",
+          "oklch(45% 0.130 25)",
+          "oklch(52% 0.145 25)",
+          "oklch(68% 0.125 25)",
+          "oklch(82% 0.078 25)",
+          "oklch(95% 0.028 25)"
+        ]
+      },
+      "danger-text": {
+        "role": "tertiary",
+        "displayName": "Fehlerrot Text",
+        "canonical": "#8b1a1a",
+        "tonalRamp": [
+          "oklch(15% 0.070 27)",
+          "oklch(24% 0.100 27)",
+          "oklch(34% 0.130 27)",
+          "oklch(41% 0.150 27)",
+          "oklch(56% 0.150 27)",
+          "oklch(68% 0.125 27)",
+          "oklch(82% 0.078 27)",
+          "oklch(95% 0.028 27)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Nur der Hero der Startseite. Drei handumbrochene Zeilen, mittlere Zeile als Kontur."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Sektionstitel. Auf grünem Grund über die .light-Variante in Sandcreme."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Namen auf Trainerkarten, Lead-Absätze, Wortmarke in der Fusszeile."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Fliesstext. Lange Absätze auf Zeilenhöhe 1.75 und im 700-px-Container."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Eyebrow über jedem Sektionstitel; Grossbuchstaben, gedämpft."
+      }
+    },
+    "shadows": [
+      {
+        "name": "card",
+        "value": "0 4px 24px rgba(16, 44, 38, 0.12)",
+        "purpose": "Standardantwort auf Hover; ausserdem die feste Navigationsleiste."
+      },
+      {
+        "name": "lg",
+        "value": "0 12px 48px rgba(16, 44, 38, 0.2)",
+        "purpose": "Stärkerer Zustand, wenn ein Element wirklich vorn liegt — Portrait beim Hover."
+      },
+      {
+        "name": "cream-glow",
+        "value": "0 8px 24px rgba(247, 231, 206, 0.3)",
+        "purpose": "Hover des primären Buttons auf grünem Grund — ein Leuchten, kein Schatten."
+      },
+      {
+        "name": "dark-soft",
+        "value": "0 8px 24px rgba(0, 0, 0, 0.15)",
+        "purpose": "Nur unter hellen Buttons auf dunklem Grund, wo ein grüner Schatten unsichtbar bliebe."
+      },
+      {
+        "name": "dark-hard",
+        "value": "0 8px 24px rgba(0, 0, 0, 0.2)",
+        "purpose": "Dieselbe Ausnahme, eine Stufe kräftiger."
+      },
+      {
+        "name": "focus-ring",
+        "value": "0 0 0 3px rgba(16, 44, 38, 0.08)",
+        "purpose": "Der einzige Schatten, der nichts anhebt."
+      }
+    ],
+    "motion": [
+      {
+        "name": "easing",
+        "value": "cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Die eine Kurve für alles — Zustände, Auftritte, Slider."
+      },
+      {
+        "name": "duration-base",
+        "value": "0.35s",
+        "purpose": "Standarddauer für jeden Zustandswechsel."
+      },
+      {
+        "name": "duration-fast",
+        "value": "0.3s",
+        "purpose": "Burger-Balken beim Öffnen und Schliessen."
+      },
+      {
+        "name": "duration-slow",
+        "value": "0.5s",
+        "purpose": "Zoom einer Galeriekachel beim Hover."
+      },
+      {
+        "name": "duration-fade",
+        "value": "0.6s",
+        "purpose": "Scroll-Enthüllung beim Sichtbarwerden."
+      },
+      {
+        "name": "duration-slide-up",
+        "value": "0.75s",
+        "purpose": "Auftritt aus 28 px nach oben; animiert nur die Position, nie die Deckkraft."
+      },
+      {
+        "name": "duration-hero-slide",
+        "value": "1.5s",
+        "purpose": "Überblendung im Hero-Slider."
+      },
+      {
+        "name": "stagger",
+        "value": "0.1s / 0.25s / 0.4s / 0.55s / 0.7s",
+        "purpose": "Fünf Staffelstufen für Auftritte innerhalb einer Gruppe."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "alle Dauern → 0.01ms, alle Verzögerungen → 0s",
+        "purpose": "Unter prefers-reduced-motion greifen die Tokens selbst; kein Inhalt bleibt verborgen."
+      }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "480px" },
+      { "name": "tablet", "value": "768px" },
+      { "name": "desktop", "value": "900px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Der Haupt-Handlungsaufruf auf grünem Grund — Sandcreme-Pille, die beim Hover weiss wird und leuchtet.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Jetzt anmelden</a>",
+      "css": ".ds-btn-primary { display: inline-block; background: var(--color-cream, #f7e7ce); color: var(--color-green-dark, #102c26); font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 0.95rem; font-weight: 500; padding: 14px 32px; border-radius: 100px; border: none; cursor: pointer; text-decoration: none; transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); } .ds-btn-primary:hover { background: #ffffff; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(247, 231, 206, 0.3); } .ds-btn-primary:focus-visible { outline: 2px solid var(--color-cream, #f7e7ce); outline-offset: 3px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Der zweite Weg, immer neben dem primären Button — nur ein Umriss in Sandcreme.",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\">Mehr erfahren ↓</a>",
+      "css": ".ds-btn-ghost { display: inline-block; color: var(--color-cream, #f7e7ce); font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 0.95rem; padding: 14px 24px; border-radius: 100px; border: 1px solid rgba(247, 231, 206, 0.35); text-decoration: none; transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); } .ds-btn-ghost:hover { border-color: var(--color-cream, #f7e7ce); background: rgba(247, 231, 206, 0.08); } .ds-btn-ghost:focus-visible { outline: 2px solid var(--color-cream, #f7e7ce); outline-offset: 3px; }"
+    },
+    {
+      "name": "Full-Width Button",
+      "kind": "button",
+      "refersTo": "button-full",
+      "description": "Der Absende-Button im Formular: tannengrüne Fläche, 12-px-Radius statt Pille, volle Breite.",
+      "html": "<button class=\"ds-btn-full\" type=\"submit\">Nachricht senden</button>",
+      "css": ".ds-btn-full { width: 100%; text-align: center; font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 1rem; font-weight: 500; padding: 16px; border: none; border-radius: 12px; background: var(--color-green-dark, #102c26); color: var(--color-cream, #f7e7ce); cursor: pointer; transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); } .ds-btn-full:hover { background: var(--color-green-mid, #1a4037); transform: translateY(-1px); box-shadow: 0 4px 24px rgba(16, 44, 38, 0.12); } .ds-btn-full:focus-visible { outline: 2px solid var(--color-green-dark, #102c26); outline-offset: 3px; }"
+    },
+    {
+      "name": "Year Chip",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Der Jahresfilter der Galerie. 44 px hoch by definition; aktiv wird er zur vollen Fläche.",
+      "html": "<div style=\"display:flex; gap:10px; flex-wrap:wrap;\"><button class=\"ds-chip ds-chip-active\">Alle</button><button class=\"ds-chip\">2026</button><button class=\"ds-chip\">2025</button></div>",
+      "css": ".ds-chip { padding: 8px 24px; min-height: 44px; border-radius: 100px; border: 1px solid rgba(16, 44, 38, 0.15); background: #ffffff; color: var(--color-text-dark, #0d1f1c); font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 0.85rem; font-weight: 500; cursor: pointer; transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); } .ds-chip:hover { border-color: var(--color-green-dark, #102c26); } .ds-chip:focus-visible { outline: 2px solid var(--color-green-dark, #102c26); outline-offset: 2px; } .ds-chip-active { background: var(--color-green-dark, #102c26); border-color: var(--color-green-dark, #102c26); color: var(--color-cream, #f7e7ce); }"
+    },
+    {
+      "name": "Badge",
+      "kind": "chip",
+      "refersTo": "badge",
+      "description": "Nicht interaktives Etikett — dieselbe Silhouette wie ein Chip, ohne Hover, weil man ihn nicht anklicken kann.",
+      "html": "<div style=\"display:flex; gap:10px;\"><span class=\"ds-badge\">🏒 U14 Männer</span><span class=\"ds-badge\">🏒 U17 Frauen</span></div>",
+      "css": ".ds-badge { display: inline-block; background: rgba(16, 44, 38, 0.07); color: var(--color-green-dark, #102c26); font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 0.82rem; font-weight: 500; padding: 6px 14px; border-radius: 100px; border: 1px solid rgba(16, 44, 38, 0.12); }"
+    },
+    {
+      "name": "Hero Tag",
+      "kind": "chip",
+      "refersTo": "hero-tag",
+      "description": "Die Pille über dem Hero-Titel: Sandcreme auf Glas, gesperrte Grossbuchstaben.",
+      "html": "<div style=\"background:#102c26; padding:24px; border-radius:20px;\"><span class=\"ds-hero-tag\">Skill Training 2026</span></div>",
+      "css": ".ds-hero-tag { display: inline-block; background: rgba(247, 231, 206, 0.15); border: 1px solid rgba(247, 231, 206, 0.3); color: var(--color-cream, #f7e7ce); font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; padding: 7px 18px; border-radius: 100px; }"
+    },
+    {
+      "name": "Fact Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Die Eckdaten-Karte: Sandcreme auf Weiss, Icon-Kreis, gesperrtes Label, Wert in Syne.",
+      "html": "<div class=\"ds-card\"><div class=\"ds-card-icon\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M16 2v4M8 2v4M3 10h18\"/></svg></div><div class=\"ds-card-label\">Termin</div><div class=\"ds-card-value\">So, 5. Juli 2026</div></div>",
+      "css": ".ds-card { background: var(--color-cream, #f7e7ce); border-radius: 20px; padding: 32px; text-align: center; max-width: 240px; transition: box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1), transform 0.35s cubic-bezier(0.4, 0, 0.2, 1); } .ds-card:hover { transform: translateY(-4px); box-shadow: 0 4px 24px rgba(16, 44, 38, 0.12); } .ds-card-icon { width: 48px; height: 48px; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center; border-radius: 50%; background: rgba(16, 44, 38, 0.07); color: var(--color-green-dark, #102c26); } .ds-card-label { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 0.85rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-text-muted, #4a6b62); margin-bottom: 6px; } .ds-card-value { font-family: var(--font-display, 'Syne', sans-serif); font-weight: 700; color: var(--color-text-dark, #0d1f1c); }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Formularfeld auf grünem Grund. 1rem, damit iOS Safari beim Fokus nicht hineinzoomt; transparenter Rand im Ruhezustand, damit der Fokus keinen Sprung erzeugt.",
+      "html": "<div style=\"background:#102c26; padding:24px; border-radius:20px; display:flex; flex-direction:column; gap:6px; max-width:320px;\"><label class=\"ds-field-label\" for=\"ds-mail\">E-Mail-Adresse</label><input class=\"ds-input\" id=\"ds-mail\" type=\"email\" placeholder=\"vorname@beispiel.ch\"></div>",
+      "css": ".ds-field-label { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 0.85rem; font-weight: 500; color: rgba(247, 231, 206, 0.75); } .ds-input { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 1rem; color: var(--color-text-dark, #0d1f1c); background: #ffffff; border: 1px solid transparent; border-radius: 12px; padding: 10px 14px; width: 100%; transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); } .ds-input::placeholder { color: rgba(16, 44, 38, 0.3); } .ds-input:focus { outline: none; border-color: var(--color-cream, #f7e7ce); } .ds-input[aria-invalid=\"true\"] { border-color: var(--color-danger, #c94a4a); }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Die feste Leiste: grün bei 97 % mit Blur, Wortmarke in Syne, Links nur über Deckkraft unterschieden.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-logo\" href=\"#\">Improve your skills</a><ul class=\"ds-nav-links\"><li><a href=\"#\" class=\"ds-nav-active\">Über uns</a></li><li><a href=\"#\">Impressionen</a></li><li><a href=\"#\">Kontakt</a></li><li><a href=\"#\">Anmelden</a></li></ul></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: 12px 32px; background: rgba(16, 44, 38, 0.97); backdrop-filter: blur(12px); box-shadow: 0 4px 24px rgba(16, 44, 38, 0.12); } .ds-nav-logo { font-family: var(--font-display, 'Syne', sans-serif); font-size: 1rem; color: var(--color-cream, #f7e7ce); letter-spacing: 0.05em; white-space: nowrap; text-decoration: none; } .ds-nav-links { list-style: none; display: flex; gap: 32px; align-items: center; margin: 0; padding: 0; } .ds-nav-links a { font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 0.88rem; font-weight: 400; color: rgba(247, 231, 206, 0.75); text-decoration: none; transition: color 0.35s cubic-bezier(0.4, 0, 0.2, 1); } .ds-nav-links a:hover, .ds-nav-links a.ds-nav-active { color: var(--color-cream, #f7e7ce); }"
+    },
+    {
+      "name": "Poster Header",
+      "kind": "custom",
+      "refersTo": null,
+      "description": "Die Signatur des Systems: Foto bei 35 %, tannengrüner Schleier bei 75 %, Titel in Syne — und die mittlere Zeile nur als Kontur. Fehlt das Foto, trägt das Grün die Fläche allein.",
+      "html": "<header class=\"ds-poster\"><div class=\"ds-poster-veil\"></div><div class=\"ds-poster-content\"><span class=\"ds-poster-tag\">Skill Training 2026</span><h1 class=\"ds-poster-title\">Improve<br><span class=\"ds-poster-hollow\">your</span><br>skills.</h1></div></header>",
+      "css": ".ds-poster { position: relative; min-height: 320px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: linear-gradient(135deg, #102c26, #1a4037); border-radius: 20px; } .ds-poster-veil { position: absolute; inset: 0; background: rgba(16, 44, 38, 0.75); } .ds-poster-content { position: relative; z-index: 2; text-align: center; padding: 32px 24px; } .ds-poster-tag { display: inline-block; background: rgba(247, 231, 206, 0.15); border: 1px solid rgba(247, 231, 206, 0.3); color: var(--color-cream, #f7e7ce); font-family: var(--font-body, 'DM Sans', sans-serif); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; padding: 7px 18px; border-radius: 100px; margin-bottom: 28px; } .ds-poster-title { font-family: var(--font-display, 'Syne', sans-serif); font-size: clamp(2.5rem, 9vw, 4.5rem); font-weight: 800; color: var(--color-cream, #f7e7ce); line-height: 0.95; letter-spacing: -0.03em; margin: 0; } .ds-poster-hollow { color: transparent; -webkit-text-stroke: 2px var(--color-cream, #f7e7ce); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Das Hallenplakat",
+    "overview": "Die Seite ist ein Plakat, das man in der Halle aufhängen würde. Ein Foto liegt unter einem schweren tannengrünen Schleier, darüber steht ein dreizeiliger Schriftzug in Syne, so gross wie die Fläche es zulässt — und die mittlere Zeile ist nur als Kontur gesetzt. Das ist kein Effekt, das ist die Marke: dieselbe Form (voll / hohl / voll) steckt im Favicon.\n\nDer Charakter ist sportlich, direkt, energisch — aber die Energie steckt in wenigen, grossen Entscheidungen, nicht in vielen kleinen. Grosse tannengrüne Felder wechseln mit hellen Flächen; dazwischen liegt fast nichts. Die Seite wird laut, wo sie etwas behauptet, und wird sofort wieder still, damit das Laute trifft.\n\nAlles, was man anfasst, ist eine Pille; alles, was etwas enthält, ist eine Karte mit 20 px Radius; alles, was ein Gesicht zeigt, ist ein Kreis. Es gibt kein viertes Formvokabular, keine dritte Schrift und keine dritte Hintergrundfamilie.",
+    "keyCharacteristics": [
+      "Zwei Farbfelder, kein drittes: tannengrün oder hell — nie etwas dazwischen.",
+      "Display-Typografie an der Belastungsgrenze: clamp(3.5rem, 10vw, 7.5rem), Zeilenhöhe 0.95, negatives Tracking.",
+      "Genau eine typografische Signatur: das konturierte Wort.",
+      "Pille · Karte · Kreis — mehr Formen gibt es nicht.",
+      "Jede Transparenz ist aus den zwei Markenfarben komponiert, nie aus Grau.",
+      "Fotos erscheinen nie roh: immer unter einem grünen Schleier oder in einer 20-px-Karte.",
+      "Leere Daten erzeugen keine leere Fläche — die Sektion verschwindet."
+    ],
+    "rules": [
+      {
+        "name": "The Two-Field Rule",
+        "body": "Jede Fläche ist entweder ein tannengrünes Feld oder ein helles Feld (Weiss oder Sandcreme). Es gibt keine dritte Hintergrundfamilie. Daraus folgt die Textfarbe automatisch: auf Grün immer Sandcreme, auf Hell immer das tiefe Textgrün. Wer eine Textfarbe wählen muss, hat die falsche Fläche.",
+        "section": "colors"
+      },
+      {
+        "name": "The Alpha-From-Brand Rule",
+        "body": "Jede Transparenz wird aus --rgb-green-dark oder --rgb-cream komponiert — nie aus Grau, nie aus einem neuen Hue. Prüftest: grep 'rgba(' in einer Komponente; jeder Treffer muss auf ein Triplett-Token zeigen.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Red Rule",
+        "body": "Rot ist kein Gestaltungsmittel. Es erscheint nur, wenn etwas nicht funktioniert hat oder etwas nicht mehr verfügbar ist.",
+        "section": "colors"
+      },
+      {
+        "name": "The Hollow Middle Rule",
+        "body": "Das konturierte Wort ist die einzige typografische Signatur der Marke. Höchstens einmal pro Seite, nur in einer Display-Zeile, nur auf einem grünen Feld, nur auf ein kurzes Wort in der Mitte.",
+        "section": "typography"
+      },
+      {
+        "name": "The Two-Voice Rule",
+        "body": "Syne für Display, Headline, Title und die Wortmarke. DM Sans für alles, was jemand als Satz liest. Keine dritte Schrift, keine Monospace, keine Kursive.",
+        "section": "typography"
+      },
+      {
+        "name": "The Whisper Label Rule",
+        "body": "Über jedem Sektionstitel steht ein Eyebrow-Label in 0.75rem, Grossbuchstaben, 0.18em Tracking, gedämpft. Es benennt die Sektion und tritt sofort zurück.",
+        "section": "typography"
+      },
+      {
+        "name": "The 1100 Rule",
+        "body": "Inhalt lebt im 1100-px-Container. Nur grüne Sektionsflächen, Medien-Banner und der Hero gehen über die volle Breite.",
+        "section": "layout"
+      },
+      {
+        "name": "The Empty-Section Rule",
+        "body": "Eine Sektion ohne Daten rendert nicht. Keine leere Karte, kein 'coming soon', kein Platzhalterbalken.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat-Until-Touched Rule",
+        "body": "Ruhezustand flach, Schatten erst bei Hover oder Fokus. Prüftest: Screenshot ohne Mauszeiger — trägt darin etwas einen Schatten, der nicht Navigation ist, gehört er weg. Bestandsabstand: Eckdaten-, Zitat- und Trainerkarten tragen heute noch einen Ruhe-Schatten.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Lift-Is-Small Rule",
+        "body": "Ein Element hebt sich um 1 bis 4 px, nie mehr. Die Bewegung soll spürbar sein, nicht sichtbar springen.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Pill-or-Card Rule",
+        "body": "Die erste Frage bei einem neuen Element ist nicht 'welcher Radius', sondern 'ist es zum Anfassen oder zum Enthalten'. Ein 8-px- oder 4-px-Radius existiert in diesem System nicht.",
+        "section": "shapes"
+      },
+      {
+        "name": "The Legible-First-Frame Rule",
+        "body": "Der Hero-Text animiert nur seine Position, nie seine Deckkraft — er ist ab dem ersten Frame lesbar. Alle Dauern hängen an Motion-Tokens, die unter prefers-reduced-motion auf 0.01ms fallen.",
+        "section": "components"
+      }
+    ],
+    "dos": [
+      "Do jede Farbe, Schrift, jeden Radius, Schatten und Abstand aus src/styles/tokens.css ziehen. Braucht etwas einen neuen Wert, kommt er zuerst dort hinein, wird aus der Palette abgeleitet und zur Freigabe gemeldet.",
+      "Do Transparenzen aus --rgb-green-dark / --rgb-cream komponieren statt aus Grau.",
+      "Do jedem neuen Element zuerst die Frage stellen: Pille, Karte oder Kreis.",
+      "Do Sektionen verschwinden lassen, wenn keine Daten da sind.",
+      "Do Fotos immer unter einen Schleier oder in eine 20-px-Karte legen.",
+      "Do interaktive Ziele auf mindestens 44 px bringen — notfalls über ein unsichtbares ::before, ohne die Optik zu verändern.",
+      "Do Eingabefelder bei mindestens 1rem halten.",
+      "Do neue Bewegung an die Motion-Tokens hängen, damit prefers-reduced-motion automatisch greift."
+    ],
+    "donts": [
+      "Don't eine dritte Hintergrundfamilie einführen. Grün oder hell — nichts dazwischen.",
+      "Don't das konturierte Wort mehr als einmal pro Seite verwenden.",
+      "Don't Rot für etwas anderes als Fehler oder 'Ausgebucht' benutzen.",
+      "Don't einen Radius zwischen 12 und 20 px erfinden, und keinen unter 12 px.",
+      "Don't die Seite wie ein kommerzielles Camp-Angebot aussehen lassen: keine Rabatt-Sticker, keine Countdown-Uhren, keine 'nur noch 3 Plätze'-Dringlichkeit.",
+      "Don't Tech-Startup-Vokabular übernehmen: keine Gradient-Blobs, kein Glasmorphismus, keine Neon-Akzente.",
+      "Don't die Seite verkindlichen: keine Comic-Schriften, keine Regenbogenfarben, kein Maskottchen — die Kinder schauen, die Eltern entscheiden.",
+      "Don't Inhalt hinter einer Einblend-Animation verstecken; Position darf animieren, Lesbarkeit nie.",
+      "Don't ein Stockfoto oder eine erfundene Person einsetzen, wenn ein Bild fehlt. Der grüne Schleier trägt die Fläche allein."
+    ]
+  }
+}
